@@ -3,25 +3,27 @@
 [ext_resource type="Script" path="res://float_npc.gd" id="1_erd7d"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_8p612"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kckto"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v33xj"]
 albedo_color = Color(0.537255, 0.364706, 1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_q3gyk"]
-material = SubResource("StandardMaterial3D_kckto")
+[sub_resource type="BoxMesh" id="BoxMesh_fktdm"]
+material = SubResource("StandardMaterial3D_v33xj")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly7l6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gd70a"]
 albedo_color = Color(0.211765, 1, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ath4q"]
-material = SubResource("StandardMaterial3D_ly7l6")
+[sub_resource type="BoxMesh" id="BoxMesh_407ue"]
+material = SubResource("StandardMaterial3D_gd70a")
 
-[node name="float_npc" type="CharacterBody3D"]
+[node name="float_npc" type="CharacterBody3D" node_paths=PackedStringArray("mesh1", "mesh2")]
 script = ExtResource("1_erd7d")
+mesh1 = NodePath("Node3D/MeshInstance3D")
+mesh2 = NodePath("CharacterBody3D/MeshInstance3D")
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-mesh = SubResource("BoxMesh_q3gyk")
+mesh = SubResource("BoxMesh_fktdm")
 
 [node name="VTVisibilityComponent" type="Node" parent="Node3D"]
 script = ExtResource("3_8p612")
@@ -31,7 +33,7 @@ propagate_to_children = true
 [node name="CharacterBody3D" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("BoxMesh_ath4q")
+mesh = SubResource("BoxMesh_407ue")
 skeleton = NodePath("../..")
 
 [node name="VTVisibilityComponent" type="Node" parent="CharacterBody3D"]
