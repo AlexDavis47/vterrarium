@@ -23,6 +23,8 @@ VTGlobal="*res://addons/vterrariumframework/src/globals/vtglobal.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/mode=3
+window/size/initial_position_type=2
 window/size/resizable=false
 window/subwindows/embed_subwindows=false
 

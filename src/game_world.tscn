@@ -1,14 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=12 format=3 uid="uid://bygguke1e1erc"]
 
-[ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
-[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="2_11vos"]
-[ext_resource type="Script" path="res://src/mesh_instance_3d.gd" id="2_277ir"]
+[ext_resource type="Script" path="res://src/game_world.gd" id="1_py4uh"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/primary_window.gd" id="2_okw28"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_n4kfy"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/secondary_window.gd" id="4_dhctv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdnch"]
 albedo_color = Color(1, 0.352941, 1, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yn312"]
 material = SubResource("StandardMaterial3D_vdnch")
+
+[sub_resource type="GDScript" id="GDScript_xpqiy"]
+script/source = "extends MeshInstance3D"
 
 [sub_resource type="BoxMesh" id="BoxMesh_8jjsu"]
 
@@ -24,37 +28,45 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="GameWorld" type="Node3D"]
-script = ExtResource("1_0brji")
+script = ExtResource("1_py4uh")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="PrimaryWindow" type="Node3D" parent="."]
+script = ExtResource("2_okw28")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PrimaryWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.218918, 0)
 mesh = SubResource("CapsuleMesh_yn312")
-script = ExtResource("2_277ir")
+script = SubResource("GDScript_xpqiy")
 
-[node name="VTVisibilityComponent" type="Node" parent="Node3D/MeshInstance3D"]
-script = ExtResource("2_11vos")
+[node name="VTVisibilityComponent" type="Node" parent="PrimaryWindow/MeshInstance3D"]
+script = ExtResource("3_n4kfy")
 target_screen = 2
 propagate_to_children = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PrimaryWindow/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.720386, 0.716582)
 mesh = SubResource("BoxMesh_8jjsu")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/MeshInstance3D/MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PrimaryWindow/MeshInstance3D/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12047, -1.56719)
 mesh = SubResource("BoxMesh_8jjsu")
 skeleton = NodePath("../..")
 
-[node name="Window" type="Window" parent="."]
-initial_position = 1
+[node name="SecondaryWindow" type="Window" parent="."]
+mode = 3
+initial_position = 3
 size = Vector2i(480, 270)
+current_screen = 1
 unresizable = true
+script = ExtResource("4_dhctv")
 
-[node name="secondary" type="Camera3D" parent="Window"]
+[node name="secondary" type="Camera3D" parent="SecondaryWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.81376)
 cull_mask = 5
+
+[node name="ColorRect" type="ColorRect" parent="SecondaryWindow"]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="primary" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.53487, 0.0415508)

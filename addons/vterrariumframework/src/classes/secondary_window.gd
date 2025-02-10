@@ -1,11 +1,12 @@
-extends MeshInstance3D
+extends Window
+class_name SecondaryWindow
 
+var window : Window
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(get_layer_mask_value(0))
-	pass # Replace with function body.
-
+	window = self
+	VTGlobal.secondary_window = self
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
