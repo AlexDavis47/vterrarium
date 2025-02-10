@@ -1,42 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl1sukwqmie7w"]
+[gd_scene load_steps=5 format=3 uid="uid://dl1sukwqmie7w"]
 
 [ext_resource type="Script" path="res://float_npc.gd" id="1_erd7d"]
+[ext_resource type="Texture2D" uid="uid://rf8kv0n3ekeu" path="res://assets/fish_top_pixel.png" id="3_6yrp0"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_8p612"]
+[ext_resource type="Texture2D" uid="uid://cgm5fhluan4dm" path="res://assets/fish_side_pixel.png" id="4_un35c"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v33xj"]
-albedo_color = Color(0.537255, 0.364706, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_fktdm"]
-material = SubResource("StandardMaterial3D_v33xj")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gd70a"]
-albedo_color = Color(0.211765, 1, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_407ue"]
-material = SubResource("StandardMaterial3D_gd70a")
-
-[node name="float_npc" type="CharacterBody3D" node_paths=PackedStringArray("mesh1", "mesh2")]
+[node name="float_npc" type="CharacterBody3D"]
 script = ExtResource("1_erd7d")
-mesh1 = NodePath("Node3D/MeshInstance3D")
-mesh2 = NodePath("CharacterBody3D/MeshInstance3D")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Top" type="Node3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-mesh = SubResource("BoxMesh_fktdm")
-
-[node name="VTVisibilityComponent" type="Node" parent="Node3D"]
+[node name="VTVisibilityComponent" type="Node" parent="Top"]
 script = ExtResource("3_8p612")
 target_screen = 2
 propagate_to_children = true
 
-[node name="CharacterBody3D" type="Node3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("3_6yrp0")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("BoxMesh_407ue")
-skeleton = NodePath("../..")
+[node name="Side" type="Node3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="VTVisibilityComponent" type="Node" parent="CharacterBody3D"]
+[node name="VTVisibilityComponent" type="Node" parent="Side"]
 script = ExtResource("3_8p612")
 target_screen = 3
 propagate_to_children = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Side"]
+texture_filter = 2
+texture = ExtResource("4_un35c")

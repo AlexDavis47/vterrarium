@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=9 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="2_11vos"]
+[ext_resource type="Texture2D" uid="uid://cw4yafjp3tteo" path="res://assets/bottom.jpg" id="3_14urq"]
+[ext_resource type="Texture2D" uid="uid://ddtl45dwo2v6x" path="res://assets/side.jpg" id="4_kulql"]
 [ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ymkj"]
@@ -17,18 +20,38 @@ ambient_light_color = Color(1, 1, 1, 1)
 [node name="GameWorld" type="Node3D"]
 script = ExtResource("1_0brji")
 
-[node name="Window" type="Window" parent="."]
+[node name="Top" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Top"]
+transform = Transform3D(0.545, 0, 0, 0, -2.38227e-08, 0.545, 0, -0.545, -2.38227e-08, 0, -5, 0)
+texture = ExtResource("3_14urq")
+
+[node name="primary" type="Camera3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+cull_mask = 3
+
+[node name="VTVisibilityComponent" type="Node" parent="Top"]
+script = ExtResource("2_11vos")
+target_screen = 2
+propagate_to_children = true
+
+[node name="Bottom" type="Window" parent="."]
 initial_position = 1
 size = Vector2i(480, 270)
 unresizable = true
 
-[node name="secondary" type="Camera3D" parent="Window"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.81376)
+[node name="VTVisibilityComponent" type="Node" parent="Bottom"]
+script = ExtResource("2_11vos")
+target_screen = 3
+propagate_to_children = true
+
+[node name="secondary" type="Camera3D" parent="Bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 cull_mask = 5
 
-[node name="primary" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.53487, 0.0415508)
-cull_mask = 3
+[node name="Sprite3D2" type="Sprite3D" parent="Bottom"]
+transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 0, -9.425)
+texture = ExtResource("4_kulql")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ti7fu")
