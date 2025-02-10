@@ -5,7 +5,7 @@ extends EditorPlugin
 func _enter_tree() -> void:
 	# Initialization of the plugin goes here.
 	add_autoload_singleton("VTGlobal", "res://addons/vterrariumframework/src/globals/vtglobal.gd")
-	pass
+	add_autoload_singleton("VTConfig", "res://addons/vterrariumframework/src/globals/vtconfig.gd")
 
 
 func _exit_tree() -> void:

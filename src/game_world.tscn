@@ -1,18 +1,3 @@
-[gd_scene load_steps=11 format=3 uid="uid://bygguke1e1erc"]
-
-[ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
-[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="2_11vos"]
-[ext_resource type="Script" path="res://src/mesh_instance_3d.gd" id="2_277ir"]
-[ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdnch"]
-albedo_color = Color(1, 0.352941, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yn312"]
-material = SubResource("StandardMaterial3D_vdnch")
-
-[sub_resource type="BoxMesh" id="BoxMesh_8jjsu"]
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ymkj"]
 
 [sub_resource type="Sky" id="Sky_47tij"]
@@ -25,41 +10,57 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="GameWorld" type="Node3D"]
-script = ExtResource("1_0brji")
+script = ExtResource("1_py4uh")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="PrimaryWindow" type="Node3D" parent="."]
+script = ExtResource("2_okw28")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.218918, 0)
-mesh = SubResource("CapsuleMesh_yn312")
-script = ExtResource("2_277ir")
+[node name="primary" type="Camera3D" parent="PrimaryWindow"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.53487, 0.0415508)
+cull_mask = 3
 
-[node name="VTVisibilityComponent" type="Node" parent="Node3D/MeshInstance3D"]
-script = ExtResource("2_11vos")
+[node name="no name_head" type="Node3D" parent="PrimaryWindow"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("3_pfdse")
+
+[node name="f-body-root" type="Node3D" parent="PrimaryWindow/no name_head"]
+
+[node name="m-body-root" type="Node3D" parent="PrimaryWindow/no name_head"]
+transform = Transform3D(0.8325, 0, 0, 0, 0.885, 0, 0, 0, 0.8325, 0, 0, 0)
+
+[node name="MiiHead" type="Node3D" parent="PrimaryWindow/no name_head"]
+transform = Transform3D(0.12, 0.000255502, 1.06305e-06, -0.000255495, 0.11999, 0.00153296, 2.20098e-06, -0.00153296, 0.11999, 0, -2.23238, -0.0293321)
+
+[node name="OpaFaceline" type="MeshInstance3D" parent="PrimaryWindow/no name_head/MiiHead"]
+mesh = SubResource("ArrayMesh_iq3hb")
+skeleton = NodePath("")
+
+[node name="OpaForehead" type="MeshInstance3D" parent="PrimaryWindow/no name_head/MiiHead"]
+mesh = SubResource("ArrayMesh_d70rc")
+skeleton = NodePath("")
+
+[node name="XluMask" type="MeshInstance3D" parent="PrimaryWindow/no name_head/MiiHead"]
+mesh = SubResource("ArrayMesh_vob83")
+skeleton = NodePath("")
+
+[node name="XluNoseLine" type="MeshInstance3D" parent="PrimaryWindow/no name_head/MiiHead"]
+mesh = SubResource("ArrayMesh_tdyiw")
+skeleton = NodePath("")
+
+[node name="VTVisibilityComponent" type="Node" parent="PrimaryWindow/no name_head"]
+script = ExtResource("3_n4kfy")
 target_screen = 2
 propagate_to_children = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.720386, 0.716582)
-mesh = SubResource("BoxMesh_8jjsu")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/MeshInstance3D/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12047, -1.56719)
-mesh = SubResource("BoxMesh_8jjsu")
-skeleton = NodePath("../..")
-
-[node name="Window" type="Window" parent="."]
+[node name="SecondaryWindow" type="Window" parent="."]
 initial_position = 1
 size = Vector2i(480, 270)
 unresizable = true
+script = ExtResource("4_dhctv")
 
-[node name="secondary" type="Camera3D" parent="Window"]
+[node name="secondary" type="Camera3D" parent="SecondaryWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.81376)
 cull_mask = 5
-
-[node name="primary" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.53487, 0.0415508)
-cull_mask = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ti7fu")
