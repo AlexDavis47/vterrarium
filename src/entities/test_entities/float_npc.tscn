@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl1sukwqmie7w"]
+
+[ext_resource type="Script" path="res://float_npc.gd" id="1_erd7d"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_8p612"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kckto"]
+albedo_color = Color(0.537255, 0.364706, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q3gyk"]
+material = SubResource("StandardMaterial3D_kckto")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly7l6"]
+albedo_color = Color(0.211765, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ath4q"]
+material = SubResource("StandardMaterial3D_ly7l6")
+
+[node name="float_npc" type="CharacterBody3D"]
+script = ExtResource("1_erd7d")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_q3gyk")
+
+[node name="VTVisibilityComponent" type="Node" parent="Node3D"]
+script = ExtResource("3_8p612")
+target_screen = 2
+propagate_to_children = true
+
+[node name="CharacterBody3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("BoxMesh_ath4q")
+skeleton = NodePath("../..")
+
+[node name="VTVisibilityComponent" type="Node" parent="CharacterBody3D"]
+script = ExtResource("3_8p612")
+target_screen = 3
+propagate_to_children = true
