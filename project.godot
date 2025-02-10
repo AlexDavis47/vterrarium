@@ -11,14 +11,19 @@ config_version=5
 [application]
 
 config/name="VTerrarium"
-run/main_scene="res://game_world.tscn"
+run/main_scene="res://src/game_world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+VTGlobal="*res://addons/vterrariumframework/src/globals/vtglobal.gd"
+
 [display]
 
-window/size/mode=3
-window/size/borderless=true
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/resizable=false
 window/subwindows/embed_subwindows=false
 
 [dotnet]
@@ -28,11 +33,6 @@ project/assembly_name="VTerrarium"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/vterrariumframework/plugin.cfg")
-
-[layer_names]
-
-3d_render/layer_1="PrimaryScreen"
-3d_render/layer_2="SecondaryScreen"
 
 [rendering]
 

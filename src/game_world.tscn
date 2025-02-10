@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://bygguke1e1erc"]
+
+[ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="2_11vos"]
+[ext_resource type="Script" path="res://src/mesh_instance_3d.gd" id="2_277ir"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdnch"]
+albedo_color = Color(1, 0.352941, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yn312"]
+material = SubResource("StandardMaterial3D_vdnch")
+
+[sub_resource type="BoxMesh" id="BoxMesh_8jjsu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ymkj"]
+
+[sub_resource type="Sky" id="Sky_47tij"]
+sky_material = SubResource("ProceduralSkyMaterial_5ymkj")
+
+[sub_resource type="Environment" id="Environment_ti7fu"]
+background_mode = 2
+sky = SubResource("Sky_47tij")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="GameWorld" type="Node3D"]
+script = ExtResource("1_0brji")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.218918, 0)
+mesh = SubResource("CapsuleMesh_yn312")
+script = ExtResource("2_277ir")
+
+[node name="VTVisibilityComponent" type="Node" parent="Node3D/MeshInstance3D"]
+script = ExtResource("2_11vos")
+target_screen = 2
+propagate_to_children = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.720386, 0.716582)
+mesh = SubResource("BoxMesh_8jjsu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12047, -1.56719)
+mesh = SubResource("BoxMesh_8jjsu")
+skeleton = NodePath("../..")
+
+[node name="Window" type="Window" parent="."]
+initial_position = 1
+size = Vector2i(480, 270)
+unresizable = true
+
+[node name="secondary" type="Camera3D" parent="Window"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.81376)
+cull_mask = 5
+
+[node name="primary" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.53487, 0.0415508)
+cull_mask = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ti7fu")
