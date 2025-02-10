@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=11 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="2_11vos"]
 [ext_resource type="Script" path="res://src/mesh_instance_3d.gd" id="2_277ir"]
+[ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdnch"]
 albedo_color = Color(1, 0.352941, 1, 1)
@@ -62,3 +63,13 @@ cull_mask = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ti7fu")
+
+[node name="floaters" type="Node3D" parent="."]
+
+[node name="float_npc1" parent="floaters" instance=ExtResource("4_vl5t3")]
+
+[node name="float_npc2" parent="floaters" instance=ExtResource("4_vl5t3")]
+
+[node name="float_npc3" parent="floaters" instance=ExtResource("4_vl5t3")]
+
+[node name="float_npc4" parent="floaters" instance=ExtResource("4_vl5t3")]
