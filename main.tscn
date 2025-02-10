@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://blg7u55xy7e2n"]
+
+[ext_resource type="Script" path="res://sprite_3d.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" path="res://pngtree-fresh-apple-fruit-red-png-image_10203073.png" id="2_h2yge"]
+[ext_resource type="Texture2D" path="res://pngtree-fresh-pineapple-png-png-image_11590302.png" id="3_1bvp3"]
+
+[sub_resource type="Environment" id="Environment_ig7tw"]
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_ig7tw")
+
+[node name="Node3D" type="Node3D" parent="World"]
+script = ExtResource("1_ig7tw")
+
+[node name="Top" type="Sprite3D" parent="World/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+texture = ExtResource("2_h2yge")
+
+[node name="Front" type="Sprite3D" parent="World/Node3D"]
+layers = 2
+texture = ExtResource("3_1bvp3")
+
+[node name="Top" type="Node3D" parent="."]
+
+[node name="Camera3D2" type="Camera3D" parent="Top"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
+cull_mask = 1048573
+
+[node name="Front" type="Node3D" parent="."]
+
+[node name="FrontDisplay" type="Window" parent="Front"]
+initial_position = 3
+size = Vector2i(480, 270)
+current_screen = 0
+
+[node name="Camera3D" type="Camera3D" parent="Front/FrontDisplay"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+cull_mask = 1048574
