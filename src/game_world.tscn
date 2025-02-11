@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=11 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="2_11vos"]
@@ -17,6 +17,13 @@ sky = SubResource("Sky_47tij")
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wkye"]
+cull_mode = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7vj2"]
+material = SubResource("StandardMaterial3D_0wkye")
+size = Vector3(0.254, 0.134, 0.134)
+
 [node name="GameWorld" type="Node3D"]
 script = ExtResource("1_0brji")
 
@@ -24,11 +31,13 @@ script = ExtResource("1_0brji")
 
 [node name="Sprite3D" type="Sprite3D" parent="Top"]
 transform = Transform3D(0.545, 0, 0, 0, -2.38227e-08, 0.545, 0, -0.545, -2.38227e-08, 0, -5, 0)
+visible = false
 texture = ExtResource("3_14urq")
 
 [node name="primary" type="Camera3D" parent="Top"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.229, 0)
 cull_mask = 3
+fov = 45.0
 
 [node name="VTVisibilityComponent" type="Node" parent="Top"]
 script = ExtResource("2_11vos")
@@ -46,11 +55,13 @@ target_screen = 3
 propagate_to_children = true
 
 [node name="secondary" type="Camera3D" parent="Bottom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.229)
 cull_mask = 5
+fov = 45.0
 
 [node name="Sprite3D2" type="Sprite3D" parent="Bottom"]
 transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 0, -9.425)
+visible = false
 texture = ExtResource("4_kulql")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -59,9 +70,28 @@ environment = SubResource("Environment_ti7fu")
 [node name="floaters" type="Node3D" parent="."]
 
 [node name="float_npc1" parent="floaters" instance=ExtResource("4_vl5t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0243189, 0.0115021, -0.0494458)
+velocity = Vector3(0.00947534, 0.00312998, 0.000649029)
+bounds_min = Vector3(-0.254, -0.142875, -0.142875)
+bounds_max = Vector3(0.254, 0.142875, 0.142875)
 
 [node name="float_npc2" parent="floaters" instance=ExtResource("4_vl5t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0644841, -0.0339799, -0.0484091)
+velocity = Vector3(0.00635739, 0.00754755, 0.00161806)
+bounds_min = Vector3(-0.254, -0.142875, -0.142875)
+bounds_max = Vector3(0.254, 0.142875, 0.142875)
 
 [node name="float_npc3" parent="floaters" instance=ExtResource("4_vl5t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00851106, 0.0206805, 0.0627777)
+velocity = Vector3(0.00983065, -0.00179575, 0.000365577)
+bounds_min = Vector3(-0.254, -0.142875, -0.142875)
+bounds_max = Vector3(0.254, 0.142875, 0.142875)
 
 [node name="float_npc4" parent="floaters" instance=ExtResource("4_vl5t3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0315833, 0.0266995, 0.0289634)
+velocity = Vector3(-0.00842883, -0.0040713, 0.00351844)
+bounds_min = Vector3(-0.254, -0.142875, -0.142875)
+bounds_max = Vector3(0.254, 0.142875, 0.142875)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l7vj2")

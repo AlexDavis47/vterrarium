@@ -1,8 +1,9 @@
+@tool
 extends CharacterBody3D
 
-@export var bounds_min: Vector3 = Vector3(-5, -5, -5)
-@export var bounds_max: Vector3 = Vector3(5, 5, 5)
-@export var speed: float = 2.0
+@export var bounds_min: Vector3 = Vector3(-0.254, -0.134, -0.134)
+@export var bounds_max: Vector3 = Vector3(0.254, 0.134, 0.134)
+@export var speed: float = 0.01
 @export var sprite1: Sprite3D
 @export var sprite2: Sprite3D
 
@@ -18,15 +19,15 @@ func _process(delta):
 
 func pick_new_target():
 	target_position = Vector3(
-		randf_range(bounds_min.x, bounds_max.x),
-		randf_range(bounds_min.y, bounds_max.y),
-		randf_range(bounds_min.z, bounds_max.z)
+		randf_range(bounds_min.x/2, bounds_max.x/2),
+		randf_range(bounds_min.y/2, bounds_max.y/2),
+		randf_range(bounds_min.z/2, bounds_max.z/2)
 	)
 
 func move_towards_target(delta):
 	var direction = (target_position - global_transform.origin).normalized()
 	velocity = direction * speed
-	if global_transform.origin.distance_to(target_position) < 0.5:
+	if global_transform.origin.distance_to(target_position) < 0.01:
 		pick_new_target()
 	move_and_slide()
 

@@ -11,7 +11,6 @@ sprite1 = NodePath("Top/Sprite3D")
 sprite2 = NodePath("Side/Sprite3D")
 
 [node name="Top" type="Node3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="VTVisibilityComponent" type="Node" parent="Top"]
 script = ExtResource("3_8p612")
@@ -20,12 +19,12 @@ propagate_to_children = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Top"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+pixel_size = 0.001
 alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("3_6yrp0")
 
 [node name="Side" type="Node3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="VTVisibilityComponent" type="Node" parent="Side"]
 script = ExtResource("3_8p612")
@@ -33,6 +32,7 @@ target_screen = 3
 propagate_to_children = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Side"]
+pixel_size = 0.001
 alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("4_un35c")
