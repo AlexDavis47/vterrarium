@@ -1,7 +1,7 @@
 extends Node
 class_name VTVisibilityComponent
 
-@export var target_screen: VTGlobal.Screen = VTGlobal.Screen.SHARED
+@export var target_screen: VTConfig.Screen = VTConfig.Screen.SHARED
 @export var propagate_to_children: bool = false
 
 func _ready() -> void:
@@ -11,12 +11,12 @@ func _update_visibility() -> void:
 	var layer: int = 0
 	
 	# Set the appropriate bit in the layer mask
-	if target_screen == VTGlobal.Screen.SHARED:
-		layer |= 1 << (VTGlobal.get_shared_screen_layer() - 1)
-	elif target_screen == VTGlobal.Screen.PRIMARY:
-		layer |= 1 << (VTGlobal.get_primary_screen_layer() - 1)
+	if target_screen == VTConfig.Screen.SHARED:
+		layer |= 1 << (VTConfig.get_shared_screen_layer() - 1)
+	elif target_screen == VTConfig.Screen.TOP:
+		layer |= 1 << (VTConfig.get_top_screen_layer() - 1)
 	else:
-		layer |= 1 << (VTGlobal.get_secondary_screen_layer() - 1)
+		layer |= 1 << (VTConfig.get_front_screen_layer() - 1)
 
 	# Set parent visibility
 	var parent: Node = get_parent()
@@ -33,4 +33,4 @@ func _set_children_visibility(node: Node, layer: int) -> void:
 	for child in node.get_children():
 		if child.has_method("set_layer_mask"):
 			child.set_layer_mask(layer)
-		_set_children_visibility(child, layer)  # Recursive call for propagation
+		_set_children_visibility(child, layer) # Recursive call for propagation
