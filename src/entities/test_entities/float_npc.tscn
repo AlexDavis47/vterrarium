@@ -5,8 +5,10 @@
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_8p612"]
 [ext_resource type="Texture2D" uid="uid://cgm5fhluan4dm" path="res://assets/fish_side_pixel.png" id="4_un35c"]
 
-[node name="float_npc" type="CharacterBody3D"]
+[node name="float_npc" type="CharacterBody3D" node_paths=PackedStringArray("sprite1", "sprite2")]
 script = ExtResource("1_erd7d")
+sprite1 = NodePath("Top/Sprite3D")
+sprite2 = NodePath("Side/Sprite3D")
 
 [node name="Top" type="Node3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -18,6 +20,7 @@ propagate_to_children = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Top"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("3_6yrp0")
 
@@ -30,5 +33,6 @@ target_screen = 3
 propagate_to_children = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Side"]
+alpha_cut = 1
 texture_filter = 2
 texture = ExtResource("4_un35c")

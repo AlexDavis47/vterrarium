@@ -37,7 +37,7 @@ propagate_to_children = true
 
 [node name="Bottom" type="Window" parent="."]
 initial_position = 1
-size = Vector2i(480, 270)
+size = Vector2i(640, 360)
 unresizable = true
 
 [node name="VTVisibilityComponent" type="Node" parent="Bottom"]
