@@ -1,28 +1,36 @@
 extends Node
 
-# Window references
-var primary_window: Window
-var secondary_window: Window
+# Signals
+signal fov_changed(new_fov: float)
+signal box_dimensions_changed(new_width: float, new_height: float, new_depth: float)
 
 # Terrarium dimensions
-@export var height: float = 10.0
-@export var width: float = 5.625
-@export var depth: float = 5.625
+@export var width: float = 10.0:
+	set(value):
+		width = value
+		box_dimensions_changed.emit(width, height, depth)
 
-signal fov_changed(new_fov: float)
+@export var height: float = 5.625:
+	set(value):
+		height = value
+		box_dimensions_changed.emit(width, height, depth)
+
+@export var depth: float = 5.625:
+	set(value):
+		depth = value
+		box_dimensions_changed.emit(width, height, depth)
 
 # Camera configuration
-var _horizontal_fov_deg: float = 45.0
-@export var horizontal_fov_deg: float:
+@export var vertical_fov_deg: float = 45:
 	get:
-		return _horizontal_fov_deg
+		return vertical_fov_deg
 	set(value):
-		_horizontal_fov_deg = value
+		vertical_fov_deg = value
 		fov_changed.emit(value)
 
 @export var aspect_ratio_magic_number: float = 2.52 # 16/9
 
-# Screen layer configuration
+# Screen configuration
 enum Screen {
 	SHARED = 1,
 	TOP = 2,
@@ -32,6 +40,10 @@ enum Screen {
 var shared_screen_layer: int = Screen.SHARED
 var top_screen_layer: int = Screen.TOP
 var front_screen_layer: int = Screen.FRONT
+
+# Window references
+var primary_window: Window
+var secondary_window: Window
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

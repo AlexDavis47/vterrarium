@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var speed: float = 0.1
+@export var speed: float = 0.5
 @export var sprite1: Sprite3D
 @export var sprite2: Sprite3D
 
