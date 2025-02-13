@@ -1,9 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=10 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
-[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="2_11vos"]
-[ext_resource type="Texture2D" uid="uid://cw4yafjp3tteo" path="res://assets/bottom.jpg" id="3_14urq"]
-[ext_resource type="Texture2D" uid="uid://ddtl45dwo2v6x" path="res://assets/side.jpg" id="4_kulql"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
 [ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ymkj"]
@@ -22,47 +20,31 @@ cull_mode = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_l7vj2"]
 material = SubResource("StandardMaterial3D_0wkye")
-size = Vector3(0.254, 0.134, 0.134)
+size = Vector3(10, 5.625, 5.625)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e1ei4"]
 
 [node name="GameWorld" type="Node3D"]
 script = ExtResource("1_0brji")
 
 [node name="Top" type="Node3D" parent="."]
 
-[node name="Sprite3D" type="Sprite3D" parent="Top"]
-transform = Transform3D(0.545, 0, 0, 0, -2.38227e-08, 0.545, 0, -0.545, -2.38227e-08, 0, -5, 0)
-visible = false
-texture = ExtResource("3_14urq")
-
 [node name="primary" type="Camera3D" parent="Top"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.229, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.655, 0)
 cull_mask = 3
-fov = 45.0
+script = ExtResource("3_8txad")
+camera_orientation = null
 
-[node name="VTVisibilityComponent" type="Node" parent="Top"]
-script = ExtResource("2_11vos")
-target_screen = 2
-propagate_to_children = true
-
-[node name="Bottom" type="Window" parent="."]
+[node name="Front" type="Window" parent="."]
 initial_position = 1
 size = Vector2i(640, 360)
 unresizable = true
 
-[node name="VTVisibilityComponent" type="Node" parent="Bottom"]
-script = ExtResource("2_11vos")
-target_screen = 3
-propagate_to_children = true
-
-[node name="secondary" type="Camera3D" parent="Bottom"]
+[node name="secondary" type="Camera3D" parent="Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.229)
 cull_mask = 5
-fov = 45.0
-
-[node name="Sprite3D2" type="Sprite3D" parent="Bottom"]
-transform = Transform3D(2.255, 0, 0, 0, 2.255, 0, 0, 0, 2.255, 0, 0, -9.425)
-visible = false
-texture = ExtResource("4_kulql")
+script = ExtResource("3_8txad")
+camera_orientation = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ti7fu")
@@ -70,28 +52,24 @@ environment = SubResource("Environment_ti7fu")
 [node name="floaters" type="Node3D" parent="."]
 
 [node name="float_npc1" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0243189, 0.0115021, -0.0494458)
-velocity = Vector3(0.00947534, 0.00312998, 0.000649029)
-bounds_min = Vector3(-0.254, -0.142875, -0.142875)
-bounds_max = Vector3(0.254, 0.142875, 0.142875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+velocity = Vector3(0.00377712, -0.00820349, 0.00429373)
 
 [node name="float_npc2" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0644841, -0.0339799, -0.0484091)
-velocity = Vector3(0.00635739, 0.00754755, 0.00161806)
-bounds_min = Vector3(-0.254, -0.142875, -0.142875)
-bounds_max = Vector3(0.254, 0.142875, 0.142875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+velocity = Vector3(0.00106998, -0.00820659, 0.00561311)
 
 [node name="float_npc3" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00851106, 0.0206805, 0.0627777)
-velocity = Vector3(0.00983065, -0.00179575, 0.000365577)
-bounds_min = Vector3(-0.254, -0.142875, -0.142875)
-bounds_max = Vector3(0.254, 0.142875, 0.142875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+velocity = Vector3(0.00227387, 0.00466348, -0.00854877)
 
 [node name="float_npc4" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0315833, 0.0266995, 0.0289634)
-velocity = Vector3(-0.00842883, -0.0040713, 0.00351844)
-bounds_min = Vector3(-0.254, -0.142875, -0.142875)
-bounds_max = Vector3(0.254, 0.142875, 0.142875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+velocity = Vector3(0.0096688, 0.00247982, -0.000604055)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_l7vj2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45845, -2.63669, -1.02194)
+mesh = SubResource("SphereMesh_e1ei4")
