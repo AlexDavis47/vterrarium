@@ -33,7 +33,6 @@ script = ExtResource("1_0brji")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.655, 0)
 cull_mask = 3
 script = ExtResource("3_8txad")
-camera_orientation = null
 
 [node name="Front" type="Window" parent="."]
 initial_position = 1
@@ -44,7 +43,7 @@ unresizable = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.229)
 cull_mask = 5
 script = ExtResource("3_8txad")
-camera_orientation = null
+camera_orientation = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ti7fu")

@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-VTGlobal="*res://addons/vterrariumframework/src/globals/vtglobal.gd"
-VTConfig="*res://addons/vterrariumframework/src/globals/vtconfig.gd"
+VTGlobal="*res://addons/vterrariumframework/src/globals/vt_global.gd"
+VTConfig="*res://addons/vterrariumframework/src/globals/vt_config.gd"
+VTUserConfig="*res://addons/vterrariumframework/src/globals/vt_user_config.gd"
+VTHardware="*res://addons/vterrariumframework/src/globals/vt_hardware.gd"
 
 [display]
 
