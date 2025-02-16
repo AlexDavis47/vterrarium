@@ -2,23 +2,32 @@ extends Node
 
 # Signals
 signal fov_changed(new_fov: float)
-signal box_dimensions_changed(new_width: float, new_height: float, new_depth: float)
+signal terrarium_dimensions_changed(new_width: float, new_height: float, new_depth: float)
 
 # Terrarium dimensions
+# TODO: Due to the fact that we are using a fixed vertical FOV, if the height and depth are set to be less than 16/9,
+# then the cameras will be able to view outside of the terrarium.
 @export var width: float = 10.0:
 	set(value):
 		width = value
-		box_dimensions_changed.emit(width, height, depth)
+		terrarium_dimensions_changed.emit(width, height, depth)
 
 @export var height: float = 5.625:
 	set(value):
 		height = value
-		box_dimensions_changed.emit(width, height, depth)
+		terrarium_dimensions_changed.emit(width, height, depth)
 
 @export var depth: float = 5.625:
 	set(value):
 		depth = value
-		box_dimensions_changed.emit(width, height, depth)
+		terrarium_dimensions_changed.emit(width, height, depth)
+
+@export var terrarium_dimensions: Vector3 = Vector3(width, height, depth):
+	set(value):
+		terrarium_dimensions = value
+		terrarium_dimensions_changed.emit(width, height, depth)
+	get:
+		return Vector3(width, height, depth)
 
 # Camera configuration
 @export var vertical_fov_deg: float = 45:

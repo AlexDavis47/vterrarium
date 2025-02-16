@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	# Connect to configuration changes
 	VTConfig.fov_changed.connect(_on_fov_changed)
-	VTConfig.box_dimensions_changed.connect(_on_box_dimensions_changed)
+	VTConfig.terrarium_dimensions_changed.connect(_on_box_dimensions_changed)
 	
 	# Initial setup
 	setup_camera_position()

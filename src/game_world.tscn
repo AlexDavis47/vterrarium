@@ -24,8 +24,9 @@ size = Vector3(10, 5.625, 5.625)
 
 [sub_resource type="SphereMesh" id="SphereMesh_e1ei4"]
 
-[node name="GameWorld" type="Node3D"]
+[node name="GameWorld" type="Node3D" node_paths=PackedStringArray("terrarium_mesh")]
 script = ExtResource("1_0brji")
+terrarium_mesh = NodePath("MeshInstance3D")
 
 [node name="Top" type="Node3D" parent="."]
 

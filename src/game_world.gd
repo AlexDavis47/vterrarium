@@ -1,10 +1,12 @@
 extends Node3D
 
+@export var terrarium_mesh: MeshInstance3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	VTConfig.terrarium_dimensions_changed.connect(_on_config_dimensions_changed)
+	_on_config_dimensions_changed(VTConfig.width, VTConfig.height, VTConfig.depth)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_config_dimensions_changed(width: float, height: float, depth: float) -> void:
+	terrarium_mesh.mesh.size = Vector3(width, height, depth)
+	print("terrarium_mesh.mesh.size: ", terrarium_mesh.mesh.size)
