@@ -56,12 +56,12 @@ func _input(event: InputEvent) -> void:
 	
 	# Process keyboard input every frame for smooth acceleration
 	_process_sim_keyboard()
-	print("gyro_rotation: ", gyro_rotation)
-	print("gyro_rotation_delta: ", gyro_rotation_delta)
-	print("gyro_acceleration: ", gyro_acceleration)
-	print("temperature: ", temperature)
-	print("brightness: ", brightness)
-	print("--------------------------------")
+	# print("gyro_rotation: ", gyro_rotation)
+	# print("gyro_rotation_delta: ", gyro_rotation_delta)
+	# print("gyro_acceleration: ", gyro_acceleration)
+	# print("temperature: ", temperature)
+	# print("brightness: ", brightness)
+	# print("--------------------------------")
 
 
 # Simulates gyroscope rotation using mouse input
@@ -96,10 +96,7 @@ func _process_gyro_rotation(rotation_delta: Vector3) -> void:
 	gyro_rotation += rotation_delta
 	# Store rotation delta
 	gyro_rotation_delta = rotation_delta
-	print("gyro_rotation: ", gyro_rotation)
-	print("gyro_rotation_delta: ", gyro_rotation_delta)
 
 # Process actual gyro acceleration (this would be used in production)
 func _process_gyro_acceleration(acceleration: Vector3) -> void:
 	gyro_acceleration = acceleration
-	print("gyro_acceleration: ", gyro_acceleration)

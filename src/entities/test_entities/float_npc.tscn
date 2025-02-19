@@ -1,19 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl1sukwqmie7w"]
+[gd_scene load_steps=7 format=3 uid="uid://dl1sukwqmie7w"]
 
 [ext_resource type="Script" path="res://float_npc.gd" id="1_erd7d"]
 [ext_resource type="Texture2D" uid="uid://rf8kv0n3ekeu" path="res://assets/fish_top_pixel.png" id="3_6yrp0"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_8p612"]
 [ext_resource type="Texture2D" uid="uid://cgm5fhluan4dm" path="res://assets/fish_side_pixel.png" id="4_un35c"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_gyro_component.gd" id="5_u1sew"]
+[ext_resource type="PackedScene" uid="uid://cl30s4qyjry6u" path="res://assets/fish_low_poly.glb" id="6_vvbbo"]
 
 [node name="float_npc" type="CharacterBody3D" node_paths=PackedStringArray("sprite1", "sprite2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44219, 1.90053, 0.484254)
 velocity = Vector3(-0.0458098, 0.0795991, 0.0395657)
 script = ExtResource("1_erd7d")
 sprite1 = NodePath("Top/Sprite3D")
 sprite2 = NodePath("Side/Sprite3D")
 
 [node name="Top" type="Node3D" parent="."]
+visible = false
 
 [node name="VTVisibilityComponent" type="Node" parent="Top"]
 script = ExtResource("3_8p612")
@@ -36,6 +37,7 @@ target_screen = 3
 propagate_to_children = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Side"]
+visible = false
 modulate = Color(0.823001, 0.798821, 0.761325, 1)
 pixel_size = 0.1
 alpha_cut = 1
@@ -44,3 +46,6 @@ texture = ExtResource("4_un35c")
 
 [node name="VTGyroComponent" type="Node" parent="."]
 script = ExtResource("5_u1sew")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("6_vvbbo")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)

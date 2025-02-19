@@ -38,7 +38,7 @@ signal vt_viscosity_changed(new_viscosity: float)
 ## Objects in the terrarium will be affected by the viscosity.
 ## For example, when the gyro sensor causes the terrarium to rotate, the objects will be affected by the rotation
 ## multiplied by the viscosity.
-@export var viscosity: float = 0.0:
+@export var viscosity: float = 0.7:
 	set(value):
 		viscosity = value
 		vt_viscosity_changed.emit(viscosity)
