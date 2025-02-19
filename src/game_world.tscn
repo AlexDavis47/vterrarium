@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=11 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -21,6 +21,10 @@ cull_mode = 1
 [sub_resource type="BoxMesh" id="BoxMesh_l7vj2"]
 material = SubResource("StandardMaterial3D_0wkye")
 size = Vector3(10, 5.625, 5.625)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qqs1b"]
+data = PackedVector3Array(-5, 2.8125, 2.8125, 5, 2.8125, 2.8125, -5, -2.8125, 2.8125, 5, 2.8125, 2.8125, 5, -2.8125, 2.8125, -5, -2.8125, 2.8125, 5, 2.8125, -2.8125, -5, 2.8125, -2.8125, 5, -2.8125, -2.8125, -5, 2.8125, -2.8125, -5, -2.8125, -2.8125, 5, -2.8125, -2.8125, 5, 2.8125, 2.8125, 5, 2.8125, -2.8125, 5, -2.8125, 2.8125, 5, 2.8125, -2.8125, 5, -2.8125, -2.8125, 5, -2.8125, 2.8125, -5, 2.8125, -2.8125, -5, 2.8125, 2.8125, -5, -2.8125, -2.8125, -5, 2.8125, 2.8125, -5, -2.8125, 2.8125, -5, -2.8125, -2.8125, 5, 2.8125, 2.8125, -5, 2.8125, 2.8125, 5, 2.8125, -2.8125, -5, 2.8125, 2.8125, -5, 2.8125, -2.8125, 5, 2.8125, -2.8125, -5, -2.8125, 2.8125, 5, -2.8125, 2.8125, -5, -2.8125, -2.8125, 5, -2.8125, 2.8125, 5, -2.8125, -2.8125, -5, -2.8125, -2.8125)
+backface_collision = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_e1ei4"]
 
@@ -52,23 +56,24 @@ environment = SubResource("Environment_ti7fu")
 [node name="floaters" type="Node3D" parent="."]
 
 [node name="float_npc1" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 velocity = Vector3(0.00377712, -0.00820349, 0.00429373)
 
 [node name="float_npc2" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 velocity = Vector3(0.00106998, -0.00820659, 0.00561311)
 
 [node name="float_npc3" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 velocity = Vector3(0.00227387, 0.00466348, -0.00854877)
 
 [node name="float_npc4" parent="floaters" instance=ExtResource("4_vl5t3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 velocity = Vector3(0.0096688, 0.00247982, -0.000604055)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_l7vj2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qqs1b")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.45845, -2.63669, -1.02194)
