@@ -51,11 +51,9 @@ func setup_camera_position() -> void:
 			# Position camera above looking down
 			transform.origin = Vector3(0, distance, 0)
 			rotation_degrees = Vector3(-90, 0, 0)
-			print("Top camera transform: ", transform)
 
 		CameraPosition.FRONT:
 			var distance := _calculate_dolly_distance(VTConfig.vertical_fov_deg, VTConfig.height, VTConfig.depth)
 			# Position camera in front looking forward
 			transform.origin = Vector3(0, 0, distance)
 			rotation_degrees = Vector3(0, 0, 0)
-			print("Front camera transform: ", transform)

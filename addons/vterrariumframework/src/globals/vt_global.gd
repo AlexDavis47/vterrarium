@@ -3,6 +3,7 @@ extends Node
 # Window references
 var top_window: VTTopWindow
 var front_window: VTFrontWindow
+var game_world: VTGameWorld
 
 var windows_setup_completed: bool = false
 signal windows_initialized
