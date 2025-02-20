@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=12 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
+[ext_resource type="PackedScene" uid="uid://dhibabnm2lnqw" path="res://src/entities/test_entities/touch.tscn" id="3_qe6v0"]
 [ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ymkj"]
@@ -39,6 +40,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.6
 cull_mask = 3
 script = ExtResource("3_8txad")
 
+[node name="Touch" parent="Top" instance=ExtResource("3_qe6v0")]
+
 [node name="Front" type="Window" parent="."]
 initial_position = 1
 size = Vector2i(640, 360)
@@ -49,6 +52,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.229)
 cull_mask = 5
 script = ExtResource("3_8txad")
 camera_orientation = 1
+
+[node name="Touch" parent="Front" instance=ExtResource("3_qe6v0")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ti7fu")

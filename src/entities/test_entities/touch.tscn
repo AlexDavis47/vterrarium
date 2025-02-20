@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhibabnm2lnqw"]
+
+[ext_resource type="Script" path="res://touch.gd" id="1_j4lei"]
+[ext_resource type="Script" path="res://circles.gd" id="2_lpybj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1680"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_nvupt"]
+normal_texture = SubResource("NoiseTexture2D_x1680")
+
+[node name="Touch" type="Node2D"]
+script = ExtResource("1_j4lei")
+
+[node name="circle_container" type="Node2D" parent="."]
+script = ExtResource("2_lpybj")
+
+[node name="circle1" type="Sprite2D" parent="circle_container"]
+position = Vector2(2.75, -2.75)
+scale = Vector2(6.5, 6.5)
+texture = SubResource("CanvasTexture_nvupt")
