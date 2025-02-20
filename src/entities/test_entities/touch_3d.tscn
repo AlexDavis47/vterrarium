@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://h87keo8yxa01"]
+
+[ext_resource type="Script" path="res://touch_3d.gd" id="1_5bapl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6wua2"]
+
+[node name="touch3D" type="Node3D"]
+script = ExtResource("1_5bapl")
+
+[node name="circle_container" type="Node3D" parent="."]
+
+[node name="circle1" type="MeshInstance3D" parent="circle_container"]
+mesh = SubResource("BoxMesh_6wua2")

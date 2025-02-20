@@ -1,0 +1,34 @@
+extends Node3D
+
+@onready var circle_container = $circle_container
+@onready var camera: Camera3D = get_viewport().get_camera_3d()  # Get active camera
+var circles = []
+
+func _ready() -> void:
+	for circle in circle_container.get_children():
+		circle.hide()
+		circles.append(circle)
+
+func _input(event):
+	if event is InputEventScreenDrag:
+		var i = event.index
+		if i >= 0 and i < circles.size():
+			var world_pos = screen_to_world(event.position)
+			circles[i].show()
+			circles[i].global_transform.origin = world_pos  # Set 3D position
+	elif event is InputEventScreenTouch and not event.pressed:
+		var i = event.index
+		if i >= 0 and i < circles.size():
+			circles[i].hide()
+
+# Convert screen position (2D) to world position (3D)
+func screen_to_world(screen_pos: Vector2) -> Vector3:
+	var from = camera.project_ray_origin(screen_pos)  # Get world origin from screen position
+	var to = from + camera.project_ray_normal(screen_pos) * 10.0  # Project ray forward
+	var space_state = get_world_3d().direct_space_state
+	var ray_result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
+	
+	if ray_result.has("position"):
+		return ray_result["position"]
+	else:
+		return from  # Default to ray origin if no intersection
