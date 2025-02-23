@@ -34,22 +34,22 @@ func _update_wall() -> void:
 	if mesh:
 		current_material = mesh.surface_get_material(0)
 	
-	var half_width := VTConfig.width / 2.0
-	var half_height := VTConfig.height / 2.0
-	var half_depth := VTConfig.depth / 2.0
+	var half_width : float = VTConfig.width / 2.0
+	var half_height : float = VTConfig.height / 2.0
+	var half_depth : float = VTConfig.depth / 2.0
 	
 	# Set dimensions and position based on wall type
 	# Remember: Plane mesh starts facing up (+Y), we need to rotate accordingly
 	# All faces should point inward toward the center (0,0,0)
 	match wall_type:
 		WallType.RIGHT:
-			plane_mesh.size = Vector2(VTConfig.depth, VTConfig.height)
+			plane_mesh.size = Vector2(VTConfig.height, VTConfig.depth)
 			position = Vector3(half_width, 0, 0)
 			# Rotate from up (+Y) to face left (-X) (inward)
 			rotation_degrees = Vector3(0, 0, 90)
 			
 		WallType.LEFT:
-			plane_mesh.size = Vector2(VTConfig.depth, VTConfig.height)
+			plane_mesh.size = Vector2(VTConfig.height, VTConfig.depth)
 			position = Vector3(-half_width, 0, 0)
 			# Rotate from up (+Y) to face right (+X) (inward)
 			rotation_degrees = Vector3(0, 0, -90)
