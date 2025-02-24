@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=23 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
+[ext_resource type="PackedScene" uid="uid://h87keo8yxa01" path="res://src/entities/test_entities/touch_3d.tscn" id="9_3khva"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ymkj"]
 
@@ -28,26 +29,28 @@ size = Vector3(10, 5.625, 5.625)
 data = PackedVector3Array(-5, 2.8125, 2.8125, 5, 2.8125, 2.8125, -5, -2.8125, 2.8125, 5, 2.8125, 2.8125, 5, -2.8125, 2.8125, -5, -2.8125, 2.8125, 5, 2.8125, -2.8125, -5, 2.8125, -2.8125, 5, -2.8125, -2.8125, -5, 2.8125, -2.8125, -5, -2.8125, -2.8125, 5, -2.8125, -2.8125, 5, 2.8125, 2.8125, 5, 2.8125, -2.8125, 5, -2.8125, 2.8125, 5, 2.8125, -2.8125, 5, -2.8125, -2.8125, 5, -2.8125, 2.8125, -5, 2.8125, -2.8125, -5, 2.8125, 2.8125, -5, -2.8125, -2.8125, -5, 2.8125, 2.8125, -5, -2.8125, 2.8125, -5, -2.8125, -2.8125, 5, 2.8125, 2.8125, -5, 2.8125, 2.8125, 5, 2.8125, -2.8125, -5, 2.8125, 2.8125, -5, 2.8125, -2.8125, 5, 2.8125, -2.8125, -5, -2.8125, 2.8125, 5, -2.8125, 2.8125, -5, -2.8125, -2.8125, 5, -2.8125, 2.8125, 5, -2.8125, -2.8125, -5, -2.8125, -2.8125)
 backface_collision = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_05wki"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_jf1i1"]
 size = Vector2(5.625, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_188id"]
 material = ExtResource("5_2qkw7")
 size = Vector2(5.625, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_gtsya"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_sf2hs"]
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ao3wr"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_lrll3"]
 material = ExtResource("7_kr6if")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4316t"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_8gcyb"]
 material = ExtResource("7_w3rys")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_1phyw"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_l5w3y"]
 size = Vector2(10, 5.625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_634fr"]
 
 [node name="GameWorld" type="Node3D" node_paths=PackedStringArray("terrarium_mesh")]
 script = ExtResource("1_0brji")
@@ -103,7 +106,7 @@ script = ExtResource("4_dv42i")
 [node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_05wki")
+mesh = SubResource("PlaneMesh_jf1i1")
 script = ExtResource("5_r55h4")
 wall_type = 1
 
@@ -117,14 +120,14 @@ script = ExtResource("5_r55h4")
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
 visible = false
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_gtsya")
+mesh = SubResource("PlaneMesh_sf2hs")
 script = ExtResource("5_r55h4")
 wall_type = 2
 
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
-mesh = SubResource("PlaneMesh_ao3wr")
+mesh = SubResource("PlaneMesh_lrll3")
 script = ExtResource("5_r55h4")
 wall_type = 3
 
@@ -132,14 +135,14 @@ wall_type = 3
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
 visible = false
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_4316t")
+mesh = SubResource("PlaneMesh_8gcyb")
 script = ExtResource("5_r55h4")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_1phyw")
+mesh = SubResource("PlaneMesh_l5w3y")
 script = ExtResource("5_r55h4")
 wall_type = 5
 
@@ -148,3 +151,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48891, 0)
 light_energy = 0.345
 omni_range = 16.143
 omni_attenuation = 0.364
+
+[node name="touch3D" parent="." instance=ExtResource("9_3khva")]
+
+[node name="bottom_collision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.813, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bottom_collision"]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 5.625, 0, -0.0560429, 0)
+shape = SubResource("BoxShape3D_634fr")

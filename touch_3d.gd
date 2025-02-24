@@ -23,12 +23,16 @@ func _input(event):
 
 # Convert screen position (2D) to world position (3D)
 func screen_to_world(screen_pos: Vector2) -> Vector3:
-	var from = camera.project_ray_origin(screen_pos)  # Get world origin from screen position
-	var to = from + camera.project_ray_normal(screen_pos) * 10.0  # Project ray forward
+	var from = camera.project_ray_origin(screen_pos)
+	var ray_direction = camera.project_ray_normal(screen_pos)
+	var distance = 100
+	var to = from + ray_direction * distance
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collision_mask = 2
 	var space_state = get_world_3d().direct_space_state
-	var ray_result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to))
-	
+	var ray_result = space_state.intersect_ray(query)
 	if ray_result.has("position"):
+		print("Ray collided with: ", ray_result["collider"])
 		return ray_result["position"]
 	else:
-		return from  # Default to ray origin if no intersection
+		return from
