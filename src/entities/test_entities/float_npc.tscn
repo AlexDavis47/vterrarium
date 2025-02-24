@@ -11,7 +11,7 @@
 radius = 0.939
 
 [node name="float_npc" type="CharacterBody3D" node_paths=PackedStringArray("sprite1", "sprite2")]
-collision_layer = 0
+collision_layer = 2
 velocity = Vector3(-0.0458098, 0.0795991, 0.0395657)
 script = ExtResource("1_erd7d")
 sprite1 = NodePath("Top/Sprite3D")
@@ -27,6 +27,7 @@ propagate_to_children = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Top"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
 modulate = Color(0.823001, 0.798821, 0.761325, 1)
 pixel_size = 0.1
 alpha_cut = 1

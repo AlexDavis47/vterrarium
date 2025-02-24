@@ -11,3 +11,6 @@ script = ExtResource("1_5bapl")
 
 [node name="circle1" type="MeshInstance3D" parent="circle_container"]
 mesh = SubResource("BoxMesh_6wua2")
+
+[node name="circle2" type="MeshInstance3D" parent="circle_container"]
+mesh = SubResource("BoxMesh_6wua2")

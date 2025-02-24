@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
+[ext_resource type="PackedScene" uid="uid://h87keo8yxa01" path="res://src/entities/test_entities/touch_3d.tscn" id="9_3khva"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
 panorama = ExtResource("3_1vl04")
@@ -28,26 +29,28 @@ fog_depth_curve = 0.870552
 fog_depth_begin = 0.0
 fog_depth_end = 16.7
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8vr15"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_05wki"]
 size = Vector2(5.625, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_188id"]
 material = ExtResource("5_2qkw7")
 size = Vector2(5.625, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_n0ur1"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_gtsya"]
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ku55y"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_ao3wr"]
 material = ExtResource("7_kr6if")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0yx8q"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_4316t"]
 material = ExtResource("7_w3rys")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_yl43i"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_1phyw"]
 size = Vector2(10, 5.625)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_634fr"]
 
 [node name="GameWorld" type="Node3D"]
 script = ExtResource("1_0brji")
@@ -93,7 +96,7 @@ script = ExtResource("4_dv42i")
 [node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_8vr15")
+mesh = SubResource("PlaneMesh_05wki")
 script = ExtResource("5_r55h4")
 wall_type = 1
 
@@ -106,28 +109,28 @@ script = ExtResource("5_r55h4")
 [node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_n0ur1")
+mesh = SubResource("PlaneMesh_gtsya")
 script = ExtResource("5_r55h4")
 wall_type = 2
 
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
-mesh = SubResource("PlaneMesh_ku55y")
+mesh = SubResource("PlaneMesh_ao3wr")
 script = ExtResource("5_r55h4")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_0yx8q")
+mesh = SubResource("PlaneMesh_4316t")
 script = ExtResource("5_r55h4")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_yl43i")
+mesh = SubResource("PlaneMesh_1phyw")
 script = ExtResource("5_r55h4")
 wall_type = 5
 
@@ -136,3 +139,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48891, 0)
 light_energy = 0.345
 omni_range = 16.143
 omni_attenuation = 0.364
+
+[node name="touch3D" parent="." instance=ExtResource("9_3khva")]
+
+[node name="bottom_collision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.813, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bottom_collision"]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 5.625, 0, -0.0560429, 0)
+shape = SubResource("BoxShape3D_634fr")
