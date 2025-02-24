@@ -1,4 +1,5 @@
 extends Node3D
+class_name Touch3D
 
 @onready var circle_container = $circle_container
 @onready var camera: Camera3D = get_viewport().get_camera_3d()  # Get active camera

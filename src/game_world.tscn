@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=19 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
+[ext_resource type="Texture2D" uid="uid://bnqfdur0nvmnn" path="res://assets/textures/brown_photostudio_02_1k.hdr" id="3_1vl04"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
 [ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
@@ -9,49 +10,47 @@
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ymkj"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
+panorama = ExtResource("3_1vl04")
 
-[sub_resource type="Sky" id="Sky_47tij"]
-sky_material = SubResource("ProceduralSkyMaterial_5ymkj")
+[sub_resource type="Sky" id="Sky_n037i"]
+sky_material = SubResource("PanoramaSkyMaterial_e1i7n")
 
 [sub_resource type="Environment" id="Environment_ti7fu"]
-sky = SubResource("Sky_47tij")
+background_mode = 2
+sky = SubResource("Sky_n037i")
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.304534, 0.518833, 1, 1)
+fog_light_energy = 0.05
+fog_density = 1.0
+fog_depth_curve = 0.870552
+fog_depth_begin = 0.0
+fog_depth_end = 16.7
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wkye"]
-cull_mode = 1
-
-[sub_resource type="BoxMesh" id="BoxMesh_l7vj2"]
-material = SubResource("StandardMaterial3D_0wkye")
-size = Vector3(10, 5.625, 5.625)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qqs1b"]
-data = PackedVector3Array(-5, 2.8125, 2.8125, 5, 2.8125, 2.8125, -5, -2.8125, 2.8125, 5, 2.8125, 2.8125, 5, -2.8125, 2.8125, -5, -2.8125, 2.8125, 5, 2.8125, -2.8125, -5, 2.8125, -2.8125, 5, -2.8125, -2.8125, -5, 2.8125, -2.8125, -5, -2.8125, -2.8125, 5, -2.8125, -2.8125, 5, 2.8125, 2.8125, 5, 2.8125, -2.8125, 5, -2.8125, 2.8125, 5, 2.8125, -2.8125, 5, -2.8125, -2.8125, 5, -2.8125, 2.8125, -5, 2.8125, -2.8125, -5, 2.8125, 2.8125, -5, -2.8125, -2.8125, -5, 2.8125, 2.8125, -5, -2.8125, 2.8125, -5, -2.8125, -2.8125, 5, 2.8125, 2.8125, -5, 2.8125, 2.8125, 5, 2.8125, -2.8125, -5, 2.8125, 2.8125, -5, 2.8125, -2.8125, 5, 2.8125, -2.8125, -5, -2.8125, 2.8125, 5, -2.8125, 2.8125, -5, -2.8125, -2.8125, 5, -2.8125, 2.8125, 5, -2.8125, -2.8125, -5, -2.8125, -2.8125)
-backface_collision = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_05wki"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_8vr15"]
 size = Vector2(5.625, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_188id"]
 material = ExtResource("5_2qkw7")
 size = Vector2(5.625, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_gtsya"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_n0ur1"]
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ao3wr"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_ku55y"]
 material = ExtResource("7_kr6if")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4316t"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_0yx8q"]
 material = ExtResource("7_w3rys")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_1phyw"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_yl43i"]
 size = Vector2(10, 5.625)
 
-[node name="GameWorld" type="Node3D" node_paths=PackedStringArray("terrarium_mesh")]
+[node name="GameWorld" type="Node3D"]
 script = ExtResource("1_0brji")
-terrarium_mesh = NodePath("MeshInstance3D")
 
 [node name="Top" type="Node3D" parent="."]
 
@@ -88,22 +87,13 @@ velocity = Vector3(0.00227387, 0.00466348, -0.00854877)
 [node name="float_npc4" parent="floaters" instance=ExtResource("4_vl5t3")]
 velocity = Vector3(0.0096688, 0.00247982, -0.000604055)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("BoxMesh_l7vj2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_qqs1b")
-
 [node name="Terrarium" type="Node3D" parent="."]
 script = ExtResource("4_dv42i")
 
 [node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_05wki")
+mesh = SubResource("PlaneMesh_8vr15")
 script = ExtResource("5_r55h4")
 wall_type = 1
 
@@ -115,31 +105,29 @@ script = ExtResource("5_r55h4")
 
 [node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
-visible = false
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_gtsya")
+mesh = SubResource("PlaneMesh_n0ur1")
 script = ExtResource("5_r55h4")
 wall_type = 2
 
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
-mesh = SubResource("PlaneMesh_ao3wr")
+mesh = SubResource("PlaneMesh_ku55y")
 script = ExtResource("5_r55h4")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
-visible = false
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_4316t")
+mesh = SubResource("PlaneMesh_0yx8q")
 script = ExtResource("5_r55h4")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_1phyw")
+mesh = SubResource("PlaneMesh_yl43i")
 script = ExtResource("5_r55h4")
 wall_type = 5
 
