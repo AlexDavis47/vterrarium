@@ -14,6 +14,7 @@ enum CameraPosition {
 func _ready() -> void:
 	# Set FOV to match hardware camera
 	fov = VTConfig.vertical_fov_deg
+
 	
 	# Connect to configuration changes
 	VTConfig.fov_changed.connect(_on_fov_changed)
@@ -47,12 +48,14 @@ func setup_camera_position() -> void:
 
 	match camera_orientation:
 		CameraPosition.TOP:
+			VTGlobal.top_camera = self
 			var distance := _calculate_dolly_distance(VTConfig.vertical_fov_deg, VTConfig.depth, VTConfig.height)
 			# Position camera above looking down
 			transform.origin = Vector3(0, distance, 0)
 			rotation_degrees = Vector3(-90, 0, 0)
 
 		CameraPosition.FRONT:
+			VTGlobal.front_camera = self
 			var distance := _calculate_dolly_distance(VTConfig.vertical_fov_deg, VTConfig.height, VTConfig.depth)
 			# Position camera in front looking forward
 			transform.origin = Vector3(0, 0, distance)

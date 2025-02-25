@@ -1,11 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://blg7u55xy7e2n"]
 
-[ext_resource type="Script" path="res://sprite_3d.gd" id="1_ig7tw"]
-[ext_resource type="Texture2D" path="res://pngtree-fresh-apple-fruit-red-png-image_10203073.png" id="2_h2yge"]
-[ext_resource type="Texture2D" path="res://pngtree-fresh-pineapple-png-png-image_11590302.png" id="3_1bvp3"]
-
 [sub_resource type="Environment" id="Environment_ig7tw"]
 ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_7dm0k"]
+metadata/__load_path__ = "res://sprite_3d.gd"
+
+[sub_resource type="Resource" id="Resource_ig7tw"]
+metadata/__load_path__ = "res://pngtree-fresh-apple-fruit-red-png-image_10203073.png"
+
+[sub_resource type="Resource" id="Resource_0xm2m"]
+metadata/__load_path__ = "res://pngtree-fresh-pineapple-png-png-image_11590302.png"
 
 [node name="Node3D" type="Node3D"]
 
@@ -15,15 +20,15 @@ ambient_light_color = Color(1, 1, 1, 1)
 environment = SubResource("Environment_ig7tw")
 
 [node name="Node3D" type="Node3D" parent="World"]
-script = ExtResource("1_ig7tw")
+script = SubResource("Resource_7dm0k")
 
 [node name="Top" type="Sprite3D" parent="World/Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-texture = ExtResource("2_h2yge")
+texture = SubResource("Resource_ig7tw")
 
 [node name="Front" type="Sprite3D" parent="World/Node3D"]
 layers = 2
-texture = ExtResource("3_1bvp3")
+texture = SubResource("Resource_0xm2m")
 
 [node name="Top" type="Node3D" parent="."]
 

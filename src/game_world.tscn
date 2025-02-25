@@ -1,18 +1,18 @@
 [gd_scene load_steps=24 format=3 uid="uid://bygguke1e1erc"]
 
-[ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
-[ext_resource type="Texture2D" uid="uid://bnqfdur0nvmnn" path="res://assets/textures/brown_photostudio_02_1k.hdr" id="3_1vl04"]
-[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
-[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
+[ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
+[ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
+[ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="4_axje7"]
+[ext_resource type="Script" uid="uid://dekqlk5lwnnhh" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
 [ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
 [ext_resource type="Material" uid="uid://bwp0wrp5oyukk" path="res://assets/materials/tank_wall.tres" id="5_2qkw7"]
-[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
+[ext_resource type="Script" uid="uid://p427dstufru" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
 [ext_resource type="PackedScene" uid="uid://h87keo8yxa01" path="res://src/entities/test_entities/touch_3d.tscn" id="9_3khva"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
-panorama = ExtResource("3_1vl04")
+panorama = ExtResource("4_axje7")
 
 [sub_resource type="Sky" id="Sky_n037i"]
 sky_material = SubResource("PanoramaSkyMaterial_e1i7n")
@@ -51,6 +51,7 @@ size = Vector2(10, 5.625)
 size = Vector2(10, 5.625)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_634fr"]
+size = Vector3(10, 0.1, 5.625)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpor6"]
 albedo_color = Color(6.257e-07, 0.486718, 0.488674, 1)
@@ -152,14 +153,11 @@ light_energy = 0.345
 omni_range = 16.143
 omni_attenuation = 0.364
 
-[node name="touch3D" parent="." instance=ExtResource("9_3khva")]
-
 [node name="bottom_collision" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.813, 0)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bottom_collision"]
-transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 5.625, 0, -0.0560429, 0)
 shape = SubResource("BoxShape3D_634fr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -175,3 +173,5 @@ spread = 180.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_max = 0.1
 scale_amount_curve = SubResource("Curve_8cqyk")
+
+[node name="touch3D" parent="." instance=ExtResource("9_3khva")]

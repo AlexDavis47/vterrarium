@@ -5,6 +5,10 @@ var top_window: VTTopWindow
 var front_window: VTFrontWindow
 var game_world: VTGameWorld
 
+var top_camera: VTCamera3D
+var front_camera: VTCamera3D
+
+
 var windows_setup_completed: bool = false
 signal windows_initialized
 

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://oubd1j1qwo6i"]
 
-[ext_resource type="Shader" path="res://src/shaders/caustics.gdshader" id="1_1geqv"]
+[ext_resource type="Shader" uid="uid://c2j8l8acf4yhq" path="res://src/shaders/caustics.gdshader" id="1_1geqv"]
 [ext_resource type="Texture2D" uid="uid://b1jwnaxbr7u3q" path="res://assets/textures/everytexture.com-stock-nature-sand-00013.jpg" id="1_7kjkr"]
 [ext_resource type="Material" uid="uid://d155b7slac3m5" path="res://assets/materials/caustics2.tres" id="2_fihvh"]
 
@@ -17,6 +17,8 @@ noise = SubResource("FastNoiseLite_27lto")
 render_priority = 0
 next_pass = ExtResource("2_fihvh")
 shader = ExtResource("1_1geqv")
+shader_parameter/caustics_texture = SubResource("CompressedTexture2D_yqbn0")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fqm6a")
 shader_parameter/scroll_speed = Vector2(0.028, -0.028)
 shader_parameter/noise_speed = Vector2(0.12, 0.01)
 shader_parameter/distortion_strength = 0.025
@@ -24,8 +26,6 @@ shader_parameter/intensity = 1.565
 shader_parameter/caustics_color = Color(0.568627, 0.847059, 1, 1)
 shader_parameter/caustics_scale = 0.575
 shader_parameter/noise_scale = 1.265
-shader_parameter/caustics_texture = SubResource("CompressedTexture2D_yqbn0")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_fqm6a")
 
 [resource]
 next_pass = SubResource("ShaderMaterial_llyls")

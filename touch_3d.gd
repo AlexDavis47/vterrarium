@@ -2,17 +2,20 @@ extends Node3D
 class_name Touch3D
 
 @onready var circle_container = $circle_container
-@onready var camera: Camera3D = get_viewport().get_camera_3d()  # Get active camera
+var camera: Camera3D
 var circles = []
 
 func _ready() -> void:
+	camera = VTGlobal.top_camera as Camera3D
 	for circle in circle_container.get_children():
 		circle.hide()
 		circles.append(circle)
 
 func _input(event):
+	print(event)
 	if event is InputEventScreenDrag:
 		var i = event.index
+		print(event.position)
 		if i >= 0 and i < circles.size():
 			var world_pos = screen_to_world(event.position)
 			circles[i].show()

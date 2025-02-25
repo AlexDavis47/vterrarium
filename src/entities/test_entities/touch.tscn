@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhibabnm2lnqw"]
 
-[ext_resource type="Script" path="res://touch.gd" id="1_j4lei"]
-[ext_resource type="Script" path="res://circles.gd" id="2_lpybj"]
+[ext_resource type="Script" uid="uid://57keb05psedc" path="res://touch.gd" id="1_j4lei"]
+[ext_resource type="Script" uid="uid://ccpchix6vtbl0" path="res://circles.gd" id="2_lpybj"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x1680"]
 
