@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnqfdur0nvmnn"
-path.bptc="res://.godot/imported/brown_photostudio_02_1k.hdr-47d0640f9fc269955c697147177d0cfb.bptc.ctex"
+uid="uid://bequvq4qou4sg"
+path.s3tc="res://.godot/imported/brown_photostudio_02_1k.png-424adbfc892888e6a1338a9d5719acf3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/brown_photostudio_02_1k.hdr"
-dest_files=["res://.godot/imported/brown_photostudio_02_1k.hdr-47d0640f9fc269955c697147177d0cfb.bptc.ctex"]
+source_file="res://assets/textures/brown_photostudio_02_1k.png"
+dest_files=["res://.godot/imported/brown_photostudio_02_1k.png-424adbfc892888e6a1338a9d5719acf3.s3tc.ctex"]
 
 [params]
 
