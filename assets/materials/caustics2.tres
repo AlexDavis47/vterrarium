@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://d155b7slac3m5"]
 
-[ext_resource type="Shader" uid="uid://c2j8l8acf4yhq" path="res://src/shaders/caustics.gdshader" id="1_bidnb"]
+[ext_resource type="Shader" path="res://src/shaders/caustics.gdshader" id="1_bidnb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jroqe"]
 load_path = "res://.godot/imported/caust_016.png-27ae3df22390f551ec0c62790993554c.s3tc.ctex"
@@ -14,8 +14,6 @@ noise = SubResource("FastNoiseLite_ggs5m")
 [resource]
 render_priority = 0
 shader = ExtResource("1_bidnb")
-shader_parameter/caustics_texture = SubResource("CompressedTexture2D_jroqe")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ppkw")
 shader_parameter/scroll_speed = Vector2(0.024, -0.031)
 shader_parameter/noise_speed = Vector2(0.003, 0.011)
 shader_parameter/distortion_strength = 0.023
@@ -23,3 +21,5 @@ shader_parameter/intensity = 2.0
 shader_parameter/caustics_color = Color(0.567404, 0.846899, 1, 1)
 shader_parameter/caustics_scale = 0.233
 shader_parameter/noise_scale = 1.0
+shader_parameter/caustics_texture = SubResource("CompressedTexture2D_jroqe")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ppkw")

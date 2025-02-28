@@ -12,7 +12,6 @@ func _ready() -> void:
 		circles.append(circle)
 
 func _input(event):
-	print(event)
 	if event is InputEventScreenDrag:
 		var i = event.index
 		print(event.position)

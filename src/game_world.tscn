@@ -1,15 +1,16 @@
-[gd_scene load_steps=24 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=25 format=3 uid="uid://bygguke1e1erc"]
 
-[ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
-[ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
+[ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="4_axje7"]
-[ext_resource type="Script" uid="uid://dekqlk5lwnnhh" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
 [ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
 [ext_resource type="Material" uid="uid://bwp0wrp5oyukk" path="res://assets/materials/tank_wall.tres" id="5_2qkw7"]
-[ext_resource type="Script" uid="uid://p427dstufru" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
 [ext_resource type="PackedScene" uid="uid://h87keo8yxa01" path="res://src/entities/test_entities/touch_3d.tscn" id="9_3khva"]
+[ext_resource type="Script" path="res://src/NodeTest.cs" id="11_vg5tf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
 panorama = ExtResource("4_axje7")
@@ -175,3 +176,6 @@ initial_velocity_max = 0.1
 scale_amount_curve = SubResource("Curve_8cqyk")
 
 [node name="touch3D" parent="." instance=ExtResource("9_3khva")]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("11_vg5tf")
