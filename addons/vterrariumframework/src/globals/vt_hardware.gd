@@ -1,11 +1,16 @@
 extends Node
 
+# Simulation sensitivity settings
+const MOUSE_ROTATION_SENSITIVITY = 0.1
+const KEY_ACCELERATION_SENSITIVITY = 0.5
+
 # Signals
 signal brightness_changed(new_brightness: float)
 signal temperature_changed(new_temperature: float)
 signal gyro_rotation_changed(new_gyro_rotation: Vector3)
 signal gyro_acceleration_changed(new_gyro_acceleration: Vector3)
 signal gyro_rotation_delta_changed(new_gyro_rotation_delta: Vector3)
+signal photodiode_changed(raw_value: int, normalized_value: float)
 
 # The brightness of the hardware. 
 var brightness: float = 0.0:
@@ -44,9 +49,41 @@ var gyro_acceleration: Vector3 = Vector3.ZERO:
 	get:
 		return gyro_acceleration
 
-# Simulation sensitivity settings
-const MOUSE_ROTATION_SENSITIVITY = 0.1
-const KEY_ACCELERATION_SENSITIVITY = 0.5
+# Photodiode values from Arduino
+var photodiode_raw: int = 0
+var photodiode_normalized: float = 0.0
+
+# Reference to the VTArduino autoload
+var arduino = null
+
+func _ready():
+	# Try to get the VTArduino autoload
+	if has_node("/root/VTArduino"):
+		arduino = get_node("/root/VTArduino")
+		print("VTHardware: Arduino autoload found")
+	else:
+		print("VTHardware: Arduino autoload NOT found")
+
+func _process(_delta):
+	# Update photodiode values from Arduino if available
+	if arduino != null:
+		if arduino.IsConnected():
+			# Get the raw value directly from Arduino
+			var new_raw = arduino.GetRawValue()
+			
+			# Calculate normalized value (assuming 10-bit ADC: 0-1023)
+			var new_normalized = float(new_raw) / 1023.0
+			
+			# Only update if values changed
+			if new_raw != photodiode_raw or new_normalized != photodiode_normalized:
+				photodiode_raw = new_raw
+				photodiode_normalized = new_normalized
+				
+				# Update brightness for compatibility
+				brightness = photodiode_normalized
+				
+				# Emit signal
+				photodiode_changed.emit(photodiode_raw, photodiode_normalized)
 
 # For testing purposes, we process both mouse and keyboard input
 func _input(event: InputEvent) -> void:
@@ -70,8 +107,8 @@ func _process_sim_mouse(event: InputEventMouseMotion) -> Vector3:
 	# X movement = rotation around Y axis (yaw)
 	# Y movement = rotation around X axis (pitch)
 	return Vector3(
-		deg_to_rad(-event.relative.y * MOUSE_ROTATION_SENSITIVITY),
-		deg_to_rad(-event.relative.x * MOUSE_ROTATION_SENSITIVITY),
+		deg_to_rad(- event.relative.y * MOUSE_ROTATION_SENSITIVITY),
+		deg_to_rad(- event.relative.x * MOUSE_ROTATION_SENSITIVITY),
 		0.0 # No roll for now
 	)
 

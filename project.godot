@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 VTGlobal="*res://addons/vterrariumframework/src/globals/vt_global.gd"
 VTConfig="*res://addons/vterrariumframework/src/globals/vt_config.gd"
 VTUserConfig="*res://addons/vterrariumframework/src/globals/vt_user_config.gd"
+VTArduino="*res://addons/vterrariumframework/src/globals/VTArduino.cs"
 VTHardware="*res://addons/vterrariumframework/src/globals/vt_hardware.gd"
 
 [display]

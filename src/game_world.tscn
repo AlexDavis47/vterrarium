@@ -11,7 +11,7 @@
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
 [ext_resource type="PackedScene" uid="uid://h87keo8yxa01" path="res://src/entities/test_entities/touch_3d.tscn" id="9_3khva"]
 [ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/test_entities/test_crab/test_crab.tscn" id="11_0g77l"]
-[ext_resource type="Script" uid="uid://dawm611xmghkg" path="res://src/NodeTest.cs" id="11_vg5tf"]
+[ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
 panorama = ExtResource("4_axje7")
@@ -180,6 +180,6 @@ scale_amount_curve = SubResource("Curve_8cqyk")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("11_0g77l")]
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("11_vg5tf")
-PortName = "COM4"
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+omni_range = 414.037
+script = ExtResource("12_gaogw")
