@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c7ri13cktm5v0"]
 
-[ext_resource type="Shader" path="res://src/shaders/caustics.gdshader" id="1_a574w"]
+[ext_resource type="Shader" uid="uid://c2j8l8acf4yhq" path="res://src/shaders/caustics.gdshader" id="1_a574w"]
 [ext_resource type="Material" uid="uid://d155b7slac3m5" path="res://assets/materials/caustics2.tres" id="1_u2x0g"]
 [ext_resource type="Texture2D" uid="uid://n2n4wwpf4p62" path="res://assets/textures/caust_016.png" id="2_1pkej"]
 
