@@ -1,17 +1,18 @@
 [gd_scene load_steps=8 format=3 uid="uid://dl1sukwqmie7w"]
 
-[ext_resource type="Script" uid="uid://cc85lsa58ly3s" path="res://float_npc.gd" id="1_erd7d"]
+[ext_resource type="Script" path="res://float_npc.gd" id="1_erd7d"]
 [ext_resource type="Texture2D" uid="uid://rf8kv0n3ekeu" path="res://assets/fish_top_pixel.png" id="3_6yrp0"]
-[ext_resource type="Script" uid="uid://dn8mdysaqnbkf" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_8p612"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_visibility_component.gd" id="3_8p612"]
 [ext_resource type="Texture2D" uid="uid://cgm5fhluan4dm" path="res://assets/fish_side_pixel.png" id="4_un35c"]
-[ext_resource type="Script" uid="uid://br5gw44nnfef4" path="res://addons/vterrariumframework/src/components/vt_gyro_component.gd" id="5_u1sew"]
+[ext_resource type="Script" path="res://addons/vterrariumframework/src/components/vt_gyro_component.gd" id="5_u1sew"]
 [ext_resource type="PackedScene" uid="uid://cl30s4qyjry6u" path="res://assets/fish_low_poly.glb" id="6_vvbbo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sfhvh"]
 radius = 0.939
 
 [node name="float_npc" type="CharacterBody3D" node_paths=PackedStringArray("sprite1", "sprite2")]
-collision_layer = 2
+collision_layer = 3
+collision_mask = 3
 velocity = Vector3(-0.0458098, 0.0795991, 0.0395657)
 script = ExtResource("1_erd7d")
 sprite1 = NodePath("Top/Sprite3D")

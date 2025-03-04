@@ -22,6 +22,7 @@ VTConfig="*res://addons/vterrariumframework/src/globals/vt_config.gd"
 VTUserConfig="*res://addons/vterrariumframework/src/globals/vt_user_config.gd"
 VTArduino="*res://addons/vterrariumframework/src/globals/VTArduino.cs"
 VTHardware="*res://addons/vterrariumframework/src/globals/vt_hardware.gd"
+VTInput="*res://addons/vterrariumframework/src/globals/vt_input.gd"
 
 [display]
 
