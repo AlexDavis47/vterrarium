@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 		
 	var direction = (target_position - global_position).normalized()
 	velocity += direction * speed
-	velocity *= 0.95
+	velocity *= 0.75
 	
 	var distance = global_position.distance_to(target_position)
 	if distance <= 1:

@@ -178,7 +178,7 @@ scale_amount_curve = SubResource("Curve_8cqyk")
 
 [node name="touch3D" parent="." instance=ExtResource("9_3khva")]
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("11_0g77l")]
+[node name="Crab" parent="." instance=ExtResource("11_0g77l")]
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 omni_range = 414.037
