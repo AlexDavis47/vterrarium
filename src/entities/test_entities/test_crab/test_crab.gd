@@ -26,5 +26,4 @@ func _pick_random_position():
 	var y = -VTConfig.height / 2
 	var z = randf_range(-VTConfig.depth / 2, VTConfig.depth / 2)
 	var position: Vector3 = Vector3(x, y, z)
-	print(global_position)
 	return position

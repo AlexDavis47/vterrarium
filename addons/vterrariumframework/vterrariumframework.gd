@@ -8,7 +8,7 @@ func _enter_tree() -> void:
 	add_autoload_singleton("VTConfig", "res://addons/vterrariumframework/src/globals/vt_config.gd")
 	add_autoload_singleton("VTUserConfig", "res://addons/vterrariumframework/src/globals/vt_user_config.gd")
 	add_autoload_singleton("VTHardware", "res://addons/vterrariumframework/src/globals/vt_hardware.gd")
-
+	#add_autoload_singleton("VTArduino", "res://addons/vterrariumframework/src/globals/vt_arduino.cs")
 
 func _exit_tree() -> void:
 	# Clean-up of the plugin goes here.
