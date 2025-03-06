@@ -26,3 +26,6 @@ func _process(delta: float) -> void:
 	text += "Age: " + str(creature.creature_data.creature_age.modified_value) + "\n"
 	text += "Money Rate: " + str(creature.creature_data.creature_money_rate.modified_value) + "\n"
 	text += "Speed: " + str(creature.creature_data.creature_speed.modified_value) + "\n"
+	for child in creature.get_children():
+		if child is CreatureHungerComponent:
+			text += "Satiation" + ": " + str(child.satiation) + "\n"

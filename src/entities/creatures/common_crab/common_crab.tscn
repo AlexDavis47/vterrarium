@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlwv2lwgphc3e"]
+[gd_scene load_steps=14 format=3 uid="uid://dlwv2lwgphc3e"]
 
 [ext_resource type="Script" uid="uid://0us82s4ab4qm" path="res://src/entities/creatures/common_crab/common_crab.gd" id="1_akk6r"]
 [ext_resource type="Script" uid="uid://bd8y4b0g73leq" path="res://addons/value_with_modifiers/float_with_modifiers.gd" id="2_dr5kx"]
 [ext_resource type="PackedScene" uid="uid://bqc205bcdkhgi" path="res://assets/rigged_crab_low_poly.glb" id="2_x2wes"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_rt1gq"]
 [ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="5_rt1gq"]
+[ext_resource type="Script" uid="uid://bm3xdhpah262b" path="res://src/components/creature_components/creature_hunger_component.gd" id="6_gxsyl"]
 
 [sub_resource type="Resource" id="Resource_gxsyl"]
 script = ExtResource("2_dr5kx")
@@ -84,8 +85,14 @@ Happiness: 1.0
 Age: 0.0
 Money Rate: 1.0
 Speed: 1.0
-Happiness: 1.0
+Satiation: 1.0
 "
 script = ExtResource("5_rt1gq")
 creature = NodePath("..")
 metadata/_custom_type_script = "uid://7o2mykdy7dq5"
+
+[node name="CreatureHungerComponent" type="Node" parent="." node_paths=PackedStringArray("creature")]
+script = ExtResource("6_gxsyl")
+hunger_rate = null
+creature = NodePath("..")
+metadata/_custom_type_script = "uid://bm3xdhpah262b"
