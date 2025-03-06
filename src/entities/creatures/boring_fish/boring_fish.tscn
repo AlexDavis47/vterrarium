@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpq3hl6lq1ngy"]
+
+[ext_resource type="Script" uid="uid://c2i0olfog3rjy" path="res://src/entities/creatures/creature.gd" id="1_jo1io"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jo1io"]
+
+[node name="BoringFish" type="CharacterBody3D"]
+script = ExtResource("1_jo1io")
+metadata/_custom_type_script = "uid://c2i0olfog3rjy"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_jo1io")
