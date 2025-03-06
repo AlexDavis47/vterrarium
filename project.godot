@@ -29,7 +29,6 @@ Enums="*res://src/globals/enums.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/resizable=false
 window/size/always_on_top=true
 window/subwindows/embed_subwindows=false
 

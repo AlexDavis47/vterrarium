@@ -4,6 +4,7 @@
 ## ADDITIONALLY, this resource type can be extended to create a more specific creature data resource for each creature type.
 ## Such as a goldfish data resource, a crab data resource, etc.
 ## However, unless needed, it is best to keep all data here to avoid bloat.
+@tool
 extends Resource
 class_name CreatureData
 
@@ -13,8 +14,17 @@ class_name CreatureData
 ## The rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
 @export var creature_rarity: Enums.Rarity = Enums.Rarity.Common
 ## The age of the creature in seconds since the creature was born
-@export var creature_age: float = 0
+@export var creature_age: FloatWithModifiers
 ## The base money rate of the creature per second
-@export var creature_money_rate: int = 1
+@export var creature_money_rate: FloatWithModifiers
 ## The base speed of the creature in units per second
-@export var creature_speed: int = 1
+@export var creature_speed: FloatWithModifiers
+## The happiness of the creature, 0 is sad, 1 is happy
+@export var creature_happiness: FloatWithModifiers
+
+
+func _init() -> void:
+	creature_age = FloatWithModifiers.create(0.0)
+	creature_money_rate = FloatWithModifiers.create(1.0)
+	creature_speed = FloatWithModifiers.create(1.0)
+	creature_happiness = FloatWithModifiers.create(1.0).clamped(0.0, 1.0)

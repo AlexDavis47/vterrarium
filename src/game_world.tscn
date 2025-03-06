@@ -78,7 +78,6 @@ script = ExtResource("3_8txad")
 [node name="Front" type="Window" parent="."]
 initial_position = 1
 size = Vector2i(640, 360)
-unresizable = true
 always_on_top = true
 
 [node name="secondary" type="Camera3D" parent="Front"]
