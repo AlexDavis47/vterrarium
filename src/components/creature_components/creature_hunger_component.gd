@@ -27,7 +27,7 @@ signal satiation_changed(value)
 @export var hunger_rate: float = 1.0
 
 ## Initialize the hunger component and set up modifiers
-func initialize() -> void:
+func _ready() -> void:
 	# Set up a happiness modifier based on hunger
 	var happiness = creature.creature_data.creature_happiness
 	# When satiation is high, happiness is maximized (multiplied by 1.0)

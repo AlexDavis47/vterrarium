@@ -8,5 +8,5 @@ class_name Creature
 @export var creature_data: CreatureData
 
 
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	creature_data.creature_age.base_value += delta
