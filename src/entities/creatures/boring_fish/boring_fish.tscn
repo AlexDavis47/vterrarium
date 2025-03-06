@@ -71,9 +71,9 @@ billboard = 1
 no_depth_test = true
 text = "Creature
 Happiness: 1.0
-Age: <Resource#-9223358518629667079>
-Money Rate: <Resource#-9223358518612890540>
-Speed: <Resource#-9223358518596113471>
+Age: 0.0
+Money Rate: 1.0
+Speed: 1.0
 Happiness: 1.0
 "
 script = ExtResource("5_1kbpx")
