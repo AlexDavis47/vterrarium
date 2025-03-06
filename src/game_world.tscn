@@ -1,6 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
+[ext_resource type="Script" uid="uid://h1hrwwbesh0q" path="res://src/ui/debug/debug_toggle_button.gd" id="2_0g77l"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="4_axje7"]
 [ext_resource type="Script" uid="uid://dekqlk5lwnnhh" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
@@ -8,8 +9,7 @@
 [ext_resource type="Script" uid="uid://p427dstufru" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
-[ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/test_entities/test_crab/test_crab.tscn" id="11_0g77l"]
-[ext_resource type="PackedScene" uid="uid://bpq3hl6lq1ngy" path="res://src/entities/creatures/boring_fish/boring_fish.tscn" id="11_gaogw"]
+[ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/creatures/common_crab/common_crab.tscn" id="11_0g77l"]
 [ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
@@ -67,6 +67,12 @@ point_count = 3
 
 [node name="GameWorld" type="Node3D"]
 script = ExtResource("1_0brji")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 106.0
+offset_bottom = 31.0
+text = "Debug Mode Toggle"
+script = ExtResource("2_0g77l")
 
 [node name="Top" type="Node3D" parent="."]
 
@@ -160,11 +166,9 @@ gravity = Vector3(0, 0, 0)
 initial_velocity_max = 0.1
 scale_amount_curve = SubResource("Curve_8cqyk")
 
-[node name="Crab" parent="." instance=ExtResource("11_0g77l")]
-
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 omni_range = 414.037
 script = ExtResource("12_gaogw")
 
-[node name="BoringFish" parent="." instance=ExtResource("11_gaogw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75894, -1.763, -0.404944)
+[node name="TestCrab" parent="." instance=ExtResource("11_0g77l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45692, 0)

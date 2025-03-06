@@ -7,6 +7,15 @@ class_name CreatureDebugLabel
 func _ready():
 	no_depth_test = true
 	billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	Config.debug_mode_changed.connect(_on_debug_mode_changed)
+	_on_debug_mode_changed(Config.debug_mode)
+
+
+func _on_debug_mode_changed(new_value: bool) -> void:
+	if new_value:
+		visible = true
+	else:
+		visible = false
 
 
 func _process(delta: float) -> void:

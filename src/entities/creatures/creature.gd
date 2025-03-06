@@ -7,8 +7,6 @@ class_name Creature
 ## And when we load a creature, we can just load the saved data back into a new creature instance.
 @export var creature_data: CreatureData
 
-func _ready():
-	pass
 
 func _process(delta: float) -> void:
 	pass

@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Creature
 var target_position: Vector3
 @export var speed: float = 0.2
 
