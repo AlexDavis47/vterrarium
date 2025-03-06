@@ -22,9 +22,24 @@ class_name CreatureData
 ## The happiness of the creature, 0 is sad, 1 is happy
 @export var creature_happiness: FloatWithModifiers
 
+enum AgeBracket {
+	Baby,
+	Adult,
+	Old,
+	Dead
+}
+
 
 func _init() -> void:
 	creature_age = FloatWithModifiers.create(0.0)
 	creature_money_rate = FloatWithModifiers.create(1.0)
 	creature_speed = FloatWithModifiers.create(1.0)
 	creature_happiness = FloatWithModifiers.create(1.0).clamped(0.0, 1.0)
+
+func get_age_bracket() -> AgeBracket:
+	if creature_age.modified_value < 86400:
+		return AgeBracket.Baby
+	elif creature_age.modified_value < 604800:
+		return AgeBracket.Adult
+	else:
+		return AgeBracket.Old

@@ -25,6 +25,7 @@ VTHardware="*res://addons/vterrariumframework/src/globals/vt_hardware.gd"
 VTInput="*res://addons/vterrariumframework/src/globals/vt_input.gd"
 Enums="*res://src/globals/enums.gd"
 Config="*res://src/globals/config.gd"
+PlayerData="*res://src/globals/player_data.gd"
 
 [display]
 

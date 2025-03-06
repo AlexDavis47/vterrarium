@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=26 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://h1hrwwbesh0q" path="res://src/ui/debug/debug_toggle_button.gd" id="2_0g77l"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
 [ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/creatures/common_crab/common_crab.tscn" id="11_0g77l"]
+[ext_resource type="PackedScene" uid="uid://df5rypo11dohl" path="res://src/entities/foods/fish_food.tscn" id="12_edi6u"]
 [ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
@@ -172,3 +173,21 @@ script = ExtResource("12_gaogw")
 
 [node name="TestCrab" parent="." instance=ExtResource("11_0g77l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45692, 0)
+
+[node name="FishFood" parent="." instance=ExtResource("12_edi6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.655561, 0.427256, 0.465111)
+
+[node name="FishFood2" parent="." instance=ExtResource("12_edi6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71606, -2.663, 0.168063)
+
+[node name="FishFood3" parent="." instance=ExtResource("12_edi6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4282, -2.663, 1.07171)
+
+[node name="FishFood4" parent="." instance=ExtResource("12_edi6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.51621, -2.663, -1.62061)
+
+[node name="FishFood5" parent="." instance=ExtResource("12_edi6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58857, -2.663, -1.16895)
+
+[node name="FishFood6" parent="." instance=ExtResource("12_edi6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82839, -2.663, 1.74039)

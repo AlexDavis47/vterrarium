@@ -7,6 +7,9 @@ class_name Creature
 ## And when we load a creature, we can just load the saved data back into a new creature instance.
 @export var creature_data: CreatureData
 
+func _ready():
+	add_to_group("creature")
+
 
 func _physics_process(delta: float) -> void:
 	creature_data.creature_age.base_value += delta

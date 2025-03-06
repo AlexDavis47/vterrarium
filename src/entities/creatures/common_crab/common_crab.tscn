@@ -93,6 +93,5 @@ metadata/_custom_type_script = "uid://7o2mykdy7dq5"
 
 [node name="CreatureHungerComponent" type="Node" parent="." node_paths=PackedStringArray("creature")]
 script = ExtResource("6_gxsyl")
-hunger_rate = null
 creature = NodePath("..")
 metadata/_custom_type_script = "uid://bm3xdhpah262b"
