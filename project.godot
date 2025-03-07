@@ -47,6 +47,17 @@ enabled=PackedStringArray("res://addons/vterrariumframework/plugin.cfg")
 pointing/emulate_touch_from_mouse=true
 pointing/emulate_mouse_from_touch=false
 
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Creatures"
+3d_physics/layer_25="RightWall"
+3d_physics/layer_26="LeftWall"
+3d_physics/layer_27="TopWall"
+3d_physics/layer_28="BottomWall"
+3d_physics/layer_29="FrontWall"
+3d_physics/layer_30="BackWall"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
