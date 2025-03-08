@@ -1,38 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://dlwv2lwgphc3e"]
+[gd_scene load_steps=15 format=3 uid="uid://dlwv2lwgphc3e"]
 
 [ext_resource type="Script" uid="uid://0us82s4ab4qm" path="res://src/entities/creatures/common_crab/common_crab.gd" id="1_akk6r"]
 [ext_resource type="Script" uid="uid://bd8y4b0g73leq" path="res://addons/value_with_modifiers/float_with_modifiers.gd" id="2_dr5kx"]
+[ext_resource type="Script" uid="uid://5sfiu3oeyef5" path="res://src/entities/creatures/age_data.gd" id="2_n2spm"]
 [ext_resource type="PackedScene" uid="uid://bqc205bcdkhgi" path="res://assets/rigged_crab_low_poly.glb" id="2_x2wes"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_rt1gq"]
+[ext_resource type="Script" uid="uid://c6ol36qx8odrs" path="res://src/entities/creatures/hunger_data.gd" id="4_j1avd"]
 [ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="5_rt1gq"]
-[ext_resource type="Script" uid="uid://bm3xdhpah262b" path="res://src/components/creature_components/creature_hunger_component.gd" id="6_gxsyl"]
+[ext_resource type="Script" uid="uid://wgruhsnkxgxk" path="res://src/entities/creatures/speed_data.gd" id="6_j1avd"]
 
-[sub_resource type="Resource" id="Resource_gxsyl"]
-script = ExtResource("2_dr5kx")
-base_value = 0.0
-clamp_value = false
-clamp_min = 0.0
-clamp_max = 100.0
-_modifiers = {}
-modified_value = 0.0
+[sub_resource type="Resource" id="Resource_el78s"]
+script = ExtResource("2_n2spm")
+metadata/_custom_type_script = "uid://5sfiu3oeyef5"
 
-[sub_resource type="Resource" id="Resource_n2spm"]
-script = ExtResource("2_dr5kx")
-base_value = 1.0
-clamp_value = true
-clamp_min = 0.0
-clamp_max = 1.0
-_modifiers = {}
-modified_value = 1.0
-
-[sub_resource type="Resource" id="Resource_j1avd"]
-script = ExtResource("2_dr5kx")
-base_value = 1.0
-clamp_value = false
-clamp_min = 0.0
-clamp_max = 100.0
-_modifiers = {}
-modified_value = 1.0
+[sub_resource type="Resource" id="Resource_d85nr"]
+script = ExtResource("4_j1avd")
+satiation = 1.0
+hunger_rate = 1.0
 
 [sub_resource type="Resource" id="Resource_umj8l"]
 script = ExtResource("2_dr5kx")
@@ -43,17 +27,18 @@ clamp_max = 100.0
 _modifiers = {}
 modified_value = 1.0
 
+[sub_resource type="Resource" id="Resource_jdj5g"]
+script = ExtResource("6_j1avd")
+base_speed = SubResource("Resource_umj8l")
+metadata/_custom_type_script = "uid://wgruhsnkxgxk"
+
 [sub_resource type="Resource" id="Resource_yo861"]
 script = ExtResource("3_rt1gq")
 creature_name = "Common Crab"
-creature_rarity = 0
-creature_age = SubResource("Resource_gxsyl")
-creature_money_rate = SubResource("Resource_j1avd")
-creature_speed = SubResource("Resource_umj8l")
-creature_happiness = SubResource("Resource_n2spm")
+speed_data = SubResource("Resource_jdj5g")
+age_data = SubResource("Resource_el78s")
+hunger_data = SubResource("Resource_d85nr")
 metadata/_custom_type_script = "uid://63umrodfd2l3"
-
-[sub_resource type="BoxMesh" id="BoxMesh_x2wes"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_x2wes"]
 height = 0.517372
@@ -62,13 +47,8 @@ radius = 0.466309
 [node name="CommonCrab" type="CharacterBody3D"]
 collision_layer = 0
 script = ExtResource("1_akk6r")
-speed = 0.5
 creature_data = SubResource("Resource_yo861")
 metadata/_custom_type_script = "uid://c2i0olfog3rjy"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("BoxMesh_x2wes")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0121726, 0)
@@ -81,17 +61,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.000517212, -0.302247, 0.
 billboard = 1
 no_depth_test = true
 text = "Common Crab
-Happiness: 1.0
-Age: 0.0
-Money Rate: 1.0
-Speed: 1.0
-Satiation: 1.0
 "
 script = ExtResource("5_rt1gq")
 creature = NodePath("..")
 metadata/_custom_type_script = "uid://7o2mykdy7dq5"
-
-[node name="CreatureHungerComponent" type="Node" parent="." node_paths=PackedStringArray("creature")]
-script = ExtResource("6_gxsyl")
-creature = NodePath("..")
-metadata/_custom_type_script = "uid://bm3xdhpah262b"

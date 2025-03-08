@@ -101,17 +101,15 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0,
 material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_gaogw")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@100390")
-collision_shape = NodePath("@StaticBody3D@100390/@CollisionShape3D@100389")
+static_body = NodePath("@StaticBody3D@21847")
+collision_shape = NodePath("@StaticBody3D@21847/@CollisionShape3D@21846")
 wall_type = 1
 
-[node name="VTTerrariumWall2" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
+[node name="VTTerrariumWall2" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5, 0, 0)
 material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_b0toy")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@101382")
-collision_shape = NodePath("@StaticBody3D@101382/@CollisionShape3D@101381")
 
 [node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)

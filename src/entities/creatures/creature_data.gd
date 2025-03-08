@@ -1,6 +1,6 @@
 ## This resource stores all common data for creatures in the game that need to be cared for and return money to the player.
-## Properties shared between all creatures are defined here, making it easy to save and load creature data.
-## Specialized properties can be added through components or extension.
+## All creature properties are managed through component data resources for consistency.
+## This makes it easy to save and load creature data and extend functionality through components.
 ## ADDITIONALLY, this resource type can be extended to create a more specific creature data resource for each creature type.
 ## Such as a goldfish data resource, a crab data resource, etc.
 ## However, unless needed, it is best to keep all data here to avoid bloat.
@@ -8,38 +8,14 @@
 extends Resource
 class_name CreatureData
 
-
-## The display name of the creature in UI and other places
+## Basic creature identification
 @export var creature_name: String = "Creature"
-## The rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
-@export var creature_rarity: Enums.Rarity = Enums.Rarity.Common
-## The age of the creature in seconds since the creature was born
-@export var creature_age: FloatWithModifiers
-## The base money rate of the creature per second
-@export var creature_money_rate: FloatWithModifiers
-## The base speed of the creature in units per second
-@export var creature_speed: FloatWithModifiers
-## The happiness of the creature, 0 is sad, 1 is happy
-@export var creature_happiness: FloatWithModifiers
+@export var creature_rarity_data: CreatureRarityData
 
-enum AgeBracket {
-	Baby,
-	Adult,
-	Old,
-	Dead
-}
-
-
-func _init() -> void:
-	creature_age = FloatWithModifiers.create(0.0)
-	creature_money_rate = FloatWithModifiers.create(1.0)
-	creature_speed = FloatWithModifiers.create(1.0)
-	creature_happiness = FloatWithModifiers.create(1.0).clamped(0.0, 1.0)
-
-func get_age_bracket() -> AgeBracket:
-	if creature_age.modified_value < 86400:
-		return AgeBracket.Baby
-	elif creature_age.modified_value < 604800:
-		return AgeBracket.Adult
-	else:
-		return AgeBracket.Old
+## Component data resources
+@export var money_rate_data: CreatureMoneyRateData
+@export var speed_data: CreatureSpeedData
+@export var happiness_data: CreatureHappinessData
+@export var age_data: CreatureAgeData
+@export var hunger_data: CreatureHungerData
+# Add other component data as needed
