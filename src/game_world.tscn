@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=26 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
+[ext_resource type="PackedScene" uid="uid://cmne5vax35iyi" path="res://src/entities/test_entities/home_menu.tscn" id="3_gaogw"]
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="4_axje7"]
 [ext_resource type="Script" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
 [ext_resource type="PackedScene" uid="uid://dl1sukwqmie7w" path="res://src/entities/test_entities/float_npc.tscn" id="4_vl5t3"]
@@ -10,7 +11,7 @@
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
 [ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/test_entities/test_crab/test_crab.tscn" id="11_0g77l"]
-[ext_resource type="Script" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
+[ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
 panorama = ExtResource("4_axje7")
@@ -74,6 +75,8 @@ script = ExtResource("1_0brji")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.655, 0)
 cull_mask = 3
 script = ExtResource("3_8txad")
+
+[node name="Menu" parent="Top" instance=ExtResource("3_gaogw")]
 
 [node name="Front" type="Window" parent="."]
 initial_position = 1
