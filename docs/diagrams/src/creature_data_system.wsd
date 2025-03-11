@@ -1,0 +1,32 @@
+@startuml creature_data_system
+Title: Creature Data System
+
+'Creature Superclass
+class Creature {
+    +creature_data: CreatureData
+}
+
+class CreatureData {
+    +name: String
+    +description: String
+    +rarity: Enum(Rarity)
+    +money_rate: Float
+    +prefered_temperature: Float
+    +prefered_humidity: Float
+    +prefered_light: Float
+    +age: Float
+
+    +creature_scene: PackedScene(Creature)
+}
+
+note right of CreatureData
+    The CreatureData resource contains all of the data for a particular creature in order
+    to be able to instantiate it or save it to a file.
+
+
+
+Creature -> CreatureData: has
+
+
+
+@enduml
