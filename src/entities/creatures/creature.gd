@@ -8,7 +8,7 @@ class_name Creature
 @export var creature_data: CreatureData
 
 func _ready():
-	add_to_group("creature")
+	add_to_group("creatures")
 	if not creature_data.creature_id:
 		creature_data.creature_id = Utils.generate_unique_id()
 
@@ -27,11 +27,13 @@ func on_generated(luck: float) -> void:
 
 func serialize() -> Dictionary:
 	var creature_data_dict: Dictionary = creature_data.serialize()
+	creature_data_dict["position"] = global_position
 	for component in get_creature_components():
 		creature_data_dict[component.name] = component.serialize()
 	return creature_data_dict
 
 func deserialize(data: Dictionary):
 	creature_data.deserialize(data)
+	global_position = data["position"]
 	for component in get_creature_components():
 		component.deserialize(data[component.name])

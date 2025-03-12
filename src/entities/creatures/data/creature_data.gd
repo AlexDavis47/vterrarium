@@ -2,6 +2,8 @@
 extends Resource
 class_name CreatureData
 
+## The creature type, for instantiating the creature in the creature factory
+@export var creature_type: CreatureFactory.CreatureType = CreatureFactory.CreatureType.COMMON_CRAB
 ## The display name of the creature in UI and other places
 @export var creature_name: String = "Unnamed Creature"
 ## The rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
@@ -14,15 +16,18 @@ class_name CreatureData
 ## The rate at which the creature produces money hourly
 @export var money_rate: FloatWithModifiers = FloatWithModifiers.new()
 
+
 func _init() -> void:
 	resource_local_to_scene = true
 	money_rate.base_value = 1.0
+	money_rate.resource_local_to_scene = true
 
 func serialize() -> Dictionary:
 	return {
 		"creature_name": creature_name,
 		"rarity": rarity,
 		"creature_id": creature_id,
+		"creature_type": creature_type,
 		"luck": luck,
 		"money_rate": money_rate.base_value
 	}
@@ -31,5 +36,6 @@ func deserialize(data: Dictionary):
 	creature_name = data.get("creature_name", "Unnamed Creature")
 	rarity = data.get("rarity", Enums.Rarity.Common)
 	creature_id = data.get("creature_id", Utils.generate_unique_id())
+	creature_type = data.get("creature_type", "")
 	luck = data.get("luck", 1.0)
 	money_rate.base_value = data.get("money_rate", 1.0)

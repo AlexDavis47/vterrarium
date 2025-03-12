@@ -7,18 +7,36 @@ enum CreaturePool {
 	RARE,
 	LEGENDARY
 }
+
+enum CreatureType {
+	COMMON_CRAB,
+	UNCOMMON_CRAB,
+	RARE_CRAB,
+	LEGENDARY_CRAB
+}
+
+
 ## The creature factory data contains pool chances for each creature
-var creature_list: Dictionary[String, CreatureFactoryData] = {
-	"common_crab": preload("res://src/creature_factory/creature_factory_data/common_crab.tres"),
-	"uncommon_crab": preload("res://src/creature_factory/creature_factory_data/uncommon_crab.tres"),
-	"rare_crab": preload("res://src/creature_factory/creature_factory_data/rare_crab.tres"),
-	"legendary_crab": preload("res://src/creature_factory/creature_factory_data/legendary_crab.tres")
+var creature_list: Dictionary[CreatureType, CreatureFactoryData] = {
+	CreatureType.COMMON_CRAB: preload("res://src/creature_factory/creature_factory_data/common_crab.tres"),
+	CreatureType.UNCOMMON_CRAB: preload("res://src/creature_factory/creature_factory_data/uncommon_crab.tres"),
+	CreatureType.RARE_CRAB: preload("res://src/creature_factory/creature_factory_data/rare_crab.tres"),
+	CreatureType.LEGENDARY_CRAB: preload("res://src/creature_factory/creature_factory_data/legendary_crab.tres")
 }
 
 func generate_creature(creature_factory_data: CreatureFactoryData, luck: float) -> Creature:
 	var creature: Creature = creature_factory_data.creature.instantiate()
 	creature.on_generated(luck)
 	return creature
+
+func generate_creature_from_creature_data(creature_data: CreatureData, luck: float) -> Creature:
+	var creature_type: CreatureType = creature_data.creature_type
+	var creature_factory_data: CreatureFactoryData = creature_list[creature_type]
+	return generate_creature(creature_factory_data, luck)
+
+func generate_creature_from_creature_type(creature_type: CreatureType, luck: float) -> Creature:
+	var creature_factory_data: CreatureFactoryData = creature_list[creature_type]
+	return generate_creature(creature_factory_data, luck)
 
 
 func generate_creature_from_pool(pool: CreaturePool, luck: float) -> Creature:
@@ -47,7 +65,7 @@ func generate_creature_from_pool(pool: CreaturePool, luck: float) -> Creature:
 
 func _ready():
 	await get_tree().create_timer(3.0).timeout
-	var test = generate_creature(creature_list["common_crab"], 1)
+	var test = generate_creature(creature_list[CreatureType.COMMON_CRAB], 1)
 	print("Test creature:")
 	print(test.serialize())
 
