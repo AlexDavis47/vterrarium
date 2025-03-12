@@ -17,10 +17,8 @@ func _on_debug_mode_changed(new_value: bool) -> void:
 		visible = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	text = ""
-	var creature_name = creature.creature_data.creature_name
-	text += creature_name + "\n"
-
-	for component in creature.get_creature_components():
-		text += component.component_name + ": " + str(component.serialize()) + "\n"
+	var creature_data = creature.serialize()
+	for key in creature_data.keys():
+		text += key + ": " + str(creature_data[key]) + "\n"

@@ -14,9 +14,15 @@ func _ready():
 	parent_creature = get_parent()
 	if not parent_creature:
 		push_error("HungerComponent: Parent creature not found")
+	# Add the modifier to the money rate
+	if not parent_creature.creature_data.money_rate.has_modifier("Hunger"):
+		parent_creature.creature_data.money_rate.add_modifier("Hunger", hunger_component_data.hunger_rate, parent_creature.creature_data.money_rate.MODIFIER_MULTIPLY)
+		parent_creature.creature_data.money_rate.set_modifier_enabled("Hunger", true)
 
+## Called every physics frame
 func _physics_process(delta):
 	_process_hunger(delta)
+	_process_money_rate(delta)
 
 ## Decreases the satiation of the creature by the hunger rate
 ## Called every physics frame
@@ -30,6 +36,13 @@ func _process_hunger(delta: float):
 		if hunger_component_data._is_starving:
 			emit_signal("starvation_ended")
 			hunger_component_data._is_starving = false
+
+
+func _process_money_rate(_delta: float):
+	parent_creature.creature_data.money_rate.set_modifier("Hunger", hunger_component_data.satiation)
+
+func on_generated(luck: float) -> void:
+	hunger_component_data.hunger_rate *= randfn(luck, 0.25)
 
 ## Called by the creature when it is serialized
 func serialize() -> Dictionary:

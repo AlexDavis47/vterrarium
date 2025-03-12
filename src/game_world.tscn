@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=23 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://h1hrwwbesh0q" path="res://src/ui/debug/debug_toggle_button.gd" id="2_0g77l"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://p427dstufru" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
-[ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/creatures/common_crab/common_crab.tscn" id="11_0g77l"]
 [ext_resource type="PackedScene" uid="uid://df5rypo11dohl" path="res://src/entities/foods/fish_food.tscn" id="12_edi6u"]
 [ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 [ext_resource type="Script" uid="uid://wfqbiifh60in" path="res://src/crabtester.gd" id="13_edi6u"]
@@ -33,25 +32,25 @@ fog_depth_curve = 0.870552
 fog_depth_begin = 0.0
 fog_depth_end = 18.7
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_d2bpd"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_edi6u"]
 size = Vector2(5.625, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b0toy"]
 material = ExtResource("5_2qkw7")
 size = Vector2(5.625, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_qfpye"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_d2bpd"]
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_qfpye"]
 material = ExtResource("7_kr6if")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ygn67"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
 material = ExtResource("7_w3rys")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ovvyv"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_ygn67"]
 size = Vector2(10, 5.625)
 
 [node name="GameWorld" type="Node3D"]
@@ -90,7 +89,7 @@ script = ExtResource("4_dv42i")
 [node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_d2bpd")
+mesh = SubResource("PlaneMesh_edi6u")
 script = ExtResource("5_r55h4")
 wall_type = 1
 
@@ -103,37 +102,37 @@ script = ExtResource("5_r55h4")
 [node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_qfpye")
+mesh = SubResource("PlaneMesh_d2bpd")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58013")
-collision_shape = NodePath("@StaticBody3D@58013/@CollisionShape3D@58012")
+static_body = NodePath("@StaticBody3D@82596")
+collision_shape = NodePath("@StaticBody3D@82596/@CollisionShape3D@82595")
 wall_type = 2
 
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
-mesh = SubResource("PlaneMesh_27mdg")
+mesh = SubResource("PlaneMesh_qfpye")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58015")
-collision_shape = NodePath("@StaticBody3D@58015/@CollisionShape3D@58014")
+static_body = NodePath("@StaticBody3D@82598")
+collision_shape = NodePath("@StaticBody3D@82598/@CollisionShape3D@82597")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
 material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_ygn67")
+mesh = SubResource("PlaneMesh_27mdg")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58017")
-collision_shape = NodePath("@StaticBody3D@58017/@CollisionShape3D@58016")
+static_body = NodePath("@StaticBody3D@82600")
+collision_shape = NodePath("@StaticBody3D@82600/@CollisionShape3D@82599")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_ovvyv")
+mesh = SubResource("PlaneMesh_ygn67")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58019")
-collision_shape = NodePath("@StaticBody3D@58019/@CollisionShape3D@58018")
+static_body = NodePath("@StaticBody3D@82602")
+collision_shape = NodePath("@StaticBody3D@82602/@CollisionShape3D@82601")
 wall_type = 5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -148,9 +147,6 @@ transform = Transform3D(1, 0, 0, 0, 0.729411, 0.684076, 0, -0.684076, 0.729411, 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 omni_range = 414.037
 script = ExtResource("12_gaogw")
-
-[node name="TestCrab" parent="." instance=ExtResource("11_0g77l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45692, 0)
 
 [node name="FishFood" parent="." instance=ExtResource("12_edi6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.655561, 0.427256, 0.465111)
@@ -170,10 +166,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58857, -2.663, -1.16895)
 [node name="FishFood6" parent="." instance=ExtResource("12_edi6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82839, -2.663, 1.74039)
 
-[node name="Crabtester" type="Node" parent="." node_paths=PackedStringArray("crab")]
+[node name="Crabtester" type="Node" parent="."]
 script = ExtResource("13_edi6u")
-crab = NodePath("../TestCrab")
-crab_scene = ExtResource("11_0g77l")
 
 [node name="SavedData" type="Label" parent="."]
 offset_right = 40.0

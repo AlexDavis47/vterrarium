@@ -12,7 +12,6 @@ func _ready():
 	if not creature_data.creature_id:
 		creature_data.creature_id = Utils.generate_unique_id()
 
-
 func get_creature_components() -> Array[CreatureComponent]:
 	var creature_components: Array[CreatureComponent] = []
 	for child in get_children():
@@ -20,13 +19,17 @@ func get_creature_components() -> Array[CreatureComponent]:
 			creature_components.append(child)
 	return creature_components
 
+func on_generated(luck: float) -> void:
+	creature_data.luck = luck
+	creature_data.money_rate.base_value *= randfn(luck, 0.25)
+	for component in get_creature_components():
+		component.on_generated(luck)
 
 func serialize() -> Dictionary:
 	var creature_data_dict: Dictionary = creature_data.serialize()
 	for component in get_creature_components():
 		creature_data_dict[component.name] = component.serialize()
 	return creature_data_dict
-
 
 func deserialize(data: Dictionary):
 	creature_data.deserialize(data)

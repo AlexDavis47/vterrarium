@@ -37,6 +37,9 @@ func get_age_category() -> int:
 	else:
 		return CreatureAgeData.AgeCategory.Old
 
+func on_generated(luck: float) -> void:
+	pass
+
 ## Called by the creature when it is serialized
 func serialize() -> Dictionary:
 	return creature_age_data.serialize()
