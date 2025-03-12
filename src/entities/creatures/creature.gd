@@ -9,7 +9,26 @@ class_name Creature
 
 func _ready():
 	add_to_group("creature")
+	if not creature_data.creature_id:
+		creature_data.creature_id = Utils.generate_unique_id()
 
 
-func _physics_process(delta: float) -> void:
-	creature_data.creature_age.base_value += delta
+func get_creature_components() -> Array[CreatureComponent]:
+	var creature_components: Array[CreatureComponent] = []
+	for child in get_children():
+		if child is CreatureComponent:
+			creature_components.append(child)
+	return creature_components
+
+
+func serialize() -> Dictionary:
+	var creature_data_dict: Dictionary = creature_data.serialize()
+	for component in get_creature_components():
+		creature_data_dict[component.name] = component.serialize()
+	return creature_data_dict
+
+
+func deserialize(data: Dictionary):
+	creature_data.deserialize(data)
+	for component in get_creature_components():
+		component.deserialize(data[component.name])

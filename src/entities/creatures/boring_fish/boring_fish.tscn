@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bpq3hl6lq1ngy"]
 
 [ext_resource type="Script" uid="uid://c2i0olfog3rjy" path="res://src/entities/creatures/creature.gd" id="1_jo1io"]
-[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="2_8v6y2"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/data/creature_data.gd" id="2_8v6y2"]
 [ext_resource type="Script" uid="uid://bd8y4b0g73leq" path="res://addons/value_with_modifiers/float_with_modifiers.gd" id="2_nap1y"]
 [ext_resource type="Script" uid="uid://cqfitcgj01vju" path="res://src/entities/creatures/boring_fish/test.gd" id="3_4vycc"]
 [ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="5_1kbpx"]

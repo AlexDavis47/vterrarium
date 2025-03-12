@@ -22,10 +22,7 @@ func _process(delta: float) -> void:
 	text = ""
 	var creature_name = creature.creature_data.creature_name
 	text += creature_name + "\n"
-	text += "Happiness: " + str(creature.creature_data.creature_happiness.modified_value) + "\n"
-	text += "Age: " + str(creature.creature_data.creature_age.modified_value) + "\n"
-	text += "Money Rate: " + str(creature.creature_data.creature_money_rate.modified_value) + "\n"
-	text += "Speed: " + str(creature.creature_data.creature_speed.modified_value) + "\n"
-	for child in creature.get_children():
-		if child is CreatureHungerComponent:
-			text += "Satiation" + ": " + str(child.satiation) + "\n"
+
+	var hunger_component = creature.get_node("HungerComponent")
+	if hunger_component:
+		text += "Hunger: " + str(hunger_component.hunger_component_data.satiation) + "\n"

@@ -3,11 +3,11 @@ var target_position: Vector3
 @export var speed: float = 0.2
 
 func _ready() -> void:
+	super()
 	target_position = _pick_random_position()
 	
 	
 func _physics_process(delta: float) -> void:
-	super(delta)
 	velocity.y -= 5 * delta
 	move_and_slide()
 	if is_on_floor():
