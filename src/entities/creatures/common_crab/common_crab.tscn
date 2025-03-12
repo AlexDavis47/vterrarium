@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://dlwv2lwgphc3e"]
+[gd_scene load_steps=15 format=4 uid="uid://dlwv2lwgphc3e"]
 
 [ext_resource type="Script" uid="uid://0us82s4ab4qm" path="res://src/entities/creatures/common_crab/common_crab.gd" id="1_akk6r"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/data/creature_data.gd" id="3_rt1gq"]
+[ext_resource type="Script" uid="uid://ceji5ekgx07lo" path="res://src/components/creature_hunger_component.gd" id="5_gxsyl"]
 [ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="5_rt1gq"]
+[ext_resource type="Script" uid="uid://x7ky2mbldrpe" path="res://src/components/creature_age_component.gd" id="7_j1avd"]
+[ext_resource type="Script" uid="uid://cvi4fpdcvga0p" path="res://src/components/creature_hunger_component_data.gd" id="8_j1avd"]
+[ext_resource type="Script" uid="uid://sd3gmm6pc6gp" path="res://src/components/creature_age_data.gd" id="8_umj8l"]
 
 [sub_resource type="Resource" id="Resource_rt1gq"]
 script = ExtResource("3_rt1gq")
@@ -104,6 +108,18 @@ bind/19/name = &"Bone.015_end_018"
 bind/19/bone = -1
 bind/19/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
+[sub_resource type="Resource" id="Resource_n2spm"]
+script = ExtResource("8_j1avd")
+satiation = 1.0
+hunger_rate = 1.0
+metadata/_custom_type_script = "uid://cvi4fpdcvga0p"
+
+[sub_resource type="Resource" id="Resource_j1avd"]
+script = ExtResource("8_umj8l")
+age = 0.0
+age_category = 0
+metadata/_custom_type_script = "uid://sd3gmm6pc6gp"
+
 [node name="CommonCrab" type="CharacterBody3D"]
 collision_layer = 0
 script = ExtResource("1_akk6r")
@@ -128,3 +144,13 @@ text = "Unnamed Creature
 script = ExtResource("5_rt1gq")
 creature = NodePath("..")
 metadata/_custom_type_script = "uid://7o2mykdy7dq5"
+
+[node name="CreatureHungerComponent" type="Node" parent="."]
+script = ExtResource("5_gxsyl")
+hunger_component_data = SubResource("Resource_n2spm")
+metadata/_custom_type_script = "uid://ceji5ekgx07lo"
+
+[node name="CreatureAgeComponent" type="Node" parent="."]
+script = ExtResource("7_j1avd")
+creature_age_data = SubResource("Resource_j1avd")
+metadata/_custom_type_script = "uid://x7ky2mbldrpe"

@@ -27,6 +27,7 @@ Enums="*res://src/globals/enums.gd"
 Config="*res://src/globals/config.gd"
 SaveData="*res://src/globals/save_data.gd"
 Utils="*res://src/globals/utils.gd"
+CreatureFactory="*res://src/globals/creature_factory.gd"
 
 [display]
 

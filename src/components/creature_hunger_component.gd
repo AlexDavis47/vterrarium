@@ -14,8 +14,6 @@ func _ready():
 	parent_creature = get_parent()
 	if not parent_creature:
 		push_error("HungerComponent: Parent creature not found")
-	if not hunger_component_data:
-		hunger_component_data = HungerComponentData.new()
 
 func _physics_process(delta):
 	_process_hunger(delta)

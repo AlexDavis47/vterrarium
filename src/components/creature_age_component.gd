@@ -12,8 +12,6 @@ func _ready():
 	parent_creature = get_parent()
 	if not parent_creature:
 		push_error("CreatureAgeComponent: Parent creature not found")
-	if not creature_age_data:
-		creature_age_data = CreatureAgeData.new()
 
 func _physics_process(delta):
 	_process_age(delta)

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CreatureFactoryData" load_steps=6 format=3 uid="uid://qc2mkhj6t86"]
+
+[ext_resource type="Script" uid="uid://m4f3ocxlkg3p" path="res://src/globals/creature_factory_data/creature_factory_data.gd" id="1_q572q"]
+[ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/creatures/common_crab/common_crab.tscn" id="1_yobxj"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/globals/creature_factory_data/pool_chance.gd" id="2_2o5pv"]
+
+[sub_resource type="Resource" id="Resource_mogl0"]
+script = ExtResource("2_2o5pv")
+pool = 0
+chance = 0.5
+metadata/_custom_type_script = "uid://c5xpqttwi67b6"
+
+[sub_resource type="Resource" id="Resource_fjhwy"]
+script = ExtResource("2_2o5pv")
+pool = 1
+chance = 0.25
+metadata/_custom_type_script = "uid://c5xpqttwi67b6"
+
+[resource]
+script = ExtResource("1_q572q")
+creature = ExtResource("1_yobxj")
+pool_chances = Array[ExtResource("2_2o5pv")]([SubResource("Resource_mogl0"), SubResource("Resource_fjhwy")])
+metadata/_custom_type_script = "uid://m4f3ocxlkg3p"

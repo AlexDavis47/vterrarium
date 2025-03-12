@@ -105,8 +105,8 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8
 material_override = ExtResource("7_w3rys")
 mesh = SubResource("PlaneMesh_qfpye")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@51377")
-collision_shape = NodePath("@StaticBody3D@51377/@CollisionShape3D@51376")
+static_body = NodePath("@StaticBody3D@58013")
+collision_shape = NodePath("@StaticBody3D@58013/@CollisionShape3D@58012")
 wall_type = 2
 
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
@@ -114,8 +114,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
 mesh = SubResource("PlaneMesh_27mdg")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@51379")
-collision_shape = NodePath("@StaticBody3D@51379/@CollisionShape3D@51378")
+static_body = NodePath("@StaticBody3D@58015")
+collision_shape = NodePath("@StaticBody3D@58015/@CollisionShape3D@58014")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
@@ -123,8 +123,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 material_override = ExtResource("7_w3rys")
 mesh = SubResource("PlaneMesh_ygn67")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@51381")
-collision_shape = NodePath("@StaticBody3D@51381/@CollisionShape3D@51380")
+static_body = NodePath("@StaticBody3D@58017")
+collision_shape = NodePath("@StaticBody3D@58017/@CollisionShape3D@58016")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
@@ -132,8 +132,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_ovvyv")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@51383")
-collision_shape = NodePath("@StaticBody3D@51383/@CollisionShape3D@51382")
+static_body = NodePath("@StaticBody3D@58019")
+collision_shape = NodePath("@StaticBody3D@58019/@CollisionShape3D@58018")
 wall_type = 5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
