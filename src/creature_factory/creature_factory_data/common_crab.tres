@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CreatureFactoryData" load_steps=6 format=3 uid="uid://qc2mkhj6t86"]
 
-[ext_resource type="Script" uid="uid://m4f3ocxlkg3p" path="res://src/globals/creature_factory_data/creature_factory_data.gd" id="1_q572q"]
+[ext_resource type="Script" uid="uid://m4f3ocxlkg3p" path="res://src/creature_factory/creature_factory_data/creature_factory_data.gd" id="1_q572q"]
 [ext_resource type="PackedScene" uid="uid://dlwv2lwgphc3e" path="res://src/entities/creatures/common_crab/common_crab.tscn" id="1_yobxj"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/globals/creature_factory_data/pool_chance.gd" id="2_2o5pv"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/creature_factory_data/pool_chance.gd" id="2_2o5pv"]
 
 [sub_resource type="Resource" id="Resource_mogl0"]
 script = ExtResource("2_2o5pv")
