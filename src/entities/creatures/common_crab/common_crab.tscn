@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlwv2lwgphc3e"]
+[gd_scene load_steps=13 format=3 uid="uid://dlwv2lwgphc3e"]
 
 [ext_resource type="Script" uid="uid://0us82s4ab4qm" path="res://src/entities/creatures/common_crab/common_crab.gd" id="1_akk6r"]
 [ext_resource type="PackedScene" uid="uid://bqc205bcdkhgi" path="res://assets/rigged_crab_low_poly.glb" id="2_x2wes"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://ceji5ekgx07lo" path="res://src/components/hunger_component.gd" id="5_gxsyl"]
 [ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="5_rt1gq"]
 [ext_resource type="Script" uid="uid://cvi4fpdcvga0p" path="res://src/components/hunger_component_data.gd" id="6_gxsyl"]
+[ext_resource type="Script" uid="uid://x7ky2mbldrpe" path="res://src/components/creature_age_component.gd" id="7_j1avd"]
+[ext_resource type="Script" uid="uid://sd3gmm6pc6gp" path="res://src/components/creature_age_data.gd" id="8_umj8l"]
 
 [sub_resource type="Resource" id="Resource_rt1gq"]
 script = ExtResource("3_rt1gq")
@@ -23,6 +25,12 @@ script = ExtResource("6_gxsyl")
 satiation = 1.0
 hunger_rate = 1.0
 metadata/_custom_type_script = "uid://cvi4fpdcvga0p"
+
+[sub_resource type="Resource" id="Resource_yo861"]
+script = ExtResource("8_umj8l")
+age = 0.0
+age_category = 0
+metadata/_custom_type_script = "uid://sd3gmm6pc6gp"
 
 [node name="CommonCrab" type="CharacterBody3D"]
 collision_layer = 0
@@ -42,7 +50,6 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.000517212, -0.302247, 0.
 billboard = 1
 no_depth_test = true
 text = "Unnamed Creature
-Hunger: 1.0
 "
 script = ExtResource("5_rt1gq")
 creature = NodePath("..")
@@ -51,3 +58,8 @@ metadata/_custom_type_script = "uid://7o2mykdy7dq5"
 [node name="HungerComponent" type="Node" parent="."]
 script = ExtResource("5_gxsyl")
 hunger_component_data = SubResource("Resource_n2spm")
+
+[node name="CreatureAgeComponent" type="Node" parent="."]
+script = ExtResource("7_j1avd")
+creature_age_data = SubResource("Resource_yo861")
+metadata/_custom_type_script = "uid://x7ky2mbldrpe"

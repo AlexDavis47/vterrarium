@@ -1,4 +1,3 @@
-@tool
 extends Label3D
 class_name CreatureDebugLabel
 
@@ -23,6 +22,5 @@ func _process(delta: float) -> void:
 	var creature_name = creature.creature_data.creature_name
 	text += creature_name + "\n"
 
-	var hunger_component = creature.get_node("HungerComponent")
-	if hunger_component:
-		text += "Hunger: " + str(hunger_component.hunger_component_data.satiation) + "\n"
+	for component in creature.get_creature_components():
+		text += component.component_name + ": " + str(component.serialize()) + "\n"
