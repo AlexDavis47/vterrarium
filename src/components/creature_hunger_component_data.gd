@@ -19,10 +19,12 @@ var _is_starving: bool = false
 func serialize() -> Dictionary:
 	return {
 		"satiation": satiation,
+		"hunger_rate": hunger_rate,
 		"is_starving": _is_starving
 	}
 
 ## Called by the creature when it is deserialized
 func deserialize(data: Dictionary):
 	satiation = data.get("satiation", 1.0)
+	hunger_rate = data.get("hunger_rate", 1.0)
 	_is_starving = data.get("is_starving", false)

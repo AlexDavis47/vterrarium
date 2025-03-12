@@ -1,5 +1,5 @@
 extends CreatureComponent
-class_name HungerComponent
+class_name CreatureHungerComponent
 
 var parent_creature: Creature
 
