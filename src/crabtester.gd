@@ -21,6 +21,6 @@ func handle_save_load() -> void:
 	
 	# Data is now in serialized form, we need to deserialize it
 	for creature_id in data:
-		var creature = CreatureFactory.generate_creature_from_creature_type(data[creature_id]["creature_type"], CreatureFactory.CreatureType.COMMON_CRAB)
+		var creature = CreatureFactory.generate_creature_from_type(CreatureFactory.CreatureTemplate.BASIC_CRAB)
 		add_child(creature)
 		creature.deserialize(data[creature_id])

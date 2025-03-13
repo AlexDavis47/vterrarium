@@ -1,4 +1,5 @@
 ## This class is used to generate creatures randomly, and off of creature pools
+@tool
 extends Node
 
 enum CreaturePool {
@@ -8,64 +9,64 @@ enum CreaturePool {
 	LEGENDARY
 }
 
-enum CreatureType {
-	COMMON_CRAB,
-	UNCOMMON_CRAB,
-	RARE_CRAB,
-	LEGENDARY_CRAB
+enum CreatureTemplate {
+	BASIC_CRAB
+}
+
+var creature_templates: Dictionary = {
+	CreatureTemplate.BASIC_CRAB: preload("res://src/creature_data/basic_crab.tres")
 }
 
 
-## The creature factory data contains pool chances for each creature
-var creature_list: Dictionary[CreatureType, CreatureFactoryData] = {
-	CreatureType.COMMON_CRAB: preload("res://src/creature_factory/creature_factory_data/common_crab.tres"),
-	CreatureType.UNCOMMON_CRAB: preload("res://src/creature_factory/creature_factory_data/uncommon_crab.tres"),
-	CreatureType.RARE_CRAB: preload("res://src/creature_factory/creature_factory_data/rare_crab.tres"),
-	CreatureType.LEGENDARY_CRAB: preload("res://src/creature_factory/creature_factory_data/legendary_crab.tres")
-}
-
-func generate_creature(creature_factory_data: CreatureFactoryData, luck: float) -> Creature:
-	var creature: Creature = creature_factory_data.creature.instantiate()
+## Generate a creature based on it with optional luck modifier
+# We receive a creature data resource, like a basic crab, and we create a duplicate of it
+func generate_creature_from_data(creature_data: CreatureData, luck: float = 1.0) -> Creature:
+	var new_creature_data = creature_data.duplicate(true)
+	var creature: Creature = new_creature_data.creature_scene.instantiate()
+	creature.creature_data = new_creature_data
 	creature.on_generated(luck)
 	return creature
 
-func generate_creature_from_creature_data(creature_data: CreatureData, luck: float) -> Creature:
-	var creature_type: CreatureType = creature_data.creature_type
-	var creature_factory_data: CreatureFactoryData = creature_list[creature_type]
-	return generate_creature(creature_factory_data, luck)
-
-func generate_creature_from_creature_type(creature_type: CreatureType, luck: float) -> Creature:
-	var creature_factory_data: CreatureFactoryData = creature_list[creature_type]
-	return generate_creature(creature_factory_data, luck)
+func generate_creature_from_type(creature_type: CreatureTemplate, luck: float = 1.0) -> Creature:
+	return generate_creature_from_data(creature_templates[creature_type], luck)
 
 
-func generate_creature_from_pool(pool: CreaturePool, luck: float) -> Creature:
-	# Select all creatures that have this pool in their pool chances
-	var total_pool_chance: float = 0
-	var creatures_in_pool: Dictionary[CreatureFactoryData, float] = {}
+## Generate a random creature from the specified pool
+func generate_creature_from_pool(pool: CreaturePool, luck: float = 1.0) -> Creature:
+	# Collect all creatures that belong to this pool
+	var pool_entries: Array[Dictionary] = []
+	var total_chance: float = 0.0
 	
-	for creature_factory_data in creature_list.values():
-		for pool_chance in creature_factory_data.pool_chances:
+	# Iterate through all creature templates to find those with this pool
+	for template_key in creature_templates:
+		var creature_data: CreatureData = creature_templates[template_key]
+		for pool_chance in creature_data.pool_chances:
 			if pool_chance.pool == pool:
-				creatures_in_pool[creature_factory_data] = pool_chance.chance
-				total_pool_chance += pool_chance.chance
+				pool_entries.append({
+					"creature_data": creature_data,
+					"chance": pool_chance.chance
+				})
+				total_chance += pool_chance.chance
 	
-	# Implement weighted random selection
-	var random_value = randf() * total_pool_chance
+	if pool_entries.is_empty() or total_chance <= 0:
+		push_error("No creatures found for pool %s" % pool)
+		return null
+	
+	# Weighted random selection
+	var random_value = randf() * total_chance
 	var current_sum = 0.0
 	
-	for creature_data in creatures_in_pool:
-		current_sum += creatures_in_pool[creature_data]
+	for entry in pool_entries:
+		current_sum += entry.chance
 		if random_value <= current_sum:
-			return generate_creature(creature_data, luck)
+			return generate_creature_from_data(entry.creature_data, luck)
 	
-	# Fallback in case of floating point errors
-	return generate_creature(creatures_in_pool.keys()[0], luck)
-
+	# Fallback for floating point errors
+	return generate_creature_from_data(pool_entries[0].creature_data, luck)
 
 func _ready():
 	await get_tree().create_timer(3.0).timeout
-	var test = generate_creature(creature_list[CreatureType.COMMON_CRAB], 1)
+	var test = generate_creature_from_data(creature_templates[CreatureTemplate.BASIC_CRAB], 1)
 	print("Test creature:")
 	print(test.serialize())
 

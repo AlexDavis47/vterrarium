@@ -19,9 +19,13 @@ func get_creature_components() -> Array[CreatureComponent]:
 			creature_components.append(child)
 	return creature_components
 
+## Called when a new creature is generated
+## Luck is used to determine the random stats of the creature
+## And this luck is passed down to all the components
 func on_generated(luck: float) -> void:
 	creature_data.luck = luck
 	creature_data.money_rate.base_value *= randfn(luck, 0.25)
+	creature_data.creature_id = Utils.generate_unique_id()
 	for component in get_creature_components():
 		component.on_generated(luck)
 
