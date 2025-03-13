@@ -17,6 +17,7 @@ func get_creature_components() -> Array[CreatureComponent]:
 	for child in get_children():
 		if child is CreatureComponent:
 			creature_components.append(child)
+	print("Fish: ", creature_data.creature_name, ": ", creature_components)
 	return creature_components
 
 ## Called when a new creature is generated

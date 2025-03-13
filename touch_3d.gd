@@ -14,11 +14,10 @@ func _ready() -> void:
 func _input(event):
 	if event is InputEventScreenDrag:
 		var i = event.index
-		print(event.position)
 		if i >= 0 and i < circles.size():
 			var world_pos = screen_to_world(event.position)
 			circles[i].show()
-			circles[i].global_transform.origin = world_pos  # Set 3D position
+			circles[i].global_transform.origin = world_pos # Set 3D position
 	elif event is InputEventScreenTouch and not event.pressed:
 		var i = event.index
 		if i >= 0 and i < circles.size():

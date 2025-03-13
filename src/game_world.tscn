@@ -86,11 +86,13 @@ environment = SubResource("Environment_ti7fu")
 [node name="Terrarium" type="Node3D" parent="."]
 script = ExtResource("4_dv42i")
 
-[node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
+[node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_edi6u")
 script = ExtResource("5_r55h4")
+static_body = NodePath("@StaticBody3D@21847")
+collision_shape = NodePath("@StaticBody3D@21847/@CollisionShape3D@21846")
 wall_type = 1
 
 [node name="VTTerrariumWall2" type="MeshInstance3D" parent="Terrarium"]

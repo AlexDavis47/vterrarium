@@ -12,13 +12,15 @@ enum CreaturePool {
 ## When we add a new creature, we need to add it to the enums
 enum CreatureTemplate {
 	BASIC_CRAB,
-	COOLER_CRAB
+	COOLER_CRAB,
+	BASIC_FISH
 }
 
 ## When we add a new creature, we need to add it to the dictionary
 var creature_templates: Dictionary = {
-	CreatureTemplate.BASIC_CRAB: preload("res://src/creature_data/basic_crab.tres"),
-	CreatureTemplate.COOLER_CRAB: preload("res://src/creature_data/cooler_crab.tres")
+	CreatureTemplate.BASIC_CRAB: preload("uid://c3gof7obhvbej"),
+	CreatureTemplate.COOLER_CRAB: preload("uid://olkl1rdff7sv"),
+	CreatureTemplate.BASIC_FISH: preload("uid://x7f8v6e3a7u2")
 }
 
 
@@ -34,7 +36,6 @@ func generate_creature_from_data(creature_data: CreatureData, luck: float = 1.0)
 
 func generate_creature_from_type(creature_type: CreatureTemplate, luck: float = 1.0) -> Creature:
 	return generate_creature_from_data(creature_templates[creature_type], luck)
-
 
 ## Generate a random creature from the specified pool
 func generate_creature_from_pool(pool: CreaturePool, luck: float = 1.0) -> Creature:
