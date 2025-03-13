@@ -27,13 +27,15 @@ func on_generated(luck: float) -> void:
 
 func serialize() -> Dictionary:
 	var creature_data_dict: Dictionary = creature_data.serialize()
-	creature_data_dict["position"] = global_position
+	creature_data_dict["pos_x"] = global_position.x
+	creature_data_dict["pos_y"] = global_position.y
+	creature_data_dict["pos_z"] = global_position.z
 	for component in get_creature_components():
 		creature_data_dict[component.name] = component.serialize()
 	return creature_data_dict
 
 func deserialize(data: Dictionary):
 	creature_data.deserialize(data)
-	global_position = data["position"]
+	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 	for component in get_creature_components():
 		component.deserialize(data[component.name])
