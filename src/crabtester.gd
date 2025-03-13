@@ -4,7 +4,11 @@ extends Node
 func _ready():
 	handle_save_load()
 	for i in 2:
-		var crab = CreatureFactory.generate_creature_from_pool(CreatureFactory.CreaturePool.COMMON, randfn(1.0, 0.25))
+		var crab = CreatureFactory.generate_creature_from_type(CreatureFactory.CreatureTemplate.BASIC_CRAB, randfn(1.0, 0.25))
+		add_child(crab)
+		await get_tree().create_timer(2.0).timeout
+	for i in 2:
+		var crab = CreatureFactory.generate_creature_from_type(CreatureFactory.CreatureTemplate.COOLER_CRAB, randfn(1.0, 0.25))
 		add_child(crab)
 		await get_tree().create_timer(2.0).timeout
 	

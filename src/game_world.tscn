@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://df5rypo11dohl" path="res://src/entities/foods/fish_food.tscn" id="12_edi6u"]
 [ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 [ext_resource type="Script" uid="uid://wfqbiifh60in" path="res://src/crabtester.gd" id="13_edi6u"]
-[ext_resource type="Script" uid="uid://dw4y8ruhh5cra" path="res://src/saved_data.gd" id="14_d2bpd"]
+[ext_resource type="Script" path="res://src/saved_data.gd" id="14_d2bpd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
 panorama = ExtResource("4_axje7")
@@ -104,8 +104,8 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8
 material_override = ExtResource("7_w3rys")
 mesh = SubResource("PlaneMesh_d2bpd")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@21863")
-collision_shape = NodePath("@StaticBody3D@21863/@CollisionShape3D@21862")
+static_body = NodePath("@StaticBody3D@21849")
+collision_shape = NodePath("@StaticBody3D@21849/@CollisionShape3D@21848")
 wall_type = 2
 
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
@@ -113,8 +113,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
 mesh = SubResource("PlaneMesh_qfpye")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@21865")
-collision_shape = NodePath("@StaticBody3D@21865/@CollisionShape3D@21864")
+static_body = NodePath("@StaticBody3D@21851")
+collision_shape = NodePath("@StaticBody3D@21851/@CollisionShape3D@21850")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
@@ -122,8 +122,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 material_override = ExtResource("7_w3rys")
 mesh = SubResource("PlaneMesh_27mdg")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@21867")
-collision_shape = NodePath("@StaticBody3D@21867/@CollisionShape3D@21866")
+static_body = NodePath("@StaticBody3D@21853")
+collision_shape = NodePath("@StaticBody3D@21853/@CollisionShape3D@21852")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
@@ -131,8 +131,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_ygn67")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@21869")
-collision_shape = NodePath("@StaticBody3D@21869/@CollisionShape3D@21868")
+static_body = NodePath("@StaticBody3D@21855")
+collision_shape = NodePath("@StaticBody3D@21855/@CollisionShape3D@21854")
 wall_type = 5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

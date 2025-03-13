@@ -9,12 +9,16 @@ enum CreaturePool {
 	LEGENDARY
 }
 
+## When we add a new creature, we need to add it to the enums
 enum CreatureTemplate {
-	BASIC_CRAB
+	BASIC_CRAB,
+	COOLER_CRAB
 }
 
+## When we add a new creature, we need to add it to the dictionary
 var creature_templates: Dictionary = {
-	CreatureTemplate.BASIC_CRAB: preload("res://src/creature_data/basic_crab.tres")
+	CreatureTemplate.BASIC_CRAB: preload("res://src/creature_data/basic_crab.tres"),
+	CreatureTemplate.COOLER_CRAB: preload("res://src/creature_data/cooler_crab.tres")
 }
 
 
@@ -22,6 +26,7 @@ var creature_templates: Dictionary = {
 # We receive a creature data resource, like a basic crab, and we create a duplicate of it
 func generate_creature_from_data(creature_data: CreatureData, luck: float = 1.0) -> Creature:
 	var new_creature_data = creature_data.duplicate(true)
+	print("Duplicated a creature data of type %s" % new_creature_data.creature_name)
 	var creature: Creature = new_creature_data.creature_scene.instantiate()
 	creature.creature_data = new_creature_data
 	creature.on_generated(luck)
