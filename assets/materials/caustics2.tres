@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://d155b7slac3m5"]
 
-[ext_resource type="Shader" path="res://src/shaders/caustics.gdshader" id="1_bidnb"]
+[ext_resource type="Shader" uid="uid://c2j8l8acf4yhq" path="res://src/shaders/caustics.gdshader" id="1_bidnb"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jroqe"]
 load_path = "res://.godot/imported/caust_016.png-27ae3df22390f551ec0c62790993554c.s3tc.ctex"

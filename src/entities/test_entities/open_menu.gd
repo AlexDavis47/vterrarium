@@ -2,4 +2,4 @@ extends Control
 
 
 func _on_close_pressed() -> void:
-	self.hide()
+	queue_free()
