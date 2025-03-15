@@ -19,6 +19,6 @@ func _on_debug_mode_changed(new_value: bool) -> void:
 
 func _process(_delta: float) -> void:
 	text = ""
-	var creature_data = creature.serialize()
-	for key in creature_data.keys():
-		text += key + ": " + str(creature_data[key]) + "\n"
+	var data = creature.creature_data.serialize()
+	for key in data.keys():
+		text += key + ": " + str(data[key]) + "\n"

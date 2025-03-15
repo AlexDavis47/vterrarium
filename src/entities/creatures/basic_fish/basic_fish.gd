@@ -13,6 +13,7 @@ func _ready():
 	pick_new_target()
 
 func _physics_process(delta):
+	super (delta)
 	# Apply damping to existing velocity
 	velocity *= movement_damping
 	

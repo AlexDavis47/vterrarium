@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpq3hl6lq1ngy"]
 
-[ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/fish/basic_fish.gd" id="1_okq5e"]
+[ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/basic_fish/basic_fish.gd" id="1_okq5e"]
 [ext_resource type="PackedScene" uid="uid://cl30s4qyjry6u" path="res://assets/fish_low_poly.glb" id="2_rks7s"]
 [ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="3_f8iv8"]
 
