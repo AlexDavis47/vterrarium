@@ -10,7 +10,7 @@ class_name CreatureData
 ## The rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
 @export var rarity: Enums.Rarity = Enums.Rarity.Common
 ## The base scene of the creature, this is the scene that will be instantiated when the creature is created
-@export var creature_scene: PackedScene
+@export var creature_scene_uuid: String = ""
 ## The pool chances for the creature, this is used to determine the chance of the creature being spawned in the creature factory
 @export var pool_chances: Array[PoolChance] = []
 
@@ -55,7 +55,7 @@ func to_dict() -> Dictionary:
 		"creature_name": creature_name,
 		"description": description,
 		"rarity": rarity,
-		"creature_scene": creature_scene,
+		"creature_scene_uuid": creature_scene_uuid,
 		"pool_chances": pool_chances,
 		"money_per_hour": money_per_hour,
 		"hunger_rate": hunger_rate,
