@@ -19,6 +19,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	_process_hunger(delta)
 	_process_position_data(delta)
+	_process_money(delta)
 
 ## Process the hunger of the creature every physics frame
 func _process_hunger(delta: float) -> void:
@@ -35,3 +36,6 @@ func _process_hunger(delta: float) -> void:
 
 func _process_position_data(delta: float) -> void:
 	creature_data.creature_position = global_position
+
+func _process_money(delta: float) -> void:
+	SaveManager.save_file.money += creature_data.money_per_hour * delta

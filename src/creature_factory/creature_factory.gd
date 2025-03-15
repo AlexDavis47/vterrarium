@@ -9,18 +9,15 @@ enum CreaturePool {
 	Legendary
 }
 
-# This is all of the creatures the player has in their inventory
-# Separate from the creatures in the tank, which are just instances of the creature data
-var creature_inventory: Array[CreatureData] = []
-
 ## This contains a list of all of the creature data resources that we can duplicate to create new creatures
 var creature_data_templates: Array[CreatureData] = [
 	preload("uid://c3gof7obhvbej"), # basic crab
 	preload("uid://x7f8v6e3a7u2") # basic fish
 ]
 
-func _ready():
-	# Initial setup for testing - create creatures and add to tank
+
+func run_test_cycle() -> void:
+		# Initial setup for testing - create creatures and add to tank
 	_create_test_creatures()
 	
 	# Test cycle 1: Remove all creatures from tank
@@ -46,7 +43,7 @@ func _create_test_creatures() -> void:
 		for i in range(3):
 			var new_creature = _generate_creature_from_template(creature_data)
 			new_creature.creature_name = "Test Creature " + str(creature_name_counter)
-			creature_inventory.append(new_creature)
+			SaveManager.save_file.creature_inventory.append(new_creature)
 			_add_creature_to_tank(new_creature)
 			creature_name_counter += 1
 
@@ -59,13 +56,13 @@ func _generate_creature_from_template(template: CreatureData) -> CreatureData:
 
 ## Adds all creatures in inventory to the tank
 func _add_all_creatures_to_tank() -> void:
-	for creature_data in creature_inventory:
+	for creature_data in SaveManager.save_file.creature_inventory:
 		_add_creature_to_tank(creature_data)
 		print(creature_data.serialize())
 
 ## Removes all creatures from the tank but keeps them in inventory
 func _remove_all_creatures_from_tank() -> void:
-	for creature_data in creature_inventory:
+	for creature_data in SaveManager.save_file.creature_inventory:
 		if creature_data.is_in_tank:
 			_remove_creature_from_tank(creature_data)
 

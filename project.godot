@@ -25,7 +25,7 @@ VTHardware="*res://addons/vterrariumframework/src/globals/vt_hardware.gd"
 VTInput="*res://addons/vterrariumframework/src/globals/vt_input.gd"
 Enums="*res://src/enums/enums.gd"
 Config="*res://src/config/config.gd"
-SaveData="*res://src/save_data/save_data.gd"
+SaveManager="*res://src/save_data/save_manager.gd"
 Utils="*res://src/utils/utils.gd"
 CreatureFactory="*res://src/creature_factory/creature_factory.gd"
 

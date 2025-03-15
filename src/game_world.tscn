@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="4_axje7"]
 [ext_resource type="Script" uid="uid://dekqlk5lwnnhh" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
+[ext_resource type="Script" uid="uid://cao57x3b2b3wn" path="res://src/saved_data_label.gd" id="4_edi6u"]
 [ext_resource type="Material" uid="uid://bwp0wrp5oyukk" path="res://assets/materials/tank_wall.tres" id="5_2qkw7"]
 [ext_resource type="Script" uid="uid://p427dstufru" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
@@ -12,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://df5rypo11dohl" path="res://src/entities/foods/fish_food.tscn" id="12_edi6u"]
 [ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 [ext_resource type="Script" uid="uid://wfqbiifh60in" path="res://src/crabtester.gd" id="13_edi6u"]
-[ext_resource type="Script" path="res://src/saved_data.gd" id="14_d2bpd"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
 panorama = ExtResource("4_axje7")
@@ -68,6 +68,11 @@ script = ExtResource("2_0g77l")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.655, 0)
 cull_mask = 3
 script = ExtResource("3_8txad")
+
+[node name="SavedData" type="Label" parent="Top"]
+offset_right = 163.0
+offset_bottom = 23.0
+script = ExtResource("4_edi6u")
 
 [node name="Front" type="Window" parent="."]
 initial_position = 1
@@ -170,8 +175,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82839, -2.663, 1.74039)
 
 [node name="Crabtester" type="Node" parent="."]
 script = ExtResource("13_edi6u")
-
-[node name="SavedData" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("14_d2bpd")
