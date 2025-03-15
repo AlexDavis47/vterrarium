@@ -36,6 +36,7 @@ _data = [Vector2(0, 1), 0.0, -1.21486, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="FishFood" type="RigidBody3D" node_paths=PackedStringArray("eaten_particles", "food_mesh")]
+collision_layer = 0
 mass = 0.01
 script = ExtResource("1_cs635")
 fish_food_data = SubResource("Resource_qx4mu")

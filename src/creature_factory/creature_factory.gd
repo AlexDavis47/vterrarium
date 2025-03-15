@@ -15,27 +15,6 @@ var creature_data_templates: Array[CreatureData] = [
 	preload("uid://x7f8v6e3a7u2") # basic fish
 ]
 
-
-func run_test_cycle() -> void:
-		# Initial setup for testing - create creatures and add to tank
-	_create_test_creatures()
-	
-	# Test cycle 1: Remove all creatures from tank
-	await get_tree().create_timer(3.0).timeout
-	_remove_all_creatures_from_tank()
-	
-	# Test cycle 2: Add all creatures back to tank
-	await get_tree().create_timer(3.0).timeout
-	_add_all_creatures_to_tank()
-	
-	# Test cycle 3: Remove all creatures from tank again
-	await get_tree().create_timer(3.0).timeout
-	_remove_all_creatures_from_tank()
-
-	# Test cycle 4: Add all creatures back to tank again
-	await get_tree().create_timer(3.0).timeout
-	_add_all_creatures_to_tank()
-
 ## Creates test creatures and adds them to the inventory and tank
 func _create_test_creatures() -> void:
 	var creature_name_counter: int = 0
@@ -93,3 +72,24 @@ func spawn_creature(creature_data: CreatureData) -> void:
 func remove_creature(creature: Creature) -> void:
 	if creature.creature_data:
 		_remove_creature_from_tank(creature.creature_data)
+
+func _generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
+	var viable_creatures: Array[CreatureData] = []
+	for creature_data in creature_data_templates:
+		for pool_chance in creature_data.pool_chances:
+			if pool_chance.pool == pool:
+				viable_creatures.append(creature_data)
+
+	var total_chance: float = 0.0
+	for creature_data in viable_creatures:
+		total_chance += creature_data.pool_chances[pool].chance
+
+
+	var random_value: float = randf_range(0.0, total_chance)
+	var cumulative_chance: float = 0.0
+	for creature_data in viable_creatures:
+		cumulative_chance += creature_data.pool_chances[pool].chance
+		if random_value <= cumulative_chance:
+			return creature_data
+
+	return null

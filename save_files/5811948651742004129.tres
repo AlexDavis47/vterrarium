@@ -131,11 +131,11 @@ creature_scene = SubResource("PackedScene_so2bg")
 pool_chances = Array[ExtResource("4_et4jd")]([SubResource("Resource_exaxf")])
 money_per_hour = 0.0
 hunger_rate = 0.855102
-satiation = 0.978301
+satiation = 0.848595
 creature_id = "20885756911742004129"
 creature_luck = 1.35799
 is_in_tank = true
-creature_position = Vector3(-4.20422, -2.54167, -1.45365)
+creature_position = Vector3(-2.84538, -2.54084, 1.73179)
 metadata/_custom_type_script = "uid://63umrodfd2l3"
 
 [sub_resource type="PackedScene" id="PackedScene_i61y2"]
@@ -162,11 +162,11 @@ creature_scene = SubResource("PackedScene_i61y2")
 pool_chances = Array[ExtResource("4_et4jd")]([SubResource("Resource_exaxf")])
 money_per_hour = 0.0
 hunger_rate = 2.87353
-satiation = 0.927083
+satiation = 0.49121
 creature_id = "35466031931742004129"
 creature_luck = 0.721537
 is_in_tank = true
-creature_position = Vector3(-3.02382, -2.54075, -1.87285)
+creature_position = Vector3(-1.57782, -2.5407, -0.729979)
 metadata/_custom_type_script = "uid://63umrodfd2l3"
 
 [sub_resource type="PackedScene" id="PackedScene_ap3tk"]
@@ -193,11 +193,11 @@ creature_scene = SubResource("PackedScene_ap3tk")
 pool_chances = Array[ExtResource("4_et4jd")]([SubResource("Resource_exaxf")])
 money_per_hour = 0.0
 hunger_rate = 0.696419
-satiation = 0.982329
+satiation = 0.876693
 creature_id = "26762934811742004129"
 creature_luck = 0.930443
 is_in_tank = true
-creature_position = Vector3(-3.04851, -2.54154, -1.82335)
+creature_position = Vector3(-3.19073, -2.54346, -1.30642)
 metadata/_custom_type_script = "uid://63umrodfd2l3"
 
 [sub_resource type="PackedScene" id="PackedScene_m3825"]
@@ -229,11 +229,11 @@ creature_scene = SubResource("PackedScene_m3825")
 pool_chances = Array[ExtResource("4_et4jd")]([])
 money_per_hour = 1.97936
 hunger_rate = 1.40701
-satiation = 0.964297
+satiation = 0.750875
 creature_id = "26943252591742004129"
 creature_luck = 1.33336
 is_in_tank = true
-creature_position = Vector3(-0.522282, 0.335726, 1.62362)
+creature_position = Vector3(1.18332, 0.55759, 0.21174)
 metadata/_custom_type_script = "uid://63umrodfd2l3"
 
 [sub_resource type="PackedScene" id="PackedScene_57pgk"]
@@ -265,11 +265,11 @@ creature_scene = SubResource("PackedScene_57pgk")
 pool_chances = Array[ExtResource("4_et4jd")]([])
 money_per_hour = 1.254
 hunger_rate = 1.62177
-satiation = 0.958848
+satiation = 0.712849
 creature_id = "42326782991742004129"
 creature_luck = 1.00656
 is_in_tank = true
-creature_position = Vector3(2.22776, 1.72986, 0.924152)
+creature_position = Vector3(-1.95416, -0.91032, -0.750334)
 metadata/_custom_type_script = "uid://63umrodfd2l3"
 
 [sub_resource type="PackedScene" id="PackedScene_xxoix"]
@@ -301,17 +301,17 @@ creature_scene = SubResource("PackedScene_xxoix")
 pool_chances = Array[ExtResource("4_et4jd")]([])
 money_per_hour = 0.866979
 hunger_rate = 0.960765
-satiation = 0.97562
+satiation = 0.829884
 creature_id = "3582342051742004129"
 creature_luck = 0.841225
 is_in_tank = true
-creature_position = Vector3(-0.696542, 0.360548, -0.0991975)
+creature_position = Vector3(-0.201429, 2.39677, -2.28881)
 metadata/_custom_type_script = "uid://63umrodfd2l3"
 
 [resource]
 script = ExtResource("7_8c5cs")
 save_version = 1
-user_name = "Unnamed User"
+user_name = "Testing"
 created_at = {
 "day": 14,
 "dst": true,
@@ -326,12 +326,12 @@ last_saved_at = {
 "day": 14,
 "dst": true,
 "hour": 19,
-"minute": 5,
+"minute": 47,
 "month": 3,
-"second": 34,
+"second": 26,
 "weekday": 5,
 "year": 2025
 }
 save_id = "5811948651742004129"
-money = 374.565
+money = 2613.63
 creature_inventory = Array[ExtResource("1_4iro7")]([SubResource("Resource_i2m3u"), SubResource("Resource_bfaux"), SubResource("Resource_c47ur"), SubResource("Resource_dw7yt"), SubResource("Resource_bgptj"), SubResource("Resource_txsk6")])
