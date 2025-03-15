@@ -35,7 +35,12 @@ var creature_id: String
 ## The luck of the creature, this determines the stats of the creature
 ## 1.0 is the default luck, 2.0 is double luck, 0.5 is half luck
 var creature_luck: float = 1.0
+## Whether the creature scene for this creature data is currently instantiated
+var is_in_tank: bool = false
+var creature_instance: Creature
 
+## The global position of the creature in the tank
+var creature_position: Vector3 = Vector3.ZERO
 
 func on_generated(luck: float) -> void:
 	creature_luck = luck
@@ -55,7 +60,10 @@ func serialize() -> Dictionary:
 		"hunger_rate": hunger_rate,
 		"satiation": satiation,
 		"creature_id": creature_id,
-		"creature_luck": creature_luck
+		"creature_luck": creature_luck,
+		"creature_position_x": creature_position.x,
+		"creature_position_y": creature_position.y,
+		"creature_position_z": creature_position.z
 	}
 
 func deserialize(data: Dictionary) -> void:
@@ -69,3 +77,4 @@ func deserialize(data: Dictionary) -> void:
 	satiation = data.get("satiation")
 	creature_id = data.get("creature_id")
 	creature_luck = data.get("creature_luck")
+	creature_position = Vector3(data.get("creature_position_x"), data.get("creature_position_y"), data.get("creature_position_z"))

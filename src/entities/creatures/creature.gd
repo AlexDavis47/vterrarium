@@ -13,10 +13,12 @@ var is_starving: bool = false
 
 func _ready():
 	add_to_group("creatures")
+	global_position = creature_data.creature_position
 
 
 func _physics_process(delta: float) -> void:
 	_process_hunger(delta)
+	_process_position_data(delta)
 
 ## Process the hunger of the creature every physics frame
 func _process_hunger(delta: float) -> void:
@@ -29,3 +31,7 @@ func _process_hunger(delta: float) -> void:
 		if is_starving:
 			is_starving = false
 			stopped_starving.emit()
+
+
+func _process_position_data(delta: float) -> void:
+	creature_data.creature_position = global_position
