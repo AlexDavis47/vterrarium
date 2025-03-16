@@ -1,48 +1,141 @@
-extends Node3D
+## This script will receive general input events from the main input system of godot, and map them to the appropriate actions and windows.
 
-## This global script handles 3D touch input by casting a ray from the active camera,
-## detecting the collision point in the scene (using a physics raycast), and then
-## updating circle nodes accordingly.
+extends Node
 
-## - File names: snake_case (vt_input.gd)
+signal front_window_input(event: InputEvent)
+signal top_window_input(event: InputEvent)
+signal creature_selected(creature: Node3D, hit_position: Vector3)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		var world_pos = screen_to_world(event.position)
-	elif event is InputEventScreenDrag:
-		var i: int = event.index
-		var world_pos = screen_to_world(event.position)
+var show_debug_markers: bool = true
+
+func _ready():
+	VTGlobal.windows_initialized.connect(_on_windows_initialized)
+
+func _on_windows_initialized() -> void:
+	VTGlobal.front_window.window_input.connect(_on_front_window_input)
+	VTGlobal.top_window.window_input.connect(_on_top_window_input)
+
+	front_window_input.connect(handle_front_window_input)
+	top_window_input.connect(handle_top_window_input)
+
+func _on_front_window_input(event: InputEvent) -> void:
+	front_window_input.emit(event)
+
+func _on_top_window_input(event: InputEvent) -> void:
+	top_window_input.emit(event)
+
+## Cast a ray from camera at the given position
+## Returns a dictionary with hit information or null if nothing was hit
+func cast_ray_from_camera(camera: Camera3D, screen_position: Vector2, collision_mask: int = 0xFFFFFFFF) -> Dictionary:
+	if camera == null:
+		return {}
+	
+	var from = camera.project_ray_origin(screen_position)
+	var direction = camera.project_ray_normal(screen_position)
+	var to = from + direction * 1000
+	
+	var space_state = camera.get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collision_mask = collision_mask
+	var result = space_state.intersect_ray(query)
+	
+	return result if result else {}
+
+## Cast a ray at creatures only (collision layer 2)
+func cast_ray_at_creatures(camera: Camera3D, screen_position: Vector2) -> Dictionary:
+	return cast_ray_from_camera(camera, screen_position, 2)
+
+## Create a debug sphere at the hit position
+func create_hit_marker(position: Vector3, is_creature: bool = false) -> void:
+	if not show_debug_markers:
+		return
 		
-	elif event is InputEventScreenTouch and not event.pressed:
-		var i: int = event.index
-		
-
-## Converts a screen position (2D) to a world position (3D) by casting a ray
-## using the active camera.
-##
-## @param screen_pos The 2D screen coordinate.
-## @return The 3D world position of the collision, or the ray origin if no collision.
-func screen_to_world(screen_pos: Vector2) -> Vector3:
-	# Get the world-space ray origin from the screen position.
-	var from: Vector3 = VTGlobal.top_camera.project_ray_origin(screen_pos)
-	# Get the world-space ray direction.
-	var ray_direction: Vector3 = VTGlobal.top_camera.project_ray_normal(screen_pos)
-	var distance: float = 1000.0 # Extend ray far enough; adjust as needed.
-	var to: Vector3 = from + ray_direction * distance
-
-	# Create the raycast query.
-	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(from, to)
-	# Only consider objects on collision layer 1 (collision mask value 2 corresponds to bit 1 if 0-indexed)
-	query.collision_mask = 2
-
-	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
-	var ray_result: Dictionary = space_state.intersect_ray(query)
-
-	if ray_result.has("position"):
-		#var mesh = MeshInstance3D.new()
-		#mesh.mesh = SphereMesh.new()
-		#mesh.global_position = ray_result["position"]
-		#get_tree().root.add_child(mesh)
-		return ray_result["position"]
+	var debug_mesh = MeshInstance3D.new()
+	debug_mesh.mesh = SphereMesh.new()
+	debug_mesh.mesh.radius = 0.05
+	debug_mesh.mesh.height = 0.1
+	
+	var material = StandardMaterial3D.new()
+	
+	if is_creature:
+		material.albedo_color = Color(0, 1, 0) # Green for creatures
 	else:
-		return from
+		material.albedo_color = Color(1, 0, 0) # Red for other hits
+		
+	debug_mesh.material_override = material
+	debug_mesh.global_position = position
+	get_tree().root.add_child(debug_mesh)
+
+func handle_front_window_input(event: InputEvent) -> void:
+	# Only process mouse events
+	if not (event is InputEventMouseButton) or not event.pressed:
+		return
+		
+	var mouse_position = event.position
+	
+	# First, try to hit creatures
+	var creature_hit = cast_ray_at_creatures(VTGlobal.front_camera, mouse_position)
+	
+	if not creature_hit.is_empty():
+		var creature = creature_hit.collider
+		var hit_position = creature_hit.position
+		
+		print("Hit creature: " + str(creature))
+		create_hit_marker(hit_position, true)
+		creature_selected.emit(creature, hit_position)
+		return
+	
+	# If no creature was hit, try hitting everything
+	var hit = cast_ray_from_camera(VTGlobal.front_camera, mouse_position)
+	
+	if not hit.is_empty():
+		print("Front ray hit: " + str(hit.collider) + " at position " + str(hit.position))
+		create_hit_marker(hit.position)
+
+func handle_top_window_input(event: InputEvent) -> void:
+	# Only process mouse events
+	if not (event is InputEventMouseButton) or not event.pressed:
+		return
+		
+	var mouse_position = event.position
+	
+	# First, try to hit creatures
+	var creature_hit = cast_ray_at_creatures(VTGlobal.top_camera, mouse_position)
+	
+	if not creature_hit.is_empty():
+		var creature = creature_hit.collider
+		var hit_position = creature_hit.position
+		
+		print("Hit creature: " + str(creature))
+		create_hit_marker(hit_position, true)
+		creature_selected.emit(creature, hit_position)
+		return
+	
+	# If no creature was hit, try hitting everything
+	var hit = cast_ray_from_camera(VTGlobal.top_camera, mouse_position)
+	
+	if not hit.is_empty():
+		print("Top ray hit: " + str(hit.collider) + " at position " + str(hit.position))
+		create_hit_marker(hit.position)
+
+## Public API methods
+
+## Cast a ray from the front camera at the given screen position
+## Returns the hit result or an empty dictionary if nothing was hit
+func raycast_from_front(screen_position: Vector2, creatures_only: bool = false) -> Dictionary:
+	if creatures_only:
+		return cast_ray_at_creatures(VTGlobal.front_camera, screen_position)
+	else:
+		return cast_ray_from_camera(VTGlobal.front_camera, screen_position)
+
+## Cast a ray from the top camera at the given screen position
+## Returns the hit result or an empty dictionary if nothing was hit
+func raycast_from_top(screen_position: Vector2, creatures_only: bool = false) -> Dictionary:
+	if creatures_only:
+		return cast_ray_at_creatures(VTGlobal.top_camera, screen_position)
+	else:
+		return cast_ray_from_camera(VTGlobal.top_camera, screen_position)
+
+## Enable or disable debug markers
+func set_debug_markers_visible(visible: bool) -> void:
+	show_debug_markers = visible

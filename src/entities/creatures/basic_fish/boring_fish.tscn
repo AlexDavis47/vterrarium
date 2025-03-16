@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpq3hl6lq1ngy"]
+[gd_scene load_steps=5 format=3 uid="uid://bpq3hl6lq1ngy"]
 
 [ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/basic_fish/basic_fish.gd" id="1_okq5e"]
 [ext_resource type="PackedScene" uid="uid://cl30s4qyjry6u" path="res://assets/fish_low_poly.glb" id="2_rks7s"]
 [ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="3_f8iv8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ubmto"]
+radius = 0.367087
+height = 2.0054
 
 [node name="BoringFish" type="CharacterBody3D"]
 script = ExtResource("1_okq5e")
@@ -25,3 +29,7 @@ Happiness: 1.0
 script = ExtResource("3_f8iv8")
 creature = NodePath("..")
 metadata/_custom_type_script = "uid://7o2mykdy7dq5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ubmto")

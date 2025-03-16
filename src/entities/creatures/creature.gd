@@ -13,6 +13,8 @@ var is_starving: bool = false
 
 func _ready():
 	add_to_group("creatures")
+	collision_layer = 0
+	set_collision_layer_value(2, true)
 	global_position = creature_data.creature_position
 
 

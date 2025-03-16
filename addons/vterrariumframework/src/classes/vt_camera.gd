@@ -37,15 +37,12 @@ func _on_box_dimensions_changed(_width: float, _height: float, _depth: float) ->
 ## This formula will give us the distance the camera needs to be from the center of the box
 ## to perfectly fit the box in the view.
 func _calculate_dolly_distance(fov_deg: float, height: float, depth: float) -> float:
-
 	var fov_rad := deg_to_rad(fov_deg)
 	
 	# Calculate distance using our derived formula
 	return (height / 2.0) / tan(fov_rad / 2.0) + depth / 2.0
 
 func setup_camera_position() -> void:
-	
-
 	match camera_orientation:
 		CameraPosition.TOP:
 			VTGlobal.top_camera = self

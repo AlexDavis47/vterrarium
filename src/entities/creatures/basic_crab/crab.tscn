@@ -97,7 +97,7 @@ bind/19/bone = -1
 bind/19/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Crab" type="CharacterBody3D"]
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("1_fg4hq")
 speed = 0.5
 metadata/_custom_type_script = "uid://c2i0olfog3rjy"
