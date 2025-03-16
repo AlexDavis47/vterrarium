@@ -7,6 +7,8 @@ class_name CreatureData
 @export var creature_name: String = "Unnamed Creature"
 ## The description of the creature
 @export var description: String = "A creature with no description"
+## The image of the creature, this is used to display the creature in the inventory
+@export var creature_image: Texture2D = null
 ## The rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
 @export var rarity: Enums.Rarity = Enums.Rarity.Common
 ## The base scene of the creature, this is the scene that will be instantiated when the creature is created

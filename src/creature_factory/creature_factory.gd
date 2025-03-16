@@ -15,6 +15,9 @@ var creature_data_templates: Array[CreatureData] = [
 	preload("uid://x7f8v6e3a7u2") # basic fish
 ]
 
+signal creature_spawned(creature_data: CreatureData)
+signal creature_removed(creature_data: CreatureData)
+
 
 func run_test_cycle() -> void:
 		# Initial setup for testing - create creatures and add to tank
@@ -83,12 +86,15 @@ func _remove_creature_from_tank(creature_data: CreatureData) -> void:
 ## Public method to spawn a creature in the tank
 func spawn_creature(creature_data: CreatureData) -> void:
 	_add_creature_to_tank(creature_data)
-
+	creature_spawned.emit(creature_data)
 ## Public method to remove a creature from the tank
 func remove_creature(creature: Creature) -> void:
 	if creature.creature_data:
 		_remove_creature_from_tank(creature.creature_data)
-
+		creature_removed.emit(creature.creature_data)
+func remove_creature_by_data(creature_data: CreatureData) -> void:
+	_remove_creature_from_tank(creature_data)
+	creature_removed.emit(creature_data)
 func _generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
 	var viable_creatures: Array[CreatureData] = []
 	for creature_data in creature_data_templates:

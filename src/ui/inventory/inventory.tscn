@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bda2an2nm10ol"]
+
+[ext_resource type="Script" uid="uid://bux8cayr23de8" path="res://src/ui/inventory/inventory.gd" id="1_1deq4"]
+[ext_resource type="Script" uid="uid://b2maci0i0q0rj" path="res://src/ui/inventory/creature_grid.gd" id="1_7f777"]
+
+[node name="Inventory" type="Control" node_paths=PackedStringArray("close_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1deq4")
+close_button = NodePath("CloseButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreatureGrid" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+columns = 4
+script = ExtResource("1_7f777")
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_bottom = 36.0
+grow_horizontal = 0
+text = "Close"
