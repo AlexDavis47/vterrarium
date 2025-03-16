@@ -1,8 +1,12 @@
 [gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bwp0wrp5oyukk"]
 
-[ext_resource type="Texture2D" uid="uid://dlwbx8bb7wawq" path="res://assets/textures/stone.jpg" id="1_mv2i2"]
-[ext_resource type="Material" uid="uid://c7ri13cktm5v0" path="res://assets/materials/caustics.tres" id="2_4nnlc"]
+[ext_resource type="Texture2D" uid="uid://bqvmlyuuv5tdj" path="res://assets/textures/ground_tiles_16_2k/ground_tiles_16_basecolor_2k.png" id="1_qw5vi"]
+[ext_resource type="Texture2D" uid="uid://u160mon6p5mc" path="res://assets/textures/ground_tiles_16_2k/ground_tiles_16_normal_gl_2k.png" id="2_wm26i"]
 
 [resource]
-next_pass = ExtResource("2_4nnlc")
-albedo_texture = ExtResource("1_mv2i2")
+albedo_texture = ExtResource("1_qw5vi")
+normal_enabled = true
+normal_texture = ExtResource("2_wm26i")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true

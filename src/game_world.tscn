@@ -1,21 +1,20 @@
-[gd_scene load_steps=26 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=27 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://h1hrwwbesh0q" path="res://src/ui/debug/debug_toggle_button.gd" id="2_0g77l"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
-[ext_resource type="Script" uid="uid://o7npwjo35qrb" path="res://src/top.gd" id="3_27mdg"]
-[ext_resource type="PackedScene" path="res://src/entities/test_entities/home_menu.tscn" id="3_gaogw"]
+[ext_resource type="Script" uid="uid://b31y5t41rqib1" path="res://addons/vterrariumframework/src/classes/vt_top_window.gd" id="3_27mdg"]
+[ext_resource type="PackedScene" uid="uid://cmne5vax35iyi" path="res://src/entities/test_entities/home_menu.tscn" id="3_gaogw"]
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="4_axje7"]
 [ext_resource type="Script" uid="uid://dekqlk5lwnnhh" path="res://addons/vterrariumframework/src/classes/vt_terrarium.gd" id="4_dv42i"]
 [ext_resource type="Script" uid="uid://cao57x3b2b3wn" path="res://src/saved_data_label.gd" id="4_edi6u"]
 [ext_resource type="Material" uid="uid://bwp0wrp5oyukk" path="res://assets/materials/tank_wall.tres" id="5_2qkw7"]
 [ext_resource type="Script" uid="uid://p427dstufru" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
-[ext_resource type="Script" uid="uid://fi3ukfe3r0ki" path="res://src/front.gd" id="6_qfpye"]
+[ext_resource type="Script" uid="uid://fi3ukfe3r0ki" path="res://addons/vterrariumframework/src/classes/vt_front_window.gd" id="6_qfpye"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
-[ext_resource type="Material" uid="uid://dgsxxg136mr0u" path="res://assets/materials/tank_front.tres" id="7_w3rys"]
 [ext_resource type="PackedScene" uid="uid://df5rypo11dohl" path="res://src/entities/foods/fish_food.tscn" id="12_edi6u"]
-[ext_resource type="Script" uid="uid://mraj1j2ov1fg" path="res://src/omni_light_3d_2.gd" id="12_gaogw"]
 [ext_resource type="Script" uid="uid://wfqbiifh60in" path="res://src/crabtester.gd" id="13_edi6u"]
+[ext_resource type="Shader" uid="uid://bu4pnewlhq57k" path="res://src/shaders/water.gdshader" id="14_27mdg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
 panorama = ExtResource("4_axje7")
@@ -26,7 +25,11 @@ sky_material = SubResource("PanoramaSkyMaterial_e1i7n")
 [sub_resource type="Environment" id="Environment_ti7fu"]
 background_mode = 2
 sky = SubResource("Sky_n037i")
-fog_enabled = true
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.26
+ssao_radius = 2.3
+ssao_intensity = 3.85
 fog_mode = 1
 fog_light_color = Color(0.00248951, 0.194488, 0.778514, 1)
 fog_light_energy = 0.05
@@ -34,27 +37,57 @@ fog_density = 1.0
 fog_depth_curve = 0.870552
 fog_depth_begin = 0.0
 fog_depth_end = 18.7
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_qfpye"]
 size = Vector2(5.625, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b0toy"]
 material = ExtResource("5_2qkw7")
 size = Vector2(5.625, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ygn67"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
+material = ExtResource("5_2qkw7")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ovvyv"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_ygn67"]
 material = ExtResource("7_kr6if")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_bdl84"]
-material = ExtResource("7_w3rys")
+[sub_resource type="PlaneMesh" id="PlaneMesh_ovvyv"]
+material = ExtResource("5_2qkw7")
 size = Vector2(10, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_8ot5c"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_bdl84"]
 size = Vector2(10, 5.625)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27mdg"]
+render_priority = 0
+shader = ExtResource("14_27mdg")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(50, 50)
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.085
+shader_parameter/wave_frequency = 1.5
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(128, 128)
+shader_parameter/water_transparency = 0.015
+shader_parameter/water_depth_factor = 22.145
+shader_parameter/foam_width = 0.5
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0toy"]
+material = SubResource("ShaderMaterial_27mdg")
+size = Vector3(10, 5.656, 5.656)
+subdivide_width = 25
+subdivide_height = 25
 
 [node name="GameWorld" type="Node3D"]
 script = ExtResource("1_0brji")
@@ -67,6 +100,7 @@ script = ExtResource("2_0g77l")
 
 [node name="Top" type="Node3D" parent="."]
 script = ExtResource("3_27mdg")
+metadata/_custom_type_script = "uid://b31y5t41rqib1"
 
 [node name="primary" type="Camera3D" parent="Top"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.655, 0)
@@ -85,6 +119,7 @@ initial_position = 1
 size = Vector2i(640, 360)
 always_on_top = true
 script = ExtResource("6_qfpye")
+metadata/_custom_type_script = "uid://fi3ukfe3r0ki"
 
 [node name="secondary" type="Camera3D" parent="Front"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.229)
@@ -101,10 +136,10 @@ script = ExtResource("4_dv42i")
 [node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_27mdg")
+mesh = SubResource("PlaneMesh_qfpye")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58417")
-collision_shape = NodePath("@StaticBody3D@58417/@CollisionShape3D@58416")
+static_body = NodePath("@StaticBody3D@21847")
+collision_shape = NodePath("@StaticBody3D@21847/@CollisionShape3D@21846")
 wall_type = 1
 
 [node name="VTTerrariumWall2" type="MeshInstance3D" parent="Terrarium"]
@@ -115,52 +150,42 @@ script = ExtResource("5_r55h4")
 
 [node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
-material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_ygn67")
+mesh = SubResource("PlaneMesh_27mdg")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58419")
-collision_shape = NodePath("@StaticBody3D@58419/@CollisionShape3D@58418")
+static_body = NodePath("@StaticBody3D@26185")
+collision_shape = NodePath("@StaticBody3D@26185/@CollisionShape3D@26184")
 wall_type = 2
+metadata/_custom_type_script = "uid://p427dstufru"
 
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
-mesh = SubResource("PlaneMesh_ovvyv")
+mesh = SubResource("PlaneMesh_ygn67")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58421")
-collision_shape = NodePath("@StaticBody3D@58421/@CollisionShape3D@58420")
+static_body = NodePath("@StaticBody3D@21851")
+collision_shape = NodePath("@StaticBody3D@21851/@CollisionShape3D@21850")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
-material_override = ExtResource("7_w3rys")
-mesh = SubResource("PlaneMesh_bdl84")
+mesh = SubResource("PlaneMesh_ovvyv")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58423")
-collision_shape = NodePath("@StaticBody3D@58423/@CollisionShape3D@58422")
+static_body = NodePath("@StaticBody3D@21853")
+collision_shape = NodePath("@StaticBody3D@21853/@CollisionShape3D@21852")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_8ot5c")
+mesh = SubResource("PlaneMesh_bdl84")
 script = ExtResource("5_r55h4")
-static_body = NodePath("@StaticBody3D@58425")
-collision_shape = NodePath("@StaticBody3D@58425/@CollisionShape3D@58424")
+static_body = NodePath("@StaticBody3D@21855")
+collision_shape = NodePath("@StaticBody3D@21855/@CollisionShape3D@21854")
 wall_type = 5
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48891, 0)
-light_energy = 0.345
-omni_range = 16.143
-omni_attenuation = 0.364
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.729411, 0.684076, 0, -0.684076, 0.729411, 0, 0, 0)
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-omni_range = 414.037
-script = ExtResource("12_gaogw")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrarium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.334301, 0)
+mesh = SubResource("BoxMesh_b0toy")
 
 [node name="FishFood" parent="." instance=ExtResource("12_edi6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.655561, 0.427256, 0.465111)
@@ -182,3 +207,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82839, -2.663, 1.74039)
 
 [node name="Crabtester" type="Node" parent="."]
 script = ExtResource("13_edi6u")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.396)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.9792, 0)

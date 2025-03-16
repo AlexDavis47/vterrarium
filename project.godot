@@ -46,6 +46,9 @@ enabled=PackedStringArray("res://addons/vterrariumframework/plugin.cfg")
 
 [layer_names]
 
+3d_render/layer_1="All"
+3d_render/layer_2="Top"
+3d_render/layer_3="Front"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Creatures"
 3d_physics/layer_25="RightWall"
@@ -58,5 +61,3 @@ enabled=PackedStringArray("res://addons/vterrariumframework/plugin.cfg")
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"

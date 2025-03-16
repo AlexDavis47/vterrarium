@@ -7,7 +7,7 @@ signal debug_mode_changed(new_value: bool)
 
 
 ## Debug mode active or not
-@export var debug_mode: bool = true:
+@export var debug_mode: bool = false:
 	get:
 		return debug_mode
 	set(value):
