@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cskeqr28w32k0"]
+
+[ext_resource type="Script" uid="uid://cda1f6e7m2qb8" path="res://src/entities/test_entities/open_menu.gd" id="1_2pwk2"]
+[ext_resource type="Shader" uid="uid://drj5xpf3kqskh" path="res://src/entities/test_entities/open_menu.gdshader" id="2_cleyb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5spo"]
+shader = ExtResource("2_cleyb")
+shader_parameter/amount = 3.0
+
+[node name="Menu_Open" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2pwk2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_d5spo")
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 290.0
+scale = Vector2(1, 1.24)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -85.5
+offset_right = 41.5
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Inventory" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Shop" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Shop"
+
+[node name="Feed" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Feed"
+
+[node name="Clean" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Clean"
+
+[node name="Close" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]
