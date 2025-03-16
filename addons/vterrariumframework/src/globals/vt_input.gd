@@ -7,13 +7,10 @@ extends Node3D
 ## - File names: snake_case (vt_input.gd)
 
 func _input(event: InputEvent) -> void:
-	print(event)
 	if event is InputEventScreenTouch:
-		print("Touch at position: ", event.position)
 		var world_pos = screen_to_world(event.position)
 	elif event is InputEventScreenDrag:
 		var i: int = event.index
-		print("Screen drag at position: ", event.position)
 		var world_pos = screen_to_world(event.position)
 		
 	elif event is InputEventScreenTouch and not event.pressed:
@@ -30,7 +27,7 @@ func screen_to_world(screen_pos: Vector2) -> Vector3:
 	var from: Vector3 = VTGlobal.top_camera.project_ray_origin(screen_pos)
 	# Get the world-space ray direction.
 	var ray_direction: Vector3 = VTGlobal.top_camera.project_ray_normal(screen_pos)
-	var distance: float = 1000.0  # Extend ray far enough; adjust as needed.
+	var distance: float = 1000.0 # Extend ray far enough; adjust as needed.
 	var to: Vector3 = from + ray_direction * distance
 
 	# Create the raycast query.
@@ -42,12 +39,10 @@ func screen_to_world(screen_pos: Vector2) -> Vector3:
 	var ray_result: Dictionary = space_state.intersect_ray(query)
 
 	if ray_result.has("position"):
-		print("Ray collided with: ", ray_result["collider"])
 		#var mesh = MeshInstance3D.new()
 		#mesh.mesh = SphereMesh.new()
 		#mesh.global_position = ray_result["position"]
 		#get_tree().root.add_child(mesh)
-		
 		return ray_result["position"]
 	else:
 		return from
