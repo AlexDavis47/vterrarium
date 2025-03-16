@@ -54,6 +54,14 @@ func create_hit_marker(position: Vector3, is_creature: bool = false) -> void:
 	debug_mesh.mesh = SphereMesh.new()
 	debug_mesh.mesh.radius = 0.05
 	debug_mesh.mesh.height = 0.1
+
+	# Add a timer to the mesh to remove it after a short duration
+	var timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.one_shot = true
+	timer.timeout.connect(func(): debug_mesh.queue_free())
+	debug_mesh.add_child(timer)
+	
 	
 	var material = StandardMaterial3D.new()
 	
@@ -65,6 +73,7 @@ func create_hit_marker(position: Vector3, is_creature: bool = false) -> void:
 	debug_mesh.material_override = material
 	debug_mesh.global_position = position
 	get_tree().root.add_child(debug_mesh)
+	timer.start()
 
 func handle_front_window_input(event: InputEvent) -> void:
 	# Only process mouse events
