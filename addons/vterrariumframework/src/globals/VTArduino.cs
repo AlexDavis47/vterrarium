@@ -1,13 +1,14 @@
 using Godot;
 using System;
 using System.IO.Ports;
+using System.Linq;
 
 public partial class VTArduino : Node
 {
     [Export]
-    public string PortName { get; set; } = "COM3"; // Default port (Windows). Use "/dev/ttyUSB0" for Linux or "/dev/cu.usbserial-XXXX" for macOS
+    public string PortName { get; set; } = ""; // Will be auto-detected
 
-    [Export]
+    [Export] 
     public int BaudRate { get; set; } = 9600;
 
     private SerialPort _serialPort;
@@ -20,7 +21,7 @@ public partial class VTArduino : Node
     public override void _Ready()
     {
         GD.Print("VTArduino: _Ready");
-        ConnectToArduino();
+        DetectAndConnectToArduino();
     }
 
     public override void _Process(double delta)
@@ -72,24 +73,55 @@ public partial class VTArduino : Node
         DisconnectFromArduino();
     }
 
-    public void ConnectToArduino()
+    private void DetectAndConnectToArduino()
     {
-        try
+        string[] ports = GetAvailablePorts();
+        
+        // Try to find Arduino port
+        foreach (string port in ports)
         {
-            _serialPort = new SerialPort(PortName, BaudRate)
+            try
             {
-                DtrEnable = true, // Data Terminal Ready - often needed for Arduino to reset properly
-            };
+                // Try to connect to each port
+                _serialPort = new SerialPort(port, BaudRate)
+                {
+                    DtrEnable = true,
+                    ReadTimeout = 500,
+                    WriteTimeout = 500
+                };
 
-            _serialPort.Open();
-            _isConnected = true;
-            GD.Print($"VTArduino: Connected to Arduino on port {PortName}");
+                _serialPort.Open();
+                System.Threading.Thread.Sleep(2000); // Give Arduino time to reset
+
+                // Try reading from the port
+                string response = _serialPort.ReadLine();
+                if (!string.IsNullOrEmpty(response))
+                {
+                    // Found a responsive port
+                    PortName = port;
+                    _isConnected = true;
+                    GD.Print($"VTArduino: Connected to Arduino on port {PortName}");
+                    return;
+                }
+
+                // If no response, close and try next port
+                _serialPort.Close();
+                _serialPort.Dispose();
+            }
+            catch
+            {
+                // If connection fails, cleanup and continue to next port
+                if (_serialPort != null)
+                {
+                    _serialPort.Close();
+                    _serialPort.Dispose();
+                }
+            }
         }
-        catch (Exception e)
-        {
-            GD.PrintErr($"VTArduino: Failed to connect to Arduino: {e.Message}");
-            _isConnected = false;
-        }
+
+        // If we get here, no Arduino was found
+        GD.PrintErr("VTArduino: No Arduino found on any available port");
+        _isConnected = false;
     }
 
     public void DisconnectFromArduino()
@@ -120,4 +152,4 @@ public partial class VTArduino : Node
     {
         return _rawValue;
     }
-} 
+}
