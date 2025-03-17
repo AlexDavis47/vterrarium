@@ -3,7 +3,7 @@ extends Node3D
 signal feed_closed
 signal feed_opened
 
-@onready var close_button = $CloseButton
+@export var close_button : Button
 
 func _ready() -> void:
 	feed_opened.emit()

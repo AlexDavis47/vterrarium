@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxtoro2bjfy7o" path="res://src/ui/shop/shop.gd" id="1_7v3vq"]
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" node_paths=PackedStringArray("close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7v3vq")
+close_button = NodePath("CloseButton")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

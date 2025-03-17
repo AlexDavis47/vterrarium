@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://7hth2iqqc0sl" path="res://src/ui/feed/feed.gd" id="1_gdioo"]
 
-[node name="Feed" type="Node3D"]
+[node name="Feed" type="Node3D" node_paths=PackedStringArray("close_button")]
 script = ExtResource("1_gdioo")
+close_button = NodePath("CloseButton")
 
 [node name="CloseButton" type="Button" parent="."]
 offset_left = 592.0

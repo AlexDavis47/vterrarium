@@ -4,7 +4,7 @@ class_name Touch3D
 signal clean_closed
 signal clean_opened
 
-@onready var close_button = $CloseButton
+@export var close_button : Button
 @onready var circle_container = $circle_container
 var camera: Camera3D
 var circles = []

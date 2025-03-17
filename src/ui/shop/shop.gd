@@ -3,7 +3,7 @@ extends Control
 signal shop_closed
 signal shop_opened
 
-@onready var close_button = $CloseButton
+@export var close_button : Button
 
 func _ready() -> void:
 	shop_opened.emit()

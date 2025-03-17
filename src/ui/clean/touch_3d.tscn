@@ -4,8 +4,9 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_6wua2"]
 
-[node name="touch3D" type="Node3D"]
+[node name="touch3D" type="Node3D" node_paths=PackedStringArray("close_button")]
 script = ExtResource("1_5bapl")
+close_button = NodePath("CloseButton")
 
 [node name="circle_container" type="Node3D" parent="."]
 
