@@ -3,6 +3,7 @@ extends Control
 var inventory_scene: PackedScene = preload("uid://bda2an2nm10ol")
 var shop_scene: PackedScene = preload("uid://b2vp764bh2bre")
 var clean_scene: PackedScene = preload("uid://h87keo8yxa01")
+var feed_scene: PackedScene = preload("uid://dk2hur3xscydf")
 
 @export var inventory_button: Button
 @export var feed_button: Button
@@ -46,6 +47,7 @@ func _ready() -> void:
 	inventory_button.pressed.connect(open_inventory)
 	shop_button.pressed.connect(open_shop)
 	clean_button.pressed.connect(open_clean)
+	feed_button.pressed.connect(open_feed)
 	_reset_timer()
 
 
@@ -79,4 +81,13 @@ func open_clean() -> void:
 	hide()
 	
 func _on_clean_closed() -> void:
+	show()
+
+func open_feed() -> void:
+	var feed_instance = feed_scene.instantiate()
+	feed_instance.feed_closed.connect(_on_feed_closed)
+	VTGlobal.top_window.add_child(feed_instance)
+	hide()
+	
+func _on_feed_closed() -> void:
 	show()
