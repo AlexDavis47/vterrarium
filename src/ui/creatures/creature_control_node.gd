@@ -27,6 +27,7 @@ func _ready() -> void:
 	_creature_detector.mouse_filter = Control.MOUSE_FILTER_STOP
 	_creature_detector.size = Vector2(50, 50)
 	_creature_detector.gui_input.connect(_on_detector_input)
+
 	if !VTGlobal.windows_setup_completed:
 		await VTGlobal.windows_initialized
 	VTGlobal.top_window.add_child(_creature_detector)
@@ -37,7 +38,7 @@ func _ready() -> void:
 	remove_from_tank_button.pressed.connect(_on_remove_from_tank_pressed)
 	if !VTGlobal.windows_setup_completed:
 		await VTGlobal.windows_initialized
-	VTGlobal.top_window.window_input.connect(_on_window_input)
+
 
 func _physics_process(delta) -> void:
 	if creature:
@@ -56,12 +57,6 @@ func _on_detector_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.pressed and not _detailed_view_visible:
 		_show_detailed_view()
 
-func _on_window_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch and event.pressed and _detailed_view_visible:
-		# Check if touch is outside the detailed view panel
-		var panel_rect = Rect2(position, size)
-		if not panel_rect.has_point(event.position):
-			_hide_detailed_view()
 
 func _show_detailed_view() -> void:
 	_detailed_view_visible = true
