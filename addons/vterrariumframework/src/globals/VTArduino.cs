@@ -5,7 +5,7 @@ using System.IO.Ports;
 public partial class VTArduino : Node
 {
     [Export]
-    public string PortName { get; set; } = "COM4"; // Default port (Windows). Use "/dev/ttyUSB0" for Linux or "/dev/cu.usbserial-XXXX" for macOS
+    public string PortName { get; set; } = "COM3"; // Default port (Windows). Use "/dev/ttyUSB0" for Linux or "/dev/cu.usbserial-XXXX" for macOS
 
     [Export]
     public int BaudRate { get; set; } = 9600;

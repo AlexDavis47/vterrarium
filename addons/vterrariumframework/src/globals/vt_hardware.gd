@@ -3,6 +3,7 @@ extends Node
 # Simulation sensitivity settings
 const MOUSE_ROTATION_SENSITIVITY = 0.1
 const KEY_ACCELERATION_SENSITIVITY = 0.5
+const BRIGHTNESS_AVERAGE_TIME = 5.0 # Time in seconds to average brightness over
 
 # Signals
 signal brightness_changed(new_brightness: float)
@@ -53,6 +54,11 @@ var gyro_acceleration: Vector3 = Vector3.ZERO:
 var photodiode_raw: int = 0
 var photodiode_normalized: float = 0.0
 
+# Brightness averaging variables
+var brightness_history: Array[float] = []
+var brightness_history_times: Array[float] = []
+var current_time: float = 0.0
+
 # Reference to the VTArduino autoload
 var arduino = null
 
@@ -64,26 +70,49 @@ func _ready():
 	else:
 		print("VTHardware: Arduino autoload NOT found")
 
-func _process(_delta):
+func _process(delta):
+	current_time += delta
+	
 	# Update photodiode values from Arduino if available
-	if arduino != null:
-		if arduino.IsConnected():
-			# Get the raw value directly from Arduino
-			var new_raw = arduino.GetRawValue()
-			
-			# Calculate normalized value (assuming 10-bit ADC: 0-1023)
-			var new_normalized = float(new_raw) / 1023.0
-			
-			# Only update if values changed
-			if new_raw != photodiode_raw or new_normalized != photodiode_normalized:
-				photodiode_raw = new_raw
-				photodiode_normalized = new_normalized
-				
-				# Update brightness for compatibility
-				brightness = photodiode_normalized
-				
-				# Emit signal
-				photodiode_changed.emit(photodiode_raw, photodiode_normalized)
+	if arduino != null and arduino.IsConnected():
+		# Get the raw value directly from Arduino
+		var new_raw = arduino.GetRawValue()
+		
+		# Calculate normalized value (assuming 10-bit ADC: 0-1023)
+		var new_normalized = float(new_raw) / 1023.0
+
+		
+		# We expect the max brightness to be around 0.10 and min around 0.01
+		# Subtract minimum to start from 0, then normalize to expected range
+		new_normalized = (new_normalized - 0.01) / (0.05 - 0.01)
+
+		# Clamp the normalized value between 0 and 1
+		new_normalized = clamp(new_normalized, 0.0, 1.0)
+
+		photodiode_raw = new_raw
+		photodiode_normalized = new_normalized
+		
+		# Add to brightness history
+		brightness_history.append(new_normalized)
+		brightness_history_times.append(current_time)
+		
+		# Remove old values outside the averaging window
+		while brightness_history_times.size() > 0 and current_time - brightness_history_times[0] > BRIGHTNESS_AVERAGE_TIME:
+			brightness_history.pop_front()
+			brightness_history_times.pop_front()
+		
+		# Calculate average brightness
+		var avg_brightness = 0.0
+		if brightness_history.size() > 0:
+			for value in brightness_history:
+				avg_brightness += value
+			avg_brightness /= brightness_history.size()
+		
+		# Update brightness for compatibility
+		brightness = avg_brightness
+		
+		# Emit signal
+		photodiode_changed.emit(photodiode_raw, photodiode_normalized)
 
 # For testing purposes, we process both mouse and keyboard input
 func _input(event: InputEvent) -> void:
