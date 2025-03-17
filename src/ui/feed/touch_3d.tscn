@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://h87keo8yxa01"]
 
-[ext_resource type="Script" uid="uid://4lymkkub5i6f" path="res://touch_3d.gd" id="1_5bapl"]
+[ext_resource type="Script" uid="uid://4lymkkub5i6f" path="res://src/ui/feed/touch_3d.gd" id="1_5bapl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6wua2"]
 
@@ -14,3 +14,9 @@ mesh = SubResource("BoxMesh_6wua2")
 
 [node name="circle2" type="MeshInstance3D" parent="circle_container"]
 mesh = SubResource("BoxMesh_6wua2")
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 592.0
+offset_right = 642.0
+offset_bottom = 31.0
+text = "Close"

@@ -1,7 +1,8 @@
 extends Control
 
 var inventory_scene: PackedScene = preload("uid://bda2an2nm10ol")
-
+var shop_scene: PackedScene = preload("uid://b2vp764bh2bre")
+var clean_scene: PackedScene = preload("uid://h87keo8yxa01")
 
 @export var inventory_button: Button
 @export var feed_button: Button
@@ -43,6 +44,8 @@ func wake_screen() -> void:
 
 func _ready() -> void:
 	inventory_button.pressed.connect(open_inventory)
+	shop_button.pressed.connect(open_shop)
+	clean_button.pressed.connect(open_clean)
 	_reset_timer()
 
 
@@ -56,7 +59,24 @@ func open_inventory() -> void:
 	inventory_instance.inventory_closed.connect(_on_inventory_closed)
 	VTGlobal.top_window.add_child(inventory_instance)
 	hide()
-
-
+	
 func _on_inventory_closed() -> void:
+	show()
+
+func open_shop() -> void:
+	var shop_instance = shop_scene.instantiate()
+	shop_instance.shop_closed.connect(_on_shop_closed)
+	VTGlobal.top_window.add_child(shop_instance)
+	hide()
+
+func _on_shop_closed() -> void:
+	show()
+	
+func open_clean() -> void:
+	var clean_instance = clean_scene.instantiate()
+	clean_instance.clean_closed.connect(_on_clean_closed)
+	VTGlobal.top_window.add_child(clean_instance)
+	hide()
+	
+func _on_clean_closed() -> void:
 	show()

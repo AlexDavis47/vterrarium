@@ -1,12 +1,19 @@
 extends Node3D
 class_name Touch3D
 
+signal clean_closed
+signal clean_opened
+
+@onready var close_button = $CloseButton
 @onready var circle_container = $circle_container
 var camera: Camera3D
 var circles = []
 
 func _ready() -> void:
 	camera = VTGlobal.top_camera as Camera3D
+	clean_opened.emit()
+	close_button.pressed.connect(_on_close_pressed)
+	show()
 	for circle in circle_container.get_children():
 		circle.hide()
 		circles.append(circle)
@@ -30,7 +37,7 @@ func screen_to_world(screen_pos: Vector2) -> Vector3:
 	var distance = 100
 	var to = from + ray_direction * distance
 	var query = PhysicsRayQueryParameters3D.create(from, to)
-	query.collision_mask = 2
+	query.collision_mask = 1
 	var space_state = get_world_3d().direct_space_state
 	var ray_result = space_state.intersect_ray(query)
 	if ray_result.has("position"):
@@ -38,3 +45,7 @@ func screen_to_world(screen_pos: Vector2) -> Vector3:
 		return ray_result["position"]
 	else:
 		return from
+		
+func _on_close_pressed() -> void:
+	clean_closed.emit()
+	queue_free()

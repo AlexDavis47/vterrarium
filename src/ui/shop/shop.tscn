@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2vp764bh2bre"]
+
+[ext_resource type="Script" uid="uid://bxtoro2bjfy7o" path="res://src/ui/shop/shop.gd" id="1_7v3vq"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7v3vq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_bottom = 36.0
+grow_horizontal = 0
+text = "Close"
