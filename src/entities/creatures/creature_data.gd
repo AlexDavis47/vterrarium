@@ -2,6 +2,19 @@
 extends Resource
 class_name CreatureData
 
+enum HungerBracket {
+	Starving,
+	Hungry,
+	Full
+}
+
+enum HappinessBracket {
+	Depressed,
+	Sad,
+	Happy,
+	Ecstatic
+}
+
 @export_group("Creature Data")
 ## The display name of the creature in UI and other places
 @export var creature_name: String = "Unnamed Creature"
