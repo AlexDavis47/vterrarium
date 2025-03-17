@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dj8c3e5btaig0" path="res://src/ui/creatures/creature_control_node.gd" id="1_j7opk"]
 [ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/entities/creatures/basic_crab/basic_crab.png" id="2_2im6n"]
 
-[node name="CreatureItem" type="Panel" node_paths=PackedStringArray("creature_name", "creature_preview", "remove_from_tank_button")]
+[node name="CreatureControlNode" type="Panel" node_paths=PackedStringArray("creature_name", "creature_preview", "remove_from_tank_button")]
 clip_contents = true
 custom_minimum_size = Vector2(128, 128)
 offset_right = 128.0

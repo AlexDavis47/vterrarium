@@ -19,9 +19,8 @@ func _populate_grid() -> void:
 	creature_items.clear()
 	for creature in SaveManager.save_file.creature_inventory:
 		# Skip creatures that are already in the tank
-		if creature.is_in_tank:
-			continue
-			
+		# if creature.is_in_tank:
+		# 	continue
 		# Create and configure the creature item
 		var creature_item = creature_item_scene.instantiate()
 		creature_item.creature_data = creature

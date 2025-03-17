@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=26 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://df5rypo11dohl" path="res://src/entities/foods/fish_food.tscn" id="12_edi6u"]
 [ext_resource type="Script" uid="uid://wfqbiifh60in" path="res://src/crabtester.gd" id="13_edi6u"]
 [ext_resource type="Shader" uid="uid://bu4pnewlhq57k" path="res://src/shaders/water.gdshader" id="14_27mdg"]
+[ext_resource type="AudioStream" uid="uid://cmj7ag4qru8q5" path="res://assets/audio/water.wav" id="14_d2bpd"]
 [ext_resource type="PackedScene" uid="uid://dqdckux4bv4ne" path="res://src/ui/main_ui.tscn" id="16_27mdg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_e1i7n"]
@@ -38,26 +39,26 @@ fog_depth_end = 18.7
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_edi6u"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_qfpye"]
 size = Vector2(5.625, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b0toy"]
 material = ExtResource("5_2qkw7")
 size = Vector2(5.625, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_d2bpd"]
-material = ExtResource("5_2qkw7")
-size = Vector2(10, 5.625)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_qfpye"]
-material = ExtResource("7_kr6if")
-size = Vector2(10, 5.625)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
 material = ExtResource("5_2qkw7")
 size = Vector2(10, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygn67"]
+material = ExtResource("7_kr6if")
+size = Vector2(10, 5.625)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ovvyv"]
+material = ExtResource("5_2qkw7")
+size = Vector2(10, 5.625)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bdl84"]
 size = Vector2(10, 5.625)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27mdg"]
@@ -123,7 +124,7 @@ script = ExtResource("4_dv42i")
 [node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_edi6u")
+mesh = SubResource("PlaneMesh_qfpye")
 script = ExtResource("5_r55h4")
 wall_type = 1
 
@@ -135,7 +136,7 @@ script = ExtResource("5_r55h4")
 
 [node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
-mesh = SubResource("PlaneMesh_d2bpd")
+mesh = SubResource("PlaneMesh_27mdg")
 script = ExtResource("5_r55h4")
 wall_type = 2
 metadata/_custom_type_script = "uid://p427dstufru"
@@ -143,20 +144,20 @@ metadata/_custom_type_script = "uid://p427dstufru"
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
-mesh = SubResource("PlaneMesh_qfpye")
+mesh = SubResource("PlaneMesh_ygn67")
 script = ExtResource("5_r55h4")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
-mesh = SubResource("PlaneMesh_27mdg")
+mesh = SubResource("PlaneMesh_ovvyv")
 script = ExtResource("5_r55h4")
 wall_type = 4
 
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_ygn67")
+mesh = SubResource("PlaneMesh_bdl84")
 script = ExtResource("5_r55h4")
 wall_type = 5
 
@@ -190,3 +191,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.396)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.9792, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_d2bpd")
+volume_db = -6.0
+autoplay = true
