@@ -17,7 +17,7 @@ var _inactivity_timer: float = 0.0
 var _is_awake: bool = true
 
 func _process(delta: float) -> void:
-	if _is_awake:
+	if _is_awake and VTGlobal.menu_open==false:
 		_inactivity_timer += delta
 		if _inactivity_timer >= SLEEP_TIMEOUT:
 			sleep_screen()
@@ -60,34 +60,42 @@ func open_inventory() -> void:
 	var inventory_instance = inventory_scene.instantiate()
 	inventory_instance.inventory_closed.connect(_on_inventory_closed)
 	VTGlobal.top_window.add_child(inventory_instance)
+	VTGlobal.menu_open = true
 	hide()
 	
 func _on_inventory_closed() -> void:
+	VTGlobal.menu_open = false
 	show()
 
 func open_shop() -> void:
 	var shop_instance = shop_scene.instantiate()
 	shop_instance.shop_closed.connect(_on_shop_closed)
 	VTGlobal.top_window.add_child(shop_instance)
+	VTGlobal.menu_open = true
 	hide()
 
 func _on_shop_closed() -> void:
+	VTGlobal.menu_open = false
 	show()
 	
 func open_clean() -> void:
 	var clean_instance = clean_scene.instantiate()
 	clean_instance.clean_closed.connect(_on_clean_closed)
 	VTGlobal.top_window.add_child(clean_instance)
+	VTGlobal.menu_open = true
 	hide()
 	
 func _on_clean_closed() -> void:
+	VTGlobal.menu_open = false
 	show()
 
 func open_feed() -> void:
 	var feed_instance = feed_scene.instantiate()
 	feed_instance.feed_closed.connect(_on_feed_closed)
 	VTGlobal.top_window.add_child(feed_instance)
+	VTGlobal.menu_open = true
 	hide()
 	
 func _on_feed_closed() -> void:
+	VTGlobal.menu_open = false
 	show()

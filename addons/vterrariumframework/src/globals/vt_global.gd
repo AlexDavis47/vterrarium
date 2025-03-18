@@ -9,6 +9,7 @@ var top_camera: VTCamera3D
 var front_camera: VTCamera3D
 
 var windows_setup_completed: bool = false
+var menu_open: bool = false
 signal windows_initialized
 
 func _ready() -> void:
