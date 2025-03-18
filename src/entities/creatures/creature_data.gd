@@ -64,7 +64,6 @@ func on_generated(luck: float) -> void:
 	hunger_rate /= randfn(creature_luck, creature_luck * 0.50)
 	creature_id = Utils.generate_unique_id()
 
-
 func to_dict() -> Dictionary:
 	return {
 		"creature_name": creature_name,
