@@ -53,6 +53,8 @@ enum HappinessBracket {
 @export var creature_luck: float = 1.0
 ## Whether the creature scene for this creature data is currently instantiated
 @export var is_in_tank: bool = false
+## Reference to the currently instantiated creature object spawned from this data,
+## This one actually doesn't need to be exported because it is not saved to data.
 var creature_instance: Creature
 
 ## The global position of the creature in the tank
@@ -63,45 +65,3 @@ func on_generated(luck: float) -> void:
 	money_per_hour *= randfn(creature_luck, creature_luck * 0.50)
 	hunger_rate /= randfn(creature_luck, creature_luck * 0.50)
 	creature_id = Utils.generate_unique_id()
-
-func to_dict() -> Dictionary:
-	return {
-		"creature_name": creature_name,
-		"description": description,
-		"rarity": rarity,
-		"creature_scene_uuid": creature_scene_uuid,
-		"pool_chances": pool_chances,
-		"money_per_hour": money_per_hour,
-		"hunger_rate": hunger_rate,
-		"satiation": satiation,
-		"creature_id": creature_id,
-		"creature_luck": creature_luck,
-	}
-
-
-# func serialize() -> Dictionary:
-# 	return {
-# 		"creature_name": creature_name,
-# 		"description": description,
-# 		"rarity": rarity,
-# 		"creature_scene": creature_scene,
-# 		"pool_chances": pool_chances,
-# 		"money_per_hour": money_per_hour,
-# 		"hunger_rate": hunger_rate,
-# 		"satiation": satiation,
-# 		"creature_id": creature_id,
-# 		"creature_luck": creature_luck,
-# 		"creature_position_x": creature_position.x,
-# 	}
-
-# func deserialize(data: Dictionary) -> void:
-# 	creature_name = data.get("creature_name")
-# 	description = data.get("description")
-# 	rarity = data.get("rarity")
-# 	creature_scene = data.get("creature_scene")
-# 	pool_chances = data.get("pool_chances")
-# 	money_per_hour = data.get("money_per_hour")
-# 	hunger_rate = data.get("hunger_rate")
-# 	satiation = data.get("satiation")
-# 	creature_id = data.get("creature_id")
-# 	creature_luck = data.get("creature_luck")

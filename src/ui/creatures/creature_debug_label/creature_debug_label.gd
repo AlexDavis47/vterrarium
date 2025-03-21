@@ -19,6 +19,4 @@ func _on_debug_mode_changed(new_value: bool) -> void:
 
 func _process(_delta: float) -> void:
 	text = ""
-	var data = creature.creature_data.to_dict()
-	for key in data.keys():
-		text += key + ": " + str(data[key]) + "\n"
+	# TODO: Add debug information here
