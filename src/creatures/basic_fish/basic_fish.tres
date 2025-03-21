@@ -1,30 +1,32 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://x7f8v6e3a7u2"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://x7f8v6e3a7u2"]
 
-[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/creatures/basic_fish/basic_fish.png" id="1_4i804"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_1bbg3"]
-[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_ylxs8"]
+[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/creatures/basic_fish/basic_fish.png" id="1_47eod"]
+[ext_resource type="ArrayMesh" uid="uid://bhybqb0ltg73m" path="res://src/creatures/basic_fish/model/basic_fish_Cube_0.res" id="2_ak5as"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_o7ssr"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_ak5as"]
 
 [sub_resource type="Resource" id="Resource_4i804"]
-script = ExtResource("2_1bbg3")
+script = ExtResource("2_o7ssr")
 pool = 0
 chance = 0.7
 metadata/_custom_type_script = "uid://c5xpqttwi67b6"
 
 [sub_resource type="Resource" id="Resource_1bbg3"]
-script = ExtResource("2_1bbg3")
+script = ExtResource("2_o7ssr")
 pool = 1
 chance = 0.3
 metadata/_custom_type_script = "uid://c5xpqttwi67b6"
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("3_ylxs8")
+script = ExtResource("3_ak5as")
 creature_name = "Basic Fish"
 description = "A creature with no description"
-creature_image = ExtResource("1_4i804")
+creature_mesh = ExtResource("2_ak5as")
+creature_image = ExtResource("1_47eod")
 rarity = 0
 creature_scene_uuid = "uid://bpq3hl6lq1ngy"
-pool_chances = Array[ExtResource("2_1bbg3")]([SubResource("Resource_4i804"), SubResource("Resource_1bbg3")])
+pool_chances = Array[ExtResource("2_o7ssr")]([SubResource("Resource_4i804"), SubResource("Resource_1bbg3")])
 money_per_hour = 1.0
 hunger_rate = 1.0
 satiation = 1.0

@@ -9,9 +9,11 @@ signal stopped_starving
 var is_starving: bool = false
 
 
-@export var creature_data: CreatureData
+@export var creature_mesh: MeshInstance3D
+var creature_data: CreatureData
 
 func _ready():
+	creature_mesh.mesh = creature_data.creature_mesh
 	add_to_group("creatures")
 	collision_layer = 0
 	set_collision_layer_value(2, true)

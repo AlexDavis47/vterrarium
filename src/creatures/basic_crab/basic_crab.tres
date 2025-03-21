@@ -1,30 +1,32 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://c3gof7obhvbej"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://c3gof7obhvbej"]
 
-[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/creatures/basic_crab/basic_crab.png" id="1_pnomt"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_fut7g"]
-[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_7kp0a"]
+[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/creatures/basic_crab/basic_crab.png" id="1_cxtcc"]
+[ext_resource type="ArrayMesh" uid="uid://duh3bemgh7wdu" path="res://assets/Sketchfab_Scene_Cube_0.res" id="2_b0bd5"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_qxd7s"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_ul6ga"]
 
 [sub_resource type="Resource" id="Resource_exaxf"]
-script = ExtResource("2_fut7g")
+script = ExtResource("3_qxd7s")
 pool = 0
 chance = 0.5
 metadata/_custom_type_script = "uid://c5xpqttwi67b6"
 
 [sub_resource type="Resource" id="Resource_pnomt"]
-script = ExtResource("2_fut7g")
+script = ExtResource("3_qxd7s")
 pool = 1
 chance = 0.5
 metadata/_custom_type_script = "uid://c5xpqttwi67b6"
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("3_7kp0a")
+script = ExtResource("4_ul6ga")
 creature_name = "Basic Crab"
 description = "A creature with no description"
-creature_image = ExtResource("1_pnomt")
+creature_mesh = ExtResource("2_b0bd5")
+creature_image = ExtResource("1_cxtcc")
 rarity = 0
 creature_scene_uuid = "uid://dlwv2lwgphc3e"
-pool_chances = Array[ExtResource("2_fut7g")]([SubResource("Resource_exaxf"), SubResource("Resource_pnomt")])
+pool_chances = Array[ExtResource("3_qxd7s")]([SubResource("Resource_exaxf"), SubResource("Resource_pnomt")])
 money_per_hour = 0.0
 hunger_rate = 1.0
 satiation = 1.0

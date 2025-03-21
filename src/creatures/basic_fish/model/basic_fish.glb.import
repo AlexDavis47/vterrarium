@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cl30s4qyjry6u"
-path="res://.godot/imported/fish_low_poly.glb-1b3f0c0988c1a2c52cc16216107022bb.scn"
+uid="uid://b4tdvsr6ackyw"
+path="res://.godot/imported/basic_fish.glb-e4b0eaf55a60b27ae7e79aeab34f5a16.scn"
 
 [deps]
 
-source_file="res://assets/fish_low_poly.glb"
-dest_files=["res://.godot/imported/fish_low_poly.glb-1b3f0c0988c1a2c52cc16216107022bb.scn"]
+source_file="res://src/creatures/basic_fish/model/basic_fish.glb"
+dest_files=["res://.godot/imported/basic_fish.glb-e4b0eaf55a60b27ae7e79aeab34f5a16.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"Sketchfab_Scene_Cube_0": {
+"basic_fish_Cube_0": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://assets/Sketchfab_Scene_Cube_0.res"
+"save_to_file/path": "res://src/creatures/basic_fish/basic_fish_Cube_0.res"
 }
 }
 }
