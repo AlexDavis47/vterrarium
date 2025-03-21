@@ -1,12 +1,15 @@
 [gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bwp0wrp5oyukk"]
 
-[ext_resource type="Texture2D" uid="uid://bqvmlyuuv5tdj" path="res://assets/textures/ground_tiles_16_2k/ground_tiles_16_basecolor_2k.png" id="1_qw5vi"]
-[ext_resource type="Texture2D" uid="uid://u160mon6p5mc" path="res://assets/textures/ground_tiles_16_2k/ground_tiles_16_normal_gl_2k.png" id="2_wm26i"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1nrus"]
+load_path = "res://.godot/imported/ground_tiles_16_basecolor_2k.png-70f22c35c4f84c0774b5d47bf66c3e4b.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0v4oe"]
+load_path = "res://.godot/imported/ground_tiles_16_normal_gl_2k.png-6356ff0d74a2a2f3fc7acac259e4d7ff.s3tc.ctex"
 
 [resource]
-albedo_texture = ExtResource("1_qw5vi")
+albedo_texture = SubResource("CompressedTexture2D_1nrus")
 normal_enabled = true
-normal_texture = ExtResource("2_wm26i")
+normal_texture = SubResource("CompressedTexture2D_0v4oe")
 uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_triplanar = true
 uv1_world_triplanar = true

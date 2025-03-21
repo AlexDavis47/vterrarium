@@ -1,9 +1,52 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://c3gof7obhvbej"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=10 format=4 uid="uid://c3gof7obhvbej"]
 
 [ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/creatures/basic_crab/basic_crab.png" id="1_cxtcc"]
-[ext_resource type="ArrayMesh" uid="uid://duh3bemgh7wdu" path="res://assets/Sketchfab_Scene_Cube_0.res" id="2_b0bd5"]
 [ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_qxd7s"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_ul6ga"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hnve5"]
+load_path = "res://.godot/imported/fish_low_poly_0.png-7e2e52a8da3a88d79a81cfb71908b66f.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v876q"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_hnve5")
+metallic = 1.0
+roughness = 0.6
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5xg6u"]
+_surfaces = [{
+"aabb": AABB(-0.24789, -0.73213, -0.12338, 0.49578, 1.68401, 0.24676),
+"format": 34896613377,
+"index_count": 108,
+"index_data": PackedByteArray("DgABAA8ADwABAAMAAwABAAAADgAAAAEAAwAAAAQAAAAOABAAAAAQAAQABAAFAAMADwADAAUABAAQAAUAAgAPAAUAEQAFABAAAgAFABEABgAQAA4AEQAQAAYABwAOAA8ABgAOAAcABwAPAAIACAARAAYAAgARAAgABwASAAYACAAGABIAAgAKAAcABwAKABIAAgAIABMAAgATAAoAEgAMAAgAEwANAAoACgAJABIAEgAJAAwACgANAAkACAAMAAsACAALABMACwAMAAkAEwALAA0ACwAJAA0A"),
+"lods": [0.190958, PackedByteArray("AAABAAIAAgABAAMAAwABAAAAAwAAAAQABAAFAAMAAgADAAUABgAEAAAABQAEAAYABgAAAAcABwAAAAIACAAFAAYAAgAFAAgABwAJAAYACAAGAAkAAgAKAAcABwAKAAkAAgAIAAsAAgALAAoACAAMAAsACQAMAAgACwAMAAkACwAJAA0ACgANAAkACwANAAoA")],
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("w/n//0/RAADD+f//ry4AAP//jKIAAAAAOwb//68uAAA7Bv//T9EAAPBRYcZgSQAAAACMov//AAD//4yi//8AAAAABTcAAAAAhFgAAJ62AAD//wU3//8AAHqnAABgSQAAhFgAAGBJAAB6pwAAnrYAAA6uYMaetgAADq5hxmBJAADwUWHGnrYAAAAAjKIAAAAAAAAFN///AAD//wU3AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cxtcc"]
+resource_name = "Sketchfab_Scene_Cube_0"
+_surfaces = [{
+"aabb": AABB(-0.24789, -0.73213, -0.12338, 0.49578, 1.68401, 0.24676),
+"attribute_data": PackedByteArray("KXGXeylxl3spcbtxKXG7cbhF5m64ReZuuEVsfrhFbH43GWx+NxlsfgUAWXMFAFlzBQD5eQUA+XlncFlKZ3BZStWOu3HVjrtxnIXUWZyF1FkpcbtxKXG7cZeP2R2Xj9kdMHulBjB7pQbOhKUGzoSlBtWOu3HVjrtxKXGXeylxl3vVjpd71Y6Xeylxu3EpcbtxZqhZc2aoWXPVjpd71Y6Xe0a6bH5Gumx+1Y67cdWOu3HH5uZux+bmbvn/+Xn5//l5+f9Zc/n/WXOXj/mil4/5oilxl3spcZd7Z3D5omdw+aLVjpd71Y6Xe86ErObOhKzmZ3B5z2dwec8we6zmMHus5jB7pQYwe6UGzoQFAM6EBQAwewUAMHsFAM6EpQbOhKUGmFf5eZhX+XmYV1lzmFdZc5yFfZOchX2TYnp9k2J6fZNietRZYnrUWZyF1FmchdRZl49ZSpePWUpietRZYnrUWUa65m5GuuZuZqj5eWao+Xlien2TYnp9k5yFfZOchX2TZqhZc2aoWXNmqPl5Zqj5eWdw2R1ncNkdNxnmbjcZ5m7H5mx+x+ZsfphXWXOYV1lzmFf5eZhX+XnH5uZux+bmbka6bH5Gumx+x+ZsfsfmbH5GuuZuRrrmbpePec+Xj3nPuEXmbrhF5m43GWx+NxlsfrhFbH64RWx+NxnmbjcZ5m5ncPmiZ3D5opePec+Xj3nPl4/5opeP+aJncHnPZ3B5z2dwWUpncFlKl4/ZHZeP2R1ncNkdZ3DZHZePWUqXj1lK"),
+"format": 34896613431,
+"index_count": 108,
+"index_data": PackedByteArray("JAABACUAJAAAAAEAGgAmABwAGgAnACYAKAAIAAkAKAAKAAgADgAPABAADgARAA8ABwApACoABwArACkALAAtABQALAASAC0AGQAuABsAGQAvAC4AEwAwABUAEwAxADAACwAMADIACwANAAwAMwAGAAQAMwAFAAYANAAYABYANAAXABgAIAAhACIAIAAjACEAAwA1AAIAAwA2ADUANwA4ADkANwA6ADgAHgAdADsAHgAfAB0APAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUA"),
+"lods": [0.190958, PackedByteArray("AAABAAIAAwAAAAIAAgAEAAMAAgAFAAQABQAGAAQABwAIAAkABwAKAAgABwAJAAsABwALAAwACwANAAwADgAPABAADgARAA8AEgATABQAEwASABUAFgASABQAFgAUABcAFwAYABYAGQAaABsAGQAcABoAGwAdABkAGwAeAB0AHgAfAB0AIAAhACIAIAAjACEA")],
+"material": SubResource("StandardMaterial3D_v876q"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("w/n//0/RvjLD+f//ry6+Mv//jKIAAJgb//+Mov//mBv//wU3//8uNHqnAABgSS40eqcAAJ62LjT//4yiAAAAADsG//+vLgAA8FFhxmBJAADD+f//ry4AAAAABTcAAAAAeqcAAGBJAACEWAAAYEkAADsG//+vLgAAw/n//0/RAAA7Bv//T9EAAMP5//+vLgAA8FFhxmBJmBs7Bv//T9G+MgAAjKL//5gbOwb//68uvjIAAAU3AAAuNIRYAACeti40hFgAAGBJLjQAAIyi//8AAMP5//9P0QAA//+Mov//AAA7Bv//T9EAAIRYAACetgAA//8FN///AAB6pwAAnrYAAHqnAABgSQAAhFgAAJ62AAB6pwAAnrYAAIRYAABgSQAADq5gxp62vjIOrmHGYEm+MvBRYcaetgAADq5gxp62AAAOrmHGYEkAAPBRYcZgSQAAAACMogAAAAAOrmHGYEkAAAAAjKIAAJgb8FFhxp62mBsOrmDGnrYAAPBRYcaetgAA8FFhxmBJvjLwUWHGnra+Mv//BTcAAAAA//8FNwAALjQAAAU3//8uNA6uYcZgSZgbDq5gxp62mRsAAAU3AACqKgAAjKL//6oqAAAFN///qioAAIyiAACqKgAABTf//wAA//+MogAAqir//wU3//+qKv//jKL//6oq//8FNwAAqir//4yi//8AAAAABTf//wAAAACMov//AAD//wU3//8AAP//jKIAAAAAAAAFNwAAAAD//wU3AAAAAAAAjKIAAAAAACX9NQAl/TWLMucajDLnGsAjfjjAI344wCN+OP9/m+8yhP//MoT//zKE//9Li///S4v//0uL////f/+//3//v/9//7//f/+/F2WLsgFKAKUYZYuyAUoApYFHwKOBR7+jgUe/o5vvAADM+////39ikP9/zHuz9Pb/tPTx/7P0+///f/8//3//P/9//z//f/8/ASX9NQEl/TXM+///zPv//zKE////f5vv/3+b7/9/m+8YZYuyGGWLspvvAACb7wAAAUoApQFKAKVLi///wCN+OIFHwKOMMucajDLnGlRVqqpUVaqqVFWqqlRVqqr/f7N0qiqqKqoqqiqqKqoqqiqqKv9//3//f/9//3//f/9//38AgP7/AID+//9///8AgP3/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5xg6u")
 
 [sub_resource type="Resource" id="Resource_exaxf"]
 script = ExtResource("3_qxd7s")
@@ -22,7 +65,7 @@ resource_local_to_scene = true
 script = ExtResource("4_ul6ga")
 creature_name = "Basic Crab"
 description = "A creature with no description"
-creature_mesh = ExtResource("2_b0bd5")
+creature_mesh = SubResource("ArrayMesh_cxtcc")
 creature_image = ExtResource("1_cxtcc")
 rarity = 0
 creature_scene_uuid = "uid://dlwv2lwgphc3e"

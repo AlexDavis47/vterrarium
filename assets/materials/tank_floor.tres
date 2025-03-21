@@ -1,14 +1,19 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://oubd1j1qwo6i"]
 
-[ext_resource type="Texture2D" uid="uid://d00nsicrbs3c7" path="res://assets/textures/sand_04_2k/sand_04_color_2k.png" id="1_mf51v"]
-[ext_resource type="Texture2D" uid="uid://vlhppojloaq0" path="res://assets/textures/sand_04_2k/sand_04_height_2k.png" id="2_wnk3m"]
-[ext_resource type="Texture2D" uid="uid://c6wswtpbry85k" path="res://assets/textures/sand_04_2k/sand_04_normal_gl_2k.png" id="5_pumui"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tjrco"]
+load_path = "res://.godot/imported/sand_04_color_2k.png-3255ea69885c3c9d4b888a313d6e5a21.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jkujy"]
+load_path = "res://.godot/imported/sand_04_height_2k.png-8f32e6ffe2a4f566cbd278873ca6ad28.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w64qa"]
+load_path = "res://.godot/imported/sand_04_normal_gl_2k.png-2cf7950146dc03a7b21af6503ec8b776.s3tc.ctex"
 
 [resource]
-albedo_texture = ExtResource("1_mf51v")
+albedo_texture = SubResource("CompressedTexture2D_tjrco")
 normal_enabled = true
-normal_texture = ExtResource("5_pumui")
-heightmap_texture = ExtResource("2_wnk3m")
+normal_texture = SubResource("CompressedTexture2D_w64qa")
+heightmap_texture = SubResource("CompressedTexture2D_jkujy")
 uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_triplanar = true
 uv1_world_triplanar = true
