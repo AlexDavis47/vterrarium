@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbcppprxkyw4m"
-path="res://.godot/imported/basic_crab.png-cfae1f8ef5a4492b45cfd5c80e17f4f4.ctex"
+uid="uid://ckhgfucxu2w6h"
+path="res://.godot/imported/basic_fish.png-366349e0ba6e818c0c945f241cbad1d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/entities/creatures/basic_crab/basic_crab.png"
-dest_files=["res://.godot/imported/basic_crab.png-cfae1f8ef5a4492b45cfd5c80e17f4f4.ctex"]
+source_file="res://src/creatures/basic_fish/basic_fish.png"
+dest_files=["res://.godot/imported/basic_fish.png-366349e0ba6e818c0c945f241cbad1d1.ctex"]
 
 [params]
 

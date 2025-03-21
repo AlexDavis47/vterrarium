@@ -1,14 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://bpq3hl6lq1ngy"]
+[gd_scene load_steps=7 format=4 uid="uid://bpq3hl6lq1ngy"]
 
-[ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/basic_fish/basic_fish.gd" id="1_nsaph"]
-[ext_resource type="Texture2D" uid="uid://bg8kof84vvru1" path="res://assets/fish_low_poly_0.png" id="2_4nxuc"]
-[ext_resource type="Script" uid="uid://7o2mykdy7dq5" path="res://src/ui/creatures/creature_debug_label/creature_debug_label.gd" id="3_br01x"]
-[ext_resource type="PackedScene" uid="uid://8agasujxbyo2" path="res://src/ui/creatures/creature_control_node.tscn" id="4_4nxuc"]
+[ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/fish/fish.gd" id="1_ognnj"]
+[ext_resource type="Texture2D" uid="uid://bg8kof84vvru1" path="res://assets/fish_low_poly_0.png" id="2_vrxr4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ei2yg"]
 resource_name = "Material"
 cull_mode = 2
-albedo_texture = ExtResource("2_4nxuc")
+albedo_texture = ExtResource("2_vrxr4")
 metallic = 1.0
 roughness = 0.6
 
@@ -51,7 +49,7 @@ radius = 0.156675
 height = 0.954477
 
 [node name="BasicFish" type="CharacterBody3D"]
-script = ExtResource("1_nsaph")
+script = ExtResource("1_ognnj")
 target_switch_distance = 0.5
 metadata/_custom_type_script = "uid://c2i0olfog3rjy"
 
@@ -60,24 +58,6 @@ transform = Transform3D(-1.65006e-15, -3.7749e-08, 0.5, 0.5, -2.18557e-08, 0, 2.
 mesh = SubResource("ArrayMesh_ckid7")
 skeleton = NodePath("")
 
-[node name="CreatureDebugLabel" type="Label3D" parent="." node_paths=PackedStringArray("creature")]
-visible = false
-billboard = 1
-no_depth_test = true
-text = "Creature
-Happiness: 1.0
-Age: 0.0
-Money Rate: 1.0
-Speed: 1.0
-Happiness: 1.0
-"
-script = ExtResource("3_br01x")
-creature = NodePath("..")
-metadata/_custom_type_script = "uid://7o2mykdy7dq5"
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ubmto")
-
-[node name="CreatureControlNode" parent="." node_paths=PackedStringArray("creature") instance=ExtResource("4_4nxuc")]
-creature = NodePath("..")

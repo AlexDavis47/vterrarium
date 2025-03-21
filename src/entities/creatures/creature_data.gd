@@ -20,6 +20,8 @@ enum HappinessBracket {
 @export var creature_name: String = "Unnamed Creature"
 ## The description of the creature
 @export var description: String = "A creature with no description"
+## The mesh of the creature
+@export var creature_mesh: Mesh
 ## The image of the creature, this is used to display the creature in the inventory
 @export var creature_image: Texture2D = null
 ## The rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script

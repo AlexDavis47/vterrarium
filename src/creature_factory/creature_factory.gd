@@ -11,7 +11,7 @@ enum CreaturePool {
 
 ## This contains a list of all of the creature data resources that we can duplicate to create new creatures
 var creature_data_templates: Array[CreatureData] = [
-	preload("uid://c3gof7obhvbej"), # basic crab
+	#preload("uid://c3gof7obhvbej"), # basic crab (DISABLED FOR NOW)
 	preload("uid://x7f8v6e3a7u2") # basic fish
 ]
 
@@ -24,19 +24,19 @@ func run_test_cycle() -> void:
 	_create_test_creatures()
 	
 	# Test cycle 1: Remove all creatures from tank
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	_remove_all_creatures_from_tank()
 	
 	# Test cycle 2: Add all creatures back to tank
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	_add_all_creatures_to_tank()
 	
 	# Test cycle 3: Remove all creatures from tank again
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	_remove_all_creatures_from_tank()
 
 	# Test cycle 4: Add all creatures back to tank again
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	_add_all_creatures_to_tank()
 
 

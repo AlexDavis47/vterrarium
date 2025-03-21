@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://x7f8v6e3a7u2"]
 
-[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/entities/creatures/basic_fish/basic_fish.png" id="1_4i804"]
+[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/creatures/basic_fish/basic_fish.png" id="1_4i804"]
 [ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_1bbg3"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_ylxs8"]
 

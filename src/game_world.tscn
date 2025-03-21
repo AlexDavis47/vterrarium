@@ -67,8 +67,8 @@ shader_parameter/time_offset = 0.0
 shader_parameter/water_size = Vector2(128, 128)
 shader_parameter/water_transparency = 0.015
 shader_parameter/water_depth_factor = 22.145
-shader_parameter/foam_width = 0.5
-shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_width = 1.5
+shader_parameter/foam_edge_softness = 0.07
 shader_parameter/foam_smoothness = 0.03
 shader_parameter/foam_distortion_speed = 0.5
 shader_parameter/foam_distortion_amount = 0.1
@@ -154,7 +154,6 @@ wall_type = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.334301, 0)
-visible = false
 mesh = SubResource("BoxMesh_b0toy")
 
 [node name="FishFood" parent="." instance=ExtResource("12_edi6u")]
