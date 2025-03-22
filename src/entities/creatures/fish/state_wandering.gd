@@ -11,6 +11,8 @@ func enter():
 	# target_position should already be set before entering this state
 	# If it's not set for some reason, set a random position
 	var fish = creature as Fish
+	if !fish:
+		return
 	if fish.target_position == Vector3.ZERO:
 		fish.target_position = fish.get_random_target_position()
 
@@ -29,11 +31,9 @@ func update(delta: float):
 		# If hungry or starving, transition to feeding state
 		is_transitioning = true
 		state_transition.emit(self, "Feeding")
-
-func _physics_process(delta):
-	var fish = creature as Fish
+		return
 	
+	# Move towards target
 	# If the target is reached, transition to idle state
 	if fish.move_towards_target(delta, speed) and not is_transitioning:
-		is_transitioning = true
-		state_transition.emit(self, "Idle")
+		fish.target_position = fish.get_random_target_position()

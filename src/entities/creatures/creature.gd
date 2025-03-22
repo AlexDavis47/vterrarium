@@ -1,6 +1,6 @@
 ## This creature class represents the instanced version of a creature data resource
 ## The creature data resource itself is the "real" creature, and this class is just the thing that shows up in the tank.
-extends RigidBody3D
+extends CharacterBody3D
 class_name Creature
 
 signal started_starving

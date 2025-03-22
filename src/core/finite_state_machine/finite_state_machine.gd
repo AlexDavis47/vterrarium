@@ -1,12 +1,12 @@
 extends State
 class_name FiniteStateMachine
 
-var states : Dictionary = {}
-var current_state : State
-@export var initial_state : State
+var states: Dictionary = {}
+var current_state: State
+@export var initial_state: State
 @export_category("Debug")
-@export var print_state_changes : bool = false
-@export var print_updated_state : bool = false
+@export var print_state_changes: bool = false
+@export var print_updated_state: bool = false
 
 # This is the main Finite State Machine class which manages all of the state transitions
 # Notably, this class also functions as a State itself, allowing for nested state machines
@@ -50,9 +50,9 @@ func update(delta: float):
 		if print_updated_state:
 			print("Updated state: " + current_state.name)
 
-func change_state(source_state : State, new_state_name : String) -> void:
+func change_state(source_state: State, new_state_name: String) -> void:
 	if source_state != current_state:
-		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
+		print("Invalid change_state! Current state is: " + current_state.name + " but trying to change from: " + source_state.name)
 		return
 
 	var new_state = states.get(new_state_name.to_lower())
@@ -69,7 +69,7 @@ func change_state(source_state : State, new_state_name : String) -> void:
 	if print_state_changes:
 		print("FSM " + name + " Changed state from: " + source_state.name + " to: " + new_state.name)
 
-func force_state(new_state_name : String) -> void:
+func force_state(new_state_name: String) -> void:
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
 		print("FSM " + name + ": New state is empty")

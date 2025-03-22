@@ -4,18 +4,19 @@ class_name Fish
 var target_position: Vector3
 
 # Movement parameters
-var movement_damping: float = 0.95 # Dampening factor for velocity
-var rotation_force: float = 2.0
-var rotation_damping: float = 0.95
-var max_velocity: float = 5.0
+var movement_damping: float = 0.99 # Dampening factor for velocity
+var rotation_force: float = 0.00001
+var rotation_damping: float = 0.99
+var max_velocity: float = 3.0
 var max_angular_velocity: float = 2.0
-var upright_force: float = 3.0
-var target_switch_distance: float = 0.5
+var upright_force: float = 0.5
+var target_switch_distance: float = 1.0
+
+var angular_velocity: Vector3 = Vector3.ZERO
+var linear_velocity: Vector3 = Vector3.ZERO
 
 func _ready():
 	super._ready()
-	gravity_scale = 0.0
-	
 
 ## For wandering fish.
 func get_random_target_position() -> Vector3:
@@ -49,8 +50,8 @@ func move_towards_target(delta: float, speed_multiplier: float = 1.0) -> bool:
 	var distance_factor = clamp(distance / (target_switch_distance * 3.0), 0.1, 1.0)
 	
 	# Apply force in the direction of the target
-	var force = direction * speed_multiplier * creature_data.creature_speed * distance_factor * creature_data.creature_happiness * 2
-	apply_central_force(force)
+	var force = direction * speed_multiplier * creature_data.creature_speed * distance_factor * creature_data.creature_happiness * 10
+	linear_velocity += force * delta
 	
 	# Clamp velocity to maximum
 	if linear_velocity.length() > max_velocity:
@@ -62,6 +63,10 @@ func move_towards_target(delta: float, speed_multiplier: float = 1.0) -> bool:
 	
 	# Keep the fish upright
 	maintain_upright_orientation()
+	
+	# Apply movement to CharacterBody3D
+	velocity = linear_velocity
+	move_and_slide()
 	
 	# Check if we've reached the target
 	return distance < target_switch_distance
@@ -80,7 +85,7 @@ func face_movement_direction():
 		# Scale torque based on how far we need to turn
 		var angle_factor = clamp(1.0 - dot_product, 0.5, 1.0)
 		var torque = cross_product * rotation_force * angle_factor
-		apply_torque(torque)
+		angular_velocity += torque
 		
 		# Clamp angular velocity to maximum
 		if angular_velocity.length() > max_angular_velocity:
@@ -97,4 +102,4 @@ func maintain_upright_orientation():
 		var upright_dot = current_up.dot(desired_up)
 		var upright_angle_factor = clamp(1.0 - upright_dot, 0.0, 1.0)
 		var upright_torque = upright_cross * upright_force * upright_angle_factor
-		apply_torque(upright_torque)
+		angular_velocity += upright_torque

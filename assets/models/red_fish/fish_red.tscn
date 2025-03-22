@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccixqfcebq8hc"]
+[gd_scene load_steps=4 format=3 uid="uid://ccixqfcebq8hc"]
 
 [ext_resource type="PackedScene" uid="uid://b2rc185qmpxlf" path="res://assets/models/red_fish/fish_red.glb" id="1_yo20v"]
 [ext_resource type="Script" uid="uid://bqlvuxraaiwc0" path="res://assets/models/red_fish/fish_red.gd" id="2_g3cus"]
+[ext_resource type="ArrayMesh" uid="uid://c8cyqrfekr1jr" path="res://assets/models/weird_fish/weird_fish_fish_mesh.res" id="3_qxp2h"]
 
 [node name="fish_red" instance=ExtResource("1_yo20v")]
 script = ExtResource("2_g3cus")
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.879365)
+
+[node name="Plane" parent="Armature/Skeleton3D" index="0"]
+mesh = ExtResource("3_qxp2h")
 
 [node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="Armature/Skeleton3D" index="1"]
 setting_count = 1
