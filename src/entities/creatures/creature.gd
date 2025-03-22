@@ -121,3 +121,16 @@ func get_happiness_bracket() -> CreatureData.HappinessBracket:
 		return CreatureData.HappinessBracket.Happy
 	else:
 		return CreatureData.HappinessBracket.Ecstatic
+
+
+func find_closest_food() -> FishFood:
+	var food_items = get_tree().get_nodes_in_group("fish_food")
+	var closest_distance = INF
+	var closest_food: FishFood = null
+	for food in food_items:
+		if food is FishFood and food.is_edible:
+			var distance = global_position.distance_to(food.global_position)
+			if distance < closest_distance:
+				closest_distance = distance
+				closest_food = food
+	return closest_food
