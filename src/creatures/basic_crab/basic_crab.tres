@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://c3gof7obhvbej"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://c3gof7obhvbej"]
 
 [ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/creatures/basic_crab/basic_crab.png" id="1_cxtcc"]
 [ext_resource type="ArrayMesh" uid="uid://hg0qx656mqou" path="res://src/creatures/basic_crab/model/basic_crab_Crab_Mesh3_lambert2_0.res" id="2_cxtcc"]
 [ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_qxd7s"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_ul6ga"]
+
+[sub_resource type="Curve" id="Curve_cxtcc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.166667, 1), 0.0, 0.0, 0, 0, Vector2(0.831169, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_b0bd5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.363636, 1), 0.0, 0.0, 0, 0, Vector2(0.636364, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [resource]
 resource_local_to_scene = true
@@ -18,6 +26,10 @@ creature_pool_chances = Array[ExtResource("3_qxd7s")]([])
 creature_money_per_hour = 1.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0
+creature_light_preference = SubResource("Curve_cxtcc")
+creature_light_contentment = 1.0
+creature_temperature_preference = SubResource("Curve_b0bd5")
+creature_temperature_contentment = 1.0
 creature_happiness = 1.0
 creature_speed = 1.0
 creature_size = 1.0

@@ -14,17 +14,17 @@ signal gyro_rotation_delta_changed(new_gyro_rotation_delta: Vector3)
 signal photodiode_changed(raw_value: int, normalized_value: float)
 
 # The brightness of the hardware. 
-var brightness: float = 0.0:
+var brightness: float = 0.5: # Default brightness
 	set(value):
-		brightness = value
+		brightness = clamp(value, 0.0, 1.0)
 		brightness_changed.emit(brightness)
 	get:
 		return brightness
 
-# The temperature of the hardware, in degrees Celsius
-var temperature: float = 0.0:
+# The temperature of the hardware
+var temperature: float = 0.5: # Default temperature
 	set(value):
-		temperature = value
+		temperature = clamp(value, 0.0, 1.0)
 		temperature_changed.emit(temperature)
 	get:
 		return temperature
@@ -136,8 +136,8 @@ func _process_sim_mouse(event: InputEventMouseMotion) -> Vector3:
 	# X movement = rotation around Y axis (yaw)
 	# Y movement = rotation around X axis (pitch)
 	return Vector3(
-		deg_to_rad(- event.relative.y * MOUSE_ROTATION_SENSITIVITY),
-		deg_to_rad(- event.relative.x * MOUSE_ROTATION_SENSITIVITY),
+		deg_to_rad(-event.relative.y * MOUSE_ROTATION_SENSITIVITY),
+		deg_to_rad(-event.relative.x * MOUSE_ROTATION_SENSITIVITY),
 		0.0 # No roll for now
 	)
 

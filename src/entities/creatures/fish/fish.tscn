@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpq3hl6lq1ngy"]
+[gd_scene load_steps=7 format=3 uid="uid://bpq3hl6lq1ngy"]
 
 [ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/fish/fish.gd" id="1_ognnj"]
+[ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_vrxr4"]
+[ext_resource type="Script" uid="uid://bghcyph4x73wx" path="res://src/entities/creatures/fish/state_idle.gd" id="3_12m3r"]
+[ext_resource type="Script" uid="uid://d0o80wcr82rkp" path="res://src/entities/creatures/fish/state_wandering.gd" id="4_dmaf4"]
+[ext_resource type="Script" uid="uid://dupx27amlei27" path="res://src/entities/creatures/fish/state_feeding.gd" id="5_ybj60"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ubmto"]
 radius = 0.4
@@ -18,3 +22,19 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ubmto")
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("2_vrxr4")
+metadata/_custom_type_script = "uid://civw0c4uuw0y2"
+
+[node name="Idle" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_12m3r")
+metadata/_custom_type_script = "uid://nl35xw5nuxjw"
+
+[node name="Wandering" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_dmaf4")
+metadata/_custom_type_script = "uid://nl35xw5nuxjw"
+
+[node name="Feeding" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_ybj60")
+metadata/_custom_type_script = "uid://nl35xw5nuxjw"

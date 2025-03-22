@@ -46,6 +46,29 @@ enum HappinessBracket {
 		creature_satiation = clamp(value, 0.0, 1.0)
 	get:
 		return creature_satiation
+## The light level preference of the creature, this is an editor curve.
+## 0 on the x axis is dark, 1 on the x axis is light
+## 0 on the y axis is dislike, 1 on the y axis is like
+@export var creature_light_preference: Curve = Curve.new()
+## The current contentment with the light level, this is a value between 0 and 1
+@export var creature_light_contentment: float = 1.0:
+	set(value):
+		creature_light_contentment = clamp(value, 0.0, 1.0)
+	get:
+		return creature_light_contentment
+
+## The temperature preference of the creature, this is an editor curve.
+## 0 on the x axis is cold, 1 on the x axis is hot
+## 0 on the y axis is dislike, 1 on the y axis is like
+@export var creature_temperature_preference: Curve = Curve.new()
+## The current contentment with the temperature, this is a value between 0 and 1
+@export var creature_temperature_contentment: float = 1.0:
+	set(value):
+		creature_temperature_contentment = clamp(value, 0.0, 1.0)
+	get:
+		return creature_temperature_contentment
+
+
 ## The creature_happiness of the creature, affects the money rate
 @export var creature_happiness: float = 1.0:
 	set(value):

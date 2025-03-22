@@ -154,6 +154,7 @@ wall_type = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.334301, 0)
+visible = false
 mesh = SubResource("BoxMesh_b0toy")
 
 [node name="FishFood" parent="." instance=ExtResource("12_edi6u")]
