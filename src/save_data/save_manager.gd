@@ -98,7 +98,7 @@ func load_game(save_id: String = "") -> bool:
 func _respawn_creatures() -> void:
 	print("Respawning creatures")
 	for creature in save_file.creature_inventory:
-		if creature.is_in_tank:
+		if creature.creature_is_in_tank:
 			CreatureFactory.spawn_creature(creature)
 
 ## Returns the full path for a save file with the given ID

@@ -18,6 +18,7 @@ func _ready():
 	collision_layer = 0
 	set_collision_layer_value(2, true)
 	global_position = creature_data.creature_position
+	scale = Vector3(creature_data.creature_size, creature_data.creature_size, creature_data.creature_size)
 
 
 func _physics_process(delta: float) -> void:
@@ -27,8 +28,8 @@ func _physics_process(delta: float) -> void:
 
 ## Process the hunger of the creature every physics frame
 func _process_hunger(delta: float) -> void:
-	creature_data.satiation -= creature_data.hunger_rate * (delta / 3600.0)
-	if creature_data.satiation <= 0.0:
+	creature_data.creature_satiation -= creature_data.creature_hunger_rate * (delta / 3600.0)
+	if creature_data.creature_satiation <= 0.0:
 		if not is_starving:
 			is_starving = true
 			started_starving.emit()
@@ -42,4 +43,4 @@ func _process_position_data(delta: float) -> void:
 	creature_data.creature_position = global_position
 
 func _process_money(delta: float) -> void:
-	SaveManager.save_file.money += creature_data.money_per_hour * delta
+	SaveManager.save_file.money += creature_data.creature_money_per_hour * delta

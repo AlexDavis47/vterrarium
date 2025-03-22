@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b4tdvsr6ackyw"
-path="res://.godot/imported/basic_fish.glb-e4b0eaf55a60b27ae7e79aeab34f5a16.scn"
+uid="uid://jqki01cfu16y"
+path="res://.godot/imported/basic_crab.glb-1c6a03f8a89daa6de2ff3b6d3441336f.scn"
 
 [deps]
 
-source_file="res://src/creatures/basic_fish/model/basic_fish.glb"
-dest_files=["res://.godot/imported/basic_fish.glb-e4b0eaf55a60b27ae7e79aeab34f5a16.scn"]
+source_file="res://src/creatures/basic_crab/model/basic_crab.glb"
+dest_files=["res://.godot/imported/basic_crab.glb-1c6a03f8a89daa6de2ff3b6d3441336f.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"basic_fish_Cube_0": {
+"basic_crab_Crab_Mesh3_lambert2_0": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://src/creatures/basic_fish/model/basic_fish_Cube_0.res"
+"save_to_file/path": "res://src/creatures/basic_crab/model/basic_crab_Crab_Mesh3_lambert2_0.res"
 }
 }
 }

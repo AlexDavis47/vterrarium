@@ -30,8 +30,9 @@ func _physics_process(delta):
 	
 	# Rotate to face movement direction if we're moving
 	if velocity.length_squared() > 0.01:
-		var target_basis = global_transform.basis.looking_at(velocity.normalized(), Vector3.UP)
-		global_transform.basis = global_transform.basis.slerp(target_basis, rotation_speed * delta)
+		var target_basis = Basis.looking_at(velocity.normalized(), Vector3.UP)
+		var target_rotation = target_basis.get_euler()
+		rotation = rotation.slerp(target_rotation, rotation_speed * delta)
 	
 	move_and_slide()
 

@@ -26,7 +26,7 @@ func _ready() -> void:
 func update_info() -> void:
 	creature_name.text = creature_data.creature_name
 	creature_preview.texture = creature_data.creature_image
-	if creature_data.is_in_tank:
+	if creature_data.creature_is_in_tank:
 		add_to_tank_button.disabled = true
 		remove_from_tank_button.disabled = false
 	else:

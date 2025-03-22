@@ -16,36 +16,46 @@ enum HappinessBracket {
 }
 
 @export_group("Creature Data")
+## The type of creature, this is used to determine which creature to spawn in the creature factory
+@export var creature_type: CreatureFactory.CreatureType = CreatureFactory.CreatureType.FISH
 ## The display name of the creature in UI and other places
 @export var creature_name: String = "Unnamed Creature"
-## The description of the creature
-@export var description: String = "A creature with no description"
+## The creature_description of the creature
+@export var creature_description: String = "A creature with no creature_description"
 ## The mesh of the creature
 @export var creature_mesh: Mesh
 ## The image of the creature, this is used to display the creature in the inventory
 @export var creature_image: Texture2D = null
-## The rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
-@export var rarity: Enums.Rarity = Enums.Rarity.Common
-## The base scene of the creature, this is the scene that will be instantiated when the creature is created
-@export var creature_scene_uuid: String = ""
+## The creature_rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
+@export var creature_rarity: Enums.Rarity = Enums.Rarity.Common
 ## The pool chances for the creature, this is used to determine the chance of the creature being spawned in the creature factory
-@export var pool_chances: Array[PoolChance] = []
+@export var creature_pool_chances: Array[PoolChance] = []
 
 @export_group("Stats")
 ## The money per hour that the creature generates
-@export var money_per_hour: float = 1.0
-## The hunger rate of the creature, this is the rate at which the creature will lose satiation per hour
-@export var hunger_rate: float = 1.0:
+@export var creature_money_per_hour: float = 1.0
+## The hunger rate of the creature, this is the rate at which the creature will lose creature_satiation per hour
+@export var creature_hunger_rate: float = 1.0:
 	set(value):
-		hunger_rate = value
+		creature_hunger_rate = value
 	get:
-		return hunger_rate
-## The satiation of the creature, this is the amount of satiation the creature has
-@export var satiation: float = 1.0:
+		return creature_hunger_rate
+## The creature_satiation of the creature, this is the amount of creature_satiation the creature has
+@export var creature_satiation: float = 1.0:
 	set(value):
-		satiation = clamp(value, 0.0, 1.0)
+		creature_satiation = clamp(value, 0.0, 1.0)
 	get:
-		return satiation
+		return creature_satiation
+## The creature_happiness of the creature, affects the money rate
+@export var creature_happiness: float = 1.0:
+	set(value):
+		creature_happiness = clamp(value, 0.0, 1.0)
+	get:
+		return creature_happiness
+## The creature's speed, affects the speed that the creature moves around the tank
+@export var creature_speed: float = 1.0
+## The creature's size, affects the size of the creature
+@export var creature_size: float = 1.0
 
 @export_group("Instance Data DON'T TOUCH")
 ## A unique identifier for this creature instance
@@ -54,7 +64,7 @@ enum HappinessBracket {
 ## 1.0 is the default luck, 2.0 is double luck, 0.5 is half luck
 @export var creature_luck: float = 1.0
 ## Whether the creature scene for this creature data is currently instantiated
-@export var is_in_tank: bool = false
+@export var creature_is_in_tank: bool = false
 ## Reference to the currently instantiated creature object spawned from this data,
 ## This one actually doesn't need to be exported because it is not saved to data.
 var creature_instance: Creature
@@ -64,6 +74,12 @@ var creature_instance: Creature
 
 func on_generated(luck: float) -> void:
 	creature_luck = luck
-	money_per_hour *= randfn(creature_luck, creature_luck * 0.50)
-	hunger_rate /= randfn(creature_luck, creature_luck * 0.50)
+	creature_money_per_hour *= randfn(creature_luck, creature_luck * 0.25)
+	print("creature_money_per_hour: ", creature_money_per_hour)
+	creature_hunger_rate /= randfn(creature_luck, creature_luck * 0.25)
+	print("creature_hunger_rate: ", creature_hunger_rate)
+	creature_speed *= randfn(1, 0.50)
+	print("creature_speed: ", creature_speed)
+	creature_size *= randfn(1, 0.25)
+	print("creature_size: ", creature_size)
 	creature_id = Utils.generate_unique_id()
