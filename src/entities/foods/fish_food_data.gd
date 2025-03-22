@@ -1,7 +1,13 @@
 ## This resource contains data to determine the properties of a food item.
 ## It will be used both in UI, as well as in the fish food entities spawned from the item.
+@tool
 extends Resource
 class_name FishFoodData
+
+## Only one type of food is currently supported.
+enum FoodType {
+	FLAKES
+}
 
 signal food_name_changed(value: String)
 signal food_description_changed(value: String)
@@ -11,6 +17,8 @@ signal food_value_changed(value: float)
 signal food_lifetime_changed(value: float)
 signal food_color_changed(value: Color)
 
+@export_group("Food Properties")
+## The display name of this food type
 @export var food_name: String = "Fish Food":
 	set(value):
 		food_name = value
@@ -18,6 +26,7 @@ signal food_color_changed(value: Color)
 	get:
 		return food_name
 
+## Description of the food item
 @export var food_description: String = "A food item that can be eaten by creatures.":
 	set(value):
 		food_description = value
@@ -25,6 +34,10 @@ signal food_color_changed(value: Color)
 	get:
 		return food_description
 
+## The type of food, affects physical properties and fish preferences
+@export var food_type: FoodType = FoodType.FLAKES
+
+## The texture used for UI representation
 @export var food_texture: Texture2D:
 	set(value):
 		food_texture = value
@@ -32,6 +45,7 @@ signal food_color_changed(value: Color)
 	get:
 		return food_texture
 
+## The color of the food particles
 @export var food_color: Color = Color(1.0, 1.0, 1.0):
 	set(value):
 		food_color = value
@@ -39,6 +53,7 @@ signal food_color_changed(value: Color)
 	get:
 		return food_color
 
+## How many times the food can be eaten before it disappears
 @export var times_eatable: int = 1:
 	set(value):
 		times_eatable = value
@@ -46,6 +61,7 @@ signal food_color_changed(value: Color)
 	get:
 		return times_eatable
 
+## The nutrition value added to a creature's satiation when eaten
 @export var food_value: float = 0.1:
 	set(value):
 		food_value = value
@@ -53,9 +69,33 @@ signal food_color_changed(value: Color)
 	get:
 		return food_value
 
-@export var food_lifetime: float = 10.0:
+## How long the food remains in the tank before disappearing (seconds)
+@export var food_lifetime: float = 25.0:
 	set(value):
 		food_lifetime = value
 		food_lifetime_changed.emit(value)
 	get:
 		return food_lifetime
+
+@export_group("Physical Properties")
+## How quickly the food sinks in water (higher values sink faster)
+@export var sink_speed: float = 1.0
+## How much the food spreads out when dropped (higher values spread more)
+@export var spread_factor: float = 1.0
+## The mass of each food particle
+@export var food_mass: float = 0.1
+
+@export_group("System Properties")
+## The scene to instantiate for this food type
+@export var food_scene_path: String = "uid://df5rypo11dohl"
+## Unique ID for this food
+@export var food_id: String = ""
+
+## Called when this food is first created
+func on_generated() -> void:
+	if food_id.is_empty():
+		food_id = Utils.generate_unique_id()
+
+## Get the actual scene for this food type
+func get_food_scene() -> PackedScene:
+	return load(food_scene_path) as PackedScene

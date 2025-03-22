@@ -6,6 +6,11 @@ var food_eat_distance: float = 1.0 # Distance at which the fish can eat the food
 var is_transitioning: bool = false
 var is_post_feeding: bool = false # Flag for the post-feeding phase
 
+# Food preferences
+var food_type_preferences = {
+	FishFoodData.FoodType.FLAKES: 1.0 # Default preferences
+}
+
 func enter():
 	super.enter()
 	is_transitioning = false
@@ -84,18 +89,31 @@ func find_closest_food() -> void:
 	var food_items = get_tree().get_nodes_in_group("fish_food")
 	
 	if food_items.size() > 0:
-		var closest_distance = INF
-		var closest_food = null
+		var best_score = - INF
+		var best_food = null
 		
 		for food in food_items:
 			if food is FishFood and food.is_edible:
+				# Calculate distance
 				var distance = fish.global_position.distance_to(food.global_position)
-				if distance < closest_distance:
-					closest_distance = distance
-					closest_food = food
+				
+				# Apply food type preference if available
+				var preference_multiplier = 1.0
+				if food.fish_food_data and food_type_preferences.has(food.fish_food_data.food_type):
+					preference_multiplier = food_type_preferences[food.fish_food_data.food_type]
+				
+				# Calculate food value (higher value is better)
+				var food_value = food.fish_food_data.food_value if food.fish_food_data else 0.1
+				
+				# Higher score = better food (inverse distance * preferences * value)
+				var score = (1.0 / max(distance, 0.1)) * preference_multiplier * food_value
+				
+				if score > best_score:
+					best_score = score
+					best_food = food
 		
-		if closest_food:
-			target_food = closest_food
+		if best_food:
+			target_food = best_food
 			fish.target_position = target_food.global_position
 		else:
 			# No edible food found, go back to center then idle
@@ -109,7 +127,10 @@ func find_closest_food() -> void:
 func eat_food() -> void:
 	if is_instance_valid(target_food) and target_food.is_edible:
 		var fish = creature as Fish
+		
 		# Increase satiation based on food value
-		fish.creature_data.creature_satiation += target_food.fish_food_data.food_value
-		# Tell the food it was eaten
+		var satiation_increase = target_food.fish_food_data.food_value
+		fish.creature_data.creature_satiation += satiation_increase
+		
+		# Let the target know it's been eaten
 		target_food.eat_food()

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d8tgrkwn0t1w"]
 
 [ext_resource type="Script" uid="uid://b27xtc5gnsiuq" path="res://src/ui/inventory/creature_item.gd" id="1_dvf6r"]
-[ext_resource type="Resource" uid="uid://c3gof7obhvbej" path="res://src/creatures/basic_crab/basic_crab.tres" id="2_5mkk2"]
-[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/creatures/basic_crab/basic_crab.png" id="3_pd524"]
+[ext_resource type="Resource" uid="uid://c3gof7obhvbej" path="res://src/resources/creatures/basic_crab/basic_crab.tres" id="2_5mkk2"]
+[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/basic_crab/basic_crab.png" id="3_pd524"]
 
 [node name="CreatureItem" type="Panel" node_paths=PackedStringArray("creature_name", "creature_preview", "add_to_tank_button", "remove_from_tank_button")]
 clip_contents = true

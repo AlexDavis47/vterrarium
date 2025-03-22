@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3mw4oisgg8je"
-path.s3tc="res://.godot/imported/basic_fish_Image_0.png-18972ad4a708fa478e05b59bd49ea800.s3tc.ctex"
+path.s3tc="res://.godot/imported/basic_fish_Image_0.png-e5bd87faed4cdc462382732a731c02d7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://src/creatures/basic_fish/model/basic_fish_Image_0.png"
-dest_files=["res://.godot/imported/basic_fish_Image_0.png-18972ad4a708fa478e05b59bd49ea800.s3tc.ctex"]
+source_file="res://src/resources/creatures/basic_fish/model/basic_fish_Image_0.png"
+dest_files=["res://.godot/imported/basic_fish_Image_0.png-e5bd87faed4cdc462382732a731c02d7.s3tc.ctex"]
 
 [params]
 

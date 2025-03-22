@@ -1,8 +1,8 @@
 extends CreatureState
 
 var idle_timer: SceneTreeTimer = null
-var min_idle_time: float = 3.0
-var max_idle_time: float = 8.0
+var min_idle_time: float = 0.5
+var max_idle_time: float = 4.0
 var is_transitioning: bool = false
 
 func enter():

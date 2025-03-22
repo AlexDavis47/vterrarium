@@ -6,7 +6,7 @@ signal front_window_input(event: InputEvent)
 signal top_window_input(event: InputEvent)
 signal creature_selected(creature: Node3D, hit_position: Vector3)
 
-var show_debug_markers: bool = true
+var show_debug_markers: bool = false
 
 func _ready():
 	VTGlobal.windows_initialized.connect(_on_windows_initialized)

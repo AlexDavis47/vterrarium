@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://x7f8v6e3a7u2"]
 
-[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/creatures/basic_fish/basic_fish.png" id="1_47eod"]
-[ext_resource type="ArrayMesh" uid="uid://bhybqb0ltg73m" path="res://src/creatures/basic_fish/model/basic_fish_Cube_0.res" id="2_ak5as"]
+[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/resources/creatures/basic_fish/basic_fish.png" id="1_47eod"]
+[ext_resource type="ArrayMesh" uid="uid://bhybqb0ltg73m" path="res://src/resources/creatures/basic_fish/model/basic_fish_Cube_0.res" id="2_ak5as"]
 [ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_o7ssr"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_ak5as"]
 
@@ -23,7 +23,7 @@ creature_mesh = ExtResource("2_ak5as")
 creature_image = ExtResource("1_47eod")
 creature_rarity = 0
 creature_pool_chances = Array[ExtResource("2_o7ssr")]([])
-creature_money_per_hour = 1.0
+creature_money_per_hour = 60.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0
 creature_light_preference = SubResource("Curve_o7ssr")

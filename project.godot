@@ -28,6 +28,7 @@ Config="*res://src/config/config.gd"
 SaveManager="*res://src/save_data/save_manager.gd"
 Utils="*res://src/utils/utils.gd"
 CreatureFactory="*res://src/creature_factory/creature_factory.gd"
+FoodFactory="*res://src/entities/foods/food_factory.gd"
 
 [display]
 
