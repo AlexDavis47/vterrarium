@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://8agasujxbyo2"]
 
 [ext_resource type="Script" uid="uid://dj8c3e5btaig0" path="res://src/ui/creatures/creature_control_node.gd" id="1_j7opk"]
-[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/basic_crab/basic_crab.png" id="2_2im6n"]
+[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/weird_fish/basic_crab.png" id="2_2im6n"]
 
 [node name="CreatureControlNode" type="Panel" node_paths=PackedStringArray("creature_name", "creature_preview", "remove_from_tank_button")]
 clip_contents = true

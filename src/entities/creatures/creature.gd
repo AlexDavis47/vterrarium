@@ -17,7 +17,11 @@ var creature_data: CreatureData
 var debug_label: Label3D
 
 func _ready():
-	creature_mesh.mesh = creature_data.creature_mesh
+	creature_mesh.mesh = load(creature_data.creature_mesh_uuid).duplicate(true)
+	var mesh: Mesh = creature_mesh.mesh
+	mesh.surface_set_material(0, mesh.surface_get_material(0).duplicate(true))
+	print("creature material: ", mesh.surface_get_material(0))
+	_apply_tint()
 	add_to_group("creatures")
 	collision_layer = 0
 	set_collision_layer_value(2, true)
@@ -28,6 +32,20 @@ func _ready():
 	debug_label.no_depth_test = true
 	debug_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	#add_child(debug_label)
+
+
+func _apply_tint() -> void:
+	# Get the material of the creature mesh
+	var material: StandardMaterial3D = creature_mesh.mesh.surface_get_material(0) as StandardMaterial3D
+	# Mix the default color of the material with the tint color
+	# Remove alpha from the tint color
+	var tint_color: Color = creature_data.creature_tint
+	tint_color.a = 1.0
+	# Mix the default color of the material with the tint color
+	var mixed_color: Color = material.albedo_color.lerp(tint_color, creature_data.creature_tint_amount)
+	# Apply the mixed color to the material
+	material.albedo_color = mixed_color
+
 
 func _physics_process(delta: float) -> void:
 	_process_hunger(delta)

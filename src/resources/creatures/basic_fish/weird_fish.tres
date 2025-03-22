@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://x7f8v6e3a7u2"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://x7f8v6e3a7u2"]
 
-[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/resources/creatures/basic_fish/basic_fish.png" id="1_xk3es"]
-[ext_resource type="ArrayMesh" uid="uid://b4extcckiuuu2" path="res://assets/models/red_fish/fish_red_fish_mesh.res" id="2_ged6c"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_wh88d"]
-[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_b7vn5"]
+[ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/resources/creatures/basic_fish/weird_fish.png" id="1_6q3s5"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_1slak"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_5xtww"]
 
 [sub_resource type="Curve" id="Curve_o7ssr"]
 _data = [Vector2(0, 0.495918), 0.0, 0.0, 0, 0, Vector2(0.0606061, 1), 0.0, 0.0, 0, 0, Vector2(0.937229, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.495918), 0.0, 0.0, 0, 0]
@@ -15,14 +14,16 @@ point_count = 4
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("4_b7vn5")
+script = ExtResource("3_5xtww")
 creature_type = 0
 creature_name = "Basic Fish"
 creature_description = "A creature with no creature_description"
-creature_mesh = ExtResource("2_ged6c")
-creature_image = ExtResource("1_xk3es")
+creature_mesh_uuid = "uid://b4extcckiuuu2"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = null
+creature_image = ExtResource("1_6q3s5")
 creature_rarity = 0
-creature_pool_chances = Array[ExtResource("3_wh88d")]([])
+creature_pool_chances = Array[ExtResource("2_1slak")]([])
 creature_money_per_hour = 60.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0

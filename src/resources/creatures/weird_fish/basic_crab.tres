@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://c3gof7obhvbej"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://c3gof7obhvbej"]
 
-[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/basic_crab/basic_crab.png" id="1_fu1d0"]
-[ext_resource type="ArrayMesh" uid="uid://c8cyqrfekr1jr" path="res://assets/models/weird_fish/weird_fish_fish_mesh.res" id="2_hhpno"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_kig24"]
-[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_rjg43"]
+[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/weird_fish/basic_crab.png" id="1_knak3"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_wnpjj"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_vreq2"]
 
 [sub_resource type="Curve" id="Curve_cxtcc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.166667, 1), 0.0, 0.0, 0, 0, Vector2(0.831169, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -15,14 +14,16 @@ point_count = 4
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("4_rjg43")
+script = ExtResource("3_vreq2")
 creature_type = 0
 creature_name = "Basic Crab"
 creature_description = "A creature with no creature_description"
-creature_mesh = ExtResource("2_hhpno")
-creature_image = ExtResource("1_fu1d0")
+creature_mesh_uuid = "uid://c8cyqrfekr1jr"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = null
+creature_image = ExtResource("1_knak3")
 creature_rarity = 0
-creature_pool_chances = Array[ExtResource("3_kig24")]([])
+creature_pool_chances = Array[ExtResource("2_wnpjj")]([])
 creature_money_per_hour = 60.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0

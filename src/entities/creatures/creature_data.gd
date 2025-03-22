@@ -22,8 +22,12 @@ enum HappinessBracket {
 @export var creature_name: String = "Unnamed Creature"
 ## The creature_description of the creature
 @export var creature_description: String = "A creature with no creature_description"
-## The mesh of the creature
+## The UUID of the mesh of the creature
 @export var creature_mesh: Mesh
+## The tinting of the creature, a color value. Will be used to tint the creature's albedo texture.
+@export var creature_tint: Color = Color.WHITE
+## The amount of tinting to apply to the creature, this is a value between 0 and 1
+@export var creature_tint_amount: float = 1.0
 ## The image of the creature, this is used to display the creature in the inventory
 @export var creature_image: Texture2D = null
 ## The creature_rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
@@ -106,3 +110,5 @@ func on_generated(luck: float) -> void:
 	creature_size *= randfn(1, 0.25)
 	print("creature_size: ", creature_size)
 	creature_id = Utils.generate_unique_id()
+	creature_tint = Color(randf_range(0.0, 1.0), randf_range(0.0, 1.0), randf_range(0.0, 1.0))
+	creature_tint_amount = randfn(creature_luck - 1.0, creature_luck * 0.25)
