@@ -23,7 +23,7 @@ enum HappinessBracket {
 ## The creature_description of the creature
 @export var creature_description: String = "A creature with no creature_description"
 ## The UUID of the mesh of the creature
-@export var creature_mesh: Mesh
+@export var creature_mesh_uuid: String = ""
 ## The tinting of the creature, a color value. Will be used to tint the creature's albedo texture.
 @export var creature_tint: Color = Color.WHITE
 ## The amount of tinting to apply to the creature, this is a value between 0 and 1

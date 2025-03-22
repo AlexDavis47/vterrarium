@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://c3gof7obhvbej"]
 
-[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/weird_fish/basic_crab.png" id="1_knak3"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_wnpjj"]
-[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_vreq2"]
+[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/weird_fish/weird_fish.png" id="1_m015i"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_k1ys7"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_rcdlh"]
 
 [sub_resource type="Curve" id="Curve_cxtcc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.166667, 1), 0.0, 0.0, 0, 0, Vector2(0.831169, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -14,16 +14,16 @@ point_count = 4
 
 [resource]
 resource_local_to_scene = true
-script = ExtResource("3_vreq2")
+script = ExtResource("3_rcdlh")
 creature_type = 0
-creature_name = "Basic Crab"
-creature_description = "A creature with no creature_description"
+creature_name = "Weird Fish"
+creature_description = "A fish with a few... issues."
 creature_mesh_uuid = "uid://c8cyqrfekr1jr"
 creature_tint = Color(1, 1, 1, 1)
-creature_tint_amount = null
-creature_image = ExtResource("1_knak3")
+creature_tint_amount = 1.0
+creature_image = ExtResource("1_m015i")
 creature_rarity = 0
-creature_pool_chances = Array[ExtResource("2_wnpjj")]([])
+creature_pool_chances = Array[ExtResource("2_k1ys7")]([])
 creature_money_per_hour = 60.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0
