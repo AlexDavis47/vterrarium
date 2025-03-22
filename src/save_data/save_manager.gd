@@ -21,13 +21,68 @@ func _ready() -> void:
 	if not dir.dir_exists(SAVE_FILE_DIR):
 		dir.make_dir(SAVE_FILE_DIR)
 	
+	print("Checking for save files...")
 	var save_files = get_all_save_files()
+	print("Found " + str(save_files.size()) + " valid save files")
+	
+	# List all files in save directory for debugging
+	var save_dir = DirAccess.open(SAVE_FILE_DIR)
+	if save_dir:
+		print("== FILES IN SAVE DIRECTORY ==")
+		save_dir.list_dir_begin()
+		var file_name = save_dir.get_next()
+		while file_name != "":
+			if not save_dir.current_is_dir():
+				print("- " + file_name)
+			file_name = save_dir.get_next()
+		print("===========================")
+	
+	# Look for standalone .old files that might not have been processed
+	var found_backup = false
 	if save_files.is_empty():
+		print("No valid save files found, checking for standalone .old files")
+		save_dir = DirAccess.open(SAVE_FILE_DIR)
+		if save_dir:
+			save_dir.list_dir_begin()
+			var file_name = save_dir.get_next()
+			while file_name != "" and not found_backup:
+				if not save_dir.current_is_dir() and file_name.ends_with(BACKUP_EXTENSION):
+					print("Found standalone backup file: " + file_name)
+					var backup_path = SAVE_FILE_DIR + "/" + file_name
+					var main_path = backup_path.substr(0, backup_path.length() - BACKUP_EXTENSION.length())
+					print("Manually restoring to: " + main_path)
+					
+					# Try direct file copy
+					var file_content = FileAccess.open(backup_path, FileAccess.READ)
+					if file_content:
+						var backup_data = file_content.get_as_text()
+						file_content.close()
+						
+						var main_file = FileAccess.open(main_path, FileAccess.WRITE)
+						if main_file:
+							main_file.store_string(backup_data)
+							main_file.close()
+							print("Manually restored backup file content")
+							
+							# Try to load the restored file
+							var restored_save = ResourceLoader.load(main_path)
+							if restored_save is SaveFile:
+								print("Successfully loaded manually restored save")
+								save_files.append(restored_save)
+								found_backup = true
+							else:
+								print("Failed to load manually restored save")
+					
+				file_name = save_dir.get_next()
+	
+	if save_files.is_empty():
+		print("No save files found or recovered, creating new save file")
 		create_save_file()
 		# For testing
 		CreatureFactory.run_test_cycle()
 		save_game()
 	else:
+		print("Loading save file: " + save_files[0].save_id)
 		load_game(save_files[0].save_id)
 
 	handle_auto_save()
@@ -140,16 +195,105 @@ func get_all_save_files() -> Array[SaveFile]:
 		
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
+	var main_save_paths = []
+	var backup_save_paths = []
 	
+	# First, collect all save and backup file paths
 	while file_name != "":
-		if not dir.current_is_dir() and file_name.ends_with(SAVE_FILE_EXTENSION) and not file_name.ends_with(BACKUP_EXTENSION):
-			var path = SAVE_FILE_DIR + "/" + file_name
-			var save = ResourceLoader.load(path)
-			if save is SaveFile:
-				save_files.append(save)
+		if not dir.current_is_dir():
+			if file_name.ends_with(SAVE_FILE_EXTENSION) and not file_name.ends_with(BACKUP_EXTENSION):
+				main_save_paths.append(SAVE_FILE_DIR + "/" + file_name)
+			elif file_name.ends_with(SAVE_FILE_EXTENSION + BACKUP_EXTENSION):
+				backup_save_paths.append(SAVE_FILE_DIR + "/" + file_name)
 		file_name = dir.get_next()
-		
+	
+	# Try to load from main save files first
+	for main_path in main_save_paths:
+		var validated_save = validate_save_file(main_path)
+		if validated_save:
+			save_files.append(validated_save)
+	
+	# If no valid saves found, try standalone backups
+	if save_files.is_empty() and not backup_save_paths.is_empty():
+		print("No valid main save files found, checking standalone backups...")
+		for backup_path in backup_save_paths:
+			var main_path = backup_path.substr(0, backup_path.length() - BACKUP_EXTENSION.length())
+			print("Trying to restore from standalone backup: " + backup_path)
+			
+			# Try to load backup directly
+			var backup_save = ResourceLoader.load(backup_path)
+			if backup_save is SaveFile:
+				# Copy backup to main file location
+				var error = DirAccess.copy_absolute(backup_path, main_path)
+				if error == OK:
+					print("Successfully restored save from backup: " + main_path)
+					save_files.append(backup_save)
+				else:
+					push_warning("Failed to restore backup file: " + str(error))
+	
 	return save_files
+
+## Validates and attempts to recover a save file if corrupted
+## Returns the valid SaveFile or null if unrecoverable
+func validate_save_file(file_path: String) -> SaveFile:
+	print("Validating save file: " + file_path)
+	
+	# Check if the main file exists
+	if not FileAccess.file_exists(file_path):
+		push_warning("Save file doesn't exist: " + file_path)
+		return null
+		
+	# Try to load the main save file
+	var save = ResourceLoader.load(file_path)
+	if save is SaveFile:
+		print("Valid save file found: " + file_path)
+		return save
+		
+	print("Save file exists but couldn't be loaded: " + file_path)
+	
+	# Main file exists but couldn't be loaded, try the backup
+	var backup_path = file_path + BACKUP_EXTENSION
+	if not FileAccess.file_exists(backup_path):
+		push_warning("No backup file found for corrupted save: " + backup_path)
+		return null
+		
+	print("Found backup file, attempting recovery: " + backup_path)
+	
+	# Try to load the backup
+	var backup_save = ResourceLoader.load(backup_path)
+	if not (backup_save is SaveFile):
+		push_warning("Both save and backup files are corrupted: " + file_path)
+		return null
+		
+	print("Valid backup found, restoring to main file")
+	
+	# Backup is valid, copy it to the main file
+	var file_content = FileAccess.open(backup_path, FileAccess.READ)
+	if not file_content:
+		push_warning("Failed to open backup file for reading")
+		return null
+		
+	var backup_data = file_content.get_as_text()
+	file_content.close()
+	
+	var main_file = FileAccess.open(file_path, FileAccess.WRITE)
+	if not main_file:
+		push_warning("Failed to open main file for writing")
+		return null
+		
+	main_file.store_string(backup_data)
+	main_file.close()
+	
+	print("Successfully restored save file from backup")
+	
+	# Now try to load the restored file
+	var restored_save = ResourceLoader.load(file_path)
+	if restored_save is SaveFile:
+		print("Restored save file loaded successfully")
+		return restored_save
+	else:
+		push_warning("Failed to load restored save file")
+		return null
 
 ## Deletes a save file
 func delete_save_file(save_file: SaveFile) -> bool:
