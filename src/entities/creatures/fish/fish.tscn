@@ -9,12 +9,10 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ubmto"]
 radius = 0.4
 
-[node name="BasicFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh")]
+[node name="BasicFish" type="RigidBody3D" node_paths=PackedStringArray("creature_mesh")]
 collision_layer = 2
 script = ExtResource("1_ognnj")
-target_switch_distance = 0.5
 creature_mesh = NodePath("Cube_0")
-metadata/_custom_type_script = "uid://c2i0olfog3rjy"
 
 [node name="Cube_0" type="MeshInstance3D" parent="."]
 skeleton = NodePath("")
@@ -23,8 +21,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ubmto")
 
-[node name="FiniteStateMachine" type="Node" parent="."]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("creature", "initial_state")]
 script = ExtResource("2_vrxr4")
+creature = NodePath("..")
+initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://civw0c4uuw0y2"
 
 [node name="Idle" type="Node" parent="FiniteStateMachine"]

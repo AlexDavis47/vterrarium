@@ -1,6 +1,6 @@
 ## This creature class represents the instanced version of a creature data resource
 ## The creature data resource itself is the "real" creature, and this class is just the thing that shows up in the tank.
-extends CharacterBody3D
+extends RigidBody3D
 class_name Creature
 
 signal started_starving
@@ -8,6 +8,8 @@ signal stopped_starving
 
 var is_starving: bool = false
 
+var hunger_bracket: CreatureData.HungerBracket = CreatureData.HungerBracket.Full
+var happiness_bracket: CreatureData.HappinessBracket = CreatureData.HappinessBracket.Happy
 
 @export var creature_mesh: MeshInstance3D
 var creature_data: CreatureData
@@ -25,7 +27,7 @@ func _ready():
 	debug_label = Label3D.new()
 	debug_label.no_depth_test = true
 	debug_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	add_child(debug_label)
+	#add_child(debug_label)
 
 func _physics_process(delta: float) -> void:
 	_process_hunger(delta)
@@ -34,13 +36,18 @@ func _physics_process(delta: float) -> void:
 	_process_temperature(delta)
 	_process_position_data(delta)
 	_process_money(delta)
-	
+
+	hunger_bracket = get_hunger_bracket()
+	happiness_bracket = get_happiness_bracket()
+
 	debug_label.text = str(creature_data.creature_name, "\n",
 		"Satiation: ", creature_data.creature_satiation, "\n",
 		"Light: ", creature_data.creature_light_contentment, "\n",
 		"Temperature: ", creature_data.creature_temperature_contentment, "\n",
 		"Happiness: ", creature_data.creature_happiness, "\n",
-		"Money: ", creature_data.creature_money_per_hour)
+		"Money: ", creature_data.creature_money_per_hour, "\n",
+		"Hunger Bracket: ", hunger_bracket, "\n",
+		"Happiness Bracket: ", happiness_bracket)
 		
 
 ## Process the hunger of the creature every physics frame
@@ -95,3 +102,22 @@ func _process_position_data(delta: float) -> void:
 func _process_money(delta: float) -> void:
 	# Money rate is multiplied by happiness
 	SaveManager.save_file.money += creature_data.creature_money_per_hour * creature_data.creature_happiness * delta / 3600.0
+
+
+func get_hunger_bracket() -> CreatureData.HungerBracket:
+	if creature_data.creature_satiation <= 0.25:
+		return CreatureData.HungerBracket.Starving
+	elif creature_data.creature_satiation <= 0.75:
+		return CreatureData.HungerBracket.Hungry
+	else:
+		return CreatureData.HungerBracket.Full
+
+func get_happiness_bracket() -> CreatureData.HappinessBracket:
+	if creature_data.creature_happiness <= 0.25:
+		return CreatureData.HappinessBracket.Depressed
+	elif creature_data.creature_happiness <= 0.5:
+		return CreatureData.HappinessBracket.Sad
+	elif creature_data.creature_happiness <= 0.75:
+		return CreatureData.HappinessBracket.Happy
+	else:
+		return CreatureData.HappinessBracket.Ecstatic

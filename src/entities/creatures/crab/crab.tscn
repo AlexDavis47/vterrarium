@@ -9,7 +9,6 @@ radius = 0.466309
 [node name="Crab" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh")]
 collision_layer = 2
 script = ExtResource("1_fg4hq")
-speed = 0.5
 creature_mesh = NodePath("MeshInstance3D")
 metadata/_custom_type_script = "uid://c2i0olfog3rjy"
 
