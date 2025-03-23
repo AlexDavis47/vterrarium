@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpq3hl6lq1ngy"]
+[gd_scene load_steps=9 format=3 uid="uid://bpq3hl6lq1ngy"]
 
 [ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/fish/fish.gd" id="1_ognnj"]
 [ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_vrxr4"]
@@ -24,9 +24,15 @@ bind/3/pose = Transform3D(-1, 1.50996e-07, 2.37614e-07, -2.37614e-07, -2.1782e-0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vrxr4"]
 
-[node name="Fish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh")]
+[sub_resource type="CylinderMesh" id="CylinderMesh_vrxr4"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+
+[node name="Fish" type="CharacterBody3D" node_paths=PackedStringArray("skeleton", "creature_mesh")]
 collision_layer = 2
 script = ExtResource("1_ognnj")
+skeleton = NodePath("Skeleton3D")
 creature_mesh = NodePath("Skeleton3D/Plane")
 metadata/_custom_type_script = "uid://bse0c1u4ifhet"
 
@@ -45,7 +51,7 @@ script = ExtResource("5_ybj60")
 metadata/_custom_type_script = "uid://nl35xw5nuxjw"
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.865671)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.900937)
 bones/0/name = "Bone.004"
 bones/0/parent = -1
 bones/0/rest = Transform3D(-1, -1.18807e-07, -1.50996e-07, 1.50996e-07, 0, -1, 1.18807e-07, -1, 0, 1.19209e-07, -3.55271e-15, 1)
@@ -105,3 +111,7 @@ settings/0/exclude_collision_count = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_vrxr4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.225678)
+mesh = SubResource("CylinderMesh_vrxr4")

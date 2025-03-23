@@ -15,7 +15,7 @@ var target_switch_distance: float = 1.0
 var angular_velocity: Vector3 = Vector3.ZERO
 var linear_velocity: Vector3 = Vector3.ZERO
 
-var test_gizmo: MeshInstance3D = null
+@export var skeleton: Skeleton3D
 
 func _ready():
 	super._ready()
@@ -38,6 +38,10 @@ func get_random_target_position() -> Vector3:
 
 ## Moves the fish towards the target position
 func move_towards_target(delta: float, speed_multiplier: float = 1.0) -> bool:
+	# # TESTING: CANCEL ALL MOVEMENT AND TRY TRANSLATING RIGHT
+	# translate(Vector3(1.0 * delta, 0.0, 0.0))
+	# rotate(Vector3(1.0, 0.0, 0.0), PI * delta / 2)
+	# return false
 	# Apply damping to existing linear velocity
 	linear_velocity *= movement_damping
 	

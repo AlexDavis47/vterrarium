@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqdckux4bv4ne"]
+
+[ext_resource type="Script" uid="uid://dahd8xqwf5mhb" path="res://src/ui/top_ui.gd" id="1_qhlq6"]
+[ext_resource type="Script" uid="uid://dwxphissrll4b" path="res://src/ui/menu_buttons.gd" id="2_14ovj"]
+[ext_resource type="Texture2D" uid="uid://cfnboexyh0txi" path="res://src/ui/textures/buttons/inventory_button.png" id="3_rjcsk"]
+[ext_resource type="Texture2D" uid="uid://bfpmgb585iuub" path="res://src/ui/textures/buttons/inventory_button_selected.png" id="4_hqpo0"]
+[ext_resource type="Texture2D" uid="uid://yxxy1rvr2gke" path="res://src/ui/textures/buttons/feed_button.png" id="5_eijus"]
+[ext_resource type="Texture2D" uid="uid://gqplql3o5qd7" path="res://src/ui/textures/buttons/feed_button_selected.png" id="6_uwo4r"]
+[ext_resource type="Texture2D" uid="uid://dmow2r78gmqy2" path="res://src/ui/textures/buttons/store_button.png" id="7_eqjnj"]
+[ext_resource type="Texture2D" uid="uid://biowiq4620ydi" path="res://src/ui/textures/buttons/store_button_selected.png" id="8_dcvbk"]
+
+[node name="TopUI" type="Control" node_paths=PackedStringArray("menu_buttons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qhlq6")
+menu_buttons = NodePath("MenuButtons")
+
+[node name="MenuButtons" type="VBoxContainer" parent="." node_paths=PackedStringArray("inventory_button", "feeding_button", "store_button")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_14ovj")
+inventory_button = NodePath("InventoryButton")
+feeding_button = NodePath("FeedingButton")
+store_button = NodePath("StoreButton")
+
+[node name="InventoryButton" type="TextureButton" parent="MenuButtons"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_rjcsk")
+texture_pressed = ExtResource("4_hqpo0")
+
+[node name="FeedingButton" type="TextureButton" parent="MenuButtons"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_eijus")
+texture_pressed = ExtResource("6_uwo4r")
+
+[node name="StoreButton" type="TextureButton" parent="MenuButtons"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("7_eqjnj")
+texture_pressed = ExtResource("8_dcvbk")

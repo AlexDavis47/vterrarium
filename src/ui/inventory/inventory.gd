@@ -1,16 +1,7 @@
 extends Control
-
-signal inventory_closed
-signal inventory_opened
+class_name InventoryUI
 
 @export var close_button: Button
 
 func _ready() -> void:
-	inventory_opened.emit()
-	close_button.pressed.connect(_on_close_pressed)
-	show()
-
-
-func _on_close_pressed() -> void:
-	inventory_closed.emit()
-	queue_free()
+	close_button.pressed.connect(VTGlobal.top_ui.close_all_menus)
