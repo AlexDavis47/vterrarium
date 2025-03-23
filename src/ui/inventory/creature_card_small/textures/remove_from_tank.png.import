@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bambrmag2qlov"
-path="res://.godot/imported/weird_fish.png-5feb631dc49a0ade641b35421c8d4069.ctex"
+uid="uid://bldq2ksww120x"
+path="res://.godot/imported/remove_from_tank.png-89fefba191787515d817f965b96663c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/resources/creatures/weird_fish/weird_fish.png"
-dest_files=["res://.godot/imported/weird_fish.png-5feb631dc49a0ade641b35421c8d4069.ctex"]
+source_file="res://src/ui/inventory/creature_card_small/textures/remove_from_tank.png"
+dest_files=["res://.godot/imported/remove_from_tank.png-89fefba191787515d817f965b96663c3.ctex"]
 
 [params]
 

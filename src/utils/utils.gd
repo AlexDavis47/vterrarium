@@ -1,6 +1,8 @@
 @tool
 extends Node
 
+var all_menus_closed: bool = true
+
 
 ## Generate a unique ID
 func generate_unique_id() -> String:

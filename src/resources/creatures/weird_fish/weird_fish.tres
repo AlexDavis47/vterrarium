@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://c3gof7obhvbej"]
 
-[ext_resource type="Texture2D" uid="uid://bbcppprxkyw4m" path="res://src/resources/creatures/weird_fish/weird_fish.png" id="1_m015i"]
+[ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/resources/creatures/weird_fish/weird_fish.png" id="1_m015i"]
 [ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_k1ys7"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_rcdlh"]
 
@@ -17,6 +17,7 @@ resource_local_to_scene = true
 script = ExtResource("3_rcdlh")
 creature_type = 0
 creature_name = "Weird Fish"
+creature_species = "Unnamed Species"
 creature_description = "A fish with a few... issues."
 creature_mesh_uuid = "uid://c8cyqrfekr1jr"
 creature_tint = Color(1, 1, 1, 1)

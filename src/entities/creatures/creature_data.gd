@@ -20,6 +20,8 @@ enum HappinessBracket {
 @export var creature_type: CreatureFactory.CreatureType = CreatureFactory.CreatureType.FISH
 ## The display name of the creature in UI and other places
 @export var creature_name: String = "Unnamed Creature"
+## The species of the creature. Used in UI.
+@export var creature_species: String = "Unnamed Species"
 ## The creature_description of the creature
 @export var creature_description: String = "A creature with no creature_description"
 ## The UUID of the mesh of the creature

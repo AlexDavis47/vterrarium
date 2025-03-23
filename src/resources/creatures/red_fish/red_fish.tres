@@ -17,6 +17,7 @@ resource_local_to_scene = true
 script = ExtResource("3_fyfmx")
 creature_type = 0
 creature_name = "Red Fish"
+creature_species = "Unnamed Species"
 creature_description = "Just your average everyday red fish."
 creature_mesh_uuid = "uid://b4extcckiuuu2"
 creature_tint = Color(1, 1, 1, 1)
