@@ -63,4 +63,7 @@ func get_total_creature_happiness_percentage() -> float:
 		total_happiness += creature.creature_happiness
 		total_creatures += 1
 
+	if total_creatures == 0:
+		return 0.0
+
 	return total_happiness / total_creatures

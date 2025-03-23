@@ -11,17 +11,17 @@ var food_data_templates: Array[FishFoodData] = [
 
 signal food_spawned(food: FishFood)
 
-func _ready():
-	VTInput.top_window_input.connect(_on_top_window_input)
+# func _ready():
+# 	VTInput.top_window_input.connect(_on_top_window_input)
 
-func _on_top_window_input(event: InputEvent) -> void:
-	# THIS IS FOR TESTING ONLY
-	if event is InputEventScreenTouch and event.pressed:
-		var touch_position = event.position
-		var camera = VTGlobal.top_camera
-		var world_position = camera.project_position(touch_position, camera.global_position.y - VTConfig.terrarium_dimensions.y / 2)
-		print("World position: ", world_position)
-		spawn_food(food_data_templates[0], world_position)
+# func _on_top_window_input(event: InputEvent) -> void:
+# 	# THIS IS FOR TESTING ONLY
+# 	if event is InputEventScreenTouch and event.pressed:
+# 		var touch_position = event.position
+# 		var camera = VTGlobal.top_camera
+# 		var world_position = camera.project_position(touch_position, camera.global_position.y - VTConfig.terrarium_dimensions.y / 2)
+# 		print("World position: ", world_position)
+# 		spawn_food(food_data_templates[0], world_position)
 
 
 ## Spawns food in the tank at the specified position with the given food data

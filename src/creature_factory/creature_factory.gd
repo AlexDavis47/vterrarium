@@ -61,14 +61,11 @@ func run_test_cycle() -> void:
 
 ## Creates test creatures and adds them to the inventory and tank
 func _create_test_creatures() -> void:
-	var creature_name_counter: int = 0
 	for creature_data in creature_data_templates:
 		for i in range(3):
 			var new_creature = _generate_creature_from_template(creature_data)
-			new_creature.creature_name = "Test Creature " + str(creature_name_counter)
 			SaveManager.save_file.creature_inventory.append(new_creature)
 			_add_creature_to_tank(new_creature)
-			creature_name_counter += 1
 
 ## Generates a new creature from a template with random luck
 func _generate_creature_from_template(template: CreatureData) -> CreatureData:

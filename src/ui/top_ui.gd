@@ -16,6 +16,7 @@ var store_scene: PackedScene = preload("uid://bda2an2nm10ol")
 @export var menu_buttons: MenuButtons
 
 var current_menu: Control = null
+var current_menu_name: String = ""
 
 var _sleep_counter: float = 0.0
 var _is_sleeping: bool = false
@@ -67,20 +68,30 @@ func _wake_up() -> void:
 
 func open_inventory_menu():
 	_wake_up()
-	_open_menu(inventory_scene, "inventory")
+	if current_menu_name == "inventory":
+		close_all_menus()
+	else:
+		_open_menu(inventory_scene, "inventory")
 
 func open_feeding_menu():
 	_wake_up()
-	_open_menu(feeding_scene, "feeding")
+	if current_menu_name == "feeding":
+		close_all_menus()
+	else:
+		_open_menu(feeding_scene, "feeding")
 
 func open_store_menu():
 	_wake_up()
-	_open_menu(store_scene, "store")
+	if current_menu_name == "store":
+		close_all_menus()
+	else:
+		_open_menu(store_scene, "store")
 
 func close_all_menus():
 	if current_menu != null:
 		current_menu.queue_free()
 	current_menu = null
+	current_menu_name = ""
 	menu_closed.emit()
 	Utils.all_menus_closed = true
 
@@ -88,6 +99,7 @@ func _open_menu(menu: PackedScene, menu_name: String):
 	if current_menu != null:
 		current_menu.queue_free()
 	current_menu = menu.instantiate()
+	current_menu_name = menu_name
 	add_child(current_menu)
 	menu_opened.emit(menu_name)
 	Utils.all_menus_closed = false
