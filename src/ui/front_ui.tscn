@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpmhaxpyatodg"]
+[gd_scene load_steps=5 format=3 uid="uid://dpmhaxpyatodg"]
 
 [ext_resource type="Script" uid="uid://bq1jv17h5cb1r" path="res://src/ui/front_ui.gd" id="1_2l854"]
+[ext_resource type="Texture2D" uid="uid://yysjomhomjrd" path="res://src/ui/textures/stat_panel/StatsWithLayout.png" id="2_pm787"]
+[ext_resource type="Texture2D" uid="uid://425i4rjkp4mq" path="res://src/ui/textures/stat_panel/happy_bar_meter.png" id="3_oaxvc"]
+[ext_resource type="Script" uid="uid://bbrh5cuokd4vk" path="res://src/ui/happiness_bar.gd" id="4_f23iq"]
 
 [node name="FrontUI" type="Control"]
 layout_mode = 3
@@ -10,3 +13,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2l854")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+offset_right = 338.0
+grow_vertical = 0
+texture = ExtResource("2_pm787")
+
+[node name="happiness_bar" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 66.0
+offset_top = 495.0
+offset_right = 266.0
+offset_bottom = 515.0
+texture = ExtResource("3_oaxvc")
+expand_mode = 1
+script = ExtResource("4_f23iq")

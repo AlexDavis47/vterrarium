@@ -49,3 +49,16 @@ func play_sfx(sfx: AudioStream, min_pitch: float = 1.0, max_pitch: float = 1.0) 
 	get_tree().root.add_child(sfx_player)
 	sfx_player.play()
 	sfx_player.finished.connect(sfx_player.queue_free)
+
+
+func get_total_creature_happiness_percentage() -> float:
+	var total_happiness: float = 0.0
+	var total_creatures: int = 0
+
+	for creature in SaveManager.save_file.creature_inventory:
+		if not creature.creature_is_in_tank:
+			continue
+		total_happiness += creature.creature_happiness
+		total_creatures += 1
+
+	return total_happiness / total_creatures

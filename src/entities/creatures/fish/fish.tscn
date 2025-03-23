@@ -114,4 +114,5 @@ shape = SubResource("SphereShape3D_vrxr4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.225678)
+visible = false
 mesh = SubResource("CylinderMesh_vrxr4")

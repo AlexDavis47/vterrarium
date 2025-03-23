@@ -9,6 +9,7 @@ var top_camera: VTCamera3D
 var front_camera: VTCamera3D
 
 var top_ui: TopUI
+var front_ui: FrontUI
 
 var windows_setup_completed: bool = false
 signal windows_initialized
