@@ -13,6 +13,8 @@ class_name CreatureCardSmall
 var _add_to_tank_texture: Texture2D = preload("uid://xj5qbwybtu27")
 var _remove_from_tank_texture: Texture2D = preload("uid://bldq2ksww120x")
 
+var _detailed_view_ui_scene: PackedScene = preload("uid://c7ripghigdapa")
+
 signal add_remove_button_pressed(creature_data: CreatureData)
 signal detail_button_pressed(creature_data: CreatureData)
 
@@ -75,3 +77,7 @@ func _on_add_remove_button_pressed() -> void:
 
 func _on_detail_button_pressed() -> void:
 	detail_button_pressed.emit(creature_data)
+
+	var detailed_view_ui: CreatureDetailViewUI = _detailed_view_ui_scene.instantiate()
+	detailed_view_ui.creature_data = creature_data
+	VTGlobal.top_ui.add_child(detailed_view_ui)

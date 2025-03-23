@@ -14,6 +14,8 @@ var front_ui: FrontUI
 var windows_setup_completed: bool = false
 signal windows_initialized
 
+signal trigger_inventory_refresh
+
 func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	print("top window: " + str(top_window))

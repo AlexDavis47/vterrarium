@@ -1,0 +1,330 @@
+[gd_scene load_steps=25 format=3 uid="uid://c7ripghigdapa"]
+
+[ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
+[ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
+[ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/resources/creatures/weird_fish/weird_fish.png" id="3_afveu"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_bhvwm"]
+[ext_resource type="Texture2D" uid="uid://bqigah3c2c0si" path="res://src/ui/creature_detail_view/textures/Detail View.png" id="4_64cj3"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_tqbuu"]
+[ext_resource type="FontFile" uid="uid://cywugphcmumyo" path="res://assets/fonts/RedHatDisplay-Medium.ttf" id="5_bhvwm"]
+[ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_tqbuu"]
+[ext_resource type="Texture2D" uid="uid://bnq3ckykvimm7" path="res://src/ui/creature_detail_view/textures/pen-to-square-solid2.png" id="7_awlyl"]
+[ext_resource type="Texture2D" uid="uid://xj5qbwybtu27" path="res://src/ui/inventory/creature_card_small/textures/add_to_tank.png" id="8_wb7er"]
+[ext_resource type="Texture2D" uid="uid://bmu8a8jpkq2a3" path="res://src/ui/creature_detail_view/textures/minimize.png" id="9_mcnp6"]
+[ext_resource type="FontFile" uid="uid://byvf0xnc7iud3" path="res://assets/fonts/RedHatDisplay-LightItalic.ttf" id="10_n2nre"]
+[ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="11_ux5o3"]
+[ext_resource type="PackedScene" uid="uid://dofxw2he0twfr" path="res://src/ui/creature_detail_view/stat_container.tscn" id="12_bi2st"]
+[ext_resource type="PackedScene" uid="uid://dbs3nvaelgmko" path="res://src/ui/creature_detail_view/need_container.tscn" id="13_afveu"]
+[ext_resource type="Texture2D" uid="uid://b2efb171e25j3" path="res://src/ui/creature_detail_view/textures/creature_card_money_icon.png" id="16_tqbuu"]
+
+[sub_resource type="Curve" id="Curve_awlyl"]
+
+[sub_resource type="Curve" id="Curve_wb7er"]
+
+[sub_resource type="Resource" id="Resource_mcnp6"]
+script = ExtResource("4_tqbuu")
+creature_type = 0
+creature_name = "tEST"
+creature_species = "SPECIES"
+creature_description = "A creature with no creature_description"
+creature_mesh_uuid = ""
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_image = ExtResource("3_afveu")
+creature_rarity = 4
+creature_pool_chances = Array[ExtResource("3_bhvwm")]([])
+creature_money_per_hour = 1.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_light_preference = SubResource("Curve_awlyl")
+creature_light_contentment = 1.0
+creature_temperature_preference = SubResource("Curve_wb7er")
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+creature_speed = 1.0
+creature_size = 1.0
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://63umrodfd2l3"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h6la"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j02r"]
+bg_color = Color(0.650128, 0.650128, 0.650128, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tqbuu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_awlyl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb7er"]
+
+[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_happiness_container", "_satiation_container", "_close_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ilim5")
+creature_data = SubResource("Resource_mcnp6")
+_rarity_and_type_label = NodePath("RarityAndType")
+_name_line_edit = NodePath("HBoxContainer/LineEdit")
+_description_label = NodePath("Description")
+_species_label = NodePath("CreatureSpecies")
+_image = NodePath("Panel/Panel2/CreatureImage")
+_money_per_hour_container = NodePath("HBoxContainer2/Stats/MoneyPerHour")
+_hunger_rate_container = NodePath("HBoxContainer2/Stats/HungerLossPerHour")
+_happiness_container = NodePath("HBoxContainer2/Needs/Happiness")
+_satiation_container = NodePath("HBoxContainer2/Needs/Satiation")
+_close_button = NodePath("CloseButton")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_bi2st")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_top = 118.0
+offset_right = -104.0
+offset_bottom = 314.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1h6la")
+
+[node name="Panel2" type="Panel" parent="Panel"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6j02r")
+
+[node name="CreatureImage" type="TextureRect" parent="Panel/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_afveu")
+expand_mode = 3
+
+[node name="Reference" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_64cj3")
+
+[node name="RarityAndType" type="Label" parent="."]
+layout_mode = 2
+offset_left = 60.0
+offset_top = 39.0
+offset_right = 129.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("5_bhvwm")
+theme_override_font_sizes/font_size = 15
+text = "Common Fish"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 73.0
+offset_right = 183.0
+offset_bottom = 113.0
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/caret_color = Color(0, 0.635294, 0.992157, 1)
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tqbuu")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_awlyl")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wb7er")
+text = "Namef"
+placeholder_text = "Name"
+expand_to_text_length = true
+caret_blink = true
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_awlyl")
+
+[node name="AddRemoveFromTank" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 46.0
+offset_right = 874.0
+offset_bottom = 100.0
+texture_normal = ExtResource("8_wb7er")
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 44.0
+offset_right = 971.0
+offset_bottom = 98.0
+texture_normal = ExtResource("9_mcnp6")
+
+[node name="CreatureSpecies" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_top = 116.0
+offset_right = 92.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("10_n2nre")
+theme_override_font_sizes/font_size = 15
+text = "Carassius auratus"
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 145.0
+offset_right = 928.0
+offset_bottom = 311.0
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("11_ux5o3")
+theme_override_font_sizes/font_size = 15
+text = "The common goldfish is an agreeable looking fish that brings joy and laughter to the hearts of many. They are simultaneously very smart and blissfully ignorant. Their best are aquatic soccer and basketball players, while their worst prefer to be vegetables."
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = -264.0
+offset_right = -46.0
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Stats" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Stats" type="Label" parent="HBoxContainer2/Stats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="MoneyPerHour" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
+layout_mode = 2
+
+[node name="HungerLossPerHour" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
+layout_mode = 2
+
+[node name="Needs" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Stats" type="Label" parent="HBoxContainer2/Needs"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+text = "Needs"
+horizontal_alignment = 1
+
+[node name="Happiness" parent="HBoxContainer2/Needs" instance=ExtResource("13_afveu")]
+layout_mode = 2
+
+[node name="Satiation" parent="HBoxContainer2/Needs" instance=ExtResource("13_afveu")]
+layout_mode = 2
+
+[node name="Preferences" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Stats" type="Label" parent="HBoxContainer2/Preferences"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+text = "Preferences"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/Preferences"]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="Stat" type="Label" parent="HBoxContainer2/Preferences/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+text = "NOT IMPLEMENTED"
+
+[node name="Value" type="Label" parent="HBoxContainer2/Preferences/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+text = "0"
+
+[node name="Unit" type="Label" parent="HBoxContainer2/Preferences/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+text = "0"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 473.0
+offset_right = 1024.0
+offset_bottom = 513.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Value" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 20
+text = "Value"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("16_tqbuu")
+
+[node name="SellValue" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 20
+text = "9999"

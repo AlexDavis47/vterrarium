@@ -6,6 +6,10 @@ var creature_items: Array[CreatureCardSmall] = []
 
 func _ready() -> void:
 	_populate_grid()
+	VTGlobal.trigger_inventory_refresh.connect(_on_trigger_inventory_refresh)
+
+func _on_trigger_inventory_refresh() -> void:
+	reload_grid()
 
 func reload_grid() -> void:
 	# Clear existing items

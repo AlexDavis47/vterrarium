@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbs3nvaelgmko"]
+
+[ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="1_m5gto"]
+[ext_resource type="Script" uid="uid://cl8wbr5jlnb4a" path="res://src/ui/creature_detail_view/need_container.gd" id="1_ubhiu"]
+[ext_resource type="Texture2D" uid="uid://xyy75mibsu27" path="res://src/ui/creature_detail_view/textures/creature_card_bar_fill.png" id="2_ywo1k"]
+[ext_resource type="Texture2D" uid="uid://dmkknbd7ccjio" path="res://src/ui/creature_detail_view/textures/creature_card_bar_meter.png" id="3_ubhiu"]
+
+[node name="NeedContainer" type="HBoxContainer" node_paths=PackedStringArray("_need_label", "_need_meter")]
+theme_override_constants/separation = 28
+alignment = 1
+script = ExtResource("1_ubhiu")
+_need_label = NodePath("Need")
+_need_meter = NodePath("NeedMeterBG/NeedMeter")
+need_name = "Need"
+
+[node name="Need" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("1_m5gto")
+text = "Happiness"
+
+[node name="NeedMeterBG" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_ywo1k")
+
+[node name="NeedMeter" type="TextureRect" parent="NeedMeterBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ubhiu")
+expand_mode = 1

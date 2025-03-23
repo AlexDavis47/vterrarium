@@ -7,10 +7,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1265r"]
 shader = ExtResource("2_e3qj4")
-shader_parameter/bottom_color = Color(0, 0.923269, 0.923347, 1)
-shader_parameter/top_color = Color(0.0709301, 0.612809, 0.776241, 1)
+shader_parameter/bottom_color = Color(0.264223, 0.440767, 0.540698, 1)
+shader_parameter/top_color = Color(0.211765, 0.364706, 0.45098, 1)
 shader_parameter/tex = ExtResource("3_1265r")
-shader_parameter/layer_count = 8
+shader_parameter/layer_count = 5
 shader_parameter/time_scale = 0.047
 shader_parameter/base_intensity = 0.5
 shader_parameter/size = 0.52001
