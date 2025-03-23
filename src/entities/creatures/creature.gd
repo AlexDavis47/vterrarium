@@ -103,8 +103,14 @@ func _process_temperature(delta: float) -> void:
 ## Process the happiness of the creature based on hunger
 func _process_happiness(delta: float) -> void:
 	var target_happiness: float = 1.0
-	# Reduce happiness based on hunger (lower satiation = lower happiness)
-	target_happiness -= (1.0 - creature_data.creature_satiation)
+	# Reduce happiness based on hunger
+	# If creature is full (satiation > 0.75), contentment is perfect (1.0)
+	# Otherwise, lower satiation = lower happiness
+	if get_hunger_bracket() == CreatureData.HungerBracket.Full:
+		# No reduction in happiness when full
+		pass
+	else:
+		target_happiness -= (1.0 - creature_data.creature_satiation)
 	# Reduce happiness based on light level (lower light contentment = lower happiness)
 	target_happiness -= (1.0 - creature_data.creature_light_contentment)
 	# Reduce happiness based on temperature level (lower temperature contentment = lower happiness)

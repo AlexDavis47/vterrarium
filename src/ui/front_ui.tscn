@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpmhaxpyatodg"]
+[gd_scene load_steps=6 format=3 uid="uid://dpmhaxpyatodg"]
 
 [ext_resource type="Script" uid="uid://bq1jv17h5cb1r" path="res://src/ui/front_ui.gd" id="1_2l854"]
 [ext_resource type="Texture2D" uid="uid://yysjomhomjrd" path="res://src/ui/textures/stat_panel/StatsWithLayout.png" id="2_pm787"]
 [ext_resource type="Texture2D" uid="uid://425i4rjkp4mq" path="res://src/ui/textures/stat_panel/happy_bar_meter.png" id="3_oaxvc"]
 [ext_resource type="Script" uid="uid://bbrh5cuokd4vk" path="res://src/ui/happiness_bar.gd" id="4_f23iq"]
+[ext_resource type="FontFile" uid="uid://6blx26ndsrl8" path="res://assets/fonts/RedditMono-Regular.ttf" id="5_f23iq"]
 
-[node name="FrontUI" type="Control"]
+[node name="FrontUI" type="Control" node_paths=PackedStringArray("happiness_percentage_label", "money_label", "time_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +14,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2l854")
+happiness_percentage_label = NodePath("HappinessPercentage")
+money_label = NodePath("Money")
+time_label = NodePath("Time")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -24,7 +28,7 @@ offset_right = 338.0
 grow_vertical = 0
 texture = ExtResource("2_pm787")
 
-[node name="happiness_bar" type="TextureRect" parent="."]
+[node name="HappinessBar" type="TextureRect" parent="."]
 layout_mode = 1
 offset_left = 66.0
 offset_top = 495.0
@@ -33,3 +37,33 @@ offset_bottom = 515.0
 texture = ExtResource("3_oaxvc")
 expand_mode = 1
 script = ExtResource("4_f23iq")
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 543.0
+offset_right = 249.0
+offset_bottom = 566.0
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("5_f23iq")
+text = "u broke"
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 543.0
+offset_right = 120.0
+offset_bottom = 566.0
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("5_f23iq")
+text = "when am i"
+
+[node name="HappinessPercentage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 494.0
+offset_right = 309.0
+offset_bottom = 517.0
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("5_f23iq")
+text = "0%"
