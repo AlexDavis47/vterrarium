@@ -67,3 +67,19 @@ func get_total_creature_happiness_percentage() -> float:
 		return 0.0
 
 	return total_happiness / total_creatures
+
+## Get all creatures in the inventory
+func get_all_creatures_in_inventory() -> Array[CreatureData]:
+	var creatures: Array[CreatureData] = []
+	for creature in SaveManager.save_file.creature_inventory:
+		creatures.append(creature)
+	return creatures
+
+## Get all creatures in the tank
+func get_all_creatures_in_tank() -> Array[CreatureData]:
+	var creatures: Array[CreatureData] = []
+	for creature in SaveManager.save_file.creature_inventory:
+		if not creature.creature_is_in_tank:
+			continue
+		creatures.append(creature)
+	return creatures
