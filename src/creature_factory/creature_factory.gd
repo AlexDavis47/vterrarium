@@ -13,7 +13,6 @@ enum CreaturePool {
 ## Stored mainly for scanning pools
 var creature_data_templates: Array[CreatureData] = [
 	preload("uid://bi10nf3pilsau"), # blue_fish
-	preload("uid://c3gof7obhvbej"), # weird_fish
 	preload("uid://x7f8v6e3a7u2"), # red_fish
 	preload("uid://cl4iqwjh3g3cm") # yellow_tang_fish
 ]
@@ -44,27 +43,27 @@ func run_test_cycle() -> void:
 		# Initial setup for testing - create creatures and add to tank
 	_create_test_creatures()
 	
-	# Test cycle 1: Remove all creatures from tank
-	await get_tree().create_timer(1.0).timeout
-	_remove_all_creatures_from_tank()
+	# # Test cycle 1: Remove all creatures from tank
+	# await get_tree().create_timer(1.0).timeout
+	# _remove_all_creatures_from_tank()
 	
-	# Test cycle 2: Add all creatures back to tank
-	await get_tree().create_timer(1.0).timeout
-	_add_all_creatures_to_tank()
+	# # Test cycle 2: Add all creatures back to tank
+	# await get_tree().create_timer(1.0).timeout
+	# _add_all_creatures_to_tank()
 	
-	# Test cycle 3: Remove all creatures from tank again
-	await get_tree().create_timer(1.0).timeout
-	_remove_all_creatures_from_tank()
+	# # Test cycle 3: Remove all creatures from tank again
+	# await get_tree().create_timer(1.0).timeout
+	# _remove_all_creatures_from_tank()
 
-	# Test cycle 4: Add all creatures back to tank again
-	await get_tree().create_timer(1.0).timeout
-	_add_all_creatures_to_tank()
+	# # Test cycle 4: Add all creatures back to tank again
+	# await get_tree().create_timer(1.0).timeout
+	# _add_all_creatures_to_tank()
 
 
 ## Creates test creatures and adds them to the inventory and tank
 func _create_test_creatures() -> void:
 	for creature_data in creature_data_templates:
-		for i in range(1):
+		for i in range(10):
 			var new_creature = _generate_creature_from_template(creature_data)
 			SaveManager.save_file.creature_inventory.append(new_creature)
 			_add_creature_to_tank(new_creature)

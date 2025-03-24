@@ -12,6 +12,7 @@ class_name CreatureDetailViewUI
 @export var _money_per_hour_container: StatContainer
 @export var _hunger_rate_container: StatContainer
 @export var _speed_container: StatContainer
+@export var _size_container: StatContainer
 
 @export var _happiness_container: NeedContainer
 @export var _satiation_container: NeedContainer
@@ -33,6 +34,7 @@ func update_info() -> void:
 	_update_money_per_hour()
 	_update_hunger_rate()
 	_update_speed()
+	_update_size()
 	_update_happiness()
 	_update_satiation()
 
@@ -82,6 +84,19 @@ func _update_speed() -> void:
 		
 	_speed_container.value = speed_text
 	_speed_container.unit = ""
+
+func _update_size() -> void:
+	_size_container.stat = "Is"
+	var size_percentage = (creature_data.creature_size - 1.0) * 100
+	var size_text = ""
+	
+	if size_percentage > 0:
+		size_text = "+%.0f" % size_percentage + "% larger than average"
+	else:
+		size_text = "%.0f" % abs(size_percentage) + "% smaller than average"
+		
+	_size_container.value = size_text
+	_size_container.unit = ""
 
 func _update_happiness() -> void:
 	_happiness_container.need_name = "Happiness"

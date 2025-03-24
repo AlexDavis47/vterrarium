@@ -15,29 +15,31 @@ enum HappinessBracket {
 	Ecstatic
 }
 
-@export_group("Creature Data")
-## The type of creature, this is used to determine which creature to spawn in the creature factory
-@export var creature_type: CreatureFactory.CreatureType = CreatureFactory.CreatureType.FISH
+@export_group("Basic Information")
 ## The display name of the creature in UI and other places
 @export var creature_name: String = "Unnamed Creature"
 ## The species of the creature. Used in UI.
 @export var creature_species: String = "Unnamed Species"
 ## The creature_description of the creature
 @export var creature_description: String = "A creature with no creature_description"
+## The type of creature, this is used to determine which creature to spawn in the creature factory
+@export var creature_type: CreatureFactory.CreatureType = CreatureFactory.CreatureType.FISH
+## The creature_rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
+@export var creature_rarity: Enums.Rarity = Enums.Rarity.Common
+## The image of the creature, this is used to display the creature in the inventory
+@export var creature_image: Texture2D = null
 ## The UUID of the mesh of the creature
 @export var creature_mesh_uuid: String = ""
+
+@export_group("Appearance")
 ## The tinting of the creature, a color value. Will be used to tint the creature's albedo texture.
 @export var creature_tint: Color = Color.WHITE
 ## The amount of tinting to apply to the creature, this is a value between 0 and 1
 @export var creature_tint_amount: float = 1.0
-## The image of the creature, this is used to display the creature in the inventory
-@export var creature_image: Texture2D = null
-## The creature_rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
-@export var creature_rarity: Enums.Rarity = Enums.Rarity.Common
-## The pool chances for the creature, this is used to determine the chance of the creature being spawned in the creature factory
-@export var creature_pool_chances: Array[PoolChance] = []
+## The creature's size, affects the size of the creature
+@export var creature_size: float = 1.0
 
-@export_group("Stats")
+@export_group("Gameplay Stats")
 ## The money per hour that the creature generates
 @export var creature_money_per_hour: float = 1.0
 ## The hunger rate of the creature, this is the rate at which the creature will lose creature_satiation per hour
@@ -52,39 +54,20 @@ enum HappinessBracket {
 		creature_satiation = clamp(value, 0.0, 1.0)
 	get:
 		return creature_satiation
+## The creature's speed, affects the speed that the creature moves around the tank
+@export var creature_speed: float = 1.0
+
+@export_group("Preferences")
 ## The light level preference of the creature, this is an editor curve.
 ## 0 on the x axis is dark, 1 on the x axis is light
 ## 0 on the y axis is dislike, 1 on the y axis is like
 @export var creature_light_preference: Curve = Curve.new()
-## The current contentment with the light level, this is a value between 0 and 1
-@export var creature_light_contentment: float = 1.0:
-	set(value):
-		creature_light_contentment = clamp(value, 0.0, 1.0)
-	get:
-		return creature_light_contentment
-
 ## The temperature preference of the creature, this is an editor curve.
 ## 0 on the x axis is cold, 1 on the x axis is hot
 ## 0 on the y axis is dislike, 1 on the y axis is like
 @export var creature_temperature_preference: Curve = Curve.new()
-## The current contentment with the temperature, this is a value between 0 and 1
-@export var creature_temperature_contentment: float = 1.0:
-	set(value):
-		creature_temperature_contentment = clamp(value, 0.0, 1.0)
-	get:
-		return creature_temperature_contentment
-
-
-## The creature_happiness of the creature, affects the money rate
-@export var creature_happiness: float = 1.0:
-	set(value):
-		creature_happiness = clamp(value, 0.0, 1.0)
-	get:
-		return creature_happiness
-## The creature's speed, affects the speed that the creature moves around the tank
-@export var creature_speed: float = 1.0
-## The creature's size, affects the size of the creature
-@export var creature_size: float = 1.0
+## The pool chances for the creature, this is used to determine the chance of the creature being spawned in the creature factory
+@export var creature_pool_chances: Array[PoolChance] = []
 
 @export_group("Instance Data DON'T TOUCH")
 ## A unique identifier for this creature instance
@@ -94,12 +77,31 @@ enum HappinessBracket {
 @export var creature_luck: float = 1.0
 ## Whether the creature scene for this creature data is currently instantiated
 @export var creature_is_in_tank: bool = false
-## Reference to the currently instantiated creature object spawned from this data,
-## This one actually doesn't need to be exported because it is not saved to data.
-var creature_instance: Creature
-
 ## The global position of the creature in the tank
 @export var creature_position: Vector3 = Vector3.ZERO
+
+## The current contentment with the light level, this is a value between 0 and 1
+@export var creature_light_contentment: float = 1.0:
+	set(value):
+		creature_light_contentment = clamp(value, 0.0, 1.0)
+	get:
+		return creature_light_contentment
+## The current contentment with the temperature, this is a value between 0 and 1
+@export var creature_temperature_contentment: float = 1.0:
+	set(value):
+		creature_temperature_contentment = clamp(value, 0.0, 1.0)
+	get:
+		return creature_temperature_contentment
+## The creature_happiness of the creature, affects the money rate
+@export var creature_happiness: float = 1.0:
+	set(value):
+		creature_happiness = clamp(value, 0.0, 1.0)
+	get:
+		return creature_happiness
+
+# TEMPORARY VARIABLES
+## Reference to the currently instantiated creature object spawned from this data
+var creature_instance: Creature
 
 func on_generated(luck: float) -> void:
 	creature_luck = luck
