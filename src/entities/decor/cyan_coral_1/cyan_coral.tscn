@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1iqpx7bvodp1"]
+
+[ext_resource type="PackedScene" uid="uid://b3tclcqf2u7l3" path="res://assets/models/decor/cyan_coral/cyan_coral.glb" id="1_01yww"]
+
+[node name="cyan_coral" instance=ExtResource("1_01yww")]

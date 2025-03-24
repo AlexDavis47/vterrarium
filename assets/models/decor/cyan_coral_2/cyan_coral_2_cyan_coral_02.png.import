@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cf3i4cxkndobl"
+path.s3tc="res://.godot/imported/cyan_coral_2_cyan_coral_02.png-e095851e50e6d0da11a787ab88008e3e.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "18aab60f8c9a82090aa4c8cc8db4788a"
+}
+
+[deps]
+
+source_file="res://assets/models/decor/cyan_coral_2/cyan_coral_2_cyan_coral_02.png"
+dest_files=["res://.godot/imported/cyan_coral_2_cyan_coral_02.png-e095851e50e6d0da11a787ab88008e3e.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

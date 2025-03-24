@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bxtif1rdirc4t"]
+
+[ext_resource type="Shader" uid="uid://ct7sesjby0t7k" path="res://src/entities/decor/cyan_coral_1/coral.gdshader" id="1_0k50e"]
+[ext_resource type="Texture2D" uid="uid://cf3i4cxkndobl" path="res://assets/models/decor/cyan_coral_2/cyan_coral_2_cyan_coral_02.png" id="1_jmd4k"]
+
+[resource]
+resource_name = "cyan_coral_02"
+render_priority = 0
+shader = ExtResource("1_0k50e")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("1_jmd4k")
+shader_parameter/albedo_texture_size = Vector2i(516, 516)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.5
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/wind_strength = 0.3
+shader_parameter/wind_speed = 1.0
+shader_parameter/wind_scale = 1.0
+shader_parameter/wind_direction = Vector2(1, 0.3)

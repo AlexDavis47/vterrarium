@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=24 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://fi3ukfe3r0ki" path="res://addons/vterrariumframework/src/classes/vt_front_window.gd" id="6_qfpye"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="Shader" uid="uid://bu4pnewlhq57k" path="res://src/shaders/water.gdshader" id="14_27mdg"]
+[ext_resource type="PackedScene" uid="uid://b3tclcqf2u7l3" path="res://assets/models/decor/cyan_coral/cyan_coral.glb" id="14_b0toy"]
 [ext_resource type="AudioStream" uid="uid://cmj7ag4qru8q5" path="res://assets/audio/water.wav" id="14_d2bpd"]
 [ext_resource type="Script" uid="uid://dtcn1vb8gri55" path="res://src/directional_light_3d.gd" id="14_qfpye"]
 [ext_resource type="PackedScene" uid="uid://dqdckux4bv4ne" path="res://src/ui/top_ui.tscn" id="16_27mdg"]
@@ -178,3 +179,21 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.9
 stream = ExtResource("14_d2bpd")
 volume_db = -6.0
 autoplay = true
+
+[node name="cyan_coral" parent="." instance=ExtResource("14_b0toy")]
+transform = Transform3D(-0.794351, 0, -0.607459, 0, 1, 0, 0.607459, 0, -0.794351, 4.19377, -2.65351, -2.31983)
+
+[node name="cyan_coral2" parent="." instance=ExtResource("14_b0toy")]
+transform = Transform3D(1.21094, -0.257878, 0.778894, 0.100121, 1.19794, 0.387631, -0.846639, -0.227176, 1.15989, 3.67626, -2.65351, -1.9148)
+
+[node name="cyan_coral3" parent="." instance=ExtResource("14_b0toy")]
+transform = Transform3D(1.3216, 0.0290618, -0.464432, 0.0948455, 1.0442, 0.371291, 0.460991, -0.298152, 1.25508, -2.99769, -2.70934, 2.41119)
+
+[node name="cyan_coral4" parent="." instance=ExtResource("14_b0toy")]
+transform = Transform3D(-0.762036, 0.392999, -1.24033, 0.0973953, 1.44331, 0.410762, 1.21869, 0.130392, -0.808397, -4.72077, -2.70934, -2.27877)
+
+[node name="cyan_coral6" parent="." instance=ExtResource("14_b0toy")]
+transform = Transform3D(1.08562, -0.337557, 0.94909, 0.0973953, 1.44331, 0.410762, -0.941978, -0.239802, 1.13629, 4.39422, -2.70934, -0.248106)
+
+[node name="cyan_coral5" parent="." instance=ExtResource("14_b0toy")]
+transform = Transform3D(-0.297183, -0.19622, -0.861115, -0.134399, 0.667289, -0.203474, 0.517405, 0.0606294, -0.547454, -4.46571, -2.70934, 1.29462)
