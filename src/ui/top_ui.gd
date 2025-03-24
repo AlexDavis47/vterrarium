@@ -10,8 +10,8 @@ signal menu_opened(menu_name: String)
 signal menu_closed()
 
 var inventory_scene: PackedScene = preload("uid://bda2an2nm10ol")
-var feeding_scene: PackedScene = preload("uid://bda2an2nm10ol")
-var store_scene: PackedScene = preload("uid://bda2an2nm10ol")
+var feeding_scene: PackedScene = preload("uid://d1eksnwdwou65")
+var store_scene: PackedScene = preload("uid://gbnpxr40g1kv")
 
 @export var menu_buttons: MenuButtons
 

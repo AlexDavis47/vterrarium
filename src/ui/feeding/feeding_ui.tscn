@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1eksnwdwou65"]
+
+[ext_resource type="Texture2D" uid="uid://bufwxgm8cdfep" path="res://src/ui/feeding/textures/placeholder.png" id="1_nr0k2"]
+
+[node name="FeedingUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_nr0k2")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 342.0
+offset_top = 199.0
+offset_right = 431.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 46
+text = "NOT
+YET
+IMPLEMENTED"

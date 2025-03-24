@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://gbnpxr40g1kv"]
+
+[ext_resource type="Texture2D" uid="uid://r3kiu7wvfm2u" path="res://src/ui/store/textures/Common Fish Pack.png" id="1_2r732"]
+[ext_resource type="Texture2D" uid="uid://bm5gyjwe7e0gg" path="res://src/ui/store/textures/Uncommon Common Fish Pack.png" id="2_fvjfl"]
+[ext_resource type="Texture2D" uid="uid://yiqdapagrglv" path="res://src/ui/store/textures/Rare Fish Pack.png" id="3_26mh0"]
+[ext_resource type="Texture2D" uid="uid://tjmoxo007kdn" path="res://src/ui/store/textures/Very Rare Fish Pack.png" id="4_jv4r2"]
+[ext_resource type="Texture2D" uid="uid://dl5xxwrlowcyw" path="res://src/ui/store/textures/Remarkable Fish Pack.png" id="5_fjvtb"]
+[ext_resource type="Texture2D" uid="uid://dqvi2sg4mys07" path="res://src/ui/store/textures/Legendary Fish Pack.png" id="6_yt715"]
+[ext_resource type="Texture2D" uid="uid://rscn10l6vsoh" path="res://src/ui/store/textures/Normal Food Pack.png" id="7_ttovp"]
+[ext_resource type="Texture2D" uid="uid://cplad4c0eqbjc" path="res://src/ui/store/textures/High Quality Food Pack.png" id="8_3cj0y"]
+[ext_resource type="Texture2D" uid="uid://kfjxgkq54bgf" path="res://src/ui/store/textures/Luxury Food Pack.png" id="9_e0do1"]
+
+[node name="StoreUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 851.0
+offset_bottom = 600.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("1_2r732")
+
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_fvjfl")
+
+[node name="TextureRect3" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_26mh0")
+
+[node name="TextureRect4" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("4_jv4r2")
+
+[node name="TextureRect5" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("5_fjvtb")
+
+[node name="TextureRect6" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_yt715")
+
+[node name="TextureRect7" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("7_ttovp")
+
+[node name="TextureRect8" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("8_3cj0y")
+
+[node name="TextureRect9" type="TextureRect" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("9_e0do1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 261.0
+offset_top = 199.0
+offset_right = -328.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 25
+theme_override_font_sizes/font_size = 46
+text = "NOT
+YET
+IMPLEMENTED"
