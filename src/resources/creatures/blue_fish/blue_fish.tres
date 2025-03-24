@@ -5,8 +5,12 @@
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="2_csiua"]
 
 [sub_resource type="Curve" id="Curve_ok7cm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Vector2(0.534682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Curve" id="Curve_jevmt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.251445, 1), 0.0, 0.0, 0, 0, Vector2(0.684971, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [resource]
 script = ExtResource("2_csiua")
