@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://cl4iqwjh3g3cm"]
+
+[ext_resource type="Texture2D" uid="uid://dqgt6xinrrjsm" path="res://src/resources/creatures/yellow_tang_fish/yellow_tang_fish.png" id="1_7jclb"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_oavns"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_ewxk6"]
+
+[sub_resource type="Curve" id="Curve_ixyes"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.286127, 1), 0.0, 0.0, 0, 0, Vector2(0.947977, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_d1wc2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.289017, 1), 0.0, 0.0, 0, 0, Vector2(0.82659, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("3_ewxk6")
+creature_type = 0
+creature_name = "Yellow Tang"
+creature_species = "Zebrasoma flavescens"
+creature_description = "The yellow tang (Zebrasoma flavescens), also known as the lemon sailfin, yellow sailfin tang or somber surgeonfish, is a species of marine ray-finned fish belonging to the family Acanthuridae which includes the surgeonfishes, unicornfishes and tangs. Bright yellow in color, it is one of the most popular marine aquarium fish, though in its natural state, it lives in reefs. The yellow tang spawns around a full moon, eats algae, and has a white barb, located just before the tail fin, to protect itself."
+creature_mesh_uuid = "uid://j1mjwdgwoy6x"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_image = ExtResource("1_7jclb")
+creature_rarity = 0
+creature_pool_chances = Array[ExtResource("2_oavns")]([])
+creature_money_per_hour = 60.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_light_preference = SubResource("Curve_ixyes")
+creature_light_contentment = 1.0
+creature_temperature_preference = SubResource("Curve_d1wc2")
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+creature_speed = 1.0
+creature_size = 1.0
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://63umrodfd2l3"

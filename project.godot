@@ -44,6 +44,10 @@ project/assembly_name="VTerrarium"
 
 enabled=PackedStringArray("res://addons/vterrariumframework/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true

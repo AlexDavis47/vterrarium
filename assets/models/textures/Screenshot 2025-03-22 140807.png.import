@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqw33daqnf5hq"
-path.s3tc="res://.godot/imported/weird_fish_fish_texture_red.png-4b74e4ef5f5571985201235acaf5cd8a.s3tc.ctex"
+uid="uid://d0iepmw5j3yw6"
+path.s3tc="res://.godot/imported/Screenshot 2025-03-22 140807.png-3d85ee1bf57cd6d60f68e1980d33bb49.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "c63c224908e1b2ed6f29b1b387e61ec1"
-}
+generator_parameters={}
 
 [deps]
 
-source_file="res://assets/models/weird_fish/weird_fish_fish_texture_red.png"
-dest_files=["res://.godot/imported/weird_fish_fish_texture_red.png-4b74e4ef5f5571985201235acaf5cd8a.s3tc.ctex"]
+source_file="res://assets/models/textures/Screenshot 2025-03-22 140807.png"
+dest_files=["res://.godot/imported/Screenshot 2025-03-22 140807.png-3d85ee1bf57cd6d60f68e1980d33bb49.s3tc.ctex"]
 
 [params]
 

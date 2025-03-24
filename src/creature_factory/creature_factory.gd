@@ -12,8 +12,10 @@ enum CreaturePool {
 ## This contains a list of all of the creature data resources that we can duplicate to create new creatures
 ## Stored mainly for scanning pools
 var creature_data_templates: Array[CreatureData] = [
-	preload("uid://c3gof7obhvbej"), # basic crab
-	preload("uid://x7f8v6e3a7u2") # basic fish
+	preload("uid://bi10nf3pilsau"), # blue_fish
+	preload("uid://c3gof7obhvbej"), # weird_fish
+	preload("uid://x7f8v6e3a7u2"), # red_fish
+	preload("uid://cl4iqwjh3g3cm") # yellow_tang_fish
 ]
 
 # Since we're no longer using scene UUIDs to spawn the correct creature scene,
@@ -28,7 +30,7 @@ enum CreatureType {
 ## Map of creature type to creature scene
 ## When a creature data is spawned, check the creature type
 ## to instantiate the correct scene and apply the creature data to the instance
-var creature_type_to_data: Dictionary = {
+var creature_type_to_scene: Dictionary = {
 	CreatureType.FISH: preload("uid://bpq3hl6lq1ngy"), # fish
 	CreatureType.CRAB: preload("uid://dlwv2lwgphc3e") # crab
 }
@@ -62,7 +64,7 @@ func run_test_cycle() -> void:
 ## Creates test creatures and adds them to the inventory and tank
 func _create_test_creatures() -> void:
 	for creature_data in creature_data_templates:
-		for i in range(3):
+		for i in range(1):
 			var new_creature = _generate_creature_from_template(creature_data)
 			SaveManager.save_file.creature_inventory.append(new_creature)
 			_add_creature_to_tank(new_creature)
@@ -86,7 +88,7 @@ func _remove_all_creatures_from_tank() -> void:
 
 ## Adds a creature to the tank
 func _add_creature_to_tank(creature_data: CreatureData) -> void:
-	var creature_scene = creature_type_to_data[creature_data.creature_type]
+	var creature_scene = creature_type_to_scene[creature_data.creature_type]
 	var creature = creature_scene.instantiate()
 	creature.creature_data = creature_data
 	creature_data.creature_is_in_tank = true

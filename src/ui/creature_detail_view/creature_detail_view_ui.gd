@@ -62,9 +62,9 @@ func _update_money_per_hour() -> void:
 	_money_per_hour_container.unit = "Coins per Hour"
 
 func _update_hunger_rate() -> void:
-	_hunger_rate_container.stat = "Gains"
-	_hunger_rate_container.value = "%.2f" % creature_data.creature_hunger_rate
-	_hunger_rate_container.unit = "Hunger per Hour"
+	_hunger_rate_container.stat = "Loses"
+	_hunger_rate_container.value = "%.2f" % (creature_data.creature_hunger_rate * 100)
+	_hunger_rate_container.unit = "% Satiation per Hour"
 
 func _update_happiness() -> void:
 	_happiness_container.need_name = "Happiness"

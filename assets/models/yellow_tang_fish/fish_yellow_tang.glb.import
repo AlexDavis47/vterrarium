@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bqc205bcdkhgi"
-path="res://.godot/imported/rigged_crab_low_poly.glb-b9ab258c48f9fbe53f206034c6958b2e.scn"
+uid="uid://b7dg78y6qj540"
+path="res://.godot/imported/fish_yellow_tang.glb-771185cea68f07cafa72232b97478185.scn"
 
 [deps]
 
-source_file="res://assets/models/rigged_crab_low_poly.glb"
-dest_files=["res://.godot/imported/rigged_crab_low_poly.glb-b9ab258c48f9fbe53f206034c6958b2e.scn"]
+source_file="res://assets/models/yellow_tang_fish/fish_yellow_tang.glb"
+dest_files=["res://.godot/imported/fish_yellow_tang.glb-771185cea68f07cafa72232b97478185.scn"]
 
 [params]
 
@@ -32,6 +32,17 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"meshes": {
+"fish_yellow_tang_Plane": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/yellow_tang_fish/fish_yellow_tang_Plane.res"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

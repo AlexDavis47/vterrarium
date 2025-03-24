@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://uajmcwomy4kj"
-path="res://.godot/imported/basic_crab.blend-9240a8e425d3aeaa1995f5d2220b71c9.scn"
+uid="uid://dx6lyr84su1f4"
+path="res://.godot/imported/fish_blue.blend-f76d9b70e95cf3624a63e556da106234.scn"
 
 [deps]
 
-source_file="res://assets/models/basic_crab.blend"
-dest_files=["res://.godot/imported/basic_crab.blend-9240a8e425d3aeaa1995f5d2220b71c9.scn"]
+source_file="res://assets/models/fish_blue.blend"
+dest_files=["res://.godot/imported/fish_blue.blend-f76d9b70e95cf3624a63e556da106234.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c6d6cww8mywvk"
-path="res://.godot/imported/fish_red.blend-8623edb865909f7f28ba0e97c2e5d3e3.scn"
+uid="uid://4fhu4qldffjk"
+path="res://.godot/imported/weird_fish.blend-d15d5cdf3b5e0d8d794615f39fa7c297.scn"
 
 [deps]
 
-source_file="res://assets/models/red_fish/fish_red.blend"
-dest_files=["res://.godot/imported/fish_red.blend-8623edb865909f7f28ba0e97c2e5d3e3.scn"]
+source_file="res://assets/models/weird_fish.blend"
+dest_files=["res://.godot/imported/weird_fish.blend-d15d5cdf3b5e0d8d794615f39fa7c297.scn"]
 
 [params]
 
