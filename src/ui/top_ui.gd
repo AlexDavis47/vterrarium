@@ -95,6 +95,9 @@ func close_all_menus():
 	menu_closed.emit()
 	Utils.all_menus_closed = true
 
+	# For testing, only spawn food if the feeding menu is open
+	FoodFactory._feeding_menu_open = false
+
 func _open_menu(menu: PackedScene, menu_name: String):
 	if current_menu != null:
 		current_menu.queue_free()
@@ -103,3 +106,9 @@ func _open_menu(menu: PackedScene, menu_name: String):
 	add_child(current_menu)
 	menu_opened.emit(menu_name)
 	Utils.all_menus_closed = false
+
+	# For testing, only spawn food if the feeding menu is open
+	if menu_name == "feeding":
+		FoodFactory._feeding_menu_open = true
+	else:
+		FoodFactory._feeding_menu_open = false

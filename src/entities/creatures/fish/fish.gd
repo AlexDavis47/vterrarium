@@ -19,6 +19,11 @@ var linear_velocity: Vector3 = Vector3.ZERO
 var _target_marker: MeshInstance3D
 var _show_target_marker: bool = false
 
+# Only be able to eat food if the feeding cooldown is over
+var _feeding_cooldown_duration: float = 5.0
+var _feeding_cooldown_timer: float = 0.0
+var _can_eat_food: bool = false
+
 func _ready():
 	super._ready()
 	
@@ -37,6 +42,14 @@ func _setup_target_marker() -> void:
 func _process(delta):
 	if _show_target_marker and _target_marker:
 		_target_marker.global_position = target_position
+
+	_feeding_cooldown_timer += delta
+	if _feeding_cooldown_timer > _feeding_cooldown_duration:
+		_feeding_cooldown_timer = _feeding_cooldown_duration
+		_can_eat_food = true
+	else:
+		_can_eat_food = false
+
 
 func set_show_target_marker(show: bool) -> void:
 	if show == _show_target_marker:

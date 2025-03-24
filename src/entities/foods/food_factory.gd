@@ -9,6 +9,9 @@ var food_data_templates: Array[FishFoodData] = [
 	load("uid://cxcomehb8uap3") # Basic Flakes
 ]
 
+# For testing, only spawn food if the feeding menu is open
+var _feeding_menu_open: bool = false
+
 signal food_spawned(food: FishFood)
 
 func _ready():
@@ -16,7 +19,7 @@ func _ready():
 
 func _on_top_window_input(event: InputEvent) -> void:
 	# THIS IS FOR TESTING ONLY
-	if event is InputEventScreenTouch and event.pressed:
+	if event is InputEventScreenTouch and event.pressed and _feeding_menu_open:
 		var touch_position = event.position
 		var camera = VTGlobal.top_camera
 		var world_position = camera.project_position(touch_position, camera.global_position.y - VTConfig.terrarium_dimensions.y / 2)

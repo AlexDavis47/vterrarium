@@ -19,13 +19,12 @@ func exit():
 
 func update(delta: float):
 	super.update(delta)
+	var fish = creature as Fish
 	
-	if not target_food or not is_instance_valid(target_food) or not target_food.is_edible:
+	if not target_food or not is_instance_valid(target_food) or not target_food.is_edible or not fish._can_eat_food:
 		state_transition.emit(self, "Wandering")
 		return
 
-	var fish = creature as Fish
-	
 	
 	# Update target position to follow the food
 	fish.target_position = target_food.global_position
@@ -34,6 +33,7 @@ func update(delta: float):
 	var distance = fish.global_position.distance_to(target_food.global_position)
 	if distance < food_eat_distance:
 		eat_food()
+		state_transition.emit(self, "Wandering")
 
 	# If we've reached the center target, transition to idle
 	if fish.move_towards_target(delta, feeding_speed):
@@ -62,3 +62,6 @@ func eat_food() -> void:
 		
 		# Let the target know it's been eaten
 		target_food.eat_food()
+
+		# Reset the feeding cooldown
+		fish._feeding_cooldown_timer = 0.0
