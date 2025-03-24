@@ -20,7 +20,6 @@ func _ready():
 	creature_mesh.mesh = load(creature_data.creature_mesh_uuid).duplicate(true)
 	var mesh: Mesh = creature_mesh.mesh
 	mesh.surface_set_material(0, mesh.surface_get_material(0).duplicate(true))
-	print("creature material: ", mesh.surface_get_material(0))
 	_apply_tint()
 	add_to_group("creatures")
 	collision_layer = 0

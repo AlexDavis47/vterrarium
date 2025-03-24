@@ -15,6 +15,13 @@ signal save_created
 ## Signal emitted when a backup save file is loaded
 signal backup_loaded
 
+# Threading variables
+var save_mutex = Mutex.new()
+var save_thread = null
+var is_saving = false
+
+var auto_save_timer: Timer = null
+
 func _ready() -> void:
 	# Ensure the save directory exists
 	var dir = DirAccess.open("res://")
@@ -80,18 +87,50 @@ func _ready() -> void:
 		create_save_file()
 		# For testing
 		CreatureFactory.run_test_cycle()
-		save_game()
+		save_game() # Use save_game instead of _thread_save_game
 	else:
 		print("Loading save file: " + save_files[0].save_id)
 		load_game(save_files[0].save_id)
 
-	handle_auto_save()
+	setup_auto_save()
+
+func setup_auto_save() -> void:
+	print("Setting up auto-save timer...")
+	auto_save_timer = Timer.new()
+	auto_save_timer.name = "AutoSaveTimer" # Give it a name to help with debugging
+	add_child(auto_save_timer)
+	auto_save_timer.wait_time = 1.0
+	auto_save_timer.one_shot = false # Make sure it repeats
+	auto_save_timer.timeout.connect(_on_auto_save_timer_timeout)
+	auto_save_timer.start()
+	print("Auto-save timer started with interval: 1.0 seconds")
+
+func _on_auto_save_timer_timeout() -> void:
+	if not is_saving and (save_thread == null or not save_thread.is_alive()):
+		save_game()
 
 
-func handle_auto_save() -> void:
-	await get_tree().create_timer(1.0).timeout
-	save_game()
-	handle_auto_save()
+## Public method to initiate a save
+func save_game() -> void:
+	# Check if we're already saving
+	if is_saving:
+		return
+		
+	# Clean up previous thread if it exists but is no longer alive
+	if save_thread != null:
+		if not save_thread.is_alive():
+			# Thread is done, we can safely wait_to_finish() to clean it up
+			# without blocking since it's already done
+			save_thread.wait_to_finish()
+			save_thread = null
+		else:
+			# Thread is still running, we should not start another one
+			return
+			
+	# Start new thread
+	is_saving = true
+	save_thread = Thread.new()
+	save_thread.start(Callable(self, "_thread_save_game"))
 
 ## Creates a new save file with default values
 func create_save_file() -> void:
@@ -105,28 +144,40 @@ func create_save_file() -> void:
 	
 	emit_signal("save_created")
 
-## Saves the current save file to disk
-func save_game() -> void:
-	if not save_file:
-		push_error("Attempted to save game with no active save file")
-		return
-		
-	save_file.last_saved_at = Time.get_datetime_dict_from_system()
-	var save_file_path: String = get_save_file_path(save_file.save_id)
+## Threaded function that handles the actual saving
+func _thread_save_game() -> void:
+	# Lock access to shared resources during save
+	save_mutex.lock()
 	
-	# Create backup of existing save file if it exists
-	if FileAccess.file_exists(save_file_path):
-		var backup_path = save_file_path + BACKUP_EXTENSION
-		var error = DirAccess.copy_absolute(save_file_path, backup_path)
+	# Update save timestamp
+	if save_file:
+		save_file.last_saved_at = Time.get_datetime_dict_from_system()
+		var save_file_path: String = get_save_file_path(save_file.save_id)
+		
+		# Create backup of existing save file if it exists
+		if FileAccess.file_exists(save_file_path):
+			var backup_path = save_file_path + BACKUP_EXTENSION
+			var error = DirAccess.copy_absolute(save_file_path, backup_path)
+			if error != OK:
+				push_warning("Failed to create backup save file: " + str(error))
+		
+		# Save the file
+		var error = ResourceSaver.save(save_file, save_file_path)
 		if error != OK:
-			push_warning("Failed to create backup save file: " + str(error))
+			push_error("Failed to save game: " + str(error))
 	
-	var error = ResourceSaver.save(save_file, save_file_path)
-	if error != OK:
-		push_error("Failed to save game: " + str(error))
-		return
-		
+	# Use a callable to emit the signal on the main thread
+	call_deferred("_emit_save_completed")
+	save_mutex.unlock()
+	is_saving = false
+
+func _emit_save_completed() -> void:
 	emit_signal("save_saved")
+
+# Make sure to clean up threads when closing
+func _exit_tree() -> void:
+	if save_thread != null and save_thread.is_alive():
+		save_thread.wait_to_finish()
 
 ## Loads a save file by ID
 func load_game(save_id: String = "") -> bool:
@@ -163,7 +214,7 @@ func load_game(save_id: String = "") -> bool:
 				_respawn_creatures()
 				emit_signal("backup_loaded")
 				# Restore the backup as the main save
-				save_game()
+				save_game() # Use save_game instead of _thread_save_game
 				return true
 		
 		return false
@@ -172,7 +223,6 @@ func load_game(save_id: String = "") -> bool:
 	_respawn_creatures()
 	emit_signal("save_loaded")
 	return true
-
 
 func _respawn_creatures() -> void:
 	print("Respawning creatures")

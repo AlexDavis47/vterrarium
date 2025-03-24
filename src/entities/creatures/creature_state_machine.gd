@@ -18,7 +18,6 @@ func _ready():
 	_pass_creature_to_children()
 
 func _pass_creature_to_children():
-	print("Passing ", creature, " to children")
 	for child in get_children():
 		if child is CreatureState:
 			child.creature = creature
