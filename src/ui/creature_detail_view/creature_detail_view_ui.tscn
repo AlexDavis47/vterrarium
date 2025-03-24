@@ -73,7 +73,7 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb7er"]
 
-[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_happiness_container", "_satiation_container", "_close_button")]
+[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_happiness_container", "_satiation_container", "_close_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +89,7 @@ _species_label = NodePath("CreatureSpecies")
 _image = NodePath("Panel/Panel2/CreatureImage")
 _money_per_hour_container = NodePath("HBoxContainer2/Stats/MoneyPerHour")
 _hunger_rate_container = NodePath("HBoxContainer2/Stats/HungerLossPerHour")
+_speed_container = NodePath("HBoxContainer2/Stats/Speed")
 _happiness_container = NodePath("HBoxContainer2/Needs/Happiness")
 _satiation_container = NodePath("HBoxContainer2/Needs/Satiation")
 _close_button = NodePath("CloseButton")
@@ -176,6 +177,7 @@ layout_mode = 2
 texture_normal = ExtResource("7_awlyl")
 
 [node name="AddRemoveFromTank" type="TextureButton" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 819.0
 offset_top = 46.0
@@ -249,6 +251,9 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="HungerLossPerHour" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
+layout_mode = 2
+
+[node name="Speed" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
 layout_mode = 2
 
 [node name="Needs" type="VBoxContainer" parent="HBoxContainer2"]

@@ -11,6 +11,7 @@ class_name CreatureDetailViewUI
 
 @export var _money_per_hour_container: StatContainer
 @export var _hunger_rate_container: StatContainer
+@export var _speed_container: StatContainer
 
 @export var _happiness_container: NeedContainer
 @export var _satiation_container: NeedContainer
@@ -31,6 +32,7 @@ func update_info() -> void:
 	_update_description()
 	_update_money_per_hour()
 	_update_hunger_rate()
+	_update_speed()
 	_update_happiness()
 	_update_satiation()
 
@@ -58,13 +60,28 @@ func _update_description() -> void:
 
 func _update_money_per_hour() -> void:
 	_money_per_hour_container.stat = "Earns"
-	_money_per_hour_container.value = "%.2f" % creature_data.creature_money_per_hour
+	_money_per_hour_container.value = "%.0f" % creature_data.creature_money_per_hour
 	_money_per_hour_container.unit = "Coins per Hour"
 
 func _update_hunger_rate() -> void:
 	_hunger_rate_container.stat = "Loses"
-	_hunger_rate_container.value = "%.2f" % (creature_data.creature_hunger_rate * 100)
-	_hunger_rate_container.unit = "% Satiation per Hour"
+	_hunger_rate_container.value = "%.0f" % (creature_data.creature_hunger_rate * 100) + "%"
+	_hunger_rate_container.unit = "Satiation per Hour"
+
+func _update_speed() -> void:
+	_speed_container.stat = "Moves"
+	var speed_percentage = (creature_data.creature_speed - 1.0) * 100
+	var speed_text = ""
+	
+	if speed_percentage > 0:
+		speed_text = "+%.0f" % speed_percentage + "% faster than average"
+	elif speed_percentage < 0:
+		speed_text = "%.0f" % abs(speed_percentage) + "% slower than average"
+	else:
+		speed_text = "Average speed"
+		
+	_speed_container.value = speed_text
+	_speed_container.unit = ""
 
 func _update_happiness() -> void:
 	_happiness_container.need_name = "Happiness"
