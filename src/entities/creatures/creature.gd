@@ -25,12 +25,20 @@ func _ready():
 	set_collision_layer_value(2, true)
 	global_position = creature_data.creature_position
 	scale = Vector3(creature_data.creature_size, creature_data.creature_size, creature_data.creature_size)
+	_apply_accesories()
 
 	debug_label = Label3D.new()
 	debug_label.no_depth_test = true
 	debug_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	#add_child(debug_label)
 
+
+func _apply_accesories() -> void:
+	var accessories: Array[AccessoryData] = AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id)
+	for accessory in accessories:
+		if accessory.accessory_category == AccessoryFactory.AccessoryType.HAT:
+			var hat_instance = AccessoryFactory.instantiate_accessory(accessory)
+			_accessory_hat_attachment.add_child(hat_instance)
 
 func _apply_tint() -> void:
 	# Get the material of the creature mesh

@@ -87,6 +87,7 @@ func _ready() -> void:
 		create_save_file()
 		# For testing
 		CreatureFactory.run_test_cycle()
+		AccessoryFactory.create_test_top_hat()
 		save_game() # Use save_game instead of _thread_save_game
 	else:
 		print("Loading save file: " + save_files[0].save_id)

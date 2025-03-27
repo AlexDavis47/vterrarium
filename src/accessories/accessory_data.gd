@@ -2,16 +2,13 @@
 extends Resource
 class_name AccessoryData
 
-enum AccessoryType {
-	Hat
-}
 
 @export_group("Basic Information")
 ## The display name of the accessory in UI and other places
 @export var accessory_name: String = "Unnamed Accessory"
 ## The category of the accessory (e.g., hat, collar, etc.)
 ## Used to determine the attachment point of the accessory
-@export var accessory_category: AccessoryType = AccessoryType.Hat
+@export var accessory_category: AccessoryFactory.AccessoryType = AccessoryFactory.AccessoryType.HAT
 ## The description of the accessory
 @export var accessory_description: String = "An accessory with no description"
 ## The rarity of the accessory, taken from the Enums.Rarity enum
@@ -55,6 +52,6 @@ func is_equipped() -> bool:
 func get_creature_id() -> String:
 	return creature_equipped_id
 
-## Accessories don't really need to do anything when generated right now
+## Called when the accessory is generated, sets the unique ID
 func on_generated(luck: float) -> void:
-	pass
+	accessory_id = Utils.generate_unique_id()
