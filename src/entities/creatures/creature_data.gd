@@ -8,12 +8,19 @@ enum HungerBracket {
 	Full
 }
 
+enum AgeBracket {
+	Baby,
+	Adult,
+	Old
+}
+
 enum HappinessBracket {
 	Depressed,
 	Sad,
 	Happy,
 	Ecstatic
 }
+
 
 @export_group("Basic Information")
 ## The display name of the creature in UI and other places
@@ -77,6 +84,14 @@ enum HappinessBracket {
 @export var creature_is_in_tank: bool = false
 ## The global position of the creature in the tank
 @export var creature_position: Vector3 = Vector3.ZERO
+## The age of the creature, how many hours it has been in the tank
+@export var creature_age: float = 0.0
+## The age bracket of the creature
+@export var creature_age_bracket: CreatureData.AgeBracket = CreatureData.AgeBracket.Adult
+## The happiness bracket of the creature
+@export var creature_happiness_bracket: CreatureData.HappinessBracket = CreatureData.HappinessBracket.Happy
+## The hunger bracket of the creature
+@export var creature_hunger_bracket: CreatureData.HungerBracket = CreatureData.HungerBracket.Full
 
 ## The current contentment with the light level, this is a value between 0 and 1
 @export var creature_light_contentment: float = 1.0:
@@ -100,6 +115,34 @@ enum HappinessBracket {
 # TEMPORARY VARIABLES
 ## Reference to the currently instantiated creature object spawned from this data
 var creature_instance: Creature
+
+
+func get_hunger_bracket() -> CreatureData.HungerBracket:
+	if creature_satiation <= 0.25:
+		return CreatureData.HungerBracket.Starving
+	elif creature_satiation <= 0.75:
+		return CreatureData.HungerBracket.Hungry
+	else:
+		return CreatureData.HungerBracket.Full
+
+func get_happiness_bracket() -> CreatureData.HappinessBracket:
+	if creature_happiness <= 0.25:
+		return CreatureData.HappinessBracket.Depressed
+	elif creature_happiness <= 0.5:
+		return CreatureData.HappinessBracket.Sad
+	elif creature_happiness <= 0.75:
+		return CreatureData.HappinessBracket.Happy
+	else:
+		return CreatureData.HappinessBracket.Ecstatic
+
+func get_age_bracket() -> CreatureData.AgeBracket:
+	if creature_age < 24: # 1 day
+		return CreatureData.AgeBracket.Baby
+	elif creature_age < 168: # 1 week
+		return CreatureData.AgeBracket.Adult
+	else:
+		return CreatureData.AgeBracket.Old
+
 
 func on_generated(luck: float) -> void:
 	creature_luck = luck

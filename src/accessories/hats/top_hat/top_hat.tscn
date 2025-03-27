@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt0737ti6xy4"]
+
+[ext_resource type="PackedScene" uid="uid://cy8mox4d7msa7" path="res://src/accessories/hats/top_hat/voxel_top_hat.glb" id="1_c5fhn"]
+[ext_resource type="Script" uid="uid://p71kacf4ubvj" path="res://src/accessories/accessory.gd" id="1_xbbcu"]
+
+[node name="TopHat" type="Node3D"]
+script = ExtResource("1_xbbcu")
+metadata/_custom_type_script = "uid://p71kacf4ubvj"
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_c5fhn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.989, 0)

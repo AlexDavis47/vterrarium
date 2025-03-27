@@ -8,13 +8,12 @@ signal stopped_starving
 
 var is_starving: bool = false
 
-var hunger_bracket: CreatureData.HungerBracket = CreatureData.HungerBracket.Full
-var happiness_bracket: CreatureData.HappinessBracket = CreatureData.HappinessBracket.Happy
-
 @export var creature_mesh: MeshInstance3D
 var creature_data: CreatureData
 
 var debug_label: Label3D
+
+@export var _accessory_hat_attachment: Node3D
 
 func _ready():
 	creature_mesh.mesh = creature_mesh.mesh.duplicate(true) # Duplicate the mesh to avoid reference issues
@@ -53,9 +52,10 @@ func _physics_process(delta: float) -> void:
 	_process_temperature(delta)
 	_process_position_data(delta)
 	_process_money(delta)
-
-	hunger_bracket = get_hunger_bracket()
-	happiness_bracket = get_happiness_bracket()
+	_process_age(delta)
+	_process_age_bracket()
+	_process_happiness_bracket()
+	_process_hunger_bracket()
 
 	debug_label.text = str(creature_data.creature_name, "\n",
 		"Satiation: ", creature_data.creature_satiation, "\n",
@@ -63,8 +63,8 @@ func _physics_process(delta: float) -> void:
 		"Temperature: ", creature_data.creature_temperature_contentment, "\n",
 		"Happiness: ", creature_data.creature_happiness, "\n",
 		"Money: ", creature_data.creature_money_per_hour, "\n",
-		"Hunger Bracket: ", hunger_bracket, "\n",
-		"Happiness Bracket: ", happiness_bracket)
+		"Hunger Bracket: ", creature_data.creature_hunger_bracket, "\n",
+		"Happiness Bracket: ", creature_data.creature_happiness_bracket)
 		
 
 ## Process the hunger of the creature every physics frame
@@ -105,7 +105,7 @@ func _process_happiness(delta: float) -> void:
 	# Reduce happiness based on hunger
 	# If creature is full (satiation > 0.75), contentment is perfect (1.0)
 	# Otherwise, lower satiation = lower happiness
-	if get_hunger_bracket() == CreatureData.HungerBracket.Full:
+	if creature_data.get_hunger_bracket() == CreatureData.HungerBracket.Full:
 		# No reduction in happiness when full
 		pass
 	else:
@@ -126,24 +126,17 @@ func _process_money(delta: float) -> void:
 	# Money rate is multiplied by happiness
 	SaveManager.save_file.money += creature_data.creature_money_per_hour * creature_data.creature_happiness * delta / 3600.0
 
+func _process_age(delta: float) -> void:
+	creature_data.creature_age += delta / 3600.0
 
-func get_hunger_bracket() -> CreatureData.HungerBracket:
-	if creature_data.creature_satiation <= 0.25:
-		return CreatureData.HungerBracket.Starving
-	elif creature_data.creature_satiation <= 0.75:
-		return CreatureData.HungerBracket.Hungry
-	else:
-		return CreatureData.HungerBracket.Full
+func _process_age_bracket() -> void:
+	creature_data.creature_age_bracket = creature_data.get_age_bracket()
 
-func get_happiness_bracket() -> CreatureData.HappinessBracket:
-	if creature_data.creature_happiness <= 0.25:
-		return CreatureData.HappinessBracket.Depressed
-	elif creature_data.creature_happiness <= 0.5:
-		return CreatureData.HappinessBracket.Sad
-	elif creature_data.creature_happiness <= 0.75:
-		return CreatureData.HappinessBracket.Happy
-	else:
-		return CreatureData.HappinessBracket.Ecstatic
+func _process_happiness_bracket() -> void:
+	creature_data.creature_happiness_bracket = creature_data.get_happiness_bracket()
+
+func _process_hunger_bracket() -> void:
+	creature_data.creature_hunger_bracket = creature_data.get_hunger_bracket()
 
 
 func find_closest_food() -> FishFood:

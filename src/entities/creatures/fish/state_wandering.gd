@@ -24,7 +24,7 @@ func update(delta: float):
 	var fish = creature as Fish
 	
 	# Check if the fish is hungry or starving
-	if fish.hunger_bracket != CreatureData.HungerBracket.Full and fish.find_closest_food() and fish._can_eat_food:
+	if fish.creature_data.creature_hunger_bracket != CreatureData.HungerBracket.Full and fish.find_closest_food() and fish._can_eat_food:
 		# If hungry or starving, transition to feeding state
 		state_transition.emit(self, "Feeding")
 		return
