@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c7ripghigdapa"]
+[gd_scene load_steps=33 format=3 uid="uid://c7ripghigdapa"]
 
 [ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
@@ -15,7 +15,14 @@
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="11_ux5o3"]
 [ext_resource type="PackedScene" uid="uid://dofxw2he0twfr" path="res://src/ui/creature_detail_view/stat_container.tscn" id="12_bi2st"]
 [ext_resource type="PackedScene" uid="uid://dbs3nvaelgmko" path="res://src/ui/creature_detail_view/need_container.tscn" id="13_afveu"]
+[ext_resource type="Script" uid="uid://d2w8wo6kptysc" path="res://src/ui/creature_detail_view/creature_preference_graph.gd" id="16_awlyl"]
 [ext_resource type="Texture2D" uid="uid://b2efb171e25j3" path="res://src/ui/creature_detail_view/textures/creature_card_money_icon.png" id="16_tqbuu"]
+[ext_resource type="Texture2D" uid="uid://b2moq1iuheule" path="res://src/ui/creature_detail_view/textures/Dark.png" id="17_6j02r"]
+[ext_resource type="Texture2D" uid="uid://7oe5nb6lkmb2" path="res://src/ui/creature_detail_view/textures/Bright.png" id="18_klxi3"]
+[ext_resource type="Texture2D" uid="uid://bmt1cliweybg" path="res://src/ui/creature_detail_view/textures/HappyFace.png" id="19_q5ua7"]
+[ext_resource type="Texture2D" uid="uid://bemcnpvc5k4jd" path="res://src/ui/creature_detail_view/textures/SadFace.png" id="20_6c18d"]
+[ext_resource type="Texture2D" uid="uid://babob7jsb6gjt" path="res://src/ui/creature_detail_view/textures/Cold.png" id="21_485np"]
+[ext_resource type="Texture2D" uid="uid://bylp7l3b7o37u" path="res://src/ui/creature_detail_view/textures/Hot.png" id="22_iw5k5"]
 
 [sub_resource type="Curve" id="Curve_awlyl"]
 
@@ -73,7 +80,11 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb7er"]
 
-[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button")]
+[sub_resource type="Curve" id="Curve_mcnp6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.418994, 1), 0.0, 0.0, 0, 0, Vector2(0.594972, 0), 0.0, 0.0, 0, 0, Vector2(0.826816, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +105,8 @@ _size_container = NodePath("HBoxContainer2/Stats/Size")
 _happiness_container = NodePath("HBoxContainer2/Needs/Happiness")
 _satiation_container = NodePath("HBoxContainer2/Needs/Satiation")
 _close_button = NodePath("CloseButton")
+_brightness_graph = NodePath("HBoxContainer2/Preferences/ColorRect/Control")
+_temperature_graph = NodePath("HBoxContainer2/Preferences/TextireRect/Control")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -289,28 +302,159 @@ theme_override_fonts/font = ExtResource("11_ux5o3")
 text = "Preferences"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/Preferences"]
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer2/Preferences"]
+clip_contents = true
 layout_mode = 2
-theme_override_constants/separation = 28
-alignment = 1
+size_flags_vertical = 3
+texture = ExtResource("2_bi2st")
+expand_mode = 1
 
-[node name="Stat" type="Label" parent="HBoxContainer2/Preferences/HBoxContainer"]
-layout_mode = 2
+[node name="Label3" type="Label" parent="HBoxContainer2/Preferences/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.0
+offset_right = 148.0
+offset_bottom = 22.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("11_ux5o3")
-text = "NOT IMPLEMENTED"
+text = "Brightness"
+horizontal_alignment = 1
 
-[node name="Value" type="Label" parent="HBoxContainer2/Preferences/HBoxContainer"]
+[node name="Control" type="Control" parent="HBoxContainer2/Preferences/ColorRect"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -35.0
+offset_right = 148.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("16_awlyl")
+curve = SubResource("Curve_mcnp6")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Preferences/ColorRect"]
+layout_mode = 0
+offset_top = 22.0
+offset_right = 20.0
+offset_bottom = 42.0
+texture = ExtResource("17_6j02r")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/Preferences/ColorRect"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 22.0
+offset_right = 296.0
+offset_bottom = 42.0
+texture = ExtResource("18_klxi3")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2/Preferences/ColorRect"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("19_q5ua7")
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer2/Preferences/ColorRect"]
+layout_mode = 0
+offset_top = 42.0
+offset_right = 20.0
+offset_bottom = 62.0
+texture = ExtResource("20_6c18d")
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer2/Preferences/ColorRect"]
+layout_mode = 0
+offset_left = 276.0
+offset_right = 296.0
+offset_bottom = 20.0
+texture = ExtResource("19_q5ua7")
+
+[node name="TextureRect6" type="TextureRect" parent="HBoxContainer2/Preferences/ColorRect"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 42.0
+offset_right = 296.0
+offset_bottom = 62.0
+texture = ExtResource("20_6c18d")
+
+[node name="TextireRect" type="TextureRect" parent="HBoxContainer2/Preferences"]
+clip_contents = true
 layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_bi2st")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer2/Preferences/TextireRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -148.0
+offset_right = 148.0
+offset_bottom = 22.0
+grow_horizontal = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("11_ux5o3")
-text = "0"
+text = "Temperature"
+horizontal_alignment = 1
 
-[node name="Unit" type="Label" parent="HBoxContainer2/Preferences/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("11_ux5o3")
-text = "0"
+[node name="Control" type="Control" parent="HBoxContainer2/Preferences/TextireRect"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -35.0
+offset_right = 148.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("16_awlyl")
+curve = SubResource("Curve_mcnp6")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+offset_top = 22.0
+offset_right = 20.0
+offset_bottom = 42.0
+texture = ExtResource("21_485np")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+offset_left = 276.0
+offset_top = 22.0
+offset_right = 296.0
+offset_bottom = 42.0
+texture = ExtResource("22_iw5k5")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("19_q5ua7")
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+offset_top = 42.0
+offset_right = 20.0
+offset_bottom = 62.0
+texture = ExtResource("20_6c18d")
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+offset_left = 276.0
+offset_right = 296.0
+offset_bottom = 20.0
+texture = ExtResource("19_q5ua7")
+
+[node name="TextureRect6" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+offset_left = 276.0
+offset_top = 42.0
+offset_right = 296.0
+offset_bottom = 62.0
+texture = ExtResource("20_6c18d")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
 layout_mode = 0

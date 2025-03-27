@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dic36uoh6kjuq"]
+
+[ext_resource type="Script" uid="uid://d2w8wo6kptysc" path="res://src/ui/creature_detail_view/creature_preference_graph.gd" id="1_humyv"]
+
+[sub_resource type="Curve" id="Curve_humyv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.111732, 1), 0.0, 0.0, 0, 0, Vector2(0.206704, 0), 0.0, 0.0, 0, 0, Vector2(0.536313, 1), 0.0, 0.0, 0, 0, Vector2(0.664804, 0), 0.0, 0.0, 0, 0, Vector2(0.910614, 1), 0.0, 0.0, 0, 0, Vector2(0.963687, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[node name="CreaturePreferenceGraph" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Graph" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 1024.0
+offset_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_humyv")
+curve = SubResource("Curve_humyv")
+graph_line_width = 4.0

@@ -19,6 +19,8 @@ class_name CreatureDetailViewUI
 
 @export var _close_button: TextureButton
 
+@export var _brightness_graph: CreaturePreferenceGraph
+@export var _temperature_graph: CreaturePreferenceGraph
 
 func _ready() -> void:
 	_close_button.pressed.connect(_on_close_button_pressed)
@@ -37,6 +39,8 @@ func update_info() -> void:
 	_update_size()
 	_update_happiness()
 	_update_satiation()
+	_update_brightness_graph()
+	_update_temperature_graph()
 
 
 func _update_rarity_and_type() -> void:
@@ -105,6 +109,12 @@ func _update_happiness() -> void:
 func _update_satiation() -> void:
 	_satiation_container.need_name = "Satiation"
 	_satiation_container.value = creature_data.creature_satiation
+
+func _update_brightness_graph() -> void:
+	_brightness_graph.curve = creature_data.creature_light_preference
+
+func _update_temperature_graph() -> void:
+	_temperature_graph.curve = creature_data.creature_temperature_preference
 
 func _on_close_button_pressed() -> void:
 	queue_free()
