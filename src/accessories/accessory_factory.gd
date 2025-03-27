@@ -17,6 +17,15 @@ var accessory_data_templates: Dictionary[Accessories, AccessoryData] = {
 func create_test_top_hat() -> void:
 	var top_hat = create_accessory(Accessories.TOP_HAT)
 	SaveManager.save_file.accessory_inventory.append(top_hat)
+	call_deferred("apply_test_top_hat")
+
+## This is super hacky, but it's just a temporary solution to test the accessory system
+func apply_test_top_hat() -> void:
+	var top_hat = get_accessory_by_id(SaveManager.save_file.accessory_inventory[0].accessory_id)
+	var creature: CreatureData = SaveManager.save_file.creature_inventory[0]
+	top_hat.accessory_is_equipped = true
+	top_hat.creature_equipped_id = creature.creature_id
+	creature.creature_instance._apply_accesories()
 
 func get_accessory_by_id(id: String) -> AccessoryData:
 	for accessory in SaveManager.save_file.accessory_inventory:
