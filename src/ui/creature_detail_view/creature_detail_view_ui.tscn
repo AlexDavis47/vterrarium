@@ -32,6 +32,7 @@
 script = ExtResource("4_tqbuu")
 creature_name = "tEST"
 creature_species = "SPECIES"
+creature_type = null
 creature_description = "A creature with no creature_description"
 creature_rarity = 4
 creature_image = ExtResource("3_afveu")

@@ -38,6 +38,22 @@ enum AccessoryType {
 @export var accessory_luck: float = 1.0
 ## Whether this accessory is currently equipped on a creature
 @export var accessory_is_equipped: bool = false
+## The ID of the creature that is currently equipped with this accessory
+@export var creature_equipped_id: String = ""
+
+func _equip_accessory(creature_id: String) -> void:
+	accessory_is_equipped = true
+	creature_equipped_id = creature_id
+
+func _unequip_accessory() -> void:
+	accessory_is_equipped = false
+	creature_equipped_id = ""
+
+func is_equipped() -> bool:
+	return accessory_is_equipped
+
+func get_creature_id() -> String:
+	return creature_equipped_id
 
 ## Accessories don't really need to do anything when generated right now
 func on_generated(luck: float) -> void:

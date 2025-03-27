@@ -27,6 +27,8 @@ enum HappinessBracket {
 @export var creature_name: String = "Unnamed Creature"
 ## The species of the creature. Used in UI.
 @export var creature_species: String = "Unnamed Species"
+## The type of the creature, used mainly in UI now
+@export var creature_type: CreatureFactory.CreatureType = CreatureFactory.CreatureType.FISH
 ## The creature_description of the creature
 @export var creature_description: String = "A creature with no creature_description"
 ## The creature_rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script

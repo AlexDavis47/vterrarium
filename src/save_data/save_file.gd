@@ -22,3 +22,9 @@ class_name SaveFile
 
 ## The inventory of creatures the player has
 @export var creature_inventory: Array[CreatureData] = []
+
+## The inventory of accessories the player has
+@export var accessory_inventory: Array[AccessoryData] = []
+
+## The inventory of foods the player has
+@export var food_inventory: Array[FishFoodData] = []

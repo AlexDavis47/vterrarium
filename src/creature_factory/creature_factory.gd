@@ -9,13 +9,25 @@ enum CreaturePool {
 	LEGENDARY
 }
 
+enum CreatureType {
+	FISH,
+	CRAB
+}
+
+enum Creatures {
+	BLUE_FISH,
+	RED_FISH,
+	YELLOW_TANG_FISH
+}
+
+
 ## This contains a list of all of the creature data resources that we can duplicate to create new creatures
 ## Stored mainly for scanning pools
-var creature_data_templates: Array[CreatureData] = [
-	preload("uid://bi10nf3pilsau"), # blue_fish
-	preload("uid://x7f8v6e3a7u2"), # red_fish
-	preload("uid://cl4iqwjh3g3cm") # yellow_tang_fish
-]
+var creature_data_templates: Dictionary[Creatures, CreatureData] = {
+	Creatures.BLUE_FISH: preload("uid://bi10nf3pilsau"),
+	Creatures.RED_FISH: preload("uid://x7f8v6e3a7u2"),
+	Creatures.YELLOW_TANG_FISH: preload("uid://cl4iqwjh3g3cm")
+}
 
 signal creature_spawned(creature_data: CreatureData)
 signal creature_removed(creature_data: CreatureData)
@@ -44,13 +56,21 @@ func run_test_cycle() -> void:
 
 ## Creates test creatures and adds them to the inventory and tank
 func _create_test_creatures() -> void:
-	for creature_data in creature_data_templates:
+	for creature_type in creature_data_templates.keys():
 		for i in range(10):
-			var new_creature = _generate_creature_from_template(creature_data)
+			var new_creature = create_creature(creature_type)
 			SaveManager.save_file.creature_inventory.append(new_creature)
 			_add_creature_to_tank(new_creature)
 
+## Creates a new creature of the specified type with random luck
+func create_creature(creature_type: Creatures) -> CreatureData:
+	var template = creature_data_templates[creature_type]
+	var new_creature: CreatureData = template.duplicate(true)
+	new_creature.on_generated(randf_range(0.5, 1.5))
+	return new_creature
+
 ## Generates a new creature from a template with random luck
+## @deprecated Use create_creature instead
 func _generate_creature_from_template(template: CreatureData) -> CreatureData:
 	var new_creature: CreatureData = template.duplicate(true)
 	new_creature.on_generated(randf_range(0.5, 1.5))
@@ -100,22 +120,33 @@ func remove_creature_by_data(creature_data: CreatureData) -> void:
 
 
 func _generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
-	var viable_creatures: Array[CreatureData] = []
-	for creature_data in creature_data_templates:
-		for pool_chance in creature_data.creature_pool_chances:
+	var viable_creatures: Array[Creatures] = []
+	var viable_chances: Dictionary = {}
+	
+	for creature_type in creature_data_templates.keys():
+		var template = creature_data_templates[creature_type]
+		for pool_chance in template.creature_pool_chances:
 			if pool_chance.pool == pool:
-				viable_creatures.append(creature_data)
+				viable_creatures.append(creature_type)
+				viable_chances[creature_type] = pool_chance.chance
 
 	var total_chance: float = 0.0
-	for creature_data in viable_creatures:
-		total_chance += creature_data.creature_pool_chances[pool].chance
-
+	for creature_type in viable_creatures:
+		total_chance += viable_chances[creature_type]
 
 	var random_value: float = randf_range(0.0, total_chance)
 	var cumulative_chance: float = 0.0
-	for creature_data in viable_creatures:
-		cumulative_chance += creature_data.creature_pool_chances[pool].chance
+	
+	for creature_type in viable_creatures:
+		cumulative_chance += viable_chances[creature_type]
 		if random_value <= cumulative_chance:
-			return creature_data
+			return create_creature(creature_type)
 
+	return null
+
+
+func get_creature_by_id(id: String) -> CreatureData:
+	for creature in SaveManager.save_file.creature_inventory:
+		if creature.creature_id == id:
+			return creature
 	return null
