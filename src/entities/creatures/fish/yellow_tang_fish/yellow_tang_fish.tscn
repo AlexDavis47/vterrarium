@@ -33,7 +33,7 @@ bind/3/pose = Transform3D(0.999999, 5.01502e-08, -0.00164329, 0.00164329, -2.359
 [node name="YellowTangFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh", "_accessory_hat_attachment")]
 script = ExtResource("1_hcsiw")
 creature_mesh = NodePath("Skeleton3D/Plane")
-_accessory_hat_attachment = NodePath("Skeleton3D/BoneAttachment3D/Node3D")
+_accessory_hat_attachment = NodePath("Skeleton3D/AccessoryHatSlot/Node3D")
 metadata/_custom_type_script = "uid://bse0c1u4ifhet"
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -115,18 +115,10 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D"]
+[node name="AccessoryHatSlot" type="BoneAttachment3D" parent="Skeleton3D"]
 transform = Transform3D(0.999998, 0.00197387, 5.6345e-08, 5.65778e-08, -1.19209e-07, -1, -0.00197387, 0.999998, -1.19209e-07, -0.00105311, 0.00439061, -0.28125)
 bone_name = "Bone.001"
 bone_idx = 0
 
-[node name="Node3D" type="Node3D" parent="Skeleton3D/BoneAttachment3D"]
-transform = Transform3D(0.94524, -0.326377, 0, 0.326377, 0.94524, 0, 0, 0, 1, -0.175676, -0.135637, 0)
-
-[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(0.999999, 0.00164329, 4.97991e-08, 4.97658e-08, 1.8756e-08, -1, -0.00164329, 0.999998, 1.87855e-08, 0.000406585, 0.00439056, 0.302353)
-bone_name = "Bone.004"
-bone_idx = 3
-
-[node name="Node3D" type="Node3D" parent="Skeleton3D/BoneAttachment3D2"]
-transform = Transform3D(0.952566, 0.304332, -1.48015e-08, -0.304332, 0.952566, 4.91906e-09, 1.55964e-08, -1.81162e-10, 1, -0.116125, -0.135637, -7.10543e-15)
+[node name="Node3D" type="Node3D" parent="Skeleton3D/AccessoryHatSlot"]
+transform = Transform3D(0.999996, 0.00268032, -0.00184306, 0.00268022, -0.357874, 0.933767, 0.00184321, -0.933766, -0.357879, 0, 0.047, -0.262)
