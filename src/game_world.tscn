@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=26 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://b3tclcqf2u7l3" path="res://assets/models/decor/cyan_coral/cyan_coral.glb" id="14_b0toy"]
 [ext_resource type="AudioStream" uid="uid://cmj7ag4qru8q5" path="res://assets/audio/water.wav" id="14_d2bpd"]
 [ext_resource type="Script" uid="uid://dtcn1vb8gri55" path="res://src/directional_light_3d.gd" id="14_qfpye"]
+[ext_resource type="Script" uid="uid://djg2fo0j88l61" path="res://addons/onscreenkeyboard/onscreen_keyboard.gd" id="15_qfpye"]
 [ext_resource type="PackedScene" uid="uid://dqdckux4bv4ne" path="res://src/ui/top_ui.tscn" id="16_27mdg"]
+[ext_resource type="FontFile" uid="uid://dau51bc2eerp5" path="res://assets/fonts/RedHatDisplay-Light.ttf" id="16_b0toy"]
 
 [sub_resource type="Environment" id="Environment_ti7fu"]
 ambient_light_source = 2
@@ -30,26 +32,26 @@ fog_depth_begin = 0.0
 fog_depth_end = 18.7
 volumetric_fog_density = 0.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_d2bpd"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
 size = Vector2(5.625, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b0toy"]
 material = ExtResource("5_2qkw7")
 size = Vector2(5.625, 5.625)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_qfpye"]
-material = ExtResource("5_2qkw7")
-size = Vector2(10, 5.625)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
-material = ExtResource("7_kr6if")
-size = Vector2(10, 5.625)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygn67"]
 material = ExtResource("5_2qkw7")
 size = Vector2(10, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ovvyv"]
+material = ExtResource("7_kr6if")
+size = Vector2(10, 5.625)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bdl84"]
+material = ExtResource("5_2qkw7")
+size = Vector2(10, 5.625)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8ot5c"]
 size = Vector2(10, 5.625)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_27mdg"]
@@ -79,8 +81,9 @@ size = Vector3(10, 5.656, 5.656)
 subdivide_width = 25
 subdivide_height = 25
 
-[node name="GameWorld" type="Node3D"]
+[node name="GameWorld" type="Node3D" node_paths=PackedStringArray("keyboard")]
 script = ExtResource("1_0brji")
+keyboard = NodePath("OnscreenKeyboard")
 
 [node name="Top" type="Node3D" parent="."]
 script = ExtResource("3_27mdg")
@@ -113,11 +116,13 @@ environment = SubResource("Environment_ti7fu")
 [node name="Terrarium" type="Node3D" parent="."]
 script = ExtResource("4_dv42i")
 
-[node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
+[node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
-mesh = SubResource("PlaneMesh_d2bpd")
+mesh = SubResource("PlaneMesh_27mdg")
 script = ExtResource("5_r55h4")
+static_body = NodePath("@StaticBody3D@21848")
+collision_shape = NodePath("@StaticBody3D@21848/@CollisionShape3D@21847")
 wall_type = 1
 
 [node name="VTTerrariumWall2" type="MeshInstance3D" parent="Terrarium"]
@@ -126,31 +131,39 @@ material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_b0toy")
 script = ExtResource("5_r55h4")
 
-[node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium"]
+[node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
-mesh = SubResource("PlaneMesh_qfpye")
+mesh = SubResource("PlaneMesh_ygn67")
 script = ExtResource("5_r55h4")
+static_body = NodePath("@StaticBody3D@21850")
+collision_shape = NodePath("@StaticBody3D@21850/@CollisionShape3D@21849")
 wall_type = 2
 metadata/_custom_type_script = "uid://p427dstufru"
 
-[node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium"]
+[node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
-mesh = SubResource("PlaneMesh_27mdg")
-script = ExtResource("5_r55h4")
-wall_type = 3
-
-[node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
-mesh = SubResource("PlaneMesh_ygn67")
-script = ExtResource("5_r55h4")
-wall_type = 4
-
-[node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
-material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_ovvyv")
 script = ExtResource("5_r55h4")
+static_body = NodePath("@StaticBody3D@21852")
+collision_shape = NodePath("@StaticBody3D@21852/@CollisionShape3D@21851")
+wall_type = 3
+
+[node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
+mesh = SubResource("PlaneMesh_bdl84")
+script = ExtResource("5_r55h4")
+static_body = NodePath("@StaticBody3D@21854")
+collision_shape = NodePath("@StaticBody3D@21854/@CollisionShape3D@21853")
+wall_type = 4
+
+[node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium" node_paths=PackedStringArray("static_body", "collision_shape")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
+material_override = ExtResource("5_2qkw7")
+mesh = SubResource("PlaneMesh_8ot5c")
+script = ExtResource("5_r55h4")
+static_body = NodePath("@StaticBody3D@21856")
+collision_shape = NodePath("@StaticBody3D@21856/@CollisionShape3D@21855")
 wall_type = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Terrarium"]
@@ -188,3 +201,14 @@ transform = Transform3D(1.08562, -0.337557, 0.94909, 0.0973953, 1.44331, 0.41076
 
 [node name="cyan_coral5" parent="." instance=ExtResource("14_b0toy")]
 transform = Transform3D(-0.297183, -0.19622, -0.861115, -0.134399, 0.667289, -0.203474, 0.517405, 0.0606294, -0.547454, -4.46571, -2.70934, 1.29462)
+
+[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
+offset_top = 324.0
+offset_right = 1024.0
+offset_bottom = 602.0
+script = ExtResource("15_qfpye")
+separation = Vector2i(2, 2)
+font = ExtResource("16_b0toy")
+font_size = 28
+metadata/_custom_type_script = "uid://djg2fo0j88l61"

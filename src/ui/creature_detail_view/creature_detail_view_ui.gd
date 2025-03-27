@@ -117,6 +117,7 @@ func _update_temperature_graph() -> void:
 	_temperature_graph.curve = creature_data.creature_temperature_preference
 
 func _on_close_button_pressed() -> void:
+	VTGlobal.onscreen_keyboard.hide()
 	queue_free()
 
 func _on_name_line_edit_changed(new_text: String) -> void:

@@ -12,6 +12,10 @@ var top_ui: TopUI
 var front_ui: FrontUI
 
 var windows_setup_completed: bool = false
+
+var onscreen_keyboard: OnscreenKeyboard = null
+
+
 signal windows_initialized
 
 signal trigger_inventory_refresh
