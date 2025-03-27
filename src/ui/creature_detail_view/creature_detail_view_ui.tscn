@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
-[ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/resources/creatures/weird_fish/weird_fish.png" id="3_afveu"]
+[ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/entities/creatures/fish/weird_fish/weird_fish.png" id="3_afveu"]
 [ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_bhvwm"]
 [ext_resource type="Texture2D" uid="uid://bqigah3c2c0si" path="res://src/ui/creature_detail_view/textures/Detail View.png" id="4_64cj3"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_tqbuu"]
@@ -33,10 +33,9 @@ script = ExtResource("4_tqbuu")
 creature_name = "tEST"
 creature_species = "SPECIES"
 creature_description = "A creature with no creature_description"
-creature_type = 0
 creature_rarity = 4
 creature_image = ExtResource("3_afveu")
-creature_mesh_uuid = ""
+creature_scene_uuid = null
 creature_tint = Color(1, 1, 1, 1)
 creature_tint_amount = 1.0
 creature_size = 1.0
@@ -420,12 +419,14 @@ script = ExtResource("16_awlyl")
 curve = SubResource("Curve_mcnp6")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+layout_mode = 0
 offset_top = 22.0
 offset_right = 20.0
 offset_bottom = 42.0
 texture = ExtResource("21_485np")
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+layout_mode = 0
 offset_left = 276.0
 offset_top = 22.0
 offset_right = 296.0
@@ -433,23 +434,27 @@ offset_bottom = 42.0
 texture = ExtResource("22_iw5k5")
 
 [node name="TextureRect3" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+layout_mode = 0
 offset_right = 20.0
 offset_bottom = 20.0
 texture = ExtResource("19_q5ua7")
 
 [node name="TextureRect4" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+layout_mode = 0
 offset_top = 42.0
 offset_right = 20.0
 offset_bottom = 62.0
 texture = ExtResource("20_6c18d")
 
 [node name="TextureRect5" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+layout_mode = 0
 offset_left = 276.0
 offset_right = 296.0
 offset_bottom = 20.0
 texture = ExtResource("19_q5ua7")
 
 [node name="TextureRect6" type="TextureRect" parent="HBoxContainer2/Preferences/TextireRect"]
+layout_mode = 0
 offset_left = 276.0
 offset_top = 42.0
 offset_right = 296.0

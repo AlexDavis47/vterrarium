@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://djvw7w318riyn"]
+
+[ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/fish/fish.gd" id="1_hcsiw"]
+[ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_24u4h"]
+[ext_resource type="Script" uid="uid://d0o80wcr82rkp" path="res://src/entities/creatures/fish/state_wandering.gd" id="3_nw2sc"]
+[ext_resource type="Script" uid="uid://dupx27amlei27" path="res://src/entities/creatures/fish/state_feeding.gd" id="4_5pesy"]
+[ext_resource type="ArrayMesh" uid="uid://j1mjwdgwoy6x" path="res://assets/models/yellow_tang_fish/fish_yellow_tang_Plane.res" id="5_kvjm0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qms08"]
+radius = 0.327054
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y5xmp"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+
+[sub_resource type="Skin" id="Skin_wv7bs"]
+resource_name = "Skin"
+bind_count = 4
+bind/0/name = &"Bone.001"
+bind/0/bone = -1
+bind/0/pose = Transform3D(0.999998, 5.68757e-08, -0.00197387, 0.00197387, -2.64469e-08, 0.999998, 5.6822e-08, -1, -2.65591e-08, 0.000497958, 0.281252, 0.0043906)
+bind/1/name = &"Bone.002"
+bind/1/bone = -1
+bind/1/pose = Transform3D(0.999996, 2.32883e-08, -0.00266139, 0.00266139, -4.83939e-08, 0.999997, 2.3158e-08, -1, -4.84557e-08, 0.000474068, 0.0347487, 0.0043906)
+bind/2/name = &"Bone.003"
+bind/2/bone = -1
+bind/2/pose = Transform3D(0.999995, 5.69097e-08, -0.00315382, 0.00315383, -4.22565e-08, 0.999995, 5.67747e-08, -1, -4.24358e-08, 0.000546986, -0.148075, 0.0043906)
+bind/3/name = &"Bone.004"
+bind/3/bone = -1
+bind/3/pose = Transform3D(0.999999, 5.01502e-08, -0.00164329, 0.00164329, -2.35903e-08, 0.999999, 5.011e-08, -1, -2.36727e-08, 9.0269e-05, -0.302354, 0.0043906)
+
+[node name="YellowTangFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh")]
+script = ExtResource("1_hcsiw")
+creature_mesh = NodePath("Skeleton3D/Plane")
+metadata/_custom_type_script = "uid://bse0c1u4ifhet"
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_24u4h")
+initial_state = NodePath("Wandering")
+metadata/_custom_type_script = "uid://civw0c4uuw0y2"
+
+[node name="Wandering" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_nw2sc")
+metadata/_custom_type_script = "uid://nl35xw5nuxjw"
+
+[node name="Feeding" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_5pesy")
+metadata/_custom_type_script = "uid://nl35xw5nuxjw"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qms08")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.225678)
+visible = false
+mesh = SubResource("CylinderMesh_y5xmp")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.558624)
+bones/0/name = "Bone.001"
+bones/0/parent = -1
+bones/0/rest = Transform3D(0.999998, 0.00197387, 5.64588e-08, 5.66943e-08, -1.19209e-07, -1, -0.00197387, 0.999998, -1.19321e-07, -0.00105311, 0.00439061, -0.28125)
+bones/0/enabled = true
+bones/0/position = Vector3(-0.00105311, 0.00439061, -0.28125)
+bones/0/rotation = Quaternion(0.707106, 0.000697889, -0.000697849, 0.707106)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/name = "Bone.002"
+bones/1/parent = 0
+bones/1/rest = Transform3D(1, 0.000687521, -3.36207e-08, -0.000687521, 1, -2.1963e-08, 3.36056e-08, 2.19861e-08, 1, -1.94916e-11, 0.246504, -4.06579e-11)
+bones/1/enabled = true
+bones/1/position = Vector3(-1.94916e-11, 0.246504, -4.06579e-11)
+bones/1/rotation = Quaternion(1.09873e-08, -1.68066e-08, -0.000343761, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/name = "Bone.003"
+bones/2/parent = 1
+bones/2/rest = Transform3D(1, 0.000492437, 3.36006e-08, -0.000492437, 1, 6.10931e-09, -3.35976e-08, -6.12585e-09, 1, -5.05458e-11, 0.182824, -1.92061e-10)
+bones/2/enabled = true
+bones/2/position = Vector3(-5.05458e-11, 0.182824, -1.92061e-10)
+bones/2/rotation = Quaternion(-3.05879e-09, 1.67996e-08, -0.000246219, 1)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/name = "Bone.004"
+bones/3/parent = 2
+bones/3/rest = Transform3D(0.999999, -0.00151054, -6.72392e-09, 0.00151054, 0.999999, 1.8742e-08, 6.6956e-09, -1.87521e-08, 1, 4.61402e-11, 0.154278, -7.00336e-10)
+bones/3/enabled = true
+bones/3/position = Vector3(4.61402e-11, 0.154278, -7.00336e-10)
+bones/3/rotation = Quaternion(-9.37354e-09, -3.35488e-09, 0.000755269, 1)
+bones/3/scale = Vector3(1, 1, 1)
+
+[node name="Plane" type="MeshInstance3D" parent="Skeleton3D"]
+mesh = ExtResource("5_kvjm0")
+skin = SubResource("Skin_wv7bs")
+
+[node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+setting_count = 1
+settings/0/root_bone_name = "Bone.001"
+settings/0/root_bone = 0
+settings/0/end_bone_name = "Bone.004"
+settings/0/end_bone = 3
+settings/0/extend_end_bone = false
+settings/0/center_from = 0
+settings/0/individual_config = false
+settings/0/rotation_axis = 3
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 0.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 1.0
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0

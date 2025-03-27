@@ -14,7 +14,6 @@ var upright_force: float = 0.5
 var angular_velocity: Vector3 = Vector3.ZERO
 var linear_velocity: Vector3 = Vector3.ZERO
 
-@export var skeleton: Skeleton3D
 
 var _target_marker: MeshInstance3D
 var _show_target_marker: bool = false

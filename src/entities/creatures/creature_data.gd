@@ -22,14 +22,12 @@ enum HappinessBracket {
 @export var creature_species: String = "Unnamed Species"
 ## The creature_description of the creature
 @export var creature_description: String = "A creature with no creature_description"
-## The type of creature, this is used to determine which creature to spawn in the creature factory
-@export var creature_type: CreatureFactory.CreatureType = CreatureFactory.CreatureType.FISH
 ## The creature_rarity of the creature, this is taken from the Enums.Rarity enum from the enums.gd global script
 @export var creature_rarity: Enums.Rarity = Enums.Rarity.Common
 ## The image of the creature, this is used to display the creature in the inventory
 @export var creature_image: Texture2D = null
-## The UUID of the mesh of the creature
-@export var creature_mesh_uuid: String = ""
+## The UUID of the creature's scene
+@export var creature_scene_uuid: String = ""
 
 @export_group("Appearance")
 ## The tinting of the creature, a color value. Will be used to tint the creature's albedo texture.

@@ -17,24 +17,6 @@ var creature_data_templates: Array[CreatureData] = [
 	preload("uid://cl4iqwjh3g3cm") # yellow_tang_fish
 ]
 
-# Since we're no longer using scene UUIDs to spawn the correct creature scene,
-# we use an Enum of types to determine which creature to spawn
-# and then apply the correct creature data to the creature instance
-
-enum CreatureType {
-	FISH,
-	CRAB
-}
-
-## Map of creature type to creature scene
-## When a creature data is spawned, check the creature type
-## to instantiate the correct scene and apply the creature data to the instance
-var creature_type_to_scene: Dictionary = {
-	CreatureType.FISH: preload("uid://bpq3hl6lq1ngy"), # fish
-	CreatureType.CRAB: preload("uid://dlwv2lwgphc3e") # crab
-}
-
-
 signal creature_spawned(creature_data: CreatureData)
 signal creature_removed(creature_data: CreatureData)
 
@@ -87,7 +69,7 @@ func _remove_all_creatures_from_tank() -> void:
 
 ## Adds a creature to the tank
 func _add_creature_to_tank(creature_data: CreatureData) -> void:
-	var creature_scene = creature_type_to_scene[creature_data.creature_type]
+	var creature_scene = load(creature_data.creature_scene_uuid)
 	var creature = creature_scene.instantiate()
 	creature.creature_data = creature_data
 	creature_data.creature_is_in_tank = true

@@ -17,7 +17,7 @@ var creature_data: CreatureData
 var debug_label: Label3D
 
 func _ready():
-	creature_mesh.mesh = load(creature_data.creature_mesh_uuid).duplicate(true)
+	creature_mesh.mesh = creature_mesh.mesh.duplicate(true) # Duplicate the mesh to avoid reference issues
 	var mesh: Mesh = creature_mesh.mesh
 	mesh.surface_set_material(0, mesh.surface_get_material(0).duplicate(true))
 	_apply_tint()

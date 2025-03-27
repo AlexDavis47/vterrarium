@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bambrmag2qlov"
-path="res://.godot/imported/weird_fish.png-5feb631dc49a0ade641b35421c8d4069.ctex"
+uid="uid://ckhgfucxu2w6h"
+path="res://.godot/imported/red_fish.png-a2fb9a147fd61b6ed6134db84e33a4f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/resources/creatures/weird_fish/weird_fish.png"
-dest_files=["res://.godot/imported/weird_fish.png-5feb631dc49a0ade641b35421c8d4069.ctex"]
+source_file="res://src/entities/creatures/fish/red_fish/red_fish.png"
+dest_files=["res://.godot/imported/red_fish.png-a2fb9a147fd61b6ed6134db84e33a4f0.ctex"]
 
 [params]
 

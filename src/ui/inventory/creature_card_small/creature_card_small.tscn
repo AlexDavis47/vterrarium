@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dh03heeoxmibw" path="res://src/ui/inventory/creature_card_small/textures/creature_card_small_bg.png" id="1_jqowi"]
 [ext_resource type="Script" uid="uid://b27xtc5gnsiuq" path="res://src/ui/inventory/creature_card_small/creature_card_small.gd" id="1_ykj4p"]
-[ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/resources/creatures/weird_fish/weird_fish.png" id="3_22bev"]
+[ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/entities/creatures/fish/weird_fish/weird_fish.png" id="3_22bev"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="3_tvl5m"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_5thfp"]
 [ext_resource type="FontFile" uid="uid://byvf0xnc7iud3" path="res://assets/fonts/RedHatDisplay-LightItalic.ttf" id="6_pscl2"]
