@@ -66,18 +66,20 @@ func equip_accessory(accessory_data: AccessoryData, creature_data: CreatureData)
 
 	accessory_data.accessory_is_equipped = true
 	accessory_data.creature_equipped_id = creature_data.creature_id
-
+	
 
 	# Apply the accessory to the creature
 	if creature_data.creature_is_in_tank:
 		creature_data.creature_instance._apply_accesories()
+	creature_data.trigger_preview_update.emit()
 
 func unequip_accessory(accessory_data: AccessoryData, creature_data: CreatureData) -> void:
 	accessory_data.accessory_is_equipped = false
 	accessory_data.creature_equipped_id = ""
+	
 	if creature_data.creature_is_in_tank:
 		creature_data.creature_instance._apply_accesories()
-
+	creature_data.trigger_preview_update.emit()
 
 func does_creature_have_any_accessories_equipped(creature_data: CreatureData) -> bool:
 	return get_all_equipped_accessories().filter(func(accessory: AccessoryData): return accessory.creature_equipped_id == creature_data.creature_id).size() > 0

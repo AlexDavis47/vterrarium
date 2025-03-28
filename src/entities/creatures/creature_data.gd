@@ -114,6 +114,8 @@ enum HappinessBracket {
 	get:
 		return creature_happiness
 
+signal trigger_preview_update
+
 # TEMPORARY VARIABLES
 ## Reference to the currently instantiated creature object spawned from this data
 var creature_instance: Creature

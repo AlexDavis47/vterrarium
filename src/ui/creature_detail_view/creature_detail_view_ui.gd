@@ -35,7 +35,7 @@ func _ready() -> void:
 	_name_line_edit.text_changed.connect(_on_name_line_edit_changed)
 	_accessory_equip_menu_button.pressed.connect(_on_accessory_equip_menu_button_pressed)
 	_creature_live_camera.creature_data = creature_data
-	
+	creature_data.trigger_preview_update.connect(_on_creature_data_trigger_preview_update)
 	# Set up the preview creature if needed
 	if !creature_data.creature_is_in_tank:
 		var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
@@ -154,3 +154,10 @@ func _on_accessory_equip_menu_button_pressed() -> void:
 	var accessory_equip_menu = accessory_equip_menu_scene.instantiate()
 	accessory_equip_menu.creature_data = creature_data
 	add_child(accessory_equip_menu)
+
+func _on_creature_data_trigger_preview_update() -> void:
+	_creature_live_subviewport_container.clear_root_node()
+	var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
+	_creature_live_subviewport_container.add_child_to_root_node(preview_creature)
+
+	_creature_live_subviewport_container.force_update()
