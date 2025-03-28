@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AccessoryData" load_steps=2 format=3 uid="uid://ydqcq0aibnrb"]
+[gd_resource type="Resource" script_class="AccessoryData" load_steps=3 format=3 uid="uid://ydqcq0aibnrb"]
 
 [ext_resource type="Script" uid="uid://d2227ehstqdgp" path="res://src/accessories/accessory_data.gd" id="1_knnrm"]
+[ext_resource type="Texture2D" uid="uid://b4svgxm8a7xy6" path="res://src/accessories/hats/party_hat/party_hat.png" id="1_wa5sa"]
 
 [resource]
 script = ExtResource("1_knnrm")
@@ -8,6 +9,7 @@ accessory_name = "Party Hat"
 accessory_category = 0
 accessory_description = "Who's birthday is it?"
 accessory_rarity = 0
+accessory_image = ExtResource("1_wa5sa")
 accessory_scene_uuid = "uid://drw8sp6mhlvdv"
 accessory_money_bonus = 0.0
 accessory_happiness_bonus = 0.0

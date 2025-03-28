@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqdckux4bv4ne"]
+[gd_scene load_steps=9 format=3 uid="uid://dqdckux4bv4ne"]
 
 [ext_resource type="Script" uid="uid://dahd8xqwf5mhb" path="res://src/ui/top_ui.gd" id="1_qhlq6"]
 [ext_resource type="Script" uid="uid://dwxphissrll4b" path="res://src/ui/menu_buttons.gd" id="2_14ovj"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://gqplql3o5qd7" path="res://src/ui/textures/buttons/feed_button_selected.png" id="6_uwo4r"]
 [ext_resource type="Texture2D" uid="uid://dmow2r78gmqy2" path="res://src/ui/textures/buttons/store_button.png" id="7_eqjnj"]
 [ext_resource type="Texture2D" uid="uid://biowiq4620ydi" path="res://src/ui/textures/buttons/store_button_selected.png" id="8_dcvbk"]
-[ext_resource type="Script" uid="uid://dmn5ijrhqtji2" path="res://src/ui/debug_light_slider.gd" id="9_14ovj"]
-[ext_resource type="Script" uid="uid://b7s87r6s3ov1o" path="res://src/ui/debug_temp_slider.gd" id="10_rjcsk"]
-[ext_resource type="Script" uid="uid://detqmm15snlkg" path="res://src/ui/hunger_button.gd" id="11_hqpo0"]
 
 [node name="TopUI" type="Control" node_paths=PackedStringArray("menu_buttons")]
 layout_mode = 3
@@ -54,46 +51,3 @@ layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("7_eqjnj")
 texture_pressed = ExtResource("8_dcvbk")
-
-[node name="DebugLightSlider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 52.0
-offset_right = 270.0
-offset_bottom = 25.0
-max_value = 1.0
-step = 0.01
-script = ExtResource("9_14ovj")
-
-[node name="DebugTempSlider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 24.0
-offset_right = 270.0
-offset_bottom = 49.0
-max_value = 1.0
-step = 0.01
-script = ExtResource("10_rjcsk")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_right = 44.0
-offset_bottom = 23.0
-text = "Light"
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 25.0
-offset_right = 46.0
-offset_bottom = 48.0
-text = "Temp"
-
-[node name="HungerButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 116.0
-offset_right = 190.0
-offset_bottom = 179.0
-text = "Make All Fish Hungry"
-script = ExtResource("11_hqpo0")

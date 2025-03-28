@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2ve1bal36q1d"]
+
+[ext_resource type="Script" uid="uid://crkus8waeftct" path="res://src/ui/creature_detail_view/accessory_equip_menu/accessory_equip_menu.gd" id="1_hk3sl"]
+[ext_resource type="Texture2D" uid="uid://bbiele7lcspvw" path="res://src/ui/creature_detail_view/accessory_equip_menu/textures/accessory_equip_menu.png" id="1_kqp8f"]
+[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_b767o"]
+[ext_resource type="PackedScene" uid="uid://d36oh087cc05q" path="res://src/ui/creature_detail_view/accessory_equip_menu/accessories_container.tscn" id="3_b767o"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_nxw6m"]
+[ext_resource type="Texture2D" uid="uid://cnbs6h03y6ln" path="res://src/ui/creature_detail_view/accessory_equip_menu/textures/CloseButton.png" id="6_nxw6m"]
+
+[sub_resource type="Curve" id="Curve_b767o"]
+
+[sub_resource type="Curve" id="Curve_nxw6m"]
+
+[sub_resource type="Resource" id="Resource_hlogp"]
+script = ExtResource("3_nxw6m")
+creature_name = "Unnamed Creature"
+creature_species = "Unnamed Species"
+creature_type = 0
+creature_description = "A creature with no creature_description"
+creature_rarity = 0
+creature_scene_uuid = ""
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_size = 1.0
+creature_money_per_hour = 1.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_speed = 1.0
+creature_light_preference = SubResource("Curve_b767o")
+creature_temperature_preference = SubResource("Curve_nxw6m")
+creature_pool_chances = Array[ExtResource("2_b767o")]([])
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+creature_age = 0.0
+creature_age_bracket = 1
+creature_happiness_bracket = 2
+creature_hunger_bracket = 2
+creature_light_contentment = 1.0
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+metadata/_custom_type_script = "uid://63umrodfd2l3"
+
+[node name="AccessoryEquipMenu" type="Control" node_paths=PackedStringArray("close_button", "_hats_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hk3sl")
+creature_data = SubResource("Resource_hlogp")
+close_button = NodePath("TextureButton")
+_hats_container = NodePath("Background/MarginContainer/HBoxContainer/AccessoriesContainer")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kqp8f")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 75
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 75
+theme_override_constants/margin_bottom = 75
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="AccessoriesContainer" parent="Background/MarginContainer/HBoxContainer" instance=ExtResource("3_b767o")]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 70.0
+grow_horizontal = 0
+texture_normal = ExtResource("6_nxw6m")

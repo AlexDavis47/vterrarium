@@ -16,30 +16,17 @@ var accessory_data_templates: Dictionary[Accessories, AccessoryData] = {
 	Accessories.PARTY_HAT: preload("uid://ydqcq0aibnrb")
 }
 
-func create_test_top_hat() -> void:
-	var top_hat = create_accessory(Accessories.TOP_HAT)
-	SaveManager.save_file.accessory_inventory.append(top_hat)
-	call_deferred("apply_test_top_hat")
-
-func create_test_party_hat() -> void:
-	var party_hat = create_accessory(Accessories.PARTY_HAT)
-	SaveManager.save_file.accessory_inventory.append(party_hat)
-	call_deferred("apply_test_party_hat")
-
-## This is super hacky, but it's just a temporary solution to test the accessory system
-func apply_test_top_hat() -> void:
-	var top_hat = get_accessory_by_id(SaveManager.save_file.accessory_inventory[0].accessory_id)
-	var creature: CreatureData = SaveManager.save_file.creature_inventory[0]
-	top_hat.accessory_is_equipped = true
-	top_hat.creature_equipped_id = creature.creature_id
-	creature.creature_instance._apply_accesories()
-
-func apply_test_party_hat() -> void:
-	var party_hat = get_accessory_by_id(SaveManager.save_file.accessory_inventory[1].accessory_id)
-	var creature: CreatureData = SaveManager.save_file.creature_inventory[1]
-	party_hat.accessory_is_equipped = true
-	party_hat.creature_equipped_id = creature.creature_id
-	creature.creature_instance._apply_accesories()
+## Creates 5 of each accessory type and adds them to the inventory
+func create_test_accessories() -> void:
+	# Create 5 top hats
+	for i in range(5):
+		var top_hat = create_accessory(Accessories.TOP_HAT)
+		SaveManager.save_file.accessory_inventory.append(top_hat)
+	
+	# Create 5 party hats
+	for i in range(5):
+		var party_hat = create_accessory(Accessories.PARTY_HAT)
+		SaveManager.save_file.accessory_inventory.append(party_hat)
 
 
 func get_accessory_by_id(id: String) -> AccessoryData:
@@ -70,3 +57,23 @@ func instantiate_accessory(accessory_data: AccessoryData) -> Node3D:
 	var accessory_scene = load(accessory_data.accessory_scene_uuid)
 	var accessory = accessory_scene.instantiate()
 	return accessory
+
+func equip_accessory(accessory_data: AccessoryData, creature_data: CreatureData) -> void:
+	# Remove any existing accessories of the same type
+	for accessory in get_all_accessories_by_creature_id(creature_data.creature_id):
+		if accessory.accessory_category == accessory_data.accessory_category:
+			unequip_accessory(accessory, creature_data)
+
+	accessory_data.accessory_is_equipped = true
+	accessory_data.creature_equipped_id = creature_data.creature_id
+
+
+	# Apply the accessory to the creature
+	if creature_data.creature_is_in_tank:
+		creature_data.creature_instance._apply_accesories()
+
+func unequip_accessory(accessory_data: AccessoryData, creature_data: CreatureData) -> void:
+	accessory_data.accessory_is_equipped = false
+	accessory_data.creature_equipped_id = ""
+	if creature_data.creature_is_in_tank:
+		creature_data.creature_instance._apply_accesories()

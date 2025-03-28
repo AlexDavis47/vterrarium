@@ -150,3 +150,9 @@ func get_creature_by_id(id: String) -> CreatureData:
 		if creature.creature_id == id:
 			return creature
 	return null
+
+func get_creature_instance_by_id(id: String) -> Creature:
+	for creature in get_tree().get_nodes_in_group("creatures"):
+		if creature.creature_data.creature_id == id:
+			return creature
+	return null

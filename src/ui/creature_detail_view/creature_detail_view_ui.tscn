@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c7ripghigdapa"]
+[gd_scene load_steps=34 format=3 uid="uid://c7ripghigdapa"]
 
 [ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://byvf0xnc7iud3" path="res://assets/fonts/RedHatDisplay-LightItalic.ttf" id="10_n2nre"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="11_ux5o3"]
 [ext_resource type="PackedScene" uid="uid://dofxw2he0twfr" path="res://src/ui/creature_detail_view/stat_container.tscn" id="12_bi2st"]
+[ext_resource type="Texture2D" uid="uid://dl2brcsfstru0" path="res://src/ui/creature_detail_view/textures/WizardHat.svg" id="12_klxi3"]
 [ext_resource type="PackedScene" uid="uid://dbs3nvaelgmko" path="res://src/ui/creature_detail_view/need_container.tscn" id="13_afveu"]
 [ext_resource type="Script" uid="uid://d2w8wo6kptysc" path="res://src/ui/creature_detail_view/creature_preference_graph.gd" id="16_awlyl"]
 [ext_resource type="Texture2D" uid="uid://b2efb171e25j3" path="res://src/ui/creature_detail_view/textures/creature_card_money_icon.png" id="16_tqbuu"]
@@ -88,7 +89,7 @@ corner_radius_bottom_left = 10
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.418994, 1), 0.0, 0.0, 0, 0, Vector2(0.594972, 0), 0.0, 0.0, 0, 0, Vector2(0.826816, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph")]
+[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,6 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ilim5")
 creature_data = SubResource("Resource_mcnp6")
+_accessory_equip_menu_button = NodePath("TextureButton")
 _rarity_and_type_label = NodePath("RarityAndType")
 _name_line_edit = NodePath("HBoxContainer/LineEdit")
 _description_label = NodePath("Description")
@@ -148,7 +150,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_afveu")
-expand_mode = 3
+expand_mode = 5
+stretch_mode = 6
 
 [node name="Reference" type="TextureRect" parent="."]
 visible = false
@@ -210,6 +213,14 @@ offset_top = 44.0
 offset_right = 971.0
 offset_bottom = 98.0
 texture_normal = ExtResource("9_mcnp6")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 916.0
+offset_top = 493.0
+offset_right = 976.0
+offset_bottom = 553.0
+texture_normal = ExtResource("12_klxi3")
 
 [node name="CreatureSpecies" type="Label" parent="."]
 layout_mode = 1

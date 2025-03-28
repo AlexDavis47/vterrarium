@@ -3,6 +3,9 @@ class_name CreatureDetailViewUI
 
 @export var creature_data: CreatureData
 
+@export var _accessory_equip_menu_button: TextureButton
+var accessory_equip_menu_scene: PackedScene = preload("uid://d2ve1bal36q1d")
+
 @export var _rarity_and_type_label: Label
 @export var _name_line_edit: LineEdit
 @export var _description_label: Label
@@ -26,6 +29,7 @@ func _ready() -> void:
 	_close_button.pressed.connect(_on_close_button_pressed)
 	update_info()
 	_name_line_edit.text_changed.connect(_on_name_line_edit_changed)
+	_accessory_equip_menu_button.pressed.connect(_on_accessory_equip_menu_button_pressed)
 
 func update_info() -> void:
 	_update_rarity_and_type()
@@ -123,3 +127,8 @@ func _on_close_button_pressed() -> void:
 func _on_name_line_edit_changed(new_text: String) -> void:
 	creature_data.creature_name = new_text
 	VTGlobal.trigger_inventory_refresh.emit()
+
+func _on_accessory_equip_menu_button_pressed() -> void:
+	var accessory_equip_menu = accessory_equip_menu_scene.instantiate()
+	accessory_equip_menu.creature_data = creature_data
+	add_child(accessory_equip_menu)

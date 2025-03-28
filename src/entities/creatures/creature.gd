@@ -34,6 +34,14 @@ func _ready():
 
 
 func _apply_accesories() -> void:
+	if not _accessory_hat_attachment:
+		return
+
+	# Clear any existing accessories
+	for child in _accessory_hat_attachment.get_children():
+		child.queue_free()
+
+	# Get all accessories for this creature
 	var accessories: Array[AccessoryData] = AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id)
 	for accessory in accessories:
 		if accessory.accessory_category == AccessoryFactory.AccessoryType.HAT:

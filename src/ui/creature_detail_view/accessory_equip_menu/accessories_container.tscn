@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://d36oh087cc05q"]
+
+[ext_resource type="Texture2D" uid="uid://bbiele7lcspvw" path="res://src/ui/creature_detail_view/accessory_equip_menu/textures/accessory_equip_menu.png" id="1_nxgkk"]
+[ext_resource type="FontFile" uid="uid://cywugphcmumyo" path="res://assets/fonts/RedHatDisplay-Medium.ttf" id="2_8lxcb"]
+[ext_resource type="Script" uid="uid://cwuy1homr2ul1" path="res://src/ui/creature_detail_view/accessory_equip_menu/accessories_container.gd" id="2_q18bh"]
+
+[node name="AccessoriesContainer" type="TextureRect" node_paths=PackedStringArray("card_container")]
+size_flags_horizontal = 3
+texture = ExtResource("1_nxgkk")
+expand_mode = 1
+script = ExtResource("2_q18bh")
+card_container = NodePath("VBoxContainer/ScrollContainer/HFlowContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RarityAndType" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("2_8lxcb")
+theme_override_font_sizes/font_size = 25
+text = "Hats"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
