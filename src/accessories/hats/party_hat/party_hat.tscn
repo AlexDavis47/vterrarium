@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://drw8sp6mhlvdv"]
+
+[ext_resource type="PackedScene" uid="uid://dt756up0ybwe6" path="res://assets/models/accessories/hats/party_hat/party_hat.glb" id="1_8i27q"]
+
+[node name="PartyHat" type="Node3D"]
+
+[node name="party_hat" parent="." instance=ExtResource("1_8i27q")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.0449147, 0)

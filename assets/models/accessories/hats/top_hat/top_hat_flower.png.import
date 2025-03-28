@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qd4063sjhf0v"
-path.s3tc="res://.godot/imported/voxel_top_hat_0.png-a0e9872c0639b8211b52d0a989048160.s3tc.ctex"
+uid="uid://3j0e7suj1sk8"
+path.s3tc="res://.godot/imported/top_hat_flower.png-251f4cf3dc28652d6ebb18928df6931d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a61d5f3edcdf8d5fcd60121e9ef7ead6"
+"md5": "dd60415246a25b6a04a06bcac74cdc76"
 }
 
 [deps]
 
-source_file="res://src/accessories/hats/top_hat/voxel_top_hat_0.png"
-dest_files=["res://.godot/imported/voxel_top_hat_0.png-a0e9872c0639b8211b52d0a989048160.s3tc.ctex"]
+source_file="res://assets/models/accessories/hats/top_hat/top_hat_flower.png"
+dest_files=["res://.godot/imported/top_hat_flower.png-251f4cf3dc28652d6ebb18928df6931d.s3tc.ctex"]
 
 [params]
 

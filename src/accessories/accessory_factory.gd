@@ -6,18 +6,25 @@ enum AccessoryType {
 }
 
 enum Accessories {
-	TOP_HAT
+	TOP_HAT,
+	PARTY_HAT
 }
 
 
 var accessory_data_templates: Dictionary[Accessories, AccessoryData] = {
-	Accessories.TOP_HAT: preload("uid://d0q0xj7jcr5rh")
+	Accessories.TOP_HAT: preload("uid://d0q0xj7jcr5rh"),
+	Accessories.PARTY_HAT: preload("uid://ydqcq0aibnrb")
 }
 
 func create_test_top_hat() -> void:
 	var top_hat = create_accessory(Accessories.TOP_HAT)
 	SaveManager.save_file.accessory_inventory.append(top_hat)
 	call_deferred("apply_test_top_hat")
+
+func create_test_party_hat() -> void:
+	var party_hat = create_accessory(Accessories.PARTY_HAT)
+	SaveManager.save_file.accessory_inventory.append(party_hat)
+	call_deferred("apply_test_party_hat")
 
 ## This is super hacky, but it's just a temporary solution to test the accessory system
 func apply_test_top_hat() -> void:
@@ -26,6 +33,14 @@ func apply_test_top_hat() -> void:
 	top_hat.accessory_is_equipped = true
 	top_hat.creature_equipped_id = creature.creature_id
 	creature.creature_instance._apply_accesories()
+
+func apply_test_party_hat() -> void:
+	var party_hat = get_accessory_by_id(SaveManager.save_file.accessory_inventory[1].accessory_id)
+	var creature: CreatureData = SaveManager.save_file.creature_inventory[1]
+	party_hat.accessory_is_equipped = true
+	party_hat.creature_equipped_id = creature.creature_id
+	creature.creature_instance._apply_accesories()
+
 
 func get_accessory_by_id(id: String) -> AccessoryData:
 	for accessory in SaveManager.save_file.accessory_inventory:

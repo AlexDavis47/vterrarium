@@ -1,29 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt0737ti6xy4"]
+[gd_scene load_steps=3 format=3 uid="uid://bt0737ti6xy4"]
 
-[ext_resource type="PackedScene" uid="uid://cy8mox4d7msa7" path="res://src/accessories/hats/top_hat/voxel_top_hat.glb" id="1_c5fhn"]
 [ext_resource type="Script" uid="uid://p71kacf4ubvj" path="res://src/accessories/accessory.gd" id="1_xbbcu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbbcu"]
-vertex_color_use_as_albedo = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_m6o1s"]
-material = SubResource("StandardMaterial3D_xbbcu")
-radius = 0.01
-height = 0.02
+[ext_resource type="PackedScene" uid="uid://dsvwfjcxomg1" path="res://assets/models/accessories/hats/top_hat/top_hat.glb" id="2_xbbcu"]
 
 [node name="TopHat" type="Node3D"]
 script = ExtResource("1_xbbcu")
 metadata/_custom_type_script = "uid://p71kacf4ubvj"
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_c5fhn")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.594, 0)
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
-amount = 16
-mesh = SubResource("SphereMesh_m6o1s")
-emission_shape = 1
-emission_sphere_radius = 0.3
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_max = 0.2
-color = Color(1, 1, 0, 1)
+[node name="top_hat" parent="." instance=ExtResource("2_xbbcu")]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0.0635561, 0)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cy8mox4d7msa7"
-path="res://.godot/imported/voxel_top_hat.glb-d1d652071c507118d203d7aed426ddd5.scn"
+uid="uid://dt756up0ybwe6"
+path="res://.godot/imported/party_hat.glb-b9a337f51378963423cb111ce14642f8.scn"
 
 [deps]
 
-source_file="res://src/accessories/hats/top_hat/voxel_top_hat.glb"
-dest_files=["res://.godot/imported/voxel_top_hat.glb-d1d652071c507118d203d7aed426ddd5.scn"]
+source_file="res://assets/models/accessories/hats/party_hat/party_hat.glb"
+dest_files=["res://.godot/imported/party_hat.glb-b9a337f51378963423cb111ce14642f8.scn"]
 
 [params]
 
