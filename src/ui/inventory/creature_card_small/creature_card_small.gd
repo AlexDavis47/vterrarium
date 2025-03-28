@@ -9,6 +9,7 @@ class_name CreatureCardSmall
 @export var add_remove_button: TextureButton
 @export var detail_button: TextureButton
 @export var in_tank_marker: TextureRect
+@export var has_accessories_marker: TextureRect
 
 var _add_to_tank_texture: Texture2D = preload("uid://xj5qbwybtu27")
 var _remove_from_tank_texture: Texture2D = preload("uid://bldq2ksww120x")
@@ -36,7 +37,7 @@ func update_info() -> void:
 	_update_species()
 	_update_add_remove_button()
 	_update_in_tank_marker()
-	
+	_update_has_accessories_marker()
 func _update_rarity_and_type() -> void:
 	var rarity_string: String = Enums.Rarity.keys()[creature_data.creature_rarity]
 	rarity_string = rarity_string.capitalize()
@@ -66,6 +67,12 @@ func _update_in_tank_marker() -> void:
 		in_tank_marker.visible = true
 	else:
 		in_tank_marker.visible = false
+
+func _update_has_accessories_marker() -> void:
+	if AccessoryFactory.does_creature_have_any_accessories_equipped(creature_data):
+		has_accessories_marker.visible = true
+	else:
+		has_accessories_marker.visible = false
 
 func _on_add_remove_button_pressed() -> void:
 	# If the creature is in the tank, remove it from the tank
