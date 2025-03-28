@@ -21,7 +21,9 @@ func _ready():
 	position_camera()
 	if !continuous_update:
 		# Force one update to ensure initial render
-		force_update()
+		subviewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+		await get_tree().create_timer(0.05).timeout
+		subviewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func _gui_input(event: InputEvent) -> void:
 	if !drag_enabled:
@@ -62,8 +64,7 @@ func force_update() -> void:
 	_first_update_done = false
 	if !continuous_update:
 		subviewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
-		await get_tree().process_frame # For some reason, it takes two frames to update the render target
-		await get_tree().process_frame
+		await get_tree().create_timer(0.05).timeout
 		subviewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 # # Stop dragging if mouse released outside the viewport
