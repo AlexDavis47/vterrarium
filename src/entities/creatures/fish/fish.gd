@@ -38,6 +38,9 @@ func _setup_target_marker() -> void:
 	add_child(_target_marker)
 
 func _process(delta):
+	if _is_in_preview_mode:
+		return
+
 	if _show_target_marker and _target_marker:
 		_target_marker.global_position = target_position
 

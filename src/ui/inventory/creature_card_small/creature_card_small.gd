@@ -11,6 +11,8 @@ class_name CreatureCardSmall
 @export var in_tank_marker: TextureRect
 @export var has_accessories_marker: TextureRect
 
+@export var creature_preview_subviewport_container: ScenePreviewSubviewportContainer
+
 var _add_to_tank_texture: Texture2D = preload("uid://xj5qbwybtu27")
 var _remove_from_tank_texture: Texture2D = preload("uid://bldq2ksww120x")
 
@@ -19,16 +21,17 @@ var _detailed_view_ui_scene: PackedScene = preload("uid://c7ripghigdapa")
 signal add_remove_button_pressed(creature_data: CreatureData)
 signal detail_button_pressed(creature_data: CreatureData)
 
-@export var creature_data: CreatureData:
-	set(value):
-		creature_data = value
+@export var creature_data: CreatureData
 
 func _ready() -> void:
-	if creature_data:
-		update_info()
-
 	add_remove_button.pressed.connect(_on_add_remove_button_pressed)
 	detail_button.pressed.connect(_on_detail_button_pressed)
+
+	var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
+	creature_preview_subviewport_container.root_node.add_child(preview_creature)
+	
+	if creature_data:
+		update_info()
 
 func update_info() -> void:
 	_update_rarity_and_type()
@@ -38,6 +41,7 @@ func update_info() -> void:
 	_update_add_remove_button()
 	_update_in_tank_marker()
 	_update_has_accessories_marker()
+
 func _update_rarity_and_type() -> void:
 	var rarity_string: String = Enums.Rarity.keys()[creature_data.creature_rarity]
 	rarity_string = rarity_string.capitalize()

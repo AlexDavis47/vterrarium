@@ -156,3 +156,12 @@ func get_creature_instance_by_id(id: String) -> Creature:
 		if creature.creature_data.creature_id == id:
 			return creature
 	return null
+
+
+func create_creature_preview(creature_data: CreatureData) -> Creature:
+	var creature_scene = load(creature_data.creature_scene_uuid)
+	var creature = creature_scene.instantiate()
+	creature.creature_data = creature_data
+	creature._is_in_preview_mode = true
+	creature.process_mode = PROCESS_MODE_DISABLED
+	return creature

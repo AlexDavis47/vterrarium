@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://d8tgrkwn0t1w"]
+[gd_scene load_steps=15 format=3 uid="uid://d8tgrkwn0t1w"]
 
 [ext_resource type="Texture2D" uid="uid://dh03heeoxmibw" path="res://src/ui/inventory/creature_card_small/textures/creature_card_small_bg.png" id="1_jqowi"]
 [ext_resource type="Script" uid="uid://b27xtc5gnsiuq" path="res://src/ui/inventory/creature_card_small/creature_card_small.gd" id="1_ykj4p"]
 [ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/entities/creatures/fish/weird_fish/weird_fish.png" id="3_22bev"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="3_tvl5m"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_5thfp"]
-[ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="6_dw02c"]
 [ext_resource type="FontFile" uid="uid://byvf0xnc7iud3" path="res://assets/fonts/RedHatDisplay-LightItalic.ttf" id="6_pscl2"]
 [ext_resource type="Texture2D" uid="uid://xj5qbwybtu27" path="res://src/ui/inventory/creature_card_small/textures/add_to_tank.png" id="7_1qk38"]
 [ext_resource type="Texture2D" uid="uid://ckd85ti47qff3" path="res://src/ui/inventory/creature_card_small/textures/detail_view.png" id="8_1dgtc"]
@@ -26,7 +25,17 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
-[node name="CreatureCardSmall" type="TextureRect" node_paths=PackedStringArray("rarity_and_type_label", "name_label", "image", "species_label", "add_remove_button", "detail_button", "in_tank_marker", "has_accessories_marker", "creature_preview_subviewport_container")]
+[sub_resource type="Environment" id="Environment_2opys"]
+background_mode = 1
+background_color = Color(0, 0.635294, 0.992157, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 1.91
+
+[sub_resource type="World3D" id="World3D_hkqpy"]
+environment = SubResource("Environment_2opys")
+
+[node name="CreatureCardSmall" type="TextureRect" node_paths=PackedStringArray("rarity_and_type_label", "name_label", "image", "species_label", "add_remove_button", "detail_button", "in_tank_marker", "has_accessories_marker", "creature_preview_subviewport")]
 clip_contents = true
 custom_minimum_size = Vector2(128, 128)
 offset_right = 128.0
@@ -41,7 +50,7 @@ add_remove_button = NodePath("HBoxContainer/AddRemoveFromTank")
 detail_button = NodePath("HBoxContainer/DetailView")
 in_tank_marker = NodePath("InTankMarker")
 has_accessories_marker = NodePath("AccessoriesMarker")
-creature_preview_subviewport_container = NodePath("Panel/Panel2/ScenePreviewSubviewportContainer")
+creature_preview_subviewport = NodePath("Panel/Panel2/CreatureImage/SubViewportContainer/SubViewport")
 
 [node name="CreatureRarityAndType" type="Label" parent="."]
 layout_mode = 1
@@ -103,7 +112,6 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1dgtc")
 
 [node name="CreatureImage" type="TextureRect" parent="Panel/Panel2"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,11 +123,23 @@ texture = ExtResource("3_22bev")
 expand_mode = 5
 stretch_mode = 6
 
-[node name="ScenePreviewSubviewportContainer" parent="Panel/Panel2" instance=ExtResource("6_dw02c")]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Panel/Panel2/CreatureImage"]
 layout_mode = 1
-camera_angle = Vector3(-2.245, -41.345, 43.53)
-camera_zoom = 0.425
-camera_fov = 35.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="Panel/Panel2/CreatureImage/SubViewportContainer"]
+own_world_3d = true
+world_3d = SubResource("World3D_hkqpy")
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Panel/Panel2/CreatureImage/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.871231, 0, 0.490873, 0, 1, 0, -0.490873, 0, -0.871231, 2.53111, 0.100345, -4.24329)
+fov = 40.0
 
 [node name="CreatureSpecies" type="Label" parent="."]
 layout_mode = 1

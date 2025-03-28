@@ -196,6 +196,7 @@ transform = Transform3D(1.08562, -0.337557, 0.94909, 0.0973953, 1.44331, 0.41076
 transform = Transform3D(-0.297183, -0.19622, -0.861115, -0.134399, 0.667289, -0.203474, 0.517405, 0.0606294, -0.547454, -4.46571, -2.70934, 1.29462)
 
 [node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 279.0

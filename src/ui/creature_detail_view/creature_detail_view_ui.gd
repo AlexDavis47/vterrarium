@@ -25,13 +25,26 @@ var accessory_equip_menu_scene: PackedScene = preload("uid://d2ve1bal36q1d")
 @export var _brightness_graph: CreaturePreferenceGraph
 @export var _temperature_graph: CreaturePreferenceGraph
 
+@export var _creature_live_camera: CreatureLiveCamera
+@export var _creature_live_camera_subviewport_container: SubViewportContainer
+@export var _creature_live_subviewport_container: ScenePreviewSubviewportContainer
+
 func _ready() -> void:
 	_close_button.pressed.connect(_on_close_button_pressed)
 	update_info()
 	_name_line_edit.text_changed.connect(_on_name_line_edit_changed)
 	_accessory_equip_menu_button.pressed.connect(_on_accessory_equip_menu_button_pressed)
+	_creature_live_camera.creature_data = creature_data
+	
+	# Set up the preview creature if needed
+	if !creature_data.creature_is_in_tank:
+		var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
+		_creature_live_subviewport_container.root_node.add_child(preview_creature)
+	
+	_update_camera_visibility()
 
 func update_info() -> void:
+	_update_camera_visibility()
 	_update_rarity_and_type()
 	_update_name()
 	_update_image()
@@ -46,6 +59,15 @@ func update_info() -> void:
 	_update_brightness_graph()
 	_update_temperature_graph()
 
+func _update_camera_visibility() -> void:
+	if creature_data.creature_is_in_tank:
+		_creature_live_camera_subviewport_container.visible = true
+		_creature_live_subviewport_container.visible = false
+	else:
+		_creature_live_camera_subviewport_container.visible = false
+		_creature_live_subviewport_container.visible = true
+		# Force an update of the preview
+		_creature_live_subviewport_container.force_update()
 
 func _update_rarity_and_type() -> void:
 	var rarity_string: String = Enums.Rarity.keys()[creature_data.creature_rarity]

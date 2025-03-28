@@ -15,22 +15,29 @@ var debug_label: Label3D
 
 @export var _accessory_hat_attachment: Node3D
 
+## For when we want to preview a creature without it being in the tank
+@export var _is_in_preview_mode: bool = false
+
 func _ready():
+	if _is_in_preview_mode:
+		process_mode = PROCESS_MODE_DISABLED
 	creature_mesh.mesh = creature_mesh.mesh.duplicate(true) # Duplicate the mesh to avoid reference issues
 	var mesh: Mesh = creature_mesh.mesh
 	mesh.surface_set_material(0, mesh.surface_get_material(0).duplicate(true))
 	_apply_tint()
-	add_to_group("creatures")
-	collision_layer = 0
-	set_collision_layer_value(2, true)
-	global_position = creature_data.creature_position
+	if !_is_in_preview_mode:
+		add_to_group("creatures")
+		collision_layer = 0
+		set_collision_layer_value(2, true)
+		global_position = creature_data.creature_position
 	scale = Vector3(creature_data.creature_size, creature_data.creature_size, creature_data.creature_size)
 	_apply_accesories()
 
-	debug_label = Label3D.new()
-	debug_label.no_depth_test = true
-	debug_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	#add_child(debug_label)
+	if !_is_in_preview_mode:
+		debug_label = Label3D.new()
+		debug_label.no_depth_test = true
+		debug_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		#add_child(debug_label)
 
 
 func _apply_accesories() -> void:
@@ -62,6 +69,8 @@ func _apply_tint() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if _is_in_preview_mode:
+		return
 	_process_hunger(delta)
 	_process_happiness(delta)
 	_process_light(delta)

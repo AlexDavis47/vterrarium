@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c7ripghigdapa"]
+[gd_scene load_steps=36 format=3 uid="uid://c7ripghigdapa"]
 
 [ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bqigah3c2c0si" path="res://src/ui/creature_detail_view/textures/Detail View.png" id="4_64cj3"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_tqbuu"]
 [ext_resource type="FontFile" uid="uid://cywugphcmumyo" path="res://assets/fonts/RedHatDisplay-Medium.ttf" id="5_bhvwm"]
+[ext_resource type="Script" uid="uid://bexncqsnblklf" path="res://src/ui/creature_detail_view/creature_live_camera.gd" id="6_q5ua7"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_tqbuu"]
+[ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="7_6c18d"]
 [ext_resource type="Texture2D" uid="uid://bnq3ckykvimm7" path="res://src/ui/creature_detail_view/textures/pen-to-square-solid2.png" id="7_awlyl"]
 [ext_resource type="Texture2D" uid="uid://xj5qbwybtu27" path="res://src/ui/inventory/creature_card_small/textures/add_to_tank.png" id="8_wb7er"]
 [ext_resource type="Texture2D" uid="uid://bmu8a8jpkq2a3" path="res://src/ui/creature_detail_view/textures/minimize.png" id="9_mcnp6"]
@@ -89,7 +91,7 @@ corner_radius_bottom_left = 10
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.418994, 1), 0.0, 0.0, 0, 0, Vector2(0.594972, 0), 0.0, 0.0, 0, 0, Vector2(0.826816, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph")]
+[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph", "_creature_live_camera", "_creature_live_camera_subviewport_container", "_creature_live_subviewport_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,6 +115,9 @@ _satiation_container = NodePath("HBoxContainer2/Needs/Satiation")
 _close_button = NodePath("CloseButton")
 _brightness_graph = NodePath("HBoxContainer2/Preferences/ColorRect/Control")
 _temperature_graph = NodePath("HBoxContainer2/Preferences/TextireRect/Control")
+_creature_live_camera = NodePath("Panel/Panel2/LivePreview/SubViewport/Camera3D")
+_creature_live_camera_subviewport_container = NodePath("Panel/Panel2/LivePreview")
+_creature_live_subviewport_container = NodePath("Panel/Panel2/ScenePreviewSubviewportContainer")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
@@ -143,6 +148,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6j02r")
 
 [node name="CreatureImage" type="TextureRect" parent="Panel/Panel2"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,6 +158,33 @@ grow_vertical = 2
 texture = ExtResource("3_afveu")
 expand_mode = 5
 stretch_mode = 6
+
+[node name="LivePreview" type="SubViewportContainer" parent="Panel/Panel2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Panel/Panel2/LivePreview"]
+handle_input_locally = false
+size = Vector2i(346, 196)
+render_target_update_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="Panel/Panel2/LivePreview/SubViewport"]
+cull_mask = 1048569
+fov = 60.0
+script = ExtResource("6_q5ua7")
+
+[node name="ScenePreviewSubviewportContainer" parent="Panel/Panel2" instance=ExtResource("7_6c18d")]
+layout_mode = 1
+camera_angle = Vector3(0.21, -33.039, 40.57)
+camera_zoom = 0.515
+camera_fov = 35.0
+continuous_update = true
 
 [node name="Reference" type="TextureRect" parent="."]
 visible = false
