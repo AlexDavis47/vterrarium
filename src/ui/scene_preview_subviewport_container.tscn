@@ -23,7 +23,6 @@ preview_camera = NodePath("SubViewport/Camera3D")
 subviewport = NodePath("SubViewport")
 root_node = NodePath("SubViewport/Root")
 camera_angle = Vector3(18.01, 24.805, 40.57)
-continuous_update = null
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true

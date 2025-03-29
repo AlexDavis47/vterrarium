@@ -94,6 +94,7 @@ script = ExtResource("4_dv42i")
 [node name="VTTerrariumWall" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -5, 0, 0)
 material_override = ExtResource("5_2qkw7")
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_27mdg")
 script = ExtResource("5_r55h4")
 wall_type = 1
@@ -101,11 +102,13 @@ wall_type = 1
 [node name="VTTerrariumWall2" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 5, 0, 0)
 material_override = ExtResource("5_2qkw7")
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_b0toy")
 script = ExtResource("5_r55h4")
 
 [node name="VTTerrariumWall3" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2.8125, 0)
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_ygn67")
 script = ExtResource("5_r55h4")
 wall_type = 2
@@ -114,12 +117,14 @@ metadata/_custom_type_script = "uid://p427dstufru"
 [node name="VTTerrariumWall4" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8125, 0)
 material_override = ExtResource("7_kr6if")
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_ovvyv")
 script = ExtResource("5_r55h4")
 wall_type = 3
 
 [node name="VTTerrariumWall5" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.8125)
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_bdl84")
 script = ExtResource("5_r55h4")
 wall_type = 4
@@ -127,9 +132,28 @@ wall_type = 4
 [node name="VTTerrariumWall6" type="MeshInstance3D" parent="Terrarium"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2.8125)
 material_override = ExtResource("5_2qkw7")
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_8ot5c")
 script = ExtResource("5_r55h4")
 wall_type = 5
+
+[node name="cyan_coral" parent="Terrarium" instance=ExtResource("14_b0toy")]
+transform = Transform3D(-0.794351, 0, -0.607459, 0, 1, 0, 0.607459, 0, -0.794351, 4.19377, -2.65351, -2.31983)
+
+[node name="cyan_coral2" parent="Terrarium" instance=ExtResource("14_b0toy")]
+transform = Transform3D(1.21094, -0.257878, 0.778894, 0.100121, 1.19794, 0.387631, -0.846639, -0.227176, 1.15989, 3.67626, -2.65351, -1.9148)
+
+[node name="cyan_coral3" parent="Terrarium" instance=ExtResource("14_b0toy")]
+transform = Transform3D(1.3216, 0.0290618, -0.464432, 0.0948455, 1.0442, 0.371291, 0.460991, -0.298152, 1.25508, -2.99769, -2.70934, 2.41119)
+
+[node name="cyan_coral4" parent="Terrarium" instance=ExtResource("14_b0toy")]
+transform = Transform3D(-0.762036, 0.392999, -1.24033, 0.0973953, 1.44331, 0.410762, 1.21869, 0.130392, -0.808397, -4.72077, -2.70934, -2.27877)
+
+[node name="cyan_coral6" parent="Terrarium" instance=ExtResource("14_b0toy")]
+transform = Transform3D(1.08562, -0.337557, 0.94909, 0.0973953, 1.44331, 0.410762, -0.941978, -0.239802, 1.13629, 4.39422, -2.70934, -0.248106)
+
+[node name="cyan_coral5" parent="Terrarium" instance=ExtResource("14_b0toy")]
+transform = Transform3D(-0.297183, -0.19622, -0.861115, -0.134399, 0.667289, -0.203474, 0.517405, 0.0606294, -0.547454, -4.46571, -2.70934, 1.29462)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.396)
@@ -144,24 +168,6 @@ stream = ExtResource("14_d2bpd")
 volume_db = -6.0
 autoplay = true
 
-[node name="cyan_coral" parent="." instance=ExtResource("14_b0toy")]
-transform = Transform3D(-0.794351, 0, -0.607459, 0, 1, 0, 0.607459, 0, -0.794351, 4.19377, -2.65351, -2.31983)
-
-[node name="cyan_coral2" parent="." instance=ExtResource("14_b0toy")]
-transform = Transform3D(1.21094, -0.257878, 0.778894, 0.100121, 1.19794, 0.387631, -0.846639, -0.227176, 1.15989, 3.67626, -2.65351, -1.9148)
-
-[node name="cyan_coral3" parent="." instance=ExtResource("14_b0toy")]
-transform = Transform3D(1.3216, 0.0290618, -0.464432, 0.0948455, 1.0442, 0.371291, 0.460991, -0.298152, 1.25508, -2.99769, -2.70934, 2.41119)
-
-[node name="cyan_coral4" parent="." instance=ExtResource("14_b0toy")]
-transform = Transform3D(-0.762036, 0.392999, -1.24033, 0.0973953, 1.44331, 0.410762, 1.21869, 0.130392, -0.808397, -4.72077, -2.70934, -2.27877)
-
-[node name="cyan_coral6" parent="." instance=ExtResource("14_b0toy")]
-transform = Transform3D(1.08562, -0.337557, 0.94909, 0.0973953, 1.44331, 0.410762, -0.941978, -0.239802, 1.13629, 4.39422, -2.70934, -0.248106)
-
-[node name="cyan_coral5" parent="." instance=ExtResource("14_b0toy")]
-transform = Transform3D(-0.297183, -0.19622, -0.861115, -0.134399, 0.667289, -0.203474, 0.517405, 0.0606294, -0.547454, -4.46571, -2.70934, 1.29462)
-
 [node name="OnscreenKeyboard" type="PanelContainer" parent="."]
 visible = false
 anchors_preset = 10
@@ -169,6 +175,7 @@ anchor_right = 1.0
 offset_bottom = 279.0
 grow_horizontal = 2
 script = ExtResource("15_qfpye")
+auto_show = false
 separation = Vector2i(2, 2)
 font = ExtResource("16_b0toy")
 font_size = 28

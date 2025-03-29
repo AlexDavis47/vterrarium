@@ -1,0 +1,141 @@
+[gd_scene load_steps=13 format=3 uid="uid://dmowdukxcisg8"]
+
+[ext_resource type="Script" uid="uid://bax5pjj30m25q" path="res://src/ui/text_entry/text_entry.gd" id="1_j7rls"]
+[ext_resource type="Texture2D" uid="uid://bsi4bkneiha5p" path="res://src/ui/text_entry/textures/Text Entry.png" id="1_yy81t"]
+[ext_resource type="FontFile" uid="uid://dau51bc2eerp5" path="res://assets/fonts/RedHatDisplay-Light.ttf" id="2_bdoel"]
+[ext_resource type="Texture2D" uid="uid://dh6bofb5syquo" path="res://src/ui/text_entry/textures/TextBox.png" id="3_x3rmd"]
+[ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_bdoel"]
+[ext_resource type="Texture2D" uid="uid://gy622q3q1t2j" path="res://src/ui/text_entry/textures/Cancel.png" id="4_rb0dm"]
+[ext_resource type="Texture2D" uid="uid://du0khbuttm5ku" path="res://src/ui/text_entry/textures/Confirm.png" id="5_j7rls"]
+[ext_resource type="FontFile" uid="uid://byvf0xnc7iud3" path="res://assets/fonts/RedHatDisplay-LightItalic.ttf" id="6_uplox"]
+[ext_resource type="Script" uid="uid://djg2fo0j88l61" path="res://addons/onscreenkeyboard/onscreen_keyboard.gd" id="9_333n2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3rmd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rb0dm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7rls"]
+
+[node name="TextEntry" type="Control" node_paths=PackedStringArray("prompt_label", "line_edit", "cancel_button", "confirm_button", "remaining_characters_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j7rls")
+prompt_label = NodePath("TextureRect/MarginContainer/VBoxContainer/Prompt/PromptLabel")
+line_edit = NodePath("TextureRect/MarginContainer/VBoxContainer/EntryBox/MarginContainer/LineEdit")
+cancel_button = NodePath("TextureRect/MarginContainer/VBoxContainer/Buttons/CancelButton")
+confirm_button = NodePath("TextureRect/MarginContainer/VBoxContainer/Buttons/ConfirmButton")
+remaining_characters_label = NodePath("TextureRect/MarginContainer/VBoxContainer/RemainingChars/RemainingCharsLabel")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yy81t")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Prompt" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 29
+
+[node name="PromptLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/Prompt"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("2_bdoel")
+theme_override_font_sizes/font_size = 50
+text = "Entry Prompt"
+horizontal_alignment = 1
+
+[node name="EntryBox" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="EntryBoxBackground" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/EntryBox"]
+layout_mode = 2
+texture = ExtResource("3_x3rmd")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer/EntryBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="LineEdit" type="LineEdit" parent="TextureRect/MarginContainer/VBoxContainer/EntryBox/MarginContainer"]
+layout_mode = 2
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_constants/caret_width = 2
+theme_override_fonts/font = ExtResource("4_bdoel")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x3rmd")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_rb0dm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j7rls")
+placeholder_text = "Enter Here"
+alignment = 1
+select_all_on_focus = true
+caret_blink = true
+
+[node name="RemainingChars" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 150
+
+[node name="RemainingCharsLabel" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/RemainingChars"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.995444, 0.359882, 0.337692, 1)
+theme_override_fonts/font = ExtResource("6_uplox")
+theme_override_font_sizes/font_size = 24
+text = "25/45"
+horizontal_alignment = 1
+
+[node name="Buttons" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 45
+
+[node name="CancelButton" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("4_rb0dm")
+
+[node name="ConfirmButton" type="TextureButton" parent="TextureRect/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("5_j7rls")
+
+[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -300.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("9_333n2")
+separation = Vector2i(2, 2)
+font = ExtResource("2_bdoel")
+font_size = 28
+metadata/_custom_type_script = "uid://djg2fo0j88l61"
