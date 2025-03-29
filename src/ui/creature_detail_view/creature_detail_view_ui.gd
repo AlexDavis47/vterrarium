@@ -1,47 +1,77 @@
 extends Control
 class_name CreatureDetailViewUI
 
+########################################################
+# Exports
+########################################################
+
+@export_group("Creature Data")
 @export var creature_data: CreatureData
 
+@export_group("UI Components")
 @export var _accessory_equip_menu_button: TextureButton
-var accessory_equip_menu_scene: PackedScene = preload("uid://d2ve1bal36q1d")
-
 @export var _rarity_and_type_label: Label
-@export var _name_line_edit: LineEdit
+@export var _name_button: Button
+@export var _name_rename_button: TextureButton
 @export var _description_label: Label
 @export var _species_label: Label
 @export var _image: TextureRect
 
+@export_group("Stat Containers")
 @export var _money_per_hour_container: StatContainer
 @export var _hunger_rate_container: StatContainer
 @export var _speed_container: StatContainer
 @export var _size_container: StatContainer
 
+@export_group("Need Containers")
 @export var _happiness_container: NeedContainer
 @export var _satiation_container: NeedContainer
 
+@export_group("Controls")
 @export var _close_button: TextureButton
 
+@export_group("Preference Graphs")
 @export var _brightness_graph: CreaturePreferenceGraph
 @export var _temperature_graph: CreaturePreferenceGraph
 
+@export_group("Preview")
 @export var _creature_live_camera: CreatureLiveCamera
 @export var _creature_live_camera_subviewport_container: SubViewportContainer
 @export var _creature_live_subviewport_container: ScenePreviewSubviewportContainer
 
+########################################################
+# Private Variables
+########################################################
+
+var _accessory_equip_menu_scene: PackedScene = preload("uid://d2ve1bal36q1d")
+var _text_entry_ui_scene: PackedScene = preload("uid://dmowdukxcisg8")
+
+########################################################
+# Initialization
+########################################################
+
 func _ready() -> void:
-	_close_button.pressed.connect(_on_close_button_pressed)
+	_initialize_connections()
 	update_info()
-	_name_line_edit.text_changed.connect(_on_name_line_edit_changed)
-	_accessory_equip_menu_button.pressed.connect(_on_accessory_equip_menu_button_pressed)
-	_creature_live_camera.creature_data = creature_data
-	creature_data.trigger_preview_update.connect(_on_creature_data_trigger_preview_update)
+	
 	# Set up the preview creature if needed
 	if !creature_data.creature_is_in_tank:
 		var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
 		_creature_live_subviewport_container.root_node.add_child(preview_creature)
 	
 	_update_camera_visibility()
+
+func _initialize_connections() -> void:
+	_close_button.pressed.connect(_on_close_button_pressed)
+	_name_button.pressed.connect(_on_name_button_pressed)
+	_name_rename_button.pressed.connect(_on_name_rename_button_pressed)
+	_accessory_equip_menu_button.pressed.connect(_on_accessory_equip_menu_button_pressed)
+	_creature_live_camera.creature_data = creature_data
+	creature_data.trigger_preview_update.connect(_on_creature_data_trigger_preview_update)
+
+########################################################
+# UI Update Methods
+########################################################
 
 func update_info() -> void:
 	_update_camera_visibility()
@@ -79,7 +109,7 @@ func _update_rarity_and_type() -> void:
 	_rarity_and_type_label.text = rarity_string + " " + type_string
 
 func _update_name() -> void:
-	_name_line_edit.text = creature_data.creature_name
+	_name_button.text = creature_data.creature_name
 
 func _update_image() -> void:
 	_image.texture = creature_data.creature_image
@@ -142,16 +172,32 @@ func _update_brightness_graph() -> void:
 func _update_temperature_graph() -> void:
 	_temperature_graph.curve = creature_data.creature_temperature_preference
 
+########################################################
+# Signal Handlers
+########################################################
+
 func _on_close_button_pressed() -> void:
 	VTGlobal.onscreen_keyboard.hide()
 	queue_free()
 
-func _on_name_line_edit_changed(new_text: String) -> void:
-	creature_data.creature_name = new_text
-	VTGlobal.trigger_inventory_refresh.emit()
+func _on_name_button_pressed() -> void:
+	var text_entry_ui = _text_entry_ui_scene.instantiate()
+	text_entry_ui.prompt = "Rename Creature"
+	text_entry_ui.placeholder = creature_data.creature_name
+	text_entry_ui.text = creature_data.creature_name
+	text_entry_ui.text_confirmed.connect(_on_text_entry_ui_text_confirmed)
+	add_child(text_entry_ui)
+
+func _on_name_rename_button_pressed() -> void:
+	var text_entry_ui = _text_entry_ui_scene.instantiate()
+	text_entry_ui.prompt = "Rename Creature"
+	text_entry_ui.placeholder = creature_data.creature_name
+	text_entry_ui.text = creature_data.creature_name
+	text_entry_ui.text_confirmed.connect(_on_text_entry_ui_text_confirmed)
+	add_child(text_entry_ui)
 
 func _on_accessory_equip_menu_button_pressed() -> void:
-	var accessory_equip_menu = accessory_equip_menu_scene.instantiate()
+	var accessory_equip_menu = _accessory_equip_menu_scene.instantiate()
 	accessory_equip_menu.creature_data = creature_data
 	add_child(accessory_equip_menu)
 
@@ -159,5 +205,9 @@ func _on_creature_data_trigger_preview_update() -> void:
 	_creature_live_subviewport_container.clear_root_node()
 	var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
 	_creature_live_subviewport_container.add_child_to_root_node(preview_creature)
-
 	_creature_live_subviewport_container.force_update()
+
+func _on_text_entry_ui_text_confirmed(text: String) -> void:
+	creature_data.creature_name = text
+	VTGlobal.trigger_inventory_refresh.emit()
+	_name_button.text = text

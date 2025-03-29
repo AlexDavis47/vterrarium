@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c7ripghigdapa"]
+[gd_scene load_steps=44 format=3 uid="uid://c7ripghigdapa"]
 
 [ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
@@ -81,17 +81,33 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tqbuu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6c18d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_awlyl"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_couks"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb7er"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_485np"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b5g87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gqis"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odb5o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_phm73"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mb82t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iw5k5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yb2yq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqfvv"]
 
 [sub_resource type="Curve" id="Curve_mcnp6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.418994, 1), 0.0, 0.0, 0, 0, Vector2(0.594972, 0), 0.0, 0.0, 0, 0, Vector2(0.826816, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_line_edit", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph", "_creature_live_camera", "_creature_live_camera_subviewport_container", "_creature_live_subviewport_container")]
+[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_button", "_name_rename_button", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph", "_creature_live_camera", "_creature_live_camera_subviewport_container", "_creature_live_subviewport_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,7 +118,8 @@ script = ExtResource("1_ilim5")
 creature_data = SubResource("Resource_mcnp6")
 _accessory_equip_menu_button = NodePath("TextureButton")
 _rarity_and_type_label = NodePath("RarityAndType")
-_name_line_edit = NodePath("HBoxContainer/LineEdit")
+_name_button = NodePath("HBoxContainer/MarginContainer/NameButton")
+_name_rename_button = NodePath("HBoxContainer/RenameButton")
 _description_label = NodePath("Description")
 _species_label = NodePath("CreatureSpecies")
 _image = NodePath("Panel/Panel2/CreatureImage")
@@ -213,21 +230,32 @@ offset_top = 73.0
 offset_right = 183.0
 offset_bottom = 113.0
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_colors/caret_color = Color(0, 0.635294, 0.992157, 1)
-theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+
+[node name="NameButton" type="Button" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0, 0.635294, 0.992157, 1)
+theme_override_colors/font_hover_color = Color(0, 0.635294, 0.992157, 1)
+theme_override_colors/font_color = Color(0.231373, 0.380392, 0.462745, 1)
+theme_override_colors/font_focus_color = Color(0, 0.635294, 0.992157, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.635294, 0.992157, 1)
 theme_override_fonts/font = ExtResource("6_tqbuu")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tqbuu")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_awlyl")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wb7er")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6c18d")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_couks")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_485np")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_b5g87")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_3gqis")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_odb5o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_phm73")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mb82t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iw5k5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yb2yq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vqfvv")
 text = "Name"
-placeholder_text = "Name"
-expand_to_text_length = true
-caret_blink = true
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+[node name="RenameButton" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_awlyl")
 

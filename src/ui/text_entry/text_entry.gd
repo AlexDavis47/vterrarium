@@ -1,4 +1,5 @@
 extends Control
+class_name TextEntryUI
 
 ########################################################
 # Signals
@@ -16,6 +17,7 @@ signal text_cancelled()
 
 @export_group("Configuration")
 @export var prompt: String = "Enter text"
+@export var text: String = ""
 @export var placeholder: String = ""
 @export var max_length: int = 45
 
@@ -40,18 +42,22 @@ var _remaining_characters_label_max_color: Color = Color(0.9960, 0.3607, 0.3372)
 func _ready():
 	_initialize_line_edit()
 	_initialize_buttons()
+	_initialize_prompt_label()
 	_update_remaining_characters_label()
 
 func _initialize_line_edit():
 	line_edit.text_changed.connect(_on_line_edit_text_changed)
 	line_edit.text_change_rejected.connect(_on_line_edit_text_change_rejected)
 	line_edit.placeholder_text = placeholder
-	line_edit.text = ""
+	line_edit.text = text
 	line_edit.max_length = max_length
 
 func _initialize_buttons():
 	confirm_button.pressed.connect(_on_confirm_button_pressed)
 	cancel_button.pressed.connect(_on_cancel_button_pressed)
+
+func _initialize_prompt_label():
+	prompt_label.text = prompt
 
 ########################################################
 # Helpers
