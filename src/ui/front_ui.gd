@@ -5,6 +5,8 @@ class_name FrontUI
 const SLEEP_DELAY: float = 30.0
 ## The duration of the sleep animation
 const SLEEP_ANIMATION_DURATION: float = 0.5
+## The duration of the happiness lerp animation
+const HAPPINESS_LERP_DURATION: float = 0.5
 
 @export var happiness_percentage_label: Label
 @export var money_label: Label
@@ -13,6 +15,9 @@ const SLEEP_ANIMATION_DURATION: float = 0.5
 var _sleep_counter: float = 0.0
 var _is_sleeping: bool = false
 var _original_modulate: Color
+var _current_happiness_percentage: float = 0.0
+var _target_happiness_percentage: float = 0.0
+var _happiness_lerp_t: float = 0.0
 
 func _ready():
 	_update_time()
@@ -25,6 +30,19 @@ func _process(delta):
 	_update_time()
 	_update_money()
 	_update_happiness_percentage()
+	
+	# Lerp the happiness percentage
+	if _current_happiness_percentage != _target_happiness_percentage:
+		_happiness_lerp_t += delta / HAPPINESS_LERP_DURATION
+		if _happiness_lerp_t >= 1.0:
+			_happiness_lerp_t = 1.0
+			_current_happiness_percentage = _target_happiness_percentage
+		else:
+			_current_happiness_percentage = lerp(_current_happiness_percentage, _target_happiness_percentage, _happiness_lerp_t)
+		
+		# Update the label with the lerped value
+		var happiness_display = int(round(_current_happiness_percentage * 100))
+		happiness_percentage_label.text = str(happiness_display) + "%"
 	
 	if Utils.all_menus_closed:
 		_sleep_counter += delta
@@ -77,5 +95,12 @@ func _update_money():
 	money_label.text = Utils.convert_long_float_to_string(SaveManager.save_file.money)
 
 func _update_happiness_percentage():
-	var happiness = Utils.get_total_creature_happiness_percentage() * 100
-	happiness_percentage_label.text = str(int(round(happiness))) + "%"
+	_target_happiness_percentage = Utils.get_total_creature_happiness_percentage()
+	if _current_happiness_percentage == 0 and _happiness_lerp_t == 0:
+		# Initialize on first call
+		_current_happiness_percentage = _target_happiness_percentage
+		var happiness_display = int(round(_current_happiness_percentage * 100))
+		happiness_percentage_label.text = str(happiness_display) + "%"
+	elif abs(_target_happiness_percentage - _current_happiness_percentage) > 0.001:
+		# Reset lerp when target changes significantly
+		_happiness_lerp_t = 0.0
