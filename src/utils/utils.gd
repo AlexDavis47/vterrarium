@@ -8,7 +8,6 @@ var all_menus_closed: bool = true
 func generate_unique_id() -> String:
 	return str(randi()) + str(int(Time.get_unix_time_from_system()))
 
-
 ## Take a large number and convert it to a readable string with suffix
 ## EG: 154345 returns "154.3k", 1543450000 returns "1.5B"
 func convert_long_int_to_string(number: int) -> String:

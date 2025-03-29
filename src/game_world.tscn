@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=23 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dpmhaxpyatodg" path="res://src/ui/front_ui.tscn" id="6_edi6u"]
 [ext_resource type="Script" uid="uid://fi3ukfe3r0ki" path="res://addons/vterrariumframework/src/classes/vt_front_window.gd" id="6_qfpye"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
-[ext_resource type="Shader" uid="uid://bu4pnewlhq57k" path="res://src/shaders/water.gdshader" id="14_27mdg"]
 [ext_resource type="PackedScene" uid="uid://b3tclcqf2u7l3" path="res://assets/models/decor/cyan_coral/cyan_coral.glb" id="14_b0toy"]
 [ext_resource type="AudioStream" uid="uid://cmj7ag4qru8q5" path="res://assets/audio/water.wav" id="14_d2bpd"]
 [ext_resource type="Script" uid="uid://dtcn1vb8gri55" path="res://src/directional_light_3d.gd" id="14_qfpye"]
@@ -53,33 +52,6 @@ size = Vector2(10, 5.625)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8ot5c"]
 size = Vector2(10, 5.625)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_27mdg"]
-render_priority = 0
-shader = ExtResource("14_27mdg")
-shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
-shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
-shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
-shader_parameter/distortion_speed = 2.0
-shader_parameter/tile = Vector2(50, 50)
-shader_parameter/wave_speed = 2.0
-shader_parameter/wave_amplitude = 0.085
-shader_parameter/wave_frequency = 1.5
-shader_parameter/time_offset = 0.0
-shader_parameter/water_size = Vector2(128, 128)
-shader_parameter/water_transparency = 0.015
-shader_parameter/water_depth_factor = 22.145
-shader_parameter/foam_width = 1.5
-shader_parameter/foam_edge_softness = 0.07
-shader_parameter/foam_smoothness = 0.03
-shader_parameter/foam_distortion_speed = 0.5
-shader_parameter/foam_distortion_amount = 0.1
-
-[sub_resource type="BoxMesh" id="BoxMesh_b0toy"]
-material = SubResource("ShaderMaterial_27mdg")
-size = Vector3(10, 5.656, 5.656)
-subdivide_width = 25
-subdivide_height = 25
 
 [node name="GameWorld" type="Node3D" node_paths=PackedStringArray("keyboard")]
 script = ExtResource("1_0brji")
@@ -158,11 +130,6 @@ material_override = ExtResource("5_2qkw7")
 mesh = SubResource("PlaneMesh_8ot5c")
 script = ExtResource("5_r55h4")
 wall_type = 5
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Terrarium"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.334301, 0)
-visible = false
-mesh = SubResource("BoxMesh_b0toy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.396)

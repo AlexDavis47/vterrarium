@@ -89,11 +89,30 @@ func _remove_all_creatures_from_tank() -> void:
 
 ## Adds a creature to the tank
 func _add_creature_to_tank(creature_data: CreatureData) -> void:
+	# Generate a safe random initial position within tank bounds
+	var half_width := VTConfig.width * 0.5 - 1.0
+	var half_height := VTConfig.height * 0.5 - 1.0
+	var half_depth := VTConfig.depth * 0.5 - 1.0
+	
+	creature_data.creature_position = Vector3(
+		randf_range(-half_width, half_width),
+		randf_range(-half_height, half_height),
+		randf_range(-half_depth, half_depth)
+	)
+	
 	var creature_scene = load(creature_data.creature_scene_uuid)
 	var creature = creature_scene.instantiate()
+	
+	# Set creature data before adding to scene tree
 	creature.creature_data = creature_data
 	creature_data.creature_is_in_tank = true
 	creature_data.creature_instance = creature
+	
+	# Add to scene tree after all data is properly set
+	call_deferred("_deferred_add_creature", creature)
+
+# New method to safely add creature to scene tree
+func _deferred_add_creature(creature: Node) -> void:
 	add_child(creature)
 
 ## Removes a creature from the tank
@@ -165,3 +184,8 @@ func create_creature_preview(creature_data: CreatureData) -> Creature:
 	creature._is_in_preview_mode = true
 	creature.process_mode = PROCESS_MODE_DISABLED
 	return creature
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_up"):
+		_create_test_creatures()
