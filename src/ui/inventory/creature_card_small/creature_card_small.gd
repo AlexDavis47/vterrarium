@@ -29,6 +29,7 @@ func _ready() -> void:
 
 	var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
 	creature_preview_subviewport_container.root_node.add_child(preview_creature)
+	creature_preview_subviewport_container.force_update()
 	
 	if creature_data:
 		update_info()
@@ -39,7 +40,6 @@ func _on_creature_data_trigger_preview_update() -> void:
 	creature_preview_subviewport_container.clear_root_node()
 	var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
 	creature_preview_subviewport_container.add_child_to_root_node(preview_creature)
-	creature_preview_subviewport_container.force_update()
 
 func update_info() -> void:
 	_update_rarity_and_type()

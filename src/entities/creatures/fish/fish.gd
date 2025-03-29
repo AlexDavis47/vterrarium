@@ -83,6 +83,9 @@ func get_random_target_position() -> Vector3:
 
 ## Moves the fish towards the target position
 func move_towards_target(delta: float, speed_multiplier: float = 1.0, switch_distance: float = 1.0) -> bool:
+	if _is_in_preview_mode:
+		return false
+
 	# Apply damping to existing linear velocity
 	linear_velocity *= movement_damping
 	

@@ -189,3 +189,7 @@ func create_creature_preview(creature_data: CreatureData) -> Creature:
 func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):
 		_create_test_creatures()
+	if Input.is_action_just_pressed("ui_right"):
+		_remove_all_creatures_from_tank()
+	if Input.is_action_just_pressed("ui_left"):
+		_add_all_creatures_to_tank()

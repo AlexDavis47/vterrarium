@@ -184,8 +184,8 @@ layout_mode = 1
 camera_angle = Vector3(0.21, -33.039, 40.57)
 camera_zoom = 0.515
 camera_fov = 35.0
-continuous_update = true
 drag_enabled = true
+continuous_update = true
 
 [node name="Reference" type="TextureRect" parent="."]
 visible = false

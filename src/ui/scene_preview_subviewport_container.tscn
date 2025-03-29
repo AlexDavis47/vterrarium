@@ -23,16 +23,16 @@ preview_camera = NodePath("SubViewport/Camera3D")
 subviewport = NodePath("SubViewport")
 root_node = NodePath("SubViewport/Root")
 camera_angle = Vector3(18.01, 24.805, 40.57)
+continuous_update = null
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
 world_3d = SubResource("World3D_hkqpy")
 handle_input_locally = false
 size = Vector2i(1024, 600)
-render_target_update_mode = 1
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(0.419531, -0.280658, 0.863264, 0, 0.951003, 0.309183, -0.907741, -0.129712, 0.398975, 0, 0, 0)
-fov = 40.0
+transform = Transform3D(0.419531, -0.280658, 0.863264, 0, 0.951003, 0.309183, -0.907741, -0.129712, 0.398975, 1.72653, 0.618366, 0.797951)
 
 [node name="Root" type="Node3D" parent="SubViewport"]
