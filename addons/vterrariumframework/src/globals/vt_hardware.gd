@@ -12,10 +12,6 @@ const TEMPERATURE_AVERAGE_TIME = 25.0
 const HUMIDITY_AVERAGE_TIME = 25.0
 ## The maximum value the photodiode can read
 const ADC_MAX_VALUE = 1023
-## The minimum brightness value, aka the darkest value the photodiode can read
-const BRIGHTNESS_MIN_THRESHOLD = 0.01
-## The maximum brightness value, aka the brightest value the photodiode can read
-const BRIGHTNESS_MAX_THRESHOLD = 0.05
 ## The offset for the temperature sensor, in celsius
 const TEMPERATURE_OFFSET = -2.8
 
@@ -141,9 +137,6 @@ func _update_photodiode_values():
 	if _brightness_response_curve:
 		# Map the raw value through our response curve
 		new_normalized = _brightness_response_curve.sample(new_normalized)
-	else:
-		# Fallback to linear mapping with min/max thresholds
-		new_normalized = (new_normalized - BRIGHTNESS_MIN_THRESHOLD) / (BRIGHTNESS_MAX_THRESHOLD - BRIGHTNESS_MIN_THRESHOLD)
 
 	# Clamp the normalized value between 0 and 1
 	new_normalized = clamp(new_normalized, 0.0, 1.0)
