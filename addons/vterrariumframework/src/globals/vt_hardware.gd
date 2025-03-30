@@ -16,6 +16,8 @@ const ADC_MAX_VALUE = 1023
 const BRIGHTNESS_MIN_THRESHOLD = 0.01
 ## The maximum brightness value, aka the brightest value the photodiode can read
 const BRIGHTNESS_MAX_THRESHOLD = 0.05
+## The offset for the temperature sensor, in celsius
+const TEMPERATURE_OFFSET = -2.8
 
 ########################################################
 # Signals
@@ -168,7 +170,7 @@ func _update_photodiode_values():
 func _update_temperature_values():
 	# Get temperature from Arduino
 	var new_temp = arduino.GetTemperature()
-	
+	new_temp += TEMPERATURE_OFFSET
 	# Add to temperature history
 	temperature_history.append(new_temp)
 	temperature_history_times.append(current_time)

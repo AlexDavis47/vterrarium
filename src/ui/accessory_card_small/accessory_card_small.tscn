@@ -26,6 +26,7 @@ offset_right = 0.255997
 offset_bottom = -0.200012
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_8lxby")
 rarity_type_label = NodePath("TextureRect/CreatureRarityAndType")
 accessory_name_label = NodePath("TextureRect/CreatureName")
@@ -55,7 +56,7 @@ offset_right = 61.0
 offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_s8dxc")
 
 [node name="Panel2" type="Panel" parent="TextureRect/Panel"]
@@ -72,7 +73,7 @@ offset_right = 59.0
 offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_s8dxc")
 
 [node name="ScenePreviewSubviewportContainer" parent="TextureRect/Panel/Panel2" instance=ExtResource("3_om7x8")]

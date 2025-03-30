@@ -46,6 +46,8 @@ class_name CreatureDetailViewUI
 var _accessory_equip_menu_scene: PackedScene = preload("uid://d2ve1bal36q1d")
 var _text_entry_ui_scene: PackedScene = preload("uid://dmowdukxcisg8")
 
+var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
+
 ########################################################
 # Initialization
 ########################################################
@@ -59,6 +61,9 @@ func _ready() -> void:
 		var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
 		_creature_live_subviewport_container.root_node.add_child(preview_creature)
 	
+	_process_scheduler.tick_second.connect(_on_process_scheduler_tick_second)
+	add_child(_process_scheduler)
+
 	_update_camera_visibility()
 
 func _initialize_connections() -> void:
@@ -103,10 +108,10 @@ func _update_rarity_and_type() -> void:
 	var rarity_string: String = Enums.Rarity.keys()[creature_data.creature_rarity]
 	rarity_string = rarity_string.capitalize()
 
-	var type_string: String = CreatureFactory.CreatureType.keys()[creature_data.creature_type]
-	type_string = type_string.capitalize()
+	var creature_type_string: String = CreatureFactory.CreatureType.keys()[creature_data.creature_type]
+	creature_type_string = creature_type_string.capitalize()
 
-	_rarity_and_type_label.text = rarity_string + " " + type_string
+	_rarity_and_type_label.text = rarity_string + " " + creature_type_string
 
 func _update_name() -> void:
 	_name_button.text = creature_data.creature_name
@@ -167,6 +172,7 @@ func _update_satiation() -> void:
 	_satiation_container.value = creature_data.creature_satiation
 
 func _update_brightness_graph() -> void:
+	print("Updating brightness graph")
 	_brightness_graph.curve = creature_data.creature_light_preference
 	_brightness_graph.current_value = VTHardware.brightness
 
@@ -213,3 +219,6 @@ func _on_text_entry_ui_text_confirmed(text: String) -> void:
 	creature_data.creature_name = text
 	VTGlobal.trigger_inventory_refresh.emit()
 	_name_button.text = text
+
+func _on_process_scheduler_tick_second(_delta: float) -> void:
+	update_info()
