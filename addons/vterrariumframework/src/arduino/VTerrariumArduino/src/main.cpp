@@ -11,6 +11,7 @@ DHT dht(DHT_PIN, DHT_TYPE);
 
 // Variables for reading and sending sensor values
 int photodiodeValue = 0;
+float photodiodeValueCompensated = 0.0;
 float temperature = 0.0;
 float humidity = 0.0;
 unsigned long lastSendTime = 0;
@@ -23,6 +24,9 @@ void setup()
 
   // Set the built-in LED pin as output
   pinMode(LED_BUILTIN, OUTPUT);
+
+  // Initialize the photodiode pin as an input
+  pinMode(PHOTODIODE_PIN, INPUT);
 
   // Initialize DHT sensor
   dht.begin();
@@ -38,6 +42,12 @@ void loop()
 
   // Invert the reading for more intuitive values (higher = more light)
   photodiodeValue = 1023 - photodiodeValue;
+
+  // Apply sqrt to the photodiode value
+  photodiodeValueCompensated = sqrt(photodiodeValue);
+
+  // Return the value to the full range of 0-1023
+  photodiodeValueCompensated = map(photodiodeValueCompensated, 0, 23, 0, 1023);
 
   // Check if it's time to send the values
   unsigned long currentTime = millis();
