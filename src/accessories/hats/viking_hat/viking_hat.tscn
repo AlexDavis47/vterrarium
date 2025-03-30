@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://mlna164aenk4"]
+
+[ext_resource type="PackedScene" uid="uid://dvrggbyfmlcbk" path="res://assets/models/accessories/hats/viking_hat/viking_hat.glb" id="1_xce0p"]
+
+[node name="VikingHat" type="Node3D"]
+
+[node name="viking_hat" parent="." instance=ExtResource("1_xce0p")]

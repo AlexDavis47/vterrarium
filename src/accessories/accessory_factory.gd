@@ -7,27 +7,29 @@ enum AccessoryType {
 
 enum Accessories {
 	TOP_HAT,
-	PARTY_HAT
+	PARTY_HAT,
+	CROWN_HAT,
+	BUNNY_HAT,
+	PIRATE_HAT,
+	VIKING_HAT
 }
 
 
 var accessory_data_templates: Dictionary[Accessories, AccessoryData] = {
 	Accessories.TOP_HAT: preload("uid://d0q0xj7jcr5rh"),
-	Accessories.PARTY_HAT: preload("uid://ydqcq0aibnrb")
+	Accessories.PARTY_HAT: preload("uid://ydqcq0aibnrb"),
+	Accessories.CROWN_HAT: preload("uid://b2qrw6vn3omma"),
+	Accessories.BUNNY_HAT: preload("uid://wcdci50dpenf"),
+	Accessories.PIRATE_HAT: preload("uid://dmjykq56j6klc"),
+	Accessories.VIKING_HAT: preload("uid://wha8onoswvht")
 }
 
 ## Creates 5 of each accessory type and adds them to the inventory
 func create_test_accessories() -> void:
-	# Create 5 top hats
-	for i in range(5):
-		var top_hat = create_accessory(Accessories.TOP_HAT)
-		SaveManager.save_file.accessory_inventory.append(top_hat)
-	
-	# Create 5 party hats
-	for i in range(5):
-		var party_hat = create_accessory(Accessories.PARTY_HAT)
-		SaveManager.save_file.accessory_inventory.append(party_hat)
-
+	for accessory in accessory_data_templates:
+		for i in range(5):
+			var new_accessory = create_accessory(accessory)
+			SaveManager.save_file.accessory_inventory.append(new_accessory)
 
 func get_accessory_by_id(id: String) -> AccessoryData:
 	for accessory in SaveManager.save_file.accessory_inventory:

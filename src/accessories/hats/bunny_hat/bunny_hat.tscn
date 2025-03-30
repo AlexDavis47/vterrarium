@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dubom0tyrlbjy"]
+
+[ext_resource type="PackedScene" uid="uid://cyq3enn6tfx5y" path="res://assets/models/accessories/hats/bunny_hat/bunny_hat.glb" id="1_ec8m0"]
+
+[node name="BunnyHat" type="Node3D"]
+
+[node name="bunny_hat" parent="." instance=ExtResource("1_ec8m0")]
+transform = Transform3D(-0.09, 0, 7.86805e-09, 0, 0.09, 0, -7.86805e-09, 0, -0.09, 0, 0, 0)

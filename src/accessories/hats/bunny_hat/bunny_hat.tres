@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AccessoryData" load_steps=2 format=3 uid="uid://wcdci50dpenf"]
+
+[ext_resource type="Script" uid="uid://d2227ehstqdgp" path="res://src/accessories/accessory_data.gd" id="1_ekek6"]
+
+[resource]
+script = ExtResource("1_ekek6")
+accessory_name = "Bunny Ears"
+accessory_category = 0
+accessory_description = "Put some spring in your swimng."
+accessory_rarity = 0
+accessory_scene_uuid = "uid://dubom0tyrlbjy"
+accessory_money_bonus = 0.0
+accessory_happiness_bonus = 0.0
+accessory_id = ""
+accessory_luck = 1.0
+accessory_is_equipped = false
+creature_equipped_id = ""
+metadata/_custom_type_script = "uid://d2227ehstqdgp"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvh58f4bd8aat"]
+
+[ext_resource type="PackedScene" uid="uid://db7rfu0aiujen" path="res://assets/models/accessories/hats/crown_hat/crown_hat.glb" id="1_7a84v"]
+
+[node name="CrownHat" type="Node3D"]
+
+[node name="crown_hat" parent="." instance=ExtResource("1_7a84v")]

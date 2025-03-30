@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0vgmuwsr5stw"]
+
+[ext_resource type="PackedScene" uid="uid://bh6ldlfaprtv4" path="res://assets/models/accessories/hats/pirate_hat/pirate_hat.glb" id="1_faw0b"]
+
+[node name="PirateHat" type="Node3D"]
+
+[node name="pirate_hat" parent="." instance=ExtResource("1_faw0b")]
