@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://v18arrb0fcx2"]
+
+[ext_resource type="Script" uid="uid://ba5h1dli1mtfw" path="res://src/ui/curve_visualizer/curve_visualizer_ui.gd" id="1_g7bhs"]
+[ext_resource type="Texture2D" uid="uid://dh03heeoxmibw" path="res://src/ui/inventory/creature_card_small/textures/creature_card_small_bg.png" id="2_k0y76"]
+
+[sub_resource type="Curve" id="Curve_wd1lj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.591085, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CurveVisualizerUI" type="Control" node_paths=PackedStringArray("curve_canvas")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -802.0
+offset_bottom = -455.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g7bhs")
+curve_canvas = NodePath("CurveCanvas")
+curve = SubResource("Curve_wd1lj")
+line_width = 1.0
+background_color = Color(0.101961, 0.101961, 0.101961, 0)
+grid_lines = 5
+axes_color = Color(0, 0, 0, 1)
+current_value = 0.24
+marker_color = Color(0, 0.635294, 0.992157, 1)
+show_marker_labels = false
+label_color = Color(0.211765, 0.364706, 0.45098, 1)
+
+[node name="CurveCanvas" type="Control" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k0y76")
+expand_mode = 1

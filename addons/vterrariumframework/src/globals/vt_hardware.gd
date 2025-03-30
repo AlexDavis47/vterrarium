@@ -10,6 +10,12 @@ const BRIGHTNESS_AVERAGE_TIME = 5.0
 const TEMPERATURE_AVERAGE_TIME = 25.0
 ## Time in seconds to average humidity over
 const HUMIDITY_AVERAGE_TIME = 25.0
+## The maximum value the photodiode can read
+const ADC_MAX_VALUE = 1023
+## The minimum brightness value, aka the darkest value the photodiode can read
+const BRIGHTNESS_MIN_THRESHOLD = 0.01
+## The maximum brightness value, aka the brightest value the photodiode can read
+const BRIGHTNESS_MAX_THRESHOLD = 0.05
 
 ########################################################
 # Signals
@@ -55,6 +61,9 @@ var humidity: float = 50.0:
 ########################################################
 # Private Variables
 ########################################################
+
+## The curve that the photodiode value will be mapped to
+var _brightness_response_curve: Curve = preload("uid://ec86vlxi4w6d")
 
 ## Raw photodiode value from Arduino
 var photodiode_raw: int = 0
@@ -119,11 +128,15 @@ func _update_photodiode_values():
 	var new_raw = arduino.GetPhotodiodeValue()
 	
 	# Calculate normalized value (assuming 10-bit ADC: 0-1023)
-	var new_normalized = float(new_raw) / 1023.0
+	var new_normalized = float(new_raw) / ADC_MAX_VALUE
 	
-	# We expect the max brightness to be around 0.10 and min around 0.01
-	# Subtract minimum to start from 0, then normalize to expected range
-	new_normalized = (new_normalized - 0.01) / (0.05 - 0.01)
+	# Apply the brightness response curve if available
+	if _brightness_response_curve:
+		# Map the raw value through our response curve
+		new_normalized = _brightness_response_curve.sample(new_normalized)
+	else:
+		# Fallback to linear mapping with min/max thresholds
+		new_normalized = (new_normalized - BRIGHTNESS_MIN_THRESHOLD) / (BRIGHTNESS_MAX_THRESHOLD - BRIGHTNESS_MIN_THRESHOLD)
 
 	# Clamp the normalized value between 0 and 1
 	new_normalized = clamp(new_normalized, 0.0, 1.0)
