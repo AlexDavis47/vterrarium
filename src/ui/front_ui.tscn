@@ -1,13 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpmhaxpyatodg"]
+[gd_scene load_steps=6 format=3 uid="uid://dpmhaxpyatodg"]
 
 [ext_resource type="Script" uid="uid://bq1jv17h5cb1r" path="res://src/ui/front_ui.gd" id="1_2l854"]
 [ext_resource type="Texture2D" uid="uid://yysjomhomjrd" path="res://src/ui/textures/stat_panel/StatsWithLayout.png" id="2_pm787"]
 [ext_resource type="Texture2D" uid="uid://425i4rjkp4mq" path="res://src/ui/textures/stat_panel/happy_bar_meter.png" id="3_oaxvc"]
 [ext_resource type="Script" uid="uid://bbrh5cuokd4vk" path="res://src/ui/happiness_bar.gd" id="4_f23iq"]
 [ext_resource type="FontFile" uid="uid://6blx26ndsrl8" path="res://assets/fonts/RedditMono-Regular.ttf" id="5_f23iq"]
-[ext_resource type="PackedScene" uid="uid://v18arrb0fcx2" path="res://src/ui/curve_visualizer/curve_visualizer_UI.tscn" id="6_gwewb"]
 
-[node name="FrontUI" type="Control" node_paths=PackedStringArray("happiness_percentage_label", "money_label", "time_label", "temp_test_label", "brightness_curve_visualizer")]
+[node name="FrontUI" type="Control" node_paths=PackedStringArray("happiness_percentage_label", "money_label", "time_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,8 +17,6 @@ script = ExtResource("1_2l854")
 happiness_percentage_label = NodePath("HappinessPercentage")
 money_label = NodePath("Money")
 time_label = NodePath("Time")
-temp_test_label = NodePath("Label")
-brightness_curve_visualizer = NodePath("CurveVisualizerUI")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -77,6 +74,3 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "test"
-
-[node name="CurveVisualizerUI" parent="." instance=ExtResource("6_gwewb")]
-layout_mode = 1

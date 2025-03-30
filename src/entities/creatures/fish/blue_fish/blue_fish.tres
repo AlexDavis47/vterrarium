@@ -9,7 +9,8 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Ve
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_jevmt"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.251445, 1), 0.0, 0.0, 0, 0, Vector2(0.684971, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(51.5079, 0), 0.0, 0.0, 0, 0, Vector2(70.2778, 1), 0.0, 0.0, 0, 0, Vector2(83.1548, 1), 0.0, 0.0, 0, 0, Vector2(101.27, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]

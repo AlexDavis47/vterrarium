@@ -1,0 +1,264 @@
+[gd_scene load_steps=16 format=3 uid="uid://dk08klp38nyv6"]
+
+[ext_resource type="Script" uid="uid://bd3qy6ejxwul8" path="res://src/ui/debug/debug_menu_ui.gd" id="1_js7ux"]
+[ext_resource type="Texture2D" uid="uid://gx45fusvwys2" path="res://src/ui/debug/textures/Debug Menu (2).png" id="2_hcp6s"]
+[ext_resource type="Texture2D" uid="uid://mqbj88scfd8h" path="res://src/ui/debug/textures/Debug Menu (3).png" id="3_rqlrp"]
+[ext_resource type="Shader" uid="uid://bpx4g0l4yikxx" path="res://src/ui/debug/debug_menu_ui.gdshader" id="4_bgwkw"]
+[ext_resource type="Script" uid="uid://k470knidfbvy" path="res://src/ui/debug/modules/photodiode_value.gd" id="5_5tdf5"]
+[ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="5_qjk6r"]
+[ext_resource type="PackedScene" uid="uid://v18arrb0fcx2" path="res://src/ui/curve_visualizer/curve_visualizer_UI.tscn" id="5_y5x0x"]
+[ext_resource type="Texture2D" uid="uid://bfjn1mntuy51j" path="res://src/ui/debug/textures/DebugModulePanel.png" id="6_njgff"]
+[ext_resource type="Texture2D" uid="uid://cnbs6h03y6ln" path="res://src/ui/creature_detail_view/accessory_equip_menu/textures/CloseButton.png" id="6_y5x0x"]
+[ext_resource type="Script" uid="uid://bkgugserf7cyk" path="res://src/ui/debug/final_brightness.gd" id="9_lg7i2"]
+[ext_resource type="PackedScene" uid="uid://8l1yrrxl4xx8" path="res://src/ui/value_monitor_meter/value_monitor_meter_ui.tscn" id="10_k7lll"]
+[ext_resource type="Script" uid="uid://bkfte5laxqp30" path="res://src/ui/debug/current_tempurature.gd" id="11_k7lll"]
+[ext_resource type="Script" uid="uid://uaerhkahpvkv" path="res://src/ui/debug/current_air_humidity.gd" id="12_1vw62"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjk6r"]
+shader = ExtResource("4_bgwkw")
+shader_parameter/shadow_offset = Vector2(8, 8)
+shader_parameter/shadow_radius = 17.547
+shader_parameter/shadow_blur = 1.48
+shader_parameter/shadow_color = Color(0, 0, 0, 0.4)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tdf5"]
+texture = ExtResource("6_njgff")
+
+[node name="DebugMenuUI" type="Control" node_paths=PackedStringArray("close_button")]
+z_index = 1000
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_js7ux")
+close_button = NodePath("TextureRect2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_hcp6s")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.5
+offset_top = -287.5
+offset_right = 287.5
+offset_bottom = 287.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_rqlrp")
+stretch_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TextureRect/TextureRect"]
+material = SubResource("ShaderMaterial_qjk6r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="TextureRect/TextureRect/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(575, 575)
+render_target_update_mode = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HFlowContainer" type="HFlowContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+alignment = 1
+
+[node name="PhotoDiodeNormalizedValue" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("curve_visualizer")]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("5_5tdf5")
+curve_visualizer = NodePath("MarginContainer/VBoxContainer/CurveVisualizerUI")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_qjk6r")
+theme_override_font_sizes/font_size = 20
+text = "Photodiode Brightness Response Curve
+(X = Normalized Input, Y = Out)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CurveVisualizerUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer" instance=ExtResource("5_y5x0x")]
+custom_minimum_size = Vector2(480, 231)
+layout_mode = 2
+show_marker_guides = null
+marker_guide_width = null
+marker_guide_color = null
+axis_label_font_size = 8
+
+[node name="FinalBrightness" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("9_lg7i2")
+value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_qjk6r")
+theme_override_font_sizes/font_size = 20
+text = "Final Brightness Value"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+value = 0.0
+max_value = 1.0
+warning_threshold = 0.7
+critical_threshold = 0.9
+title = ""
+content_padding = Vector2(20, 20)
+decimal_places = 3
+
+[node name="CurrentTempurature" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("11_k7lll")
+value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_qjk6r")
+theme_override_font_sizes/font_size = 20
+text = "Temperature"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
+custom_minimum_size = Vector2(124.94, 200)
+layout_mode = 2
+value = 0.0
+max_value = 110.0
+critical_threshold = 100.0
+meter_type = 1
+unit = "°F"
+title = ""
+content_padding = Vector2(0, 12.795)
+meter_thickness_ratio = 0.48
+
+[node name="CurrentAirHumidity" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("12_1vw62")
+value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_qjk6r")
+theme_override_font_sizes/font_size = 20
+text = "Humidity"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
+custom_minimum_size = Vector2(124.94, 200)
+layout_mode = 2
+value = 0.0
+critical_threshold = 100.0
+meter_type = 1
+unit = "%"
+title = ""
+content_padding = Vector2(0, 12.795)
+meter_thickness_ratio = 0.48
+
+[node name="TextureRect2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 55.0
+offset_right = 670.0
+offset_bottom = 125.0
+texture_normal = ExtResource("6_y5x0x")

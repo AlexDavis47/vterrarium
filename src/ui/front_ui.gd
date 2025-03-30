@@ -12,10 +12,6 @@ const HAPPINESS_LERP_DURATION: float = 0.5
 @export var money_label: Label
 @export var time_label: Label
 
-@export var temp_test_label: Label
-
-@export var brightness_curve_visualizer: CurveVisualizerUI
-
 var _sleep_counter: float = 0.0
 var _is_sleeping: bool = false
 var _original_modulate: Color
@@ -29,18 +25,12 @@ func _ready():
 	_update_happiness_percentage()
 	_original_modulate = modulate
 	VTInput.top_window_input.connect(_on_top_window_input)
-	brightness_curve_visualizer.curve = VTHardware._brightness_response_curve
 
-## Updates the brightness curve visualizer
-func _update_brightness_curve_visualizer():
-	brightness_curve_visualizer.current_value = VTHardware.brightness
 
 func _process(delta):
 	_update_time()
 	_update_money()
 	_update_happiness_percentage()
-	_update_brightness_curve_visualizer()
-	temp_test_label.text = str(Utils.celsius_to_fahrenheit(VTHardware.temperature))
 	
 	# Lerp the happiness percentage
 	if _current_happiness_percentage != _target_happiness_percentage:

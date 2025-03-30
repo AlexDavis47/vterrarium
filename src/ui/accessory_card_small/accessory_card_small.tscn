@@ -77,6 +77,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_s8dxc")
 
 [node name="ScenePreviewSubviewportContainer" parent="TextureRect/Panel/Panel2" instance=ExtResource("3_om7x8")]
 layout_mode = 1
+camera_angle = Vector3(4.21, -77.74, 40.57)
+camera_zoom = 0.445
 continuous_update = true
 
 [node name="AccessoryImage" type="TextureRect" parent="TextureRect/Panel/Panel2"]

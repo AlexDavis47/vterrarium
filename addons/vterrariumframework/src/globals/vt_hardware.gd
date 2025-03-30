@@ -69,6 +69,8 @@ var _brightness_response_curve: Curve = preload("uid://ec86vlxi4w6d")
 var photodiode_raw: int = 0
 ## Normalized photodiode value (0.0 to 1.0)
 var photodiode_normalized: float = 0.0
+## Pre-curve photodiode value
+var photodiode_normalized_pre_curve: float = 0.0
 
 ## Current simulation time
 var current_time: float = 0.0
@@ -130,6 +132,9 @@ func _update_photodiode_values():
 	# Calculate normalized value (assuming 10-bit ADC: 0-1023)
 	var new_normalized = float(new_raw) / ADC_MAX_VALUE
 	
+	# Store the pre-curve value
+	photodiode_normalized_pre_curve = new_normalized
+
 	# Apply the brightness response curve if available
 	if _brightness_response_curve:
 		# Map the raw value through our response curve
@@ -223,7 +228,9 @@ func _update_averaged_value(history: Array, times: Array, average_time: float, s
 	# Update value using the provided callback
 	set_func.call(avg_value)
 
+
 ## Prints debug information about current sensor values
 func _print_debug_values():
+	return
 	print("VTHardware: Brightness: ", brightness, " Temperature: ", temperature, " Humidity: ", humidity)
 	print("VTHardware: Photodiode: ", photodiode_raw, " Normalized: ", photodiode_normalized)

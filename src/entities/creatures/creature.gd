@@ -129,7 +129,7 @@ func _process_light(delta: float) -> void:
 	)
 
 func _process_temperature(delta: float) -> void:
-	var temperature_level: float = VTHardware.temperature
+	var temperature_level: float = Utils.celsius_to_fahrenheit(VTHardware.temperature)
 	var target_contentment: float = creature_data.creature_temperature_preference.sample(temperature_level)
 	
 	creature_data.creature_temperature_contentment = lerp(

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://8l1yrrxl4xx8"]
+
+[ext_resource type="Script" uid="uid://dhnadbepltnah" path="res://src/ui/value_monitor_meter/value_monitor_meter_ui.gd" id="1_6kvf7"]
+[ext_resource type="Texture2D" uid="uid://mqbj88scfd8h" path="res://src/ui/debug/textures/Debug Menu (3).png" id="2_xbl33"]
+
+[sub_resource type="Gradient" id="Gradient_0wc86"]
+offsets = PackedFloat32Array(0, 0.517021, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.956863, 0.258824, 1, 0.00392157, 0.631373, 0.984314, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oe07l"]
+gradient = SubResource("Gradient_0wc86")
+
+[node name="ValueMonitorMeterUI" type="Control" node_paths=PackedStringArray("meter_canvas")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -867.0
+offset_bottom = -444.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6kvf7")
+value = 39.01
+meter_canvas = NodePath("Canvas")
+meter_type = 2
+title = "Where am I"
+content_padding = Vector2(5, 5)
+background_color = Color(0.870588, 0.870588, 0.870588, 0)
+color_gradient = SubResource("GradientTexture1D_oe07l")
+
+[node name="Canvas" type="Control" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xbl33")
+expand_mode = 1

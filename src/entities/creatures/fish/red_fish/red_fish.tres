@@ -9,7 +9,8 @@ _data = [Vector2(0, 0.495918), 0.0, 0.0, 0, 0, Vector2(0.0606061, 1), 0.0, 0.0, 
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_ak5as"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.380952, 1), 0.0, 0.0, 0, 0, Vector2(0.625541, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(62.4206, 0), 0.0, 0.0, 0, 0, Vector2(77.0437, 0.995314), 0.0, 0.0, 0, 0, Vector2(90.7937, 1), 0.0, 0.0, 0, 0, Vector2(110, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]

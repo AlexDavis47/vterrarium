@@ -31,8 +31,8 @@ class_name CreatureDetailViewUI
 @export var _close_button: TextureButton
 
 @export_group("Preference Graphs")
-@export var _brightness_graph: CreaturePreferenceGraph
-@export var _temperature_graph: CreaturePreferenceGraph
+@export var _brightness_graph: CurveVisualizerUI
+@export var _temperature_graph: CurveVisualizerUI
 
 @export_group("Preview")
 @export var _creature_live_camera: CreatureLiveCamera
@@ -168,9 +168,11 @@ func _update_satiation() -> void:
 
 func _update_brightness_graph() -> void:
 	_brightness_graph.curve = creature_data.creature_light_preference
+	_brightness_graph.current_value = VTHardware.brightness
 
 func _update_temperature_graph() -> void:
 	_temperature_graph.curve = creature_data.creature_temperature_preference
+	_temperature_graph.current_value = Utils.celsius_to_fahrenheit(VTHardware.temperature)
 
 ########################################################
 # Signal Handlers

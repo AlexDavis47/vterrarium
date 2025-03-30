@@ -28,11 +28,17 @@ class_name CurveVisualizerUI
 ## The curve that is being visualized
 @export var curve: Curve:
 	set(value):
+		if curve:
+			curve.changed.disconnect(_on_curve_changed)
 		curve = value
 		if curve:
 			curve.changed.connect(_on_curve_changed)
 		_sample_curve()
 		_request_redraw()
+		min_x = curve.min_domain
+		max_x = curve.max_domain
+		min_y = curve.min_value
+		max_y = curve.max_value
 
 @export_group("Display")
 ## The number of samples to use when drawing the curve
@@ -129,6 +135,24 @@ class_name CurveVisualizerUI
 @export var show_marker: bool = true:
 	set(value):
 		show_marker = value
+		_request_redraw()
+
+## Show crosshair guide lines for the marker
+@export var show_marker_guides: bool = true:
+	set(value):
+		show_marker_guides = value
+		_request_redraw()
+
+## Width of the marker guide lines
+@export_range(0.5, 5.0, 0.5) var marker_guide_width: float = 1.0:
+	set(value):
+		marker_guide_width = value
+		_request_redraw()
+
+## Color of the marker guide lines
+@export var marker_guide_color: Color = Color(0.7, 0.3, 0.3, 0.5):
+	set(value):
+		marker_guide_color = value
 		_request_redraw()
 
 ## Marker dot color 
@@ -362,22 +386,24 @@ func _draw_marker(canvas: Control, draw_rect: Rect2) -> void:
 	var x = draw_rect.position.x + normalized_x * draw_rect.size.x
 	var y = draw_rect.position.y + draw_rect.size.y - (normalized_y * draw_rect.size.y)
 	
-	# Draw the marker dot
+	# Draw guide lines (crosshair) first if enabled (so they appear behind the dot)
+	if show_marker_guides:
+		# Draw vertical guide line
+		canvas.draw_line(
+			Vector2(x, draw_rect.position.y),
+			Vector2(x, draw_rect.position.y + draw_rect.size.y),
+			marker_guide_color, marker_guide_width, true
+		)
+		
+		# Draw horizontal guide line
+		canvas.draw_line(
+			Vector2(draw_rect.position.x, y),
+			Vector2(draw_rect.position.x + draw_rect.size.x, y),
+			marker_guide_color, marker_guide_width, true
+		)
+	
+	# Draw the marker dot (after guide lines so it appears on top)
 	canvas.draw_circle(Vector2(x, y), marker_size, marker_color)
-	
-	# Draw vertical guide line
-	canvas.draw_line(
-		Vector2(x, draw_rect.position.y),
-		Vector2(x, draw_rect.position.y + draw_rect.size.y),
-		marker_color.darkened(0.3), 1.0, true
-	)
-	
-	# Draw horizontal guide line
-	canvas.draw_line(
-		Vector2(draw_rect.position.x, y),
-		Vector2(draw_rect.position.x + draw_rect.size.x, y),
-		marker_color.darkened(0.3), 1.0, true
-	)
 	
 	# Draw value labels if enabled
 	if show_marker_labels:
