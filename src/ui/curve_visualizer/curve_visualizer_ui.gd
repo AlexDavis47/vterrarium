@@ -232,7 +232,7 @@ func _ready() -> void:
 			curve_canvas.connect("draw", _on_canvas_draw)
 		
 		# Set z-index to ensure it draws above background elements
-		curve_canvas.z_index = 1
+		curve_canvas.z_index = 0
 		
 		# Force update to ensure transparent background is applied correctly
 		curve_canvas.mouse_filter = Control.MOUSE_FILTER_IGNORE
