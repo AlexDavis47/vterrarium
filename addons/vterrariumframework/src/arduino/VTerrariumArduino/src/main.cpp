@@ -24,9 +24,6 @@ void setup()
   // Set the built-in LED pin as output
   pinMode(LED_BUILTIN, OUTPUT);
 
-  // Enable internal pull-up resistor for the photodiode pin
-  pinMode(PHOTODIODE_PIN, INPUT_PULLUP);
-
   // Initialize DHT sensor
   dht.begin();
 
