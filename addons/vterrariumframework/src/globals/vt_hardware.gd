@@ -1,168 +1,216 @@
 extends Node
 
-# Simulation sensitivity settings
-const MOUSE_ROTATION_SENSITIVITY = 0.1
-const KEY_ACCELERATION_SENSITIVITY = 0.5
-const BRIGHTNESS_AVERAGE_TIME = 5.0 # Time in seconds to average brightness over
+########################################################
+# Constants
+########################################################
 
+## Time in seconds to average brightness over
+const BRIGHTNESS_AVERAGE_TIME = 5.0
+## Time in seconds to average temperature over
+const TEMPERATURE_AVERAGE_TIME = 25.0
+## Time in seconds to average humidity over
+const HUMIDITY_AVERAGE_TIME = 25.0
+
+########################################################
 # Signals
+########################################################
+
+## Emitted when the brightness value changes
 signal brightness_changed(new_brightness: float)
+## Emitted when the temperature value changes
 signal temperature_changed(new_temperature: float)
-signal gyro_rotation_changed(new_gyro_rotation: Vector3)
-signal gyro_acceleration_changed(new_gyro_acceleration: Vector3)
-signal gyro_rotation_delta_changed(new_gyro_rotation_delta: Vector3)
+## Emitted when the humidity value changes
+signal humidity_changed(new_humidity: float)
+## Emitted when the photodiode reading changes
 signal photodiode_changed(raw_value: int, normalized_value: float)
 
-# The brightness of the hardware. 
-var brightness: float = 0.5: # Default brightness
+########################################################
+# Properties
+########################################################
+
+## The brightness of the hardware (0.0 to 1.0)
+var brightness: float = 0.5:
 	set(value):
 		brightness = clamp(value, 0.0, 1.0)
 		brightness_changed.emit(brightness)
 	get:
 		return brightness
 
-# The temperature of the hardware
-var temperature: float = 0.5: # Default temperature
+## The temperature of the hardware in Celsius
+var temperature: float = 25.0:
 	set(value):
-		temperature = clamp(value, 0.0, 1.0)
+		temperature = value
 		temperature_changed.emit(temperature)
 	get:
 		return temperature
 
-var gyro_rotation: Vector3 = Vector3.ZERO:
+## The humidity of the hardware in percentage (0-100%)
+var humidity: float = 50.0:
 	set(value):
-		gyro_rotation = value
-		gyro_rotation_changed.emit(gyro_rotation)
+		humidity = clamp(value, 0.0, 100.0)
+		humidity_changed.emit(humidity)
 	get:
-		return gyro_rotation
+		return humidity
 
-var gyro_rotation_delta: Vector3 = Vector3.ZERO:
-	set(value):
-		gyro_rotation_delta = value
-		gyro_rotation_delta_changed.emit(gyro_rotation_delta)
-	get:
-		return gyro_rotation_delta
+########################################################
+# Private Variables
+########################################################
 
-var gyro_acceleration: Vector3 = Vector3.ZERO:
-	set(value):
-		gyro_acceleration = value
-		gyro_acceleration_changed.emit(gyro_acceleration)
-	get:
-		return gyro_acceleration
-
-# Photodiode values from Arduino
+## Raw photodiode value from Arduino
 var photodiode_raw: int = 0
+## Normalized photodiode value (0.0 to 1.0)
 var photodiode_normalized: float = 0.0
 
-# Brightness averaging variables
-var brightness_history: Array[float] = []
-var brightness_history_times: Array[float] = []
+## Current simulation time
 var current_time: float = 0.0
 
-# Reference to the VTArduino autoload
+## Brightness history for averaging
+var brightness_history: Array[float] = []
+var brightness_history_times: Array[float] = []
+
+## Temperature history for averaging
+var temperature_history: Array[float] = []
+var temperature_history_times: Array[float] = []
+
+## Humidity history for averaging
+var humidity_history: Array[float] = []
+var humidity_history_times: Array[float] = []
+
+## Reference to the VTArduino autoload
 var arduino = null
 
+########################################################
+# Initialization
+########################################################
+
 func _ready():
-	# Try to get the VTArduino autoload
+	_initialize_arduino()
+
+## Try to get the VTArduino autoload node
+func _initialize_arduino():
 	if has_node("/root/VTArduino"):
 		arduino = get_node("/root/VTArduino")
 		print("VTHardware: Arduino autoload found")
 	else:
 		print("VTHardware: Arduino autoload NOT found")
 
+########################################################
+# Process
+########################################################
+
 func _process(delta):
 	current_time += delta
 	
-	# Update photodiode values from Arduino if available
 	if arduino != null and arduino.IsConnected():
-		# Get the raw value directly from Arduino
-		var new_raw = arduino.GetRawValue()
+		_update_photodiode_values()
+		_update_temperature_values()
+		_update_humidity_values()
 		
-		# Calculate normalized value (assuming 10-bit ADC: 0-1023)
-		var new_normalized = float(new_raw) / 1023.0
+		# Debug output
+		_print_debug_values()
 
-		
-		# We expect the max brightness to be around 0.10 and min around 0.01
-		# Subtract minimum to start from 0, then normalize to expected range
-		new_normalized = (new_normalized - 0.01) / (0.05 - 0.01)
+########################################################
+# Sensor Update Methods
+########################################################
 
-		# Clamp the normalized value between 0 and 1
-		new_normalized = clamp(new_normalized, 0.0, 1.0)
-
-		photodiode_raw = new_raw
-		photodiode_normalized = new_normalized
-		
-		# Add to brightness history
-		brightness_history.append(new_normalized)
-		brightness_history_times.append(current_time)
-		
-		# Remove old values outside the averaging window
-		while brightness_history_times.size() > 0 and current_time - brightness_history_times[0] > BRIGHTNESS_AVERAGE_TIME:
-			brightness_history.pop_front()
-			brightness_history_times.pop_front()
-		
-		# Calculate average brightness
-		var avg_brightness = 0.0
-		if brightness_history.size() > 0:
-			for value in brightness_history:
-				avg_brightness += value
-			avg_brightness /= brightness_history.size()
-		
-		# Update brightness for compatibility
-		brightness = avg_brightness
-		
-		# Emit signal
-		photodiode_changed.emit(photodiode_raw, photodiode_normalized)
-
-# For testing purposes, we process both mouse and keyboard input
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		var sim_rotation = _process_sim_mouse(event)
-		_process_gyro_rotation(sim_rotation)
+## Updates photodiode values from Arduino and calculates brightness
+func _update_photodiode_values():
+	# Get raw photodiode value
+	var new_raw = arduino.GetPhotodiodeValue()
 	
-	# Process keyboard input every frame for smooth acceleration
-	_process_sim_keyboard()
-	# print("gyro_rotation: ", gyro_rotation)
-	# print("gyro_rotation_delta: ", gyro_rotation_delta)
-	# print("gyro_acceleration: ", gyro_acceleration)
-	# print("temperature: ", temperature)
-	# print("brightness: ", brightness)
-	# print("--------------------------------")
+	# Calculate normalized value (assuming 10-bit ADC: 0-1023)
+	var new_normalized = float(new_raw) / 1023.0
+	
+	# We expect the max brightness to be around 0.10 and min around 0.01
+	# Subtract minimum to start from 0, then normalize to expected range
+	new_normalized = (new_normalized - 0.01) / (0.05 - 0.01)
 
+	# Clamp the normalized value between 0 and 1
+	new_normalized = clamp(new_normalized, 0.0, 1.0)
 
-# Simulates gyroscope rotation using mouse input
-func _process_sim_mouse(event: InputEventMouseMotion) -> Vector3:
-	# Convert mouse movement to rotation
-	# X movement = rotation around Y axis (yaw)
-	# Y movement = rotation around X axis (pitch)
-	return Vector3(
-		deg_to_rad(-event.relative.y * MOUSE_ROTATION_SENSITIVITY),
-		deg_to_rad(-event.relative.x * MOUSE_ROTATION_SENSITIVITY),
-		0.0 # No roll for now
+	photodiode_raw = new_raw
+	photodiode_normalized = new_normalized
+	
+	# Add to brightness history for averaging
+	brightness_history.append(new_normalized)
+	brightness_history_times.append(current_time)
+	
+	# Calculate and update brightness
+	_update_averaged_value(
+		brightness_history,
+		brightness_history_times,
+		BRIGHTNESS_AVERAGE_TIME,
+		func(avg): brightness = avg
+	)
+	
+	# Emit signal for photodiode changes
+	photodiode_changed.emit(photodiode_raw, photodiode_normalized)
+
+## Updates temperature values from Arduino
+func _update_temperature_values():
+	# Get temperature from Arduino
+	var new_temp = arduino.GetTemperature()
+	
+	# Add to temperature history
+	temperature_history.append(new_temp)
+	temperature_history_times.append(current_time)
+	
+	# Calculate and update temperature
+	_update_averaged_value(
+		temperature_history,
+		temperature_history_times,
+		TEMPERATURE_AVERAGE_TIME,
+		func(avg): temperature = avg
 	)
 
-# Simulates acceleration using keyboard input
-func _process_sim_keyboard() -> void:
-	var acceleration = Vector3.ZERO
+## Updates humidity values from Arduino
+func _update_humidity_values():
+	# Get humidity from Arduino
+	var new_humidity = arduino.GetHumidity()
 	
-	if Input.is_key_pressed(KEY_LEFT):
-		acceleration.x -= KEY_ACCELERATION_SENSITIVITY
-	if Input.is_key_pressed(KEY_RIGHT):
-		acceleration.x += KEY_ACCELERATION_SENSITIVITY
-	if Input.is_key_pressed(KEY_UP):
-		acceleration.z -= KEY_ACCELERATION_SENSITIVITY
-	if Input.is_key_pressed(KEY_DOWN):
-		acceleration.z += KEY_ACCELERATION_SENSITIVITY
+	# Add to humidity history
+	humidity_history.append(new_humidity)
+	humidity_history_times.append(current_time)
 	
-	_process_gyro_acceleration(acceleration)
+	# Calculate and update humidity
+	_update_averaged_value(
+		humidity_history,
+		humidity_history_times,
+		HUMIDITY_AVERAGE_TIME,
+		func(avg): humidity = avg
+	)
 
-# Process actual gyro rotation (this would be used in production)
-func _process_gyro_rotation(rotation_delta: Vector3) -> void:
-	# Update absolute rotation
-	gyro_rotation += rotation_delta
-	# Store rotation delta
-	gyro_rotation_delta = rotation_delta
+########################################################
+# Helper Methods
+########################################################
 
-# Process actual gyro acceleration (this would be used in production)
-func _process_gyro_acceleration(acceleration: Vector3) -> void:
-	gyro_acceleration = acceleration
+## Generic method to update an averaged value
+## 
+## Updates a value based on its history, removing old entries outside the time window
+## and calculating the average of remaining entries.
+##
+## Parameters:
+## - history: The array of historical values
+## - times: The array of timestamps for each value
+## - average_time: The time window to consider for averaging
+## - set_func: A callback function to set the final averaged value
+func _update_averaged_value(history: Array, times: Array, average_time: float, set_func: Callable):
+	# Remove old values outside the averaging window
+	while times.size() > 0 and current_time - times[0] > average_time:
+		history.pop_front()
+		times.pop_front()
+	
+	# Calculate average value
+	var avg_value = 0.0
+	if history.size() > 0:
+		for value in history:
+			avg_value += value
+		avg_value /= history.size()
+	
+	# Update value using the provided callback
+	set_func.call(avg_value)
+
+## Prints debug information about current sensor values
+func _print_debug_values():
+	print("VTHardware: Brightness: ", brightness, " Temperature: ", temperature, " Humidity: ", humidity)
+	print("VTHardware: Photodiode: ", photodiode_raw, " Normalized: ", photodiode_normalized)

@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.IO.Ports;
 using System.Linq;
+using System.Collections.Generic;
 
 public partial class VTArduino : Node
 {
@@ -15,8 +16,18 @@ public partial class VTArduino : Node
     private bool _isConnected = false;
     private string _serialBuffer = "";
     
-    // Store the raw value from port a0
-    private int _rawValue = 0;
+    // Store sensor values
+    private int _photodiodeValue = 0;
+    private float _temperatureValue = 0.0f;
+    private float _humidityValue = 0.0f;
+    
+    // Dictionary to store all sensor data
+    private Dictionary<string, float> _sensorData = new Dictionary<string, float>
+    {
+        { "photodiode", 0 },
+        { "temperature", 0 },
+        { "humidity", 0 }
+    };
 
     public override void _Ready()
     {
@@ -61,10 +72,35 @@ public partial class VTArduino : Node
 
     private void ProcessArduinoData(string data)
     {
-        // Simply parse the incoming data as an integer value
-        if (int.TryParse(data, out int value))
+        // Parse comma-separated values: photodiode, temperature, humidity
+        string[] values = data.Split(',');
+        
+        if (values.Length >= 3)
         {
-            _rawValue = value;
+            // Try to parse all three values
+            if (int.TryParse(values[0].Trim(), out int photodiode))
+            {
+                _photodiodeValue = photodiode;
+                _sensorData["photodiode"] = photodiode;
+            }
+            
+            if (float.TryParse(values[1].Trim(), out float temperature))
+            {
+                _temperatureValue = temperature;
+                _sensorData["temperature"] = temperature;
+            }
+            
+            if (float.TryParse(values[2].Trim(), out float humidity))
+            {
+                _humidityValue = humidity;
+                _sensorData["humidity"] = humidity;
+            }
+        }
+        else if (int.TryParse(data, out int singleValue))
+        {
+            // Fallback for backward compatibility
+            _photodiodeValue = singleValue;
+            _sensorData["photodiode"] = singleValue;
         }
     }
 
@@ -147,9 +183,44 @@ public partial class VTArduino : Node
         return SerialPort.GetPortNames();
     }
     
-    // Get the raw value from the Arduino
+    // Get the raw photodiode value from the Arduino (for backward compatibility)
     public int GetRawValue()
     {
-        return _rawValue;
+        return _photodiodeValue;
+    }
+    
+    // Get specific sensor value
+    public float GetSensorValue(string sensorName)
+    {
+        if (_sensorData.ContainsKey(sensorName))
+        {
+            return _sensorData[sensorName];
+        }
+        return 0;
+    }
+    
+    // Get the entire sensor data dictionary
+    // REMOVED BECAUSE GODOT WILL NOT RECOGNIZE THE METHOD
+    // BECAUSE OF DICTIONARY OR SOMETHING?
+    // IDK. CAPSLOCK.
+    // public Dictionary<string, float> GetSensorData()
+    // {
+    //     return new Dictionary<string, float>(_sensorData);
+    // }
+    
+    // Direct accessors for each sensor
+    public int GetPhotodiodeValue()
+    {
+        return _photodiodeValue;
+    }
+    
+    public float GetTemperature()
+    {
+        return _temperatureValue;
+    }
+    
+    public float GetHumidity()
+    {
+        return _humidityValue;
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=29 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -8,28 +8,45 @@
 [ext_resource type="Script" uid="uid://p427dstufru" path="res://addons/vterrariumframework/src/classes/vt_terrarium_wall.gd" id="5_r55h4"]
 [ext_resource type="PackedScene" uid="uid://dpmhaxpyatodg" path="res://src/ui/front_ui.tscn" id="6_edi6u"]
 [ext_resource type="Script" uid="uid://fi3ukfe3r0ki" path="res://addons/vterrariumframework/src/classes/vt_front_window.gd" id="6_qfpye"]
+[ext_resource type="Script" uid="uid://cs4c0ftdjdsoe" path="res://src/world_environment.gd" id="7_27mdg"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
 [ext_resource type="PackedScene" uid="uid://b3tclcqf2u7l3" path="res://assets/models/decor/cyan_coral/cyan_coral.glb" id="14_b0toy"]
 [ext_resource type="AudioStream" uid="uid://cmj7ag4qru8q5" path="res://assets/audio/water.wav" id="14_d2bpd"]
-[ext_resource type="Script" uid="uid://dtcn1vb8gri55" path="res://src/directional_light_3d.gd" id="14_qfpye"]
 [ext_resource type="Script" uid="uid://djg2fo0j88l61" path="res://addons/onscreenkeyboard/onscreen_keyboard.gd" id="15_qfpye"]
 [ext_resource type="PackedScene" uid="uid://dqdckux4bv4ne" path="res://src/ui/top_ui.tscn" id="16_27mdg"]
 [ext_resource type="FontFile" uid="uid://dau51bc2eerp5" path="res://assets/fonts/RedHatDisplay-Light.ttf" id="16_b0toy"]
 
 [sub_resource type="Environment" id="Environment_ti7fu"]
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.26
+ambient_light_color = Color(0.517432, 0.639528, 1, 1)
+ambient_light_energy = 0.5
 ssao_radius = 2.3
 ssao_intensity = 3.85
+fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.00248951, 0.194488, 0.778514, 1)
-fog_light_energy = 0.05
-fog_density = 1.0
-fog_depth_curve = 0.870552
-fog_depth_begin = 0.0
-fog_depth_end = 18.7
+fog_light_color = Color(0.0495702, 0.19812, 0.421223, 1)
+fog_density = 0.76
+fog_depth_begin = 7.0
+fog_depth_end = 15.0
 volumetric_fog_density = 0.0
+
+[sub_resource type="Curve" id="Curve_b0toy"]
+_data = [Vector2(0, 0.0158616), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ygn67"]
+offsets = PackedFloat32Array(0, 0.570539, 1)
+colors = PackedColorArray(0.359332, 0.557774, 1, 1, 0.989367, 0.99266, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ovvyv"]
+gradient = SubResource("Gradient_ygn67")
+
+[sub_resource type="Curve" id="Curve_qfpye"]
+
+[sub_resource type="Gradient" id="Gradient_27mdg"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b0toy"]
+gradient = SubResource("Gradient_27mdg")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_27mdg"]
 size = Vector2(5.625, 5.625)
@@ -85,8 +102,21 @@ camera_orientation = 1
 
 [node name="Control" parent="Front" instance=ExtResource("6_edi6u")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." node_paths=PackedStringArray("directional_light1", "directional_light2")]
 environment = SubResource("Environment_ti7fu")
+script = ExtResource("7_27mdg")
+brightness_curve = SubResource("Curve_b0toy")
+brightness_color_gradient = SubResource("GradientTexture1D_ovvyv")
+directional_light1 = NodePath("DirectionalLight3D")
+directional_light2 = NodePath("DirectionalLight3D2")
+fog_density_curve = SubResource("Curve_qfpye")
+fog_color_gradient = SubResource("GradientTexture1D_b0toy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.396)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.9792, 0)
 
 [node name="Terrarium" type="Node3D" parent="."]
 script = ExtResource("4_dv42i")
@@ -154,14 +184,6 @@ transform = Transform3D(1.08562, -0.337557, 0.94909, 0.0973953, 1.44331, 0.41076
 
 [node name="cyan_coral5" parent="Terrarium" instance=ExtResource("14_b0toy")]
 transform = Transform3D(-0.297183, -0.19622, -0.861115, -0.134399, 0.667289, -0.203474, 0.517405, 0.0606294, -0.547454, -4.46571, -2.70934, 1.29462)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.396)
-script = ExtResource("14_qfpye")
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.9792, 0)
-script = ExtResource("14_qfpye")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_d2bpd")

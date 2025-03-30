@@ -1,12 +1,20 @@
 #include <Arduino.h>
+#include <DHT.h>
 
 // Pin definitions
 const int PHOTODIODE_PIN = A0; // Analog pin connected to the photodiode
+const int DHT_PIN = 2;         // Digital pin connected to the DHT sensor
 
-// Variables for reading and sending the photodiode value
+// DHT sensor configuration
+#define DHT_TYPE DHT11 // DHT11 (blue sensor)
+DHT dht(DHT_PIN, DHT_TYPE);
+
+// Variables for reading and sending sensor values
 int photodiodeValue = 0;
+float temperature = 0.0;
+float humidity = 0.0;
 unsigned long lastSendTime = 0;
-const int sendInterval = 100; // Send data every 100ms (10 times per second)
+const int sendInterval = 16; // Send data every 0.016 seconds
 
 void setup()
 {
@@ -17,11 +25,13 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
 
   // Enable internal pull-up resistor for the photodiode pin
-  // Note: This is not ideal but may allow basic testing without an external resistor
   pinMode(PHOTODIODE_PIN, INPUT_PULLUP);
 
+  // Initialize DHT sensor
+  dht.begin();
+
   // Print initial message
-  Serial.println("Arduino photodiode sensor started (using internal pull-up)");
+  Serial.println("Arduino sensor system started");
 }
 
 void loop()
@@ -29,22 +39,33 @@ void loop()
   // Read the photodiode value
   photodiodeValue = analogRead(PHOTODIODE_PIN);
 
-  // When using internal pull-up, the reading is inverted (higher light = lower value)
-  // So we invert it back for more intuitive readings (higher value = more light)
+  // Invert the reading for more intuitive values (higher = more light)
   photodiodeValue = 1023 - photodiodeValue;
 
-  // Check if it's time to send the value
+  // Check if it's time to send the values
   unsigned long currentTime = millis();
 
   if (currentTime - lastSendTime >= sendInterval)
   {
-    // Send photodiode value to serial port
-    Serial.println(photodiodeValue);
+    // Read temperature and humidity from DHT sensor
+    humidity = dht.readHumidity();
+    temperature = dht.readTemperature();
 
-    // Blink LED to indicate data was sent
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(5); // Very short blink
-    digitalWrite(LED_BUILTIN, LOW);
+    // Check if readings are valid
+    if (!isnan(humidity) && !isnan(temperature))
+    {
+      // Send all sensor values to serial port in CSV format: photodiode,temperature,humidity
+      Serial.print(photodiodeValue);
+      Serial.print(",");
+      Serial.print(temperature);
+      Serial.print(",");
+      Serial.println(humidity);
+
+      // Blink LED to indicate data was sent
+      digitalWrite(LED_BUILTIN, HIGH);
+      delay(5);
+      digitalWrite(LED_BUILTIN, LOW);
+    }
 
     // Update last send time
     lastSendTime = currentTime;

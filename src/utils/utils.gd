@@ -82,3 +82,13 @@ func get_all_creatures_in_tank() -> Array[CreatureData]:
 			continue
 		creatures.append(creature)
 	return creatures
+
+
+## Convert Celsius to Fahrenheit
+func celsius_to_fahrenheit(celsius: float) -> float:
+	return celsius * 1.8 + 32
+
+## Convert Fahrenheit to Celsius
+
+func fahrenheit_to_celsius(fahrenheit: float) -> float:
+	return (fahrenheit - 32) / 1.8

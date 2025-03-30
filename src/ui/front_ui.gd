@@ -12,6 +12,8 @@ const HAPPINESS_LERP_DURATION: float = 0.5
 @export var money_label: Label
 @export var time_label: Label
 
+@export var temp_test_label: Label
+
 var _sleep_counter: float = 0.0
 var _is_sleeping: bool = false
 var _original_modulate: Color
@@ -30,6 +32,8 @@ func _process(delta):
 	_update_time()
 	_update_money()
 	_update_happiness_percentage()
+	
+	temp_test_label.text = str(Utils.celsius_to_fahrenheit(VTHardware.temperature))
 	
 	# Lerp the happiness percentage
 	if _current_happiness_percentage != _target_happiness_percentage:
