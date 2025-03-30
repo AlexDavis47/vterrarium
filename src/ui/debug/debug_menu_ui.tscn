@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dk08klp38nyv6"]
+[gd_scene load_steps=14 format=3 uid="uid://dk08klp38nyv6"]
 
 [ext_resource type="Script" uid="uid://bd3qy6ejxwul8" path="res://src/ui/debug/debug_menu_ui.gd" id="1_js7ux"]
 [ext_resource type="Texture2D" uid="uid://gx45fusvwys2" path="res://src/ui/debug/textures/Debug Menu (2).png" id="2_hcp6s"]
 [ext_resource type="Texture2D" uid="uid://mqbj88scfd8h" path="res://src/ui/debug/textures/Debug Menu (3).png" id="3_rqlrp"]
-[ext_resource type="Shader" uid="uid://bpx4g0l4yikxx" path="res://src/ui/debug/debug_menu_ui.gdshader" id="4_bgwkw"]
 [ext_resource type="Script" uid="uid://k470knidfbvy" path="res://src/ui/debug/modules/photodiode_value.gd" id="5_5tdf5"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="5_qjk6r"]
 [ext_resource type="PackedScene" uid="uid://v18arrb0fcx2" path="res://src/ui/curve_visualizer/curve_visualizer_UI.tscn" id="5_y5x0x"]
@@ -13,13 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://8l1yrrxl4xx8" path="res://src/ui/value_monitor_meter/value_monitor_meter_ui.tscn" id="10_k7lll"]
 [ext_resource type="Script" uid="uid://bkfte5laxqp30" path="res://src/ui/debug/current_tempurature.gd" id="11_k7lll"]
 [ext_resource type="Script" uid="uid://uaerhkahpvkv" path="res://src/ui/debug/current_air_humidity.gd" id="12_1vw62"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjk6r"]
-shader = ExtResource("4_bgwkw")
-shader_parameter/shadow_offset = Vector2(8, 8)
-shader_parameter/shadow_radius = 17.547
-shader_parameter/shadow_blur = 1.48
-shader_parameter/shadow_color = Color(0, 0, 0, 0.4)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tdf5"]
 texture = ExtResource("6_njgff")
@@ -59,7 +51,6 @@ texture = ExtResource("3_rqlrp")
 stretch_mode = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="TextureRect/TextureRect"]
-material = SubResource("ShaderMaterial_qjk6r")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
