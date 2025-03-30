@@ -19,6 +19,9 @@ signal accessory_equipped(accessory_data: AccessoryData, creature_data: Creature
 signal accessory_unequipped(accessory_data: AccessoryData, creature_data: CreatureData)
 signal request_update()
 
+func _ready():
+	equip_button.pivot_offset = equip_button.size / 2
+
 
 func update_ui() -> void:
 	equip_button.pressed.connect(self._on_equip_button_pressed)
@@ -27,6 +30,7 @@ func update_ui() -> void:
 	_update_accessory_image()
 	_update_equip_button()
 	_update_scene_preview()
+
 func _update_rarity_type_label() -> void:
 	var rarity = Enums.Rarity.keys()[accessory_data.accessory_rarity]
 	var type = AccessoryFactory.AccessoryType.keys()[accessory_data.accessory_category]
@@ -64,3 +68,9 @@ func _on_equip_button_pressed() -> void:
 		AccessoryFactory.unequip_accessory(accessory_data, creature_data)
 		accessory_unequipped.emit(accessory_data, creature_data)
 		request_update.emit()
+
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(equip_button, "scale", Vector2(0.9, 0.9), 0.1)
+	tween.tween_property(equip_button, "scale", Vector2(1, 1), 0.1)

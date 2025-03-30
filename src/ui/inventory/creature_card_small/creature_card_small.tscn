@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://d8tgrkwn0t1w"]
+[gd_scene load_steps=24 format=3 uid="uid://d8tgrkwn0t1w"]
 
 [ext_resource type="Texture2D" uid="uid://dh03heeoxmibw" path="res://src/ui/inventory/creature_card_small/textures/creature_card_small_bg.png" id="1_jqowi"]
 [ext_resource type="Script" uid="uid://b27xtc5gnsiuq" path="res://src/ui/inventory/creature_card_small/creature_card_small.gd" id="1_ykj4p"]
-[ext_resource type="Texture2D" uid="uid://bambrmag2qlov" path="res://src/entities/creatures/fish/weird_fish/weird_fish.png" id="3_22bev"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="3_tvl5m"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_5thfp"]
 [ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="6_dw02c"]
@@ -26,7 +25,29 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
-[node name="CreatureCardSmall" type="TextureRect" node_paths=PackedStringArray("rarity_and_type_label", "name_label", "image", "species_label", "add_remove_button", "detail_button", "in_tank_marker", "has_accessories_marker", "creature_preview_subviewport_container")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1dgtc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dw02c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2opys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkqpy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hw1l2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o1itc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n6h42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfwoj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kmpmt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t6aiw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ki6e"]
+
+[node name="CreatureCardSmall" type="TextureRect" node_paths=PackedStringArray("rarity_and_type_label", "name_label", "preview_button", "species_label", "add_remove_button", "detail_button", "in_tank_marker", "has_accessories_marker", "creature_preview_subviewport_container")]
 clip_contents = true
 custom_minimum_size = Vector2(128, 128)
 offset_right = 128.0
@@ -35,7 +56,7 @@ texture = ExtResource("1_jqowi")
 script = ExtResource("1_ykj4p")
 rarity_and_type_label = NodePath("CreatureRarityAndType")
 name_label = NodePath("CreatureName")
-image = NodePath("Panel/Panel2/CreatureImage")
+preview_button = NodePath("Panel/Panel2/Button")
 species_label = NodePath("CreatureSpecies")
 add_remove_button = NodePath("HBoxContainer/AddRemoveFromTank")
 detail_button = NodePath("HBoxContainer/DetailView")
@@ -103,24 +124,30 @@ grow_horizontal = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1dgtc")
 
-[node name="CreatureImage" type="TextureRect" parent="Panel/Panel2"]
-visible = false
+[node name="ScenePreviewSubviewportContainer" parent="Panel/Panel2" instance=ExtResource("6_dw02c")]
+layout_mode = 1
+camera_angle = Vector3(-2.245, -41.345, 43.53)
+camera_zoom = 0.425
+camera_fov = 35.0
+
+[node name="Button" type="Button" parent="Panel/Panel2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("3_22bev")
-expand_mode = 5
-stretch_mode = 6
-
-[node name="ScenePreviewSubviewportContainer" parent="Panel/Panel2" instance=ExtResource("6_dw02c")]
-layout_mode = 1
-camera_angle = Vector3(-2.245, -41.345, 43.53)
-camera_zoom = 0.425
-camera_fov = 35.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1dgtc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_dw02c")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2opys")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hkqpy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hw1l2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o1itc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n6h42")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nfwoj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kmpmt")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_t6aiw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5ki6e")
 
 [node name="CreatureSpecies" type="Label" parent="."]
 layout_mode = 1

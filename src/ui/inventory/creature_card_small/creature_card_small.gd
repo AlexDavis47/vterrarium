@@ -4,7 +4,7 @@ class_name CreatureCardSmall
 
 @export var rarity_and_type_label: Label
 @export var name_label: Label
-@export var image: TextureRect
+@export var preview_button: Button
 @export var species_label: Label
 @export var add_remove_button: TextureButton
 @export var detail_button: TextureButton
@@ -26,7 +26,7 @@ signal detail_button_pressed(creature_data: CreatureData)
 func _ready() -> void:
 	add_remove_button.pressed.connect(_on_add_remove_button_pressed)
 	detail_button.pressed.connect(_on_detail_button_pressed)
-
+	preview_button.pressed.connect(_on_preview_button_pressed)
 	var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
 	creature_preview_subviewport_container.root_node.add_child(preview_creature)
 	creature_preview_subviewport_container.force_update()
@@ -44,7 +44,6 @@ func _on_creature_data_trigger_preview_update() -> void:
 func update_info() -> void:
 	_update_rarity_and_type()
 	_update_name()
-	_update_image()
 	_update_species()
 	_update_add_remove_button()
 	_update_in_tank_marker()
@@ -62,8 +61,6 @@ func _update_rarity_and_type() -> void:
 func _update_name() -> void:
 	name_label.text = creature_data.creature_name
 
-func _update_image() -> void:
-	image.texture = creature_data.creature_image
 
 func _update_species() -> void:
 	species_label.text = creature_data.creature_species
@@ -86,6 +83,12 @@ func _update_has_accessories_marker() -> void:
 	else:
 		has_accessories_marker.visible = false
 
+
+func _open_detailed_view() -> void:
+	var detailed_view_ui: CreatureDetailViewUI = _detailed_view_ui_scene.instantiate()
+	detailed_view_ui.creature_data = creature_data
+	VTGlobal.top_ui.add_child(detailed_view_ui)
+
 func _on_add_remove_button_pressed() -> void:
 	# If the creature is in the tank, remove it from the tank
 	if creature_data.creature_is_in_tank:
@@ -96,7 +99,9 @@ func _on_add_remove_button_pressed() -> void:
 
 func _on_detail_button_pressed() -> void:
 	detail_button_pressed.emit(creature_data)
+	_open_detailed_view()
+	
 
-	var detailed_view_ui: CreatureDetailViewUI = _detailed_view_ui_scene.instantiate()
-	detailed_view_ui.creature_data = creature_data
-	VTGlobal.top_ui.add_child(detailed_view_ui)
+func _on_preview_button_pressed() -> void:
+	detail_button_pressed.emit(creature_data)
+	_open_detailed_view()

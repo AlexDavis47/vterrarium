@@ -63,12 +63,17 @@ func _create_cards_with_delay(creatures_to_create: Array) -> void:
 		index += 1
 
 func _create_creature_card(creature: CreatureData) -> void:
-	var creature_item = creature_item_scene.instantiate()
+	var creature_item: CreatureCardSmall = creature_item_scene.instantiate()
 	creature_item.creature_data = creature
 	creature_item.add_remove_button_pressed.connect(_on_add_remove_button_pressed)
 	add_child(creature_item)
 	creature_items.append(creature_item)
 
+	var tween = creature_item.create_tween()
+	creature_item.modulate = Color(1, 1, 1, 0)
+	tween.tween_property(creature_item, "modulate", Color(1, 1, 1, 1), 0.25)
+	tween.set_trans(Tween.TRANS_QUAD)
+	
 func _populate_grid() -> void:
 	creature_items.clear()
 	var creatures_to_add = []
