@@ -103,6 +103,7 @@ alignment = 1
 [node name="PhotoDiodeNormalizedValue" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("curve_visualizer")]
 clip_children = 2
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("5_5tdf5")
 curve_visualizer = NodePath("MarginContainer/VBoxContainer/CurveVisualizerUI")
@@ -132,14 +133,12 @@ autowrap_mode = 3
 [node name="CurveVisualizerUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer" instance=ExtResource("5_y5x0x")]
 custom_minimum_size = Vector2(480, 231)
 layout_mode = 2
-show_marker_guides = null
-marker_guide_width = null
-marker_guide_color = null
 axis_label_font_size = 8
 
 [node name="FinalBrightness" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
 clip_children = 2
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("9_lg7i2")
 value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
@@ -179,6 +178,7 @@ decimal_places = 3
 [node name="CurrentTempurature" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
 clip_children = 2
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("11_k7lll")
 value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
@@ -219,6 +219,7 @@ meter_thickness_ratio = 0.48
 [node name="CurrentAirHumidity" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
 clip_children = 2
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("12_1vw62")
 value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")

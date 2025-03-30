@@ -16,6 +16,7 @@ offset_right = -802.0
 offset_bottom = -455.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_g7bhs")
 curve_canvas = NodePath("CurveCanvas")
 curve = SubResource("Curve_wd1lj")
@@ -36,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
