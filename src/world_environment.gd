@@ -4,8 +4,6 @@ extends WorldEnvironment
 # Exports
 ########################################################
 
-## Curve controlling how brightness affects light energy
-@export var brightness_curve: Curve
 ## Gradient controlling how brightness affects light color
 @export var brightness_color_gradient: GradientTexture1D
 ## Primary directional light reference
@@ -57,7 +55,7 @@ func _update_brightness():
 ## Updates all lighting based on current brightness
 func _update_lighting():
 	# Apply brightness curve to get the light energy
-	var light_energy = brightness_curve.sample(current_brightness)
+	var light_energy = current_brightness
 	
 	# Apply brightness color gradient to get the light color
 	var light_color = brightness_color_gradient.get_gradient().sample(current_brightness)

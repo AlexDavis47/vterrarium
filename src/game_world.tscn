@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=28 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -30,10 +30,6 @@ fog_depth_curve = 1.5
 fog_depth_begin = 3.0
 fog_depth_end = 12.0
 volumetric_fog_density = 0.0
-
-[sub_resource type="Curve" id="Curve_b0toy"]
-_data = [Vector2(0, 0.0158616), 0.0, 0.0, 0, 0, Vector2(0.0155039, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_ygn67"]
 offsets = PackedFloat32Array(0, 0.570539, 1)
@@ -109,7 +105,6 @@ camera_orientation = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." node_paths=PackedStringArray("directional_light1", "directional_light2")]
 environment = SubResource("Environment_ti7fu")
 script = ExtResource("7_27mdg")
-brightness_curve = SubResource("Curve_b0toy")
 brightness_color_gradient = SubResource("GradientTexture1D_ovvyv")
 directional_light1 = NodePath("DirectionalLight3D")
 directional_light2 = NodePath("DirectionalLight3D2")
