@@ -5,3 +5,4 @@
 [node name="CrownHat" type="Node3D"]
 
 [node name="crown_hat" parent="." instance=ExtResource("1_7a84v")]
+transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, 0, 0, 0)

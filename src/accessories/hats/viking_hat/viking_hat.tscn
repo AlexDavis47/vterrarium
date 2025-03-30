@@ -5,3 +5,4 @@
 [node name="VikingHat" type="Node3D"]
 
 [node name="viking_hat" parent="." instance=ExtResource("1_xce0p")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

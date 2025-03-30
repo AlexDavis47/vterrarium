@@ -13,6 +13,8 @@ class_name AccessoryCardSmall
 
 @export var equip_button: TextureButton
 
+@export var scene_preview: ScenePreviewSubviewportContainer
+
 signal accessory_equipped(accessory_data: AccessoryData, creature_data: CreatureData)
 signal accessory_unequipped(accessory_data: AccessoryData, creature_data: CreatureData)
 signal request_update()
@@ -24,7 +26,7 @@ func update_ui() -> void:
 	_update_accessory_name_label()
 	_update_accessory_image()
 	_update_equip_button()
-
+	_update_scene_preview()
 func _update_rarity_type_label() -> void:
 	var rarity = Enums.Rarity.keys()[accessory_data.accessory_rarity]
 	var type = AccessoryFactory.AccessoryType.keys()[accessory_data.accessory_category]
@@ -44,6 +46,12 @@ func _update_equip_button() -> void:
 	else:
 		equip_button.set_pressed_no_signal(false)
 
+
+func _update_scene_preview() -> void:
+	scene_preview.clear_root_node()
+	var accessory_scene = load(accessory_data.accessory_scene_uuid)
+	var accessory_instance = accessory_scene.instantiate()
+	scene_preview.add_child_to_root_node(accessory_instance)
 
 func _on_equip_button_pressed() -> void:
 	# If not currently equipped, equip the accessory

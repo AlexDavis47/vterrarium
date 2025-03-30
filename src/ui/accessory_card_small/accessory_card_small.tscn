@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpj42nvvwygow"]
+[gd_scene load_steps=10 format=3 uid="uid://dpj42nvvwygow"]
 
 [ext_resource type="Script" uid="uid://baksp2s0mt1fp" path="res://src/ui/accessory_card_small/accessory_card_small.gd" id="1_8lxby"]
 [ext_resource type="Texture2D" uid="uid://c5kfotxsm5xue" path="res://src/ui/accessory_card_small/textures/AccessoryCard.png" id="1_vdfub"]
 [ext_resource type="Texture2D" uid="uid://b7xu2vi2lvpit" path="res://src/accessories/hats/top_hat/top_hat.png" id="2_s8dxc"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="3_8g085"]
+[ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="3_om7x8"]
 [ext_resource type="Texture2D" uid="uid://djhoccjrn5xun" path="res://src/ui/accessory_card_small/textures/EquipButton.png" id="4_1cbox"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_8lxby"]
 [ext_resource type="Texture2D" uid="uid://diimrb4t412wm" path="res://src/ui/accessory_card_small/textures/UnequipButton.png" id="5_1cbox"]
@@ -15,7 +16,7 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[node name="AccessoryCardSmall" type="Control" node_paths=PackedStringArray("rarity_type_label", "accessory_name_label", "accessory_image", "equip_button")]
+[node name="AccessoryCardSmall" type="Control" node_paths=PackedStringArray("rarity_type_label", "accessory_name_label", "accessory_image", "equip_button", "scene_preview")]
 clip_children = 1
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 3
@@ -30,6 +31,7 @@ rarity_type_label = NodePath("TextureRect/CreatureRarityAndType")
 accessory_name_label = NodePath("TextureRect/CreatureName")
 accessory_image = NodePath("TextureRect/Panel/Panel2/AccessoryImage")
 equip_button = NodePath("TextureRect/TextureRect")
+scene_preview = NodePath("TextureRect/Panel/Panel2/ScenePreviewSubviewportContainer")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -73,7 +75,12 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_s8dxc")
 
+[node name="ScenePreviewSubviewportContainer" parent="TextureRect/Panel/Panel2" instance=ExtResource("3_om7x8")]
+layout_mode = 1
+continuous_update = true
+
 [node name="AccessoryImage" type="TextureRect" parent="TextureRect/Panel/Panel2"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

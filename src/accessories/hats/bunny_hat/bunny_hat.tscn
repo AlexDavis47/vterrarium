@@ -5,4 +5,4 @@
 [node name="BunnyHat" type="Node3D"]
 
 [node name="bunny_hat" parent="." instance=ExtResource("1_ec8m0")]
-transform = Transform3D(-0.09, 0, 7.86805e-09, 0, 0.09, 0, -7.86805e-09, 0, -0.09, 0, 0, 0)
+transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 0, 0, 0)
