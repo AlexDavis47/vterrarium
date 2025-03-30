@@ -26,8 +26,9 @@ fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.0495702, 0.19812, 0.421223, 1)
 fog_density = 0.76
-fog_depth_begin = 7.0
-fog_depth_end = 15.0
+fog_depth_curve = 1.5
+fog_depth_begin = 3.0
+fog_depth_end = 12.0
 volumetric_fog_density = 0.0
 
 [sub_resource type="Curve" id="Curve_b0toy"]
@@ -42,8 +43,11 @@ colors = PackedColorArray(0.359332, 0.557774, 1, 1, 0.989367, 0.99266, 1, 1, 1, 
 gradient = SubResource("Gradient_ygn67")
 
 [sub_resource type="Curve" id="Curve_qfpye"]
+_data = [Vector2(0, 0.582913), 0.0, 0.0, 0, 0, Vector2(1, 0.245494), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_27mdg"]
+colors = PackedColorArray(0, 0, 0.137255, 1, 0.00129549, 0.634941, 0.621926, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_b0toy"]
 gradient = SubResource("Gradient_27mdg")
@@ -109,6 +113,7 @@ brightness_curve = SubResource("Curve_b0toy")
 brightness_color_gradient = SubResource("GradientTexture1D_ovvyv")
 directional_light1 = NodePath("DirectionalLight3D")
 directional_light2 = NodePath("DirectionalLight3D2")
+test_brightness = 0.59
 fog_density_curve = SubResource("Curve_qfpye")
 fog_color_gradient = SubResource("GradientTexture1D_b0toy")
 
