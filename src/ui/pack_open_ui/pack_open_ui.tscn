@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxqwq0gowno71"]
+
+[ext_resource type="Shader" uid="uid://brya77h3m5a20" path="res://src/ui/pack_open_ui/pack_open_ui.gdshader" id="1_a3l4q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a3l4q"]
+shader = ExtResource("1_a3l4q")
+shader_parameter/bottom_color = Color(0.211765, 0.364706, 0.45098, 1)
+shader_parameter/top_color = Color(0, 0.635294, 0.992157, 1)
+shader_parameter/wave_amp = 0.021
+shader_parameter/wave_size = 2.76
+shader_parameter/wave_time_mul = 0.227
+shader_parameter/total_phases = 7
+
+[sub_resource type="Animation" id="Animation_44lgu"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_q4fca"]
+resource_name = "open_pack"
+length = 3.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqlw8"]
+_data = {
+&"RESET": SubResource("Animation_44lgu"),
+&"open_pack": SubResource("Animation_q4fca")
+}
+
+[node name="PackOpenUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PackOpenUIBG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_a3l4q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tqlw8")
+}

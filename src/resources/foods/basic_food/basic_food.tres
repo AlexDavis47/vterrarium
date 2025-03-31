@@ -11,6 +11,7 @@ food_color = Color(1, 1, 0.321569, 1)
 times_eatable = 1
 food_value = 0.25
 food_lifetime = 60.0
+food_rarity = 0
 sink_speed = 1.0
 spread_factor = 1.0
 food_mass = 0.1

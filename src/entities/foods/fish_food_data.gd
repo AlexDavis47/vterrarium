@@ -16,7 +16,7 @@ signal times_eatable_changed(value: int)
 signal food_value_changed(value: float)
 signal food_lifetime_changed(value: float)
 signal food_color_changed(value: Color)
-
+signal food_rarity_changed(value: Enums.Rarity)
 @export_group("Food Properties")
 ## The display name of this food type
 @export var food_name: String = "Fish Food":
@@ -76,6 +76,15 @@ signal food_color_changed(value: Color)
 		food_lifetime_changed.emit(value)
 	get:
 		return food_lifetime
+
+## The rarity of the food
+@export var food_rarity: Enums.Rarity = Enums.Rarity.Common:
+	set(value):
+		food_rarity = value
+		food_rarity_changed.emit(value)
+	get:
+		return food_rarity
+
 
 @export_group("Physical Properties")
 ## How quickly the food sinks in water (higher values sink faster)

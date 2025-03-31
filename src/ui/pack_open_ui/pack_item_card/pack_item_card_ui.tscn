@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd6syx0hetv05"]
+
+[ext_resource type="Script" uid="uid://dllitq4v0gbnq" path="res://src/ui/pack_open_ui/pack_item_card/pack_item_card_ui.gd" id="1_q2m2j"]
+[ext_resource type="Texture2D" uid="uid://ey82wdqjid2m" path="res://src/ui/pack_open_ui/pack_item_card/textures/BG.png" id="2_1vwc7"]
+[ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="3_1xhka"]
+[ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_1qd0a"]
+[ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="5_jnn3s"]
+[ext_resource type="Texture2D" uid="uid://sqfmtfqefoku" path="res://src/ui/pack_open_ui/pack_item_card/textures/TakeButton.png" id="6_xc4hr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s33ua"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="PackItemCardUI" type="MarginContainer" node_paths=PackedStringArray("rarity_type_label", "name_label", "scene_preview", "take_button")]
+anchors_preset = -1
+anchor_right = 0.195313
+anchor_bottom = 0.475
+script = ExtResource("1_q2m2j")
+rarity_type_label = NodePath("BG/VBoxContainer/MarginContainer/Rarity and Type")
+name_label = NodePath("BG/VBoxContainer/MarginContainer3/Name")
+scene_preview = NodePath("BG/VBoxContainer/MarginContainer2/Preview/MarginContainer/Panel2/ScenePreviewSubviewportContainer")
+take_button = NodePath("BG/VBoxContainer/MarginContainer4/TakeButton")
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_1vwc7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="Rarity and Type" type="Label" parent="BG/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("3_1xhka")
+theme_override_font_sizes/font_size = 15
+text = "Common Food"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="BG/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+
+[node name="Name" type="Label" parent="BG/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("4_1qd0a")
+theme_override_font_sizes/font_size = 18
+text = "Basic Fish Food"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="BG/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 8
+
+[node name="Preview" type="Panel" parent="BG/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_s33ua")
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/VBoxContainer/MarginContainer2/Preview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Panel2" type="Panel" parent="BG/VBoxContainer/MarginContainer2/Preview/MarginContainer"]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_s33ua")
+
+[node name="ScenePreviewSubviewportContainer" parent="BG/VBoxContainer/MarginContainer2/Preview/MarginContainer/Panel2" instance=ExtResource("5_jnn3s")]
+layout_mode = 1
+camera_angle = Vector3(11.355, -32.485, 18.21)
+camera_zoom = 0.5
+camera_fov = 45.0
+drag_enabled = true
+continuous_update = true
+
+[node name="MarginContainer4" type="MarginContainer" parent="BG/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 25
+
+[node name="TakeButton" type="TextureButton" parent="BG/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_xc4hr")
