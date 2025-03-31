@@ -17,7 +17,8 @@ enum CreatureType {
 enum Creatures {
 	BLUE_FISH,
 	RED_FISH,
-	YELLOW_TANG_FISH
+	YELLOW_TANG_FISH,
+	AXOLOTL
 }
 
 
@@ -26,7 +27,8 @@ enum Creatures {
 var creature_data_templates: Dictionary[Creatures, CreatureData] = {
 	Creatures.BLUE_FISH: preload("uid://bi10nf3pilsau"),
 	Creatures.RED_FISH: preload("uid://x7f8v6e3a7u2"),
-	Creatures.YELLOW_TANG_FISH: preload("uid://cl4iqwjh3g3cm")
+	Creatures.YELLOW_TANG_FISH: preload("uid://cl4iqwjh3g3cm"),
+	Creatures.AXOLOTL: preload("uid://b2whh0mnx8dh")
 }
 
 signal creature_spawned(creature_data: CreatureData)
