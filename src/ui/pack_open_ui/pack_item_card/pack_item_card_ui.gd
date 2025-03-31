@@ -22,6 +22,8 @@ enum CardItemType {
 
 var card_item_type: CardItemType = CardItemType.Other
 
+signal item_taken(item_card: PackItemCardUI)
+
 ########################################################
 # Initialization
 ########################################################
@@ -119,6 +121,7 @@ func take_item():
 		SaveManager.save_file.fish_food_inventory.append(fish_food_data)
 	else:
 		printerr("Invalid item type")
+	item_taken.emit(self)
 
 	pivot_offset = size / 2
 	var tween: Tween = create_tween()
@@ -128,7 +131,6 @@ func take_item():
 	tween.parallel().tween_property(self, "scale", Vector2(0.0, 0.0), 0.35)
 	tween.parallel().tween_property(self, "rotation_degrees", 180.0, 0.35)
 	tween.tween_callback(queue_free)
-
 ########################################################
 # Signal Handlers
 ########################################################

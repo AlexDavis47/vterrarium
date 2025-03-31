@@ -15,16 +15,8 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [node name="PackItemCardUI" type="MarginContainer" node_paths=PackedStringArray("rarity_type_label", "name_label", "scene_preview", "take_button")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -285.0
-offset_right = 100.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_right = 200.001
+offset_bottom = 285.0
 script = ExtResource("1_q2m2j")
 rarity_type_label = NodePath("BG/VBoxContainer/MarginContainer/Rarity and Type")
 name_label = NodePath("BG/VBoxContainer/MarginContainer3/Name")

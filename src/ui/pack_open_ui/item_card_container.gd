@@ -7,58 +7,24 @@ extends Control
 var card_followers = []
 var is_distributing = false
 
+var card: PackedScene = preload("uid://dd6syx0hetv05")
+
+
 func _ready():
 	# First, check if we have the required Path2D
 	if not card_path:
 		push_error("Card Path2D not assigned to ItemCardContainer!")
 		return
-	
-	# Look for any direct children that are PackItemCardUI 
-	# (cards added directly in the scene editor)
-	var direct_cards = []
-	for child in get_children():
-		if child is PackItemCardUI:
-			direct_cards.append(child)
-	
-	# Move existing cards to path followers
-	for card in direct_cards:
-		# Remove from direct parent but keep the node
-		remove_child(card)
-		
-		# Create a path follower for it
-		var path_follow = PathFollow2D.new()
-		path_follow.loop = false
-		path_follow.rotates = true
-		path_follow.cubic_interp = true # Smoother movement along the path
-		
-		# Add to the path and set up the card
-		card_path.add_child(path_follow)
-		path_follow.add_child(card)
-		
-		# Reset the card's transform relative to its parent
-		card.position = Vector2.ZERO
-		card.rotation = 0
-		card.scale = Vector2.ONE
-		
-		# Track the follower
-		card_followers.append(path_follow)
-	
-	# Handle existing PathFollow2D with cards already set up properly
-	for child in card_path.get_children():
-		if child is PathFollow2D:
-			var has_card = false
-			for follower_child in child.get_children():
-				if follower_child is PackItemCardUI:
-					has_card = true
-					break
-					
-			if has_card and not card_followers.has(child):
-				card_followers.append(child)
-	
-	# Update the layout
-	if card_followers.size() > 0:
-		call_deferred("distribute_cards_with_animation")
 
+	# Add 6 cards to the container
+	for i in range(6):
+		var card_instance = card.instantiate()
+		_add_item_card(card_instance)
+	
+	# Explicitly call the animation distribution after adding all cards
+	call_deferred("distribute_cards_with_animation")
+
+	
 func _add_item_card(item_card: PackItemCardUI):
 	# Create a new PathFollow2D to follow the path
 	var path_follow = PathFollow2D.new()
@@ -76,26 +42,28 @@ func _add_item_card(item_card: PackItemCardUI):
 	path_follow.add_child(item_card)
 	
 	# Reset the card's transform relative to its parent
-	item_card.position = Vector2.ZERO
+	item_card.position = - item_card.size / 2
 	item_card.rotation = 0
-	item_card.scale = Vector2.ONE
+	item_card.scale = Vector2(0.1, 0.1)
+	item_card.modulate.a = 0
+
+	item_card.item_taken.connect(_on_item_taken)
 	
 	# Add to our list for tracking
 	card_followers.append(path_follow)
 	
-	# Make card initially invisible and scale to zero
-	item_card.modulate.a = 0
-	item_card.scale = Vector2(0.1, 0.1)
-	
-	# Update positions of all cards and animate the new one in
-	call_deferred("_update_layout")
-	
-	# Create appear animation
-	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
-	tween.set_trans(Tween.TRANS_BACK)
-	tween.tween_property(item_card, "modulate:a", 1.0, 0.3)
-	tween.parallel().tween_property(item_card, "scale", Vector2.ONE, 0.3)
+	# Don't update layout immediately for each card
+	# Let distribute_cards_with_animation handle the initial layout
+	if card_followers.size() > 6:
+		# Only update layout if we're adding cards after initial setup
+		call_deferred("_update_layout")
+		
+		# Create appear animation only for individual cards added later
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_BACK)
+		tween.tween_property(item_card, "modulate:a", 1.0, 0.3)
+		tween.parallel().tween_property(item_card, "scale", Vector2.ONE, 0.3)
 
 func _remove_item_card(item_card: PackItemCardUI):
 	# Find the PathFollow2D parent of this card
@@ -138,7 +106,7 @@ func distribute_cards_with_animation():
 		
 	is_distributing = true
 	
-	# Set all cards to center
+	# Set all cards to center initially
 	for follower in card_followers:
 		if is_instance_valid(follower):
 			# Hide cards initially
@@ -179,7 +147,7 @@ func distribute_cards_with_animation():
 		tween.set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(follower, "progress_ratio", progress, 0.5)
 		
-		# Set the z-index
+		# Set z-index for proper layering
 		follower.z_index = num_cards - abs(i - (num_cards / 2))
 		
 		# Mark as initialized
@@ -223,3 +191,12 @@ func _update_layout():
 		# Cards in the middle appear on top
 		var z_index_value = num_cards - abs(i - (num_cards / 2))
 		follower.z_index = z_index_value
+
+func _on_item_taken(item_card: PackItemCardUI):
+	# Find the card that was taken
+	for follower in card_followers:
+		for child in follower.get_children():
+			if child is PackItemCardUI and child == item_card:
+				# Remove the card from the container
+				_remove_item_card(child)
+				break

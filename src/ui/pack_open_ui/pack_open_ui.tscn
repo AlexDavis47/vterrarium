@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxqwq0gowno71"]
+[gd_scene load_steps=9 format=3 uid="uid://bxqwq0gowno71"]
 
 [ext_resource type="Shader" uid="uid://brya77h3m5a20" path="res://src/ui/pack_open_ui/pack_open_ui.gdshader" id="1_a3l4q"]
-[ext_resource type="PackedScene" uid="uid://dd6syx0hetv05" path="res://src/ui/pack_open_ui/pack_item_card/pack_item_card_ui.tscn" id="2_44lgu"]
 [ext_resource type="FontFile" uid="uid://dau51bc2eerp5" path="res://assets/fonts/RedHatDisplay-Light.ttf" id="2_q4fca"]
 [ext_resource type="Script" uid="uid://du5i8jnoug7ir" path="res://src/ui/pack_open_ui/item_card_container.gd" id="3_tqlw8"]
 
@@ -83,29 +82,4 @@ script = ExtResource("3_tqlw8")
 card_path = NodePath("Path2D")
 
 [node name="Path2D" type="Path2D" parent="VBoxContainer/ItemCardContainer"]
-position = Vector2(0, -214.305)
 curve = SubResource("Curve2D_tqlw8")
-
-[node name="PackItemCardUI" parent="VBoxContainer/ItemCardContainer" instance=ExtResource("2_44lgu")]
-layout_mode = 0
-anchors_preset = 0
-
-[node name="PackItemCardUI2" parent="VBoxContainer/ItemCardContainer" instance=ExtResource("2_44lgu")]
-layout_mode = 0
-anchors_preset = 0
-
-[node name="PackItemCardUI3" parent="VBoxContainer/ItemCardContainer" instance=ExtResource("2_44lgu")]
-layout_mode = 0
-anchors_preset = 0
-
-[node name="PackItemCardUI4" parent="VBoxContainer/ItemCardContainer" instance=ExtResource("2_44lgu")]
-layout_mode = 0
-anchors_preset = 0
-
-[node name="PackItemCardUI5" parent="VBoxContainer/ItemCardContainer" instance=ExtResource("2_44lgu")]
-layout_mode = 0
-anchors_preset = 0
-
-[node name="PackItemCardUI6" parent="VBoxContainer/ItemCardContainer" instance=ExtResource("2_44lgu")]
-layout_mode = 0
-anchors_preset = 0
