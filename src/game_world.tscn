@@ -95,7 +95,7 @@ script = ExtResource("6_qfpye")
 metadata/_custom_type_script = "uid://fi3ukfe3r0ki"
 
 [node name="secondary" type="Camera3D" parent="Front"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.229)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.50444)
 cull_mask = 5
 script = ExtResource("3_8txad")
 camera_orientation = 1
