@@ -87,16 +87,42 @@ func _notification(what):
 
 # Calculate the path progress value based on the index, count, and bounds
 func _calculate_progress(index: int, total_cards: int) -> float:
-	# Calculate the bounds
-	var min_bound = (1.0 - path_bounds) / 2.0
-	var max_bound = 1.0 - min_bound
-	
-	# Calculate progress within bounds
-	var progress = min_bound
-	if total_cards > 1:
-		# Make sure to space evenly regardless of number of cards
-		progress = min_bound + (float(index) / float(total_cards - 1)) * (max_bound - min_bound)
-	
+	# Define the number of cards at which the full spread is used
+	const MAX_CARDS_FOR_FULL_SPREAD = 6
+
+	# Calculate the center point
+	var center_progress = 0.5
+
+	# Handle single card case
+	if total_cards <= 1:
+		return center_progress # Single card always at the center
+
+	# Calculate the scaling factor based on the number of cards
+	var scale_factor = 1.0
+	if MAX_CARDS_FOR_FULL_SPREAD > 1:
+		# Clamp prevents scale_factor > 1 if total_cards > MAX_CARDS_FOR_FULL_SPREAD
+		# Use total_cards directly for ratio, so max cards uses full spread
+		scale_factor = clampf(float(total_cards) / float(MAX_CARDS_FOR_FULL_SPREAD), 0.0, 1.0)
+	# else: scale_factor remains 1.0 if MAX_CARDS_FOR_FULL_SPREAD is 1 or less
+
+	# Calculate the effective width and the starting bound (min) based on scaling
+	var effective_width = path_bounds * scale_factor
+	var effective_min_bound = center_progress - effective_width / 2.0
+
+	# Calculate progress within the effective bounds
+	# Ensure float division to avoid issues when total_cards is 2
+	# The distribution happens across the effective_width
+	var progress = effective_min_bound
+	if total_cards > 1: # Add check again to be safe, although already handled above
+		progress = effective_min_bound + (float(index) / float(total_cards - 1)) * effective_width
+
+	# Original calculation commented out for reference:
+	# var min_bound = (1.0 - path_bounds) / 2.0
+	# var max_bound = 1.0 - min_bound
+	# var progress_original = min_bound
+	# if total_cards > 1:
+	#     progress_original = min_bound + (float(index) / float(total_cards - 1)) * (max_bound - min_bound)
+
 	return progress
 
 func distribute_cards_with_animation():
