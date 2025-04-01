@@ -18,7 +18,8 @@ func _ready():
 
 	# Add 6 cards to the container
 	for i in range(6):
-		var card_instance = card.instantiate()
+		var card_instance: PackItemCardUI = card.instantiate()
+		card_instance.data = CreatureFactory.create_creature(CreatureFactory.Creatures.AXOLOTL)
 		_add_item_card(card_instance)
 	
 	# Explicitly call the animation distribution after adding all cards

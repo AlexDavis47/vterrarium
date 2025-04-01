@@ -12,15 +12,13 @@ uniform highp vec4 colour_3 : source_color = vec4(0.086, 0.137, 0.145, 1.0);
 uniform highp float contrast = 3.5;
 uniform highp float lighting = 0.4;
 uniform highp float spin_amount = 0.25;
-uniform highp float pixel_filter = 740.;
 uniform bool is_rotating = false;
 #define SPIN_EASE 1.0
 
 
 vec4 effect(vec2 screenSize, vec2 screen_coords){
-
-	highp float pixel_size = length(screenSize.xy) / pixel_filter;
-    highp vec2 uv = (floor(screen_coords.xy*(1./pixel_size))*pixel_size - 0.5*screenSize.xy)/length(screenSize.xy) - offset;
+    // Remove pixelation by directly using normalized coordinates
+    highp vec2 uv = (screen_coords.xy - 0.5*screenSize.xy)/length(screenSize.xy) - offset;
     highp float uv_len = length(uv);
 
 

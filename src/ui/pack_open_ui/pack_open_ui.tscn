@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxqwq0gowno71"]
 
 [ext_resource type="Shader" uid="uid://brya77h3m5a20" path="res://src/ui/pack_open_ui/pack_open_ui.gdshader" id="1_a3l4q"]
-[ext_resource type="Script" uid="uid://bopu1wlcybxfr" path="res://src/ui/pack_open_ui/pack_open_ui.gd" id="1_tqlw8"]
+[ext_resource type="Script" path="res://src/ui/pack_open_ui/pack_open_ui.gd" id="1_tqlw8"]
 [ext_resource type="FontFile" uid="uid://dau51bc2eerp5" path="res://assets/fonts/RedHatDisplay-Light.ttf" id="2_q4fca"]
 [ext_resource type="Script" uid="uid://du5i8jnoug7ir" path="res://src/ui/pack_open_ui/item_card_container.gd" id="3_tqlw8"]
 
@@ -16,7 +16,6 @@ shader_parameter/colour_3 = Color(0, 0, 0, 1)
 shader_parameter/contrast = 3.5
 shader_parameter/lighting = 0.4
 shader_parameter/spin_amount = 0.25
-shader_parameter/pixel_filter = 740.0
 shader_parameter/is_rotating = false
 
 [sub_resource type="Animation" id="Animation_44lgu"]
