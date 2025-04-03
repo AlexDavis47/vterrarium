@@ -37,8 +37,12 @@ signal creature_removed(creature_data: CreatureData)
 
 func run_test_cycle() -> void:
 		# Initial setup for testing - create creatures and add to tank
-	_create_test_creatures()
-	
+	#_create_test_creatures()
+	var creature = create_creature(Creatures.RED_FISH)
+	SaveManager.save_file.creature_inventory.append(creature)
+	_add_creature_to_tank(creature)
+
+
 	# # Test cycle 1: Remove all creatures from tank
 	# await get_tree().create_timer(1.0).timeout
 	# _remove_all_creatures_from_tank()
@@ -59,7 +63,7 @@ func run_test_cycle() -> void:
 ## Creates test creatures and adds them to the inventory and tank
 func _create_test_creatures() -> void:
 	for creature_type in creature_data_templates.keys():
-		for i in range(10):
+		for i in range(1):
 			var new_creature = create_creature(creature_type)
 			SaveManager.save_file.creature_inventory.append(new_creature)
 			_add_creature_to_tank(new_creature)
@@ -145,8 +149,8 @@ func generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
 	var viable_chances: Dictionary = {}
 	
 	for creature_type in creature_data_templates.keys():
-		var template : CreatureData = creature_data_templates[creature_type]
-		for pool_chance : PoolChance in template.creature_pool_chances:
+		var template: CreatureData = creature_data_templates[creature_type]
+		for pool_chance: PoolChance in template.creature_pool_chances:
 			if pool_chance.pool == pool:
 				viable_creatures.append(creature_type)
 				viable_chances[creature_type] = pool_chance.chance

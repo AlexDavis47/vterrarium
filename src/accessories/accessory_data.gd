@@ -27,6 +27,14 @@ class_name AccessoryData
 		accessory_happiness_bonus = clamp(value, -1.0, 1.0)
 	get:
 		return accessory_happiness_bonus
+## The temperature bonus this accessory provides
+@export var accessory_temperature_bonus: float = 0.0
+## The brightness bonus this accessory provides
+@export var accessory_brightness_bonus: float = 0.0:
+	set(value):
+		accessory_brightness_bonus = clamp(value, -1.0, 1.0)
+	get:
+		return accessory_brightness_bonus
 
 @export_group("Instance Data DON'T TOUCH")
 ## A unique identifier for this accessory instance

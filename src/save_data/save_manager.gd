@@ -86,8 +86,14 @@ func _ready() -> void:
 		print("No save files found or recovered, creating new save file")
 		create_save_file()
 		# For testing
-		CreatureFactory.run_test_cycle()
-		AccessoryFactory.create_test_accessories()
+		#CreatureFactory.run_test_cycle()
+		#AccessoryFactory.create_test_accessories()
+
+		var creature = CreatureFactory.create_creature(CreatureFactory.Creatures.RED_FISH)
+		SaveManager.save_file.creature_inventory.append(creature)
+		CreatureFactory.spawn_creature(creature)
+
+
 		save_game() # Use save_game instead of _thread_save_game
 	else:
 		print("Loading save file: " + save_files[0].save_id)

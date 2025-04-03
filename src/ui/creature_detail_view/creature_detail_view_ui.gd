@@ -176,9 +176,15 @@ func _update_brightness_graph() -> void:
 	_brightness_graph.curve = creature_data.creature_light_preference
 	_brightness_graph.current_value = VTHardware.brightness
 
+	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
+		_brightness_graph.current_value += accessory.accessory_brightness_bonus
+
 func _update_temperature_graph() -> void:
 	_temperature_graph.curve = creature_data.creature_temperature_preference
 	_temperature_graph.current_value = Utils.celsius_to_fahrenheit(VTHardware.temperature)
+
+	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
+		_temperature_graph.current_value += accessory.accessory_temperature_bonus
 
 ########################################################
 # Signal Handlers

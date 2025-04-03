@@ -116,11 +116,19 @@ func _calculate_target_happiness() -> float:
 	
 	happiness -= (2.0 - creature_data.creature_light_contentment - creature_data.creature_temperature_contentment)
 	
+	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
+		print(accessory.accessory_name)
+		happiness += accessory.accessory_happiness_bonus
+	
 	return clamp(happiness, 0.0, 1.0)
 
 func _process_light(delta: float) -> void:
 	var light_level: float = VTHardware.brightness
 	var target_contentment: float = creature_data.creature_light_preference.sample(light_level)
+	
+	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
+		print(accessory.accessory_name)
+		target_contentment += accessory.accessory_brightness_bonus
 	
 	creature_data.creature_light_contentment = lerp(
 		creature_data.creature_light_contentment,
@@ -131,7 +139,11 @@ func _process_light(delta: float) -> void:
 func _process_temperature(delta: float) -> void:
 	var temperature_level: float = Utils.celsius_to_fahrenheit(VTHardware.temperature)
 	var target_contentment: float = creature_data.creature_temperature_preference.sample(temperature_level)
-	
+
+	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
+		print(accessory.accessory_name)
+		target_contentment += accessory.accessory_temperature_bonus
+
 	creature_data.creature_temperature_contentment = lerp(
 		creature_data.creature_temperature_contentment,
 		target_contentment,
@@ -158,6 +170,8 @@ func _process_position_data(delta: float) -> void:
 
 func _process_money(delta: float) -> void:
 	var hourly_money: float = creature_data.creature_money_per_hour * creature_data.creature_happiness
+	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
+		hourly_money += accessory.accessory_money_bonus
 	SaveManager.save_file.money += hourly_money * delta / 3600.0
 
 func _process_age(delta: float) -> void:

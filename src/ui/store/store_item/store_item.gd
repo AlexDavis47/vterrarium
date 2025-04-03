@@ -79,6 +79,7 @@ var _pack_opening_scene: PackedScene = preload("uid://bxqwq0gowno71")
 
 func _ready():
 	_update_ui()
+	SaveManager.save_file.money_changed.connect(_update_ui)
 
 ########################################################
 # Body
@@ -92,7 +93,7 @@ func _update_ui():
 	_update_price_label()
 	_update_icon()
 	_update_gradient()
-
+	_update_purchase_button()
 
 func _update_name_label():
 	if name_label:
@@ -113,10 +114,18 @@ func _update_icon():
 	if icon:
 		icon.texture = item_data.item_icon
 
-
 func _update_gradient():
 	if gradient:
 		gradient.modulate = item_data.item_color
+
+func _update_purchase_button():
+	if purchase_button:
+		if SaveManager.save_file.money >= item_data.item_price:
+			purchase_button.disabled = false
+			purchase_button.modulate = Color(1, 1, 1, 1)
+		else:
+			purchase_button.disabled = true
+			purchase_button.modulate = Color(1, 1, 1, 0.35)
 
 ########################################################
 # Signal Handlers
@@ -124,9 +133,13 @@ func _update_gradient():
 
 func _on_purchase_pressed():
 	if item_data:
-		_update_ui()
-		open_pack()
-		purchased.emit(item_data)
+		if SaveManager.save_file.money >= item_data.item_price:
+			SaveManager.save_file.money -= item_data.item_price
+			_update_ui()
+			open_pack()
+			purchased.emit(item_data)
+		else:
+			pass
 
 func open_pack():
 	var opening_instance: PackOpenUI = _pack_opening_scene.instantiate()
