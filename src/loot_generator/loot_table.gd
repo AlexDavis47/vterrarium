@@ -1,0 +1,25 @@
+## Loot tables contain a list of item data resources that can be pulled from, along with a weight for each item.
+## The loot generator will use the weights and entries to pick a random item from the table.
+@tool
+extends Resource
+class_name LootTableData
+
+@export var entries: Array[LootTableDataEntry] = []
+
+func get_total_weight() -> float:
+	var total_weight: float = 0.0
+	for entry in entries:
+		total_weight += entry.weight
+	return total_weight
+
+func get_random_item() -> ItemDataResource:
+	var total_weight: float = get_total_weight()
+	var random_value: float = randf() * total_weight
+	var cumulative_weight: float = 0.0
+
+	for entry in entries:
+		cumulative_weight += entry.weight
+		if random_value <= cumulative_weight:
+			return entry.item
+
+	return null
