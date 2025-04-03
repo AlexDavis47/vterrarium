@@ -5,8 +5,6 @@ class_name MenuButtons
 @export var feeding_button: TextureButton
 @export var store_button: TextureButton
 
-var click_sound: AudioStream = preload("uid://bms5rd1xu82xc")
-
 # Make sure only one button can be pressed at a time.
 func _ready():
 	inventory_button.pressed.connect(_on_inventory_button_pressed)
@@ -19,15 +17,15 @@ func _ready():
 
 func _on_inventory_button_pressed():
 	VTGlobal.top_ui.open_inventory_menu()
-	Utils.play_sfx(click_sound)
+	AudioManager.play_sfx(AudioManager.SFX.UI_CLICK_1, 0.8, 1.2)
 
 func _on_feeding_button_pressed():
 	VTGlobal.top_ui.open_feeding_menu()
-	Utils.play_sfx(click_sound)
+	AudioManager.play_sfx(AudioManager.SFX.UI_CLICK_1, 0.8, 1.2)
 
 func _on_store_button_pressed():
 	VTGlobal.top_ui.open_store_menu()
-	Utils.play_sfx(click_sound)
+	AudioManager.play_sfx(AudioManager.SFX.UI_CLICK_1, 0.8, 1.2)
 
 func _on_menu_opened(menu_name: String):
 	# Reset all buttons first

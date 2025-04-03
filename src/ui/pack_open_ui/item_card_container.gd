@@ -168,6 +168,8 @@ func distribute_cards_with_animation():
 		# Make the card visible with animation
 		for child in follower.get_children():
 			if child is PackItemCardUI:
+				AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
+
 				var appear_tween = create_tween()
 				appear_tween.set_ease(Tween.EASE_OUT)
 				appear_tween.set_trans(Tween.TRANS_BACK)

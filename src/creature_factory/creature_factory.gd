@@ -131,7 +131,7 @@ func _remove_creature_from_tank(creature_data: CreatureData) -> void:
 func spawn_creature(creature_data: CreatureData) -> void:
 	_add_creature_to_tank(creature_data)
 	creature_spawned.emit(creature_data)
-	Utils.play_sfx(preload("uid://cqlml5h7eycko"), 0.8, 1.2)
+	AudioManager.play_sfx(AudioManager.SFX.SPLASH_1, 0.8, 1.2)
 
 ## Public method to remove a creature from the tank
 func remove_creature(creature: Creature) -> void:
