@@ -2,6 +2,10 @@
 extends MarginContainer
 class_name StoreItem
 
+########################################################
+# Exports
+########################################################
+
 @export var item_data: StoreItemData:
 	get:
 		return item_data
@@ -48,10 +52,34 @@ class_name StoreItem
 		gradient = value
 		_update_ui()
 
+@export var purchase_button: TextureButton:
+	get:
+		return purchase_button
+	set(value):
+		if purchase_button:
+			purchase_button.pressed.disconnect(_on_purchase_pressed)
+		purchase_button = value
+		if purchase_button:
+			purchase_button.pressed.connect(_on_purchase_pressed)
+		_update_ui()
+
+########################################################
+# Private Variables
+########################################################
+
+var _pack_opening_scene: PackedScene = preload("uid://bxqwq0gowno71")
+
+
+########################################################
+# Initialization
+########################################################
 
 func _ready():
 	_update_ui()
 
+########################################################
+# Body
+########################################################
 
 func _update_ui():
 	if not item_data:
@@ -86,3 +114,19 @@ func _update_icon():
 func _update_gradient():
 	if gradient:
 		gradient.modulate = item_data.item_color
+
+########################################################
+# Signal Handlers
+########################################################
+
+func _on_purchase_pressed():
+	if item_data:
+		item_data.purchase()
+		_update_ui()
+		open_pack()
+
+
+func open_pack():
+	var opening_instance: PackOpenUI = _pack_opening_scene.instantiate()
+	opening_instance.pack_data = item_data.pack_data
+	get_tree().root.add_child(opening_instance)

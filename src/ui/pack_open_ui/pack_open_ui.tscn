@@ -38,6 +38,7 @@ _data = {
 point_count = 3
 
 [node name="PackOpenUi" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

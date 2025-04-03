@@ -36,3 +36,9 @@ class_name StoreItemData
 	set(value):
 		item_color = value
 		emit_changed()
+
+
+## Implementation stub
+func _get_pack_item_cards() -> Array[PackItemCardUI]:
+	print("Pack item cards not implemented")
+	return []
