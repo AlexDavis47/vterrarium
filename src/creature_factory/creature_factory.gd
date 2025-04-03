@@ -191,6 +191,15 @@ func create_creature_preview(creature_data: CreatureData) -> Creature:
 	creature.process_mode = PROCESS_MODE_DISABLED
 	return creature
 
+func sell_creature(creature_data: CreatureData) -> void:
+	if creature_data.creature_is_in_tank:
+		remove_creature(creature_data.creature_instance)
+	AccessoryFactory.unequip_all_accessories(creature_data)
+	SaveManager.save_file.creature_inventory.erase(creature_data)
+	SaveManager.save_file.money += creature_data.get_price()
+	creature_removed.emit(creature_data)
+	AudioManager.play_sfx(AudioManager.SFX.COINS_1, 0.8, 1.2)
+	VTGlobal.trigger_inventory_refresh.emit()
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):

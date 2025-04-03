@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="3_afveu"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="3_bhvwm"]
 [ext_resource type="Texture2D" uid="uid://bqigah3c2c0si" path="res://src/ui/creature_detail_view/textures/Detail View.png" id="4_64cj3"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_tqbuu"]
 [ext_resource type="FontFile" uid="uid://cywugphcmumyo" path="res://assets/fonts/RedHatDisplay-Medium.ttf" id="5_bhvwm"]
@@ -26,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bemcnpvc5k4jd" path="res://src/ui/creature_detail_view/textures/SadFace.png" id="20_6c18d"]
 [ext_resource type="Texture2D" uid="uid://babob7jsb6gjt" path="res://src/ui/creature_detail_view/textures/Cold.png" id="21_485np"]
 [ext_resource type="Texture2D" uid="uid://bylp7l3b7o37u" path="res://src/ui/creature_detail_view/textures/Hot.png" id="22_iw5k5"]
+[ext_resource type="Texture2D" uid="uid://bvayslct02ivn" path="res://src/ui/creature_detail_view/textures/Sell.png" id="26_6c18d"]
 
 [sub_resource type="Curve" id="Curve_awlyl"]
 
@@ -49,7 +49,6 @@ creature_satiation = 1.0
 creature_speed = 1.0
 creature_light_preference = SubResource("Curve_awlyl")
 creature_temperature_preference = SubResource("Curve_wb7er")
-creature_pool_chances = Array[ExtResource("3_bhvwm")]([])
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false
@@ -107,7 +106,7 @@ corner_radius_bottom_left = 10
 _data = [Vector2(0, 0.0233161), 0.0, 0.0, 0, 0, Vector2(0.490079, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_button", "_name_rename_button", "_description_label", "_species_label", "_image", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph", "_creature_live_camera", "_creature_live_camera_subviewport_container", "_creature_live_subviewport_container")]
+[node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_button", "_name_rename_button", "_description_label", "_species_label", "_image", "_sell_button", "_sell_price_label", "_age_label", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph", "_creature_live_camera", "_creature_live_camera_subviewport_container", "_creature_live_subviewport_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,6 +122,9 @@ _name_rename_button = NodePath("HBoxContainer/RenameButton")
 _description_label = NodePath("Description")
 _species_label = NodePath("CreatureSpecies")
 _image = NodePath("Panel/Panel2/CreatureImage")
+_sell_button = NodePath("MarginContainer/TextureButton")
+_sell_price_label = NodePath("HBoxContainer3/SellValue")
+_age_label = NodePath("AgeLabel")
 _money_per_hour_container = NodePath("HBoxContainer2/Stats/MoneyPerHour")
 _hunger_rate_container = NodePath("HBoxContainer2/Stats/HungerLossPerHour")
 _speed_container = NodePath("HBoxContainer2/Stats/Speed")
@@ -298,12 +300,27 @@ theme_override_fonts/font = ExtResource("10_n2nre")
 theme_override_font_sizes/font_size = 15
 text = "Carassius auratus"
 
+[node name="AgeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_top = 39.0
+offset_right = 92.0
+offset_bottom = 73.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+theme_override_font_sizes/font_size = 15
+text = "Age:"
+
 [node name="Description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 450.0
 offset_top = 145.0
 offset_right = 928.0
-offset_bottom = 311.0
+offset_bottom = 326.0
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("11_ux5o3")
@@ -595,3 +612,21 @@ theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("6_tqbuu")
 theme_override_font_sizes/font_size = 20
 text = "9999"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("26_6c18d")

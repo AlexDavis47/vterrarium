@@ -11,16 +11,18 @@ var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
 
 
 func _ready():
-	_process_scheduler.tick_second.connect(_on_money_per_hour_tick)
-	add_child(_process_scheduler)
+	if not Engine.is_editor_hint():
+		_process_scheduler.tick_second.connect(_on_money_per_hour_tick)
+		add_child(_process_scheduler)
 
 
 func _on_money_per_hour_tick(delta: float):
+	if Engine.is_editor_hint():
+		return
 	var current_money: float = SaveManager.save_file.money
 	var money_delta: float = current_money - _last_money
 	_last_money = current_money
 	_money_per_hour = money_delta * 3600.0
-
 
 ## Generate a unique ID
 func generate_unique_id() -> String:

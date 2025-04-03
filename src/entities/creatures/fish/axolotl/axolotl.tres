@@ -1,17 +1,10 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://b2whh0mnx8dh"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://b2whh0mnx8dh"]
 
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_y8fr6"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_nism6"]
 
 [sub_resource type="Curve" id="Curve_ok7cm"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.551587, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="Resource" id="Resource_fqp3p"]
-script = ExtResource("2_y8fr6")
-pool = 0
-chance = 0.12
-metadata/_custom_type_script = "uid://c5xpqttwi67b6"
 
 [sub_resource type="Curve" id="Curve_jevmt"]
 _limits = [0.0, 1.0, 0.0, 110.0]
@@ -35,7 +28,6 @@ creature_satiation = 1.0
 creature_speed = 1.0
 creature_light_preference = SubResource("Curve_ok7cm")
 creature_temperature_preference = SubResource("Curve_jevmt")
-creature_pool_chances = Array[ExtResource("2_y8fr6")]([SubResource("Resource_fqp3p")])
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false

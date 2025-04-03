@@ -1,5 +1,9 @@
 extends Node
 
+signal accessory_removed(accessory_data: AccessoryData)
+signal accessory_equipped(accessory_data: AccessoryData, creature_data: CreatureData)
+signal accessory_unequipped(accessory_data: AccessoryData, creature_data: CreatureData)
+
 
 enum AccessoryType {
 	HAT
@@ -74,6 +78,7 @@ func equip_accessory(accessory_data: AccessoryData, creature_data: CreatureData)
 	if creature_data.creature_is_in_tank:
 		creature_data.creature_instance._apply_accesories()
 	creature_data.trigger_preview_update.emit()
+	accessory_equipped.emit(accessory_data, creature_data)
 
 func unequip_accessory(accessory_data: AccessoryData, creature_data: CreatureData) -> void:
 	accessory_data.accessory_is_equipped = false
@@ -82,9 +87,23 @@ func unequip_accessory(accessory_data: AccessoryData, creature_data: CreatureDat
 	if creature_data.creature_is_in_tank:
 		creature_data.creature_instance._apply_accesories()
 	creature_data.trigger_preview_update.emit()
+	accessory_unequipped.emit(accessory_data, creature_data)
 
 func does_creature_have_any_accessories_equipped(creature_data: CreatureData) -> bool:
 	return get_all_equipped_accessories().filter(func(accessory: AccessoryData): return accessory.creature_equipped_id == creature_data.creature_id).size() > 0
 
 func does_creature_have_accessory_equipped(creature_data: CreatureData, accessory_data: AccessoryData) -> bool:
 	return get_all_equipped_accessories().filter(func(accessory: AccessoryData): return accessory.creature_equipped_id == creature_data.creature_id and accessory.accessory_category == accessory_data.accessory_category).size() > 0
+
+func sell_accessory(accessory_data: AccessoryData) -> void:
+	if accessory_data.accessory_is_equipped:
+		unequip_accessory(accessory_data, CreatureFactory.get_creature_by_id(accessory_data.creature_equipped_id))
+	SaveManager.save_file.accessory_inventory.erase(accessory_data)
+	SaveManager.save_file.money += accessory_data.get_price()
+	accessory_removed.emit(accessory_data)
+	AudioManager.play_sfx(AudioManager.SFX.COINS_1, 0.8, 1.2)
+	VTGlobal.trigger_inventory_refresh.emit()
+
+func unequip_all_accessories(creature_data: CreatureData) -> void:
+	for accessory in get_all_accessories_by_creature_id(creature_data.creature_id):
+		unequip_accessory(accessory, creature_data)

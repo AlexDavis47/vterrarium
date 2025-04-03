@@ -16,6 +16,9 @@ class_name CreatureDetailViewUI
 @export var _description_label: Label
 @export var _species_label: Label
 @export var _image: TextureRect
+@export var _sell_button: TextureButton
+@export var _sell_price_label: Label
+@export var _age_label: Label
 
 @export_group("Stat Containers")
 @export var _money_per_hour_container: StatContainer
@@ -73,6 +76,7 @@ func _initialize_connections() -> void:
 	_accessory_equip_menu_button.pressed.connect(_on_accessory_equip_menu_button_pressed)
 	_creature_live_camera.creature_data = creature_data
 	creature_data.trigger_preview_update.connect(_on_creature_data_trigger_preview_update)
+	_sell_button.pressed.connect(_on_sell_button_pressed)
 
 ########################################################
 # UI Update Methods
@@ -93,6 +97,8 @@ func update_info() -> void:
 	_update_satiation()
 	_update_brightness_graph()
 	_update_temperature_graph()
+	_update_sell_price()
+	_update_age()
 
 func _update_camera_visibility() -> void:
 	if creature_data.creature_is_in_tank:
@@ -186,6 +192,12 @@ func _update_temperature_graph() -> void:
 	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
 		_temperature_graph.current_value += accessory.accessory_temperature_bonus
 
+func _update_sell_price() -> void:
+	_sell_price_label.text = "%.0f" % creature_data.get_price()
+
+func _update_age() -> void:
+	_age_label.text = "Age: %.0f" % creature_data.creature_age + " Hour Old " + CreatureData.AgeBracket.keys()[creature_data.get_age_bracket()]
+
 ########################################################
 # Signal Handlers
 ########################################################
@@ -228,3 +240,7 @@ func _on_text_entry_ui_text_confirmed(text: String) -> void:
 
 func _on_process_scheduler_tick_second(_delta: float) -> void:
 	update_info()
+
+func _on_sell_button_pressed() -> void:
+	CreatureFactory.sell_creature(creature_data)
+	queue_free()
