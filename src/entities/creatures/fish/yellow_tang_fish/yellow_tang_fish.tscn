@@ -58,7 +58,7 @@ visible = false
 mesh = SubResource("CylinderMesh_y5xmp")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.558624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23687)
 bones/0/name = "Bone.001"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.999998, 0.00197387, 5.64588e-08, 5.66943e-08, -1.19209e-07, -1, -0.00197387, 0.999998, -1.19321e-07, -0.00105311, 0.00439061, -0.28125)
@@ -116,7 +116,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="AccessoryHatSlot" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(0.999998, 0.00197387, 5.64614e-08, 5.65778e-08, -1.19209e-07, -1, -0.00197387, 0.999998, -1.19209e-07, -0.00105311, 0.00439061, -0.28125)
+transform = Transform3D(1, 0.00054709, 5.64905e-08, 5.65487e-08, 0, -1, -0.00054709, 1, 0, -0.00105311, 0.00439061, -0.28125)
 bone_name = "Bone.001"
 bone_idx = 0
 
