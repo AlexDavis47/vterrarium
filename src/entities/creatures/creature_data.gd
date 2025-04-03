@@ -150,15 +150,11 @@ func get_age_bracket() -> CreatureData.AgeBracket:
 func on_generated(luck: float) -> void:
 	creature_luck = luck
 	creature_money_per_hour *= randfn(creature_luck, creature_luck * 0.25)
-	print("creature_money_per_hour: ", creature_money_per_hour)
 	creature_hunger_rate /= randfn(creature_luck, creature_luck * 0.25)
-	print("creature_hunger_rate: ", creature_hunger_rate)
 	creature_speed *= randfn(1, 0.25)
 	creature_speed = clamp(creature_speed, 0.25, 2.0)
-	print("creature_speed: ", creature_speed)
 	creature_size *= randfn(1, 0.25)
 	creature_size = clamp(creature_size, 0.25, 2.0)
-	print("creature_size: ", creature_size)
 	creature_id = Utils.generate_unique_id()
 	creature_tint = Color(randf_range(0.0, 1.0), randf_range(0.0, 1.0), randf_range(0.0, 1.0))
 	creature_tint_amount = randfn(creature_luck - 1.0, creature_luck * 0.25)

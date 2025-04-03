@@ -127,7 +127,6 @@ func _calculate_target_happiness() -> float:
 	happiness -= (2.0 - creature_data.creature_light_contentment - creature_data.creature_temperature_contentment)
 	
 	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
-		print(accessory.accessory_name)
 		happiness += accessory.accessory_happiness_bonus
 	
 	return clamp(happiness, 0.0, 1.0)
@@ -137,7 +136,6 @@ func _process_light(delta: float) -> void:
 	var target_contentment: float = creature_data.creature_light_preference.sample(light_level)
 	
 	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
-		print(accessory.accessory_name)
 		target_contentment += accessory.accessory_brightness_bonus
 	
 	creature_data.creature_light_contentment = lerp(
@@ -151,7 +149,6 @@ func _process_temperature(delta: float) -> void:
 	var target_contentment: float = creature_data.creature_temperature_preference.sample(temperature_level)
 
 	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
-		print(accessory.accessory_name)
 		target_contentment += accessory.accessory_temperature_bonus
 
 	creature_data.creature_temperature_contentment = lerp(

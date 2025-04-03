@@ -4,6 +4,24 @@ extends Node
 var all_menus_closed: bool = true
 
 
+var _money_per_hour: float = 0.0
+var _last_money: float = 0.0
+
+var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
+
+
+func _ready():
+	_process_scheduler.tick_second.connect(_on_money_per_hour_tick)
+	add_child(_process_scheduler)
+
+
+func _on_money_per_hour_tick(delta: float):
+	var current_money: float = SaveManager.save_file.money
+	var money_delta: float = current_money - _last_money
+	_last_money = current_money
+	_money_per_hour = money_delta * 3600.0
+
+
 ## Generate a unique ID
 func generate_unique_id() -> String:
 	return str(randi()) + str(int(Time.get_unix_time_from_system()))
