@@ -2,6 +2,9 @@
 extends MarginContainer
 class_name StoreItem
 
+signal purchased(item_data: StoreItemData)
+
+
 ########################################################
 # Exports
 ########################################################
@@ -121,12 +124,13 @@ func _update_gradient():
 
 func _on_purchase_pressed():
 	if item_data:
-		item_data.purchase()
 		_update_ui()
 		open_pack()
-
+		purchased.emit(item_data)
 
 func open_pack():
 	var opening_instance: PackOpenUI = _pack_opening_scene.instantiate()
-	opening_instance.pack_data = item_data.pack_data
+	var loot = LootGenerator.generate_loot(item_data.loot_table, item_data.number_of_items)
+	for item in loot:
+		opening_instance.add_item_card(item)
 	get_tree().root.add_child(opening_instance)

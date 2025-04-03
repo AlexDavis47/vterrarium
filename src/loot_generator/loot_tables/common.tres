@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LootTableData" load_steps=11 format=3 uid="uid://8br5jqbkh4gi"]
+[gd_resource type="Resource" script_class="LootTableData" load_steps=19 format=3 uid="uid://8br5jqbkh4gi"]
 
 [ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_1elya"]
 [ext_resource type="Resource" uid="uid://b2whh0mnx8dh" path="res://src/entities/creatures/fish/axolotl/axolotl.tres" id="2_23af1"]
@@ -6,6 +6,10 @@
 [ext_resource type="Resource" uid="uid://bi10nf3pilsau" path="res://src/entities/creatures/fish/blue_fish/blue_fish.tres" id="3_jydgi"]
 [ext_resource type="Resource" uid="uid://x7f8v6e3a7u2" path="res://src/entities/creatures/fish/red_fish/red_fish.tres" id="4_s68hl"]
 [ext_resource type="Resource" uid="uid://cl4iqwjh3g3cm" path="res://src/entities/creatures/fish/yellow_tang_fish/yellow_tang_fish.tres" id="5_7h2pq"]
+[ext_resource type="Resource" uid="uid://dmjykq56j6klc" path="res://src/accessories/hats/pirate_hat/pirate_hat.tres" id="6_4yknd"]
+[ext_resource type="Resource" uid="uid://d0q0xj7jcr5rh" path="res://src/accessories/hats/top_hat/top_hat.tres" id="7_71sv3"]
+[ext_resource type="Resource" uid="uid://wha8onoswvht" path="res://src/accessories/hats/viking_hat/viking_hat.tres" id="8_ragye"]
+[ext_resource type="Resource" uid="uid://b2qrw6vn3omma" path="res://src/accessories/hats/crown_hat/crown_hat.tres" id="9_3gya4"]
 
 [sub_resource type="Resource" id="Resource_4yknd"]
 script = ExtResource("1_1elya")
@@ -31,7 +35,31 @@ item = ExtResource("5_7h2pq")
 weight = 0.28
 metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
+[sub_resource type="Resource" id="Resource_2o1g8"]
+script = ExtResource("1_1elya")
+item = ExtResource("6_4yknd")
+weight = 0.195
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_1fu0x"]
+script = ExtResource("1_1elya")
+item = ExtResource("7_71sv3")
+weight = 0.2
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_hn5va"]
+script = ExtResource("1_1elya")
+item = ExtResource("8_ragye")
+weight = 0.115
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_mwevj"]
+script = ExtResource("1_1elya")
+item = ExtResource("9_3gya4")
+weight = 0.06
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
 [resource]
 script = ExtResource("2_i8gck")
-entries = Array[ExtResource("1_1elya")]([SubResource("Resource_4yknd"), SubResource("Resource_71sv3"), SubResource("Resource_ragye"), SubResource("Resource_3gya4")])
+entries = Array[ExtResource("1_1elya")]([SubResource("Resource_4yknd"), SubResource("Resource_71sv3"), SubResource("Resource_ragye"), SubResource("Resource_3gya4"), SubResource("Resource_2o1g8"), SubResource("Resource_1fu0x"), SubResource("Resource_hn5va"), SubResource("Resource_mwevj")])
 metadata/_custom_type_script = "uid://bst7q731ckock"

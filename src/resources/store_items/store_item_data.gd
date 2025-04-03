@@ -37,6 +37,19 @@ class_name StoreItemData
 		item_color = value
 		emit_changed()
 
+@export var loot_table: LootTableData = null:
+	get:
+		return loot_table
+	set(value):
+		loot_table = value
+		emit_changed()
+
+@export var number_of_items: int = 3:
+	get:
+		return number_of_items
+	set(value):
+		number_of_items = value
+		emit_changed()
 
 ## Implementation stub
 func _get_pack_item_cards() -> Array[PackItemCardUI]:

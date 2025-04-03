@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://gbnpxr40g1kv"]
+[gd_scene load_steps=3 format=3 uid="uid://gbnpxr40g1kv"]
 
 [ext_resource type="PackedScene" uid="uid://dacl7pwgkabec" path="res://src/ui/store/store_item/store_item.tscn" id="1_dgslu"]
+[ext_resource type="Resource" uid="uid://d07kp6nca3bp6" path="res://src/store_items/fish_packs/common_fish_pack/common_fish_pack.tres" id="2_s82go"]
 
 [node name="StoreUI" type="Control"]
 layout_mode = 3
@@ -22,18 +23,4 @@ columns = 3
 
 [node name="StoreItem" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
 layout_mode = 2
-
-[node name="StoreItem2" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
-layout_mode = 2
-
-[node name="StoreItem3" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
-layout_mode = 2
-
-[node name="StoreItem4" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
-layout_mode = 2
-
-[node name="StoreItem5" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
-layout_mode = 2
-
-[node name="StoreItem6" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
-layout_mode = 2
+item_data = ExtResource("2_s82go")

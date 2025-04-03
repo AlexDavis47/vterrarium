@@ -103,7 +103,7 @@ enum FoodType {
 @export var food_id: String = ""
 
 ## Called when this food is first created
-func on_generated() -> void:
+func on_generated(luck: float = 1) -> void:
 	if food_id.is_empty():
 		food_id = Utils.generate_unique_id()
 

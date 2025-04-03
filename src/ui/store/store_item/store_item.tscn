@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c8gb4o0a5anu3" path="res://src/ui/store/store_item/store_item.gd" id="1_2ni3c"]
 [ext_resource type="Texture2D" uid="uid://dyo5liy67ek5i" path="res://src/ui/store/store_item/textures/CreatureCard (3).png" id="1_n72oo"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="2_ajufs"]
-[ext_resource type="Texture2D" uid="uid://vh82l1pafrew" path="res://src/store_items/fish_packs/common_fish_pack/common_fish_pack.png" id="2_bwjtl"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="3_2ni3c"]
+[ext_resource type="Texture2D" uid="uid://bb4xvwrfr6bva" path="res://src/ui/store/store_item/textures/fish_card_pack_icon.png" id="4_ajufs"]
 [ext_resource type="Texture2D" uid="uid://st8qw5tmed4v" path="res://src/ui/textures/stat_panel/money_icon.png" id="5_ajufs"]
 [ext_resource type="Texture2D" uid="uid://dprm6jy8083xt" path="res://src/ui/store/store_item/textures/purchase_button.png" id="6_2ni3c"]
 
@@ -16,13 +16,14 @@ gradient = SubResource("Gradient_p38gg")
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
-[node name="StoreItem" type="MarginContainer" node_paths=PackedStringArray("name_label", "description_label", "price_label", "icon", "gradient")]
+[node name="StoreItem" type="MarginContainer" node_paths=PackedStringArray("name_label", "description_label", "price_label", "icon", "gradient", "purchase_button")]
 script = ExtResource("1_2ni3c")
 name_label = NodePath("BG/VBoxContainer/MarginContainer3/Name")
 description_label = NodePath("BG/VBoxContainer/MarginContainer/ItemDescription")
 price_label = NodePath("BG/VBoxContainer/MarginContainer4/HBoxContainer/Price")
 icon = NodePath("BG/VBoxContainer/MarginContainer2/Control/Icon")
 gradient = NodePath("BG/Gradient")
+purchase_button = NodePath("BG/VBoxContainer/MarginContainer5/CenterContainer/TextureButton")
 
 [node name="BG" type="TextureRect" parent="."]
 clip_children = 2
@@ -79,7 +80,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bwjtl")
+texture = ExtResource("4_ajufs")
 stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/VBoxContainer"]

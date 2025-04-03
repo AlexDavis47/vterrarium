@@ -12,7 +12,7 @@ func get_total_weight() -> float:
 		total_weight += entry.weight
 	return total_weight
 
-func get_random_item() -> ItemDataResource:
+func get_random_item(luck: float = 1.0) -> ItemDataResource:
 	var total_weight: float = get_total_weight()
 	var random_value: float = randf() * total_weight
 	var cumulative_weight: float = 0.0
@@ -20,6 +20,8 @@ func get_random_item() -> ItemDataResource:
 	for entry in entries:
 		cumulative_weight += entry.weight
 		if random_value <= cumulative_weight:
-			return entry.item
+			var item: ItemDataResource = entry.item.duplicate(true)
+			item.on_generated(luck)
+			return item
 
 	return null

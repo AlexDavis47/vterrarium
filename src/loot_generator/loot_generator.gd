@@ -13,9 +13,12 @@ var _loot_tables: Dictionary[LootTable, LootTableData] = {
     LootTable.COMMON: preload("uid://8br5jqbkh4gi")
 }
 
-func generate_loot(loot_table: LootTable, amount: int) -> Array[ItemDataResource]:
-    var loot_table_data: LootTableData = _loot_tables[loot_table]
+func generate_loot(loot_table: LootTableData, amount: int = 1, luck: float = 1.0) -> Array[ItemDataResource]:
     var loot: Array[ItemDataResource] = []
     for i in range(amount):
-        loot.append(loot_table_data.get_random_item())
+        loot.append(loot_table.get_random_item(luck))
     return loot
+
+
+func get_loot_table_data(loot_table: LootTable) -> LootTableData:
+    return _loot_tables[loot_table]

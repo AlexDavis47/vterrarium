@@ -1,6 +1,8 @@
 extends Control
 class_name ItemCardContainer
 
+signal all_cards_taken()
+
 @export var card_path: Path2D
 @export var card_appearance_delay: float = 0.15
 @export_range(0.0, 1.0, 0.05) var path_bounds: float = 0.8 # Percentage of path to use (centered)
@@ -61,11 +63,11 @@ func _add_item_card(item_card: PackItemCardUI):
 		tween.tween_property(item_card, "modulate:a", 1.0, 0.3)
 		tween.parallel().tween_property(item_card, "scale", Vector2.ONE, 0.3)
 
-func add_item_card(item: Resource) -> PackItemCardUI:
-	if !item:
+func add_item_card(data: ItemDataResource) -> PackItemCardUI:
+	if !data:
 		return null
 	var item_card = card.instantiate()
-	item_card.item = item
+	item_card.data = data
 	_add_item_card(item_card)
 	return item_card
 
@@ -178,8 +180,7 @@ func distribute_cards_with_animation():
 		tween.set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(follower, "progress_ratio", progress, 0.5)
 		
-		# Set z-index for proper layering
-		follower.z_index = num_cards - abs(i - (num_cards / 2))
+		# follower.z_index = num_cards - abs(i - (num_cards / 2))
 		
 		# Mark as initialized
 		follower.set_meta("initialized", true)
@@ -230,4 +231,6 @@ func _on_item_taken(item_card: PackItemCardUI):
 			if child is PackItemCardUI and child == item_card:
 				# Remove the card from the container
 				_remove_item_card(child)
+				if card_followers.size() == 0:
+					all_cards_taken.emit()
 				break
