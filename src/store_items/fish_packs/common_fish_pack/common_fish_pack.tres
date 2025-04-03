@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="StoreItemData" load_steps=3 format=3 uid="uid://d07kp6nca3bp6"]
+[gd_resource type="Resource" script_class="StoreItemData" load_steps=4 format=3 uid="uid://d07kp6nca3bp6"]
 
 [ext_resource type="Texture2D" uid="uid://vh82l1pafrew" path="res://src/store_items/fish_packs/common_fish_pack/common_fish_pack.png" id="1_7o1kd"]
 [ext_resource type="Script" uid="uid://dlunup4cvhlxk" path="res://src/resources/store_items/store_item_data.gd" id="1_jnpxm"]
+[ext_resource type="Resource" uid="uid://8br5jqbkh4gi" path="res://src/loot_generator/loot_tables/common.tres" id="2_mb0i1"]
 
 [resource]
 script = ExtResource("1_jnpxm")
@@ -10,4 +11,6 @@ item_description = "Includes mostly common fish"
 item_price = 100
 item_icon = ExtResource("1_7o1kd")
 item_color = Color(1, 1, 1, 0)
+loot_table = ExtResource("2_mb0i1")
+number_of_items = 3
 metadata/_custom_type_script = "uid://dlunup4cvhlxk"

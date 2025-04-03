@@ -13,13 +13,32 @@ uniform highp float contrast = 3.5;
 uniform highp float lighting = 0.4;
 uniform highp float spin_amount = 0.25;
 uniform bool is_rotating = false;
+uniform highp float zoom = 1.0;
+uniform highp float fov = 1.0;
 #define SPIN_EASE 1.0
 
 
 vec4 effect(vec2 screenSize, vec2 screen_coords){
     // Remove pixelation by directly using normalized coordinates
     highp vec2 uv = (screen_coords.xy - 0.5*screenSize.xy)/length(screenSize.xy) - offset;
-    highp float uv_len = length(uv);
+    
+    // Apply zoom
+    uv *= zoom;
+    
+    // Apply FOV distortion (stretching towards edges)
+    highp float r = length(uv);
+    if (r > 0.0001) { // Avoid issues at the exact center
+        highp float theta = atan(uv.y, uv.x);
+        // Ensure fov is positive to avoid issues with pow
+        highp float safe_fov = max(fov, 0.01);
+        // Distort radius: pow(r, 1.0 / safe_fov) stretches edges more for fov > 1
+        highp float r_distorted = pow(r, 1.0 / safe_fov);
+        // Convert back to Cartesian
+        uv.x = r_distorted * cos(theta);
+        uv.y = r_distorted * sin(theta);
+    }
+    
+    highp float uv_len = length(uv); // uv_len is now based on distorted coordinates
 
 
     highp float speed = (spin_rotation_speed*SPIN_EASE*0.2);

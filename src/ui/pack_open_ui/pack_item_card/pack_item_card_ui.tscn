@@ -46,7 +46,7 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("3_1xhka")
 theme_override_font_sizes/font_size = 15
-text = "Common Food"
+text = "Unknown Unknown"
 horizontal_alignment = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="BG/VBoxContainer"]
@@ -58,7 +58,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("4_1qd0a")
 theme_override_font_sizes/font_size = 18
-text = "Basic Fish Food"
+text = "Unknown"
 horizontal_alignment = 1
 text_overrun_behavior = 3
 

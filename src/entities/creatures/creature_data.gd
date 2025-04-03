@@ -1,6 +1,8 @@
 @tool
-extends Resource
+extends ItemDataResource
 class_name CreatureData
+
+signal trigger_preview_update
 
 enum HungerBracket {
 	Starving,
@@ -73,8 +75,6 @@ enum HappinessBracket {
 ## 0 on the x axis is cold, 1 on the x axis is hot
 ## 0 on the y axis is dislike, 1 on the y axis is like
 @export var creature_temperature_preference: Curve = Curve.new()
-## The pool chances for the creature, this is used to determine the chance of the creature being spawned in the creature factory
-@export var creature_pool_chances: Array[PoolChance] = []
 
 @export_group("Instance Data DON'T TOUCH")
 ## A unique identifier for this creature instance
@@ -114,7 +114,6 @@ enum HappinessBracket {
 	get:
 		return creature_happiness
 
-signal trigger_preview_update
 
 # TEMPORARY VARIABLES
 ## Reference to the currently instantiated creature object spawned from this data
