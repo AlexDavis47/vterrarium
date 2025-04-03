@@ -14,7 +14,7 @@ const CONTENTMENT_LERP_SPEED: float = 0.2
 
 # Exported variables
 @export_group("Components")
-@export var creature_mesh: MeshInstance3D
+@export var creature_mesh_root: Node3D
 @export var _accessory_hat_attachment: Node3D
 
 @export_group("Debug")
@@ -75,12 +75,22 @@ func _initialize_creature() -> void:
 	scale = Vector3(creature_data.creature_size, creature_data.creature_size, creature_data.creature_size)
 
 func _setup_mesh() -> void:
-	creature_mesh.mesh = creature_mesh.mesh.duplicate(true)
-	var mesh: Mesh = creature_mesh.mesh
-	mesh.surface_set_material(0, mesh.surface_get_material(0).duplicate(true))
+	# Recursively find and process all MeshInstance3D nodes
+	_process_mesh_nodes(creature_mesh_root)
 	
 	_apply_tint()
 	_apply_accesories()
+
+func _process_mesh_nodes(node: Node) -> void:
+	for child in node.get_children():
+		if child is MeshInstance3D:
+			child.mesh = child.mesh.duplicate(true)
+			var mesh: Mesh = child.mesh
+			mesh.surface_set_material(0, mesh.surface_get_material(0).duplicate(true))
+		
+		# Recursively process children
+		if child.get_child_count() > 0:
+			_process_mesh_nodes(child)
 
 func _setup_physics() -> void:
 	if _is_in_preview_mode:
@@ -184,13 +194,26 @@ func _update_brackets() -> void:
 
 # Appearance methods
 func _apply_tint() -> void:
-	var material: StandardMaterial3D = creature_mesh.mesh.surface_get_material(0) as StandardMaterial3D
 	var tint_color: Color = _get_adjusted_tint_color()
 	
-	material.albedo_color = material.albedo_color.lerp(
-		tint_color,
-		creature_data.creature_tint_amount
-	)
+	# Find all meshes under the root and apply tint to each one
+	for child in get_children():
+		_apply_tint_to_node(child, tint_color)
+
+func _apply_tint_to_node(node: Node, tint_color: Color) -> void:
+	# Check if the node is a MeshInstance3D
+	if node is MeshInstance3D and node.mesh:
+		for surface_idx in range(node.mesh.get_surface_count()):
+			var material: StandardMaterial3D = node.mesh.surface_get_material(surface_idx) as StandardMaterial3D
+			if material:
+				material.albedo_color = material.albedo_color.lerp(
+					tint_color,
+					creature_data.creature_tint_amount
+				)
+	
+	# Recursively apply to all children
+	for child in node.get_children():
+		_apply_tint_to_node(child, tint_color)
 
 func _get_adjusted_tint_color() -> Color:
 	var tint_color: Color = creature_data.creature_tint

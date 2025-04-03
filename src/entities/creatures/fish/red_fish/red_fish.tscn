@@ -30,9 +30,9 @@ bind/3/name = &"Bone.004"
 bind/3/bone = -1
 bind/3/pose = Transform3D(-3.13916e-07, -1, 7.16906e-08, -8.2874e-08, 7.16907e-08, 1, -1, 3.13916e-07, -8.2874e-08, 0.00754569, -0.400509, 2.70425e-08)
 
-[node name="RedFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh", "_accessory_hat_attachment")]
+[node name="RedFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh_root", "_accessory_hat_attachment")]
 script = ExtResource("1_1ef07")
-creature_mesh = NodePath("Skeleton3D/Plane")
+creature_mesh_root = NodePath("Skeleton3D")
 _accessory_hat_attachment = NodePath("Skeleton3D/AccessoryHatSlot/Node3D")
 metadata/_custom_type_script = "uid://bse0c1u4ifhet"
 

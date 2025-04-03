@@ -79,7 +79,7 @@ var _pack_opening_scene: PackedScene = preload("uid://bxqwq0gowno71")
 
 func _ready():
 	_update_ui()
-	SaveManager.save_file.money_changed.connect(_update_ui)
+	SaveManager.save_file.money_changed.connect(_on_money_changed)
 
 ########################################################
 # Body
@@ -127,6 +127,13 @@ func _update_purchase_button():
 			purchase_button.disabled = true
 			purchase_button.modulate = Color(1, 1, 1, 0.35)
 
+func open_pack():
+	var opening_instance: PackOpenUI = _pack_opening_scene.instantiate()
+	var loot = LootGenerator.generate_loot(item_data.loot_table, item_data.number_of_items)
+	for item in loot:
+		opening_instance.add_item_card(item)
+	get_tree().root.add_child(opening_instance)
+
 ########################################################
 # Signal Handlers
 ########################################################
@@ -141,9 +148,5 @@ func _on_purchase_pressed():
 		else:
 			pass
 
-func open_pack():
-	var opening_instance: PackOpenUI = _pack_opening_scene.instantiate()
-	var loot = LootGenerator.generate_loot(item_data.loot_table, item_data.number_of_items)
-	for item in loot:
-		opening_instance.add_item_card(item)
-	get_tree().root.add_child(opening_instance)
+func _on_money_changed():
+	_update_ui()
