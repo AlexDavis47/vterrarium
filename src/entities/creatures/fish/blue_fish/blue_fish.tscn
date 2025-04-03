@@ -58,7 +58,7 @@ visible = false
 mesh = SubResource("CylinderMesh_rd2k2")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.155187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.259869)
 bones/0/name = "Bone.001"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 8.11857e-07, 1.50996e-07, 1.50996e-07, 0, -1, -8.11857e-07, 1, 0, -1.28797e-07, 2.98023e-08, -0.143748)
