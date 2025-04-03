@@ -204,6 +204,7 @@ func _update_age() -> void:
 
 func _on_close_button_pressed() -> void:
 	VTGlobal.onscreen_keyboard.hide()
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	queue_free()
 
 func _on_name_button_pressed() -> void:
@@ -212,6 +213,7 @@ func _on_name_button_pressed() -> void:
 	text_entry_ui.placeholder = creature_data.creature_name
 	text_entry_ui.text = creature_data.creature_name
 	text_entry_ui.text_confirmed.connect(_on_text_entry_ui_text_confirmed)
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	add_child(text_entry_ui)
 
 func _on_name_rename_button_pressed() -> void:
@@ -220,12 +222,14 @@ func _on_name_rename_button_pressed() -> void:
 	text_entry_ui.placeholder = creature_data.creature_name
 	text_entry_ui.text = creature_data.creature_name
 	text_entry_ui.text_confirmed.connect(_on_text_entry_ui_text_confirmed)
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	add_child(text_entry_ui)
 
 func _on_accessory_equip_menu_button_pressed() -> void:
 	var accessory_equip_menu = _accessory_equip_menu_scene.instantiate()
 	accessory_equip_menu.creature_data = creature_data
 	add_child(accessory_equip_menu)
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 
 func _on_creature_data_trigger_preview_update() -> void:
 	_creature_live_subviewport_container.clear_root_node()
@@ -243,4 +247,5 @@ func _on_process_scheduler_tick_second(_delta: float) -> void:
 
 func _on_sell_button_pressed() -> void:
 	CreatureFactory.sell_creature(creature_data)
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	queue_free()

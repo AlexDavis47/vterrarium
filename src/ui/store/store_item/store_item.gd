@@ -139,6 +139,7 @@ func open_pack():
 ########################################################
 
 func _on_purchase_pressed():
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	if item_data:
 		if SaveManager.save_file.money >= item_data.item_price:
 			SaveManager.save_file.money -= item_data.item_price
