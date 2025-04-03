@@ -15,6 +15,8 @@ class_name AccessoryData
 @export var accessory_rarity: Enums.Rarity = Enums.Rarity.Common
 ## The image of the accessory, used to display in the inventory
 @export var accessory_image: Texture2D = null
+## The price of the accessory
+@export var accessory_price: int = 0
 ## The UUID of the accessory's scene
 @export var accessory_scene_uuid: String = ""
 
@@ -27,6 +29,14 @@ class_name AccessoryData
 		accessory_happiness_bonus = clamp(value, -1.0, 1.0)
 	get:
 		return accessory_happiness_bonus
+## The temperature bonus this accessory provides
+@export var accessory_temperature_bonus: float = 0.0
+## The brightness bonus this accessory provides
+@export var accessory_brightness_bonus: float = 0.0:
+	set(value):
+		accessory_brightness_bonus = clamp(value, -1.0, 1.0)
+	get:
+		return accessory_brightness_bonus
 
 @export_group("Instance Data DON'T TOUCH")
 ## A unique identifier for this accessory instance
@@ -51,6 +61,9 @@ func is_equipped() -> bool:
 
 func get_creature_id() -> String:
 	return creature_equipped_id
+
+func get_price() -> int:
+	return accessory_price
 
 ## Called when the accessory is generated, sets the unique ID
 func on_generated(luck: float) -> void:

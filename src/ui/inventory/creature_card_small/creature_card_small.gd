@@ -96,12 +96,14 @@ func _on_add_remove_button_pressed() -> void:
 	else:
 		CreatureFactory.spawn_creature(creature_data)
 	add_remove_button_pressed.emit(creature_data)
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 
 func _on_detail_button_pressed() -> void:
 	detail_button_pressed.emit(creature_data)
 	_open_detailed_view()
-	
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 
 func _on_preview_button_pressed() -> void:
 	detail_button_pressed.emit(creature_data)
 	_open_detailed_view()
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)

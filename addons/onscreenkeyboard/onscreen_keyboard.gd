@@ -6,54 +6,54 @@ class_name OnscreenKeyboard
 ## SETTINGS
 ###########################
 
-@export var auto_show:bool = true
-@export var animate:bool = true
+@export var auto_show: bool = true
+@export var animate: bool = true
 
 @export_file var custom_layout_file
 @export var set_tool_tip := true
 @export_group("Style")
-@export var separation:Vector2i = Vector2i(0,0)
-var style_background:StyleBoxFlat = null
-@export var background:StyleBoxFlat = null:
+@export var separation: Vector2i = Vector2i(0, 0)
+var style_background: StyleBoxFlat = null
+@export var background: StyleBoxFlat = null:
 	set(new_val):
 		style_background = new_val
 		background = new_val
 	get:
 		return style_background
-var style_normal:StyleBoxFlat = null
-@export var normal:StyleBoxFlat = null:
+var style_normal: StyleBoxFlat = null
+@export var normal: StyleBoxFlat = null:
 	set(new_val):
 		style_normal = new_val
 		normal = new_val
 	get:
 		return style_normal
-var style_hover:StyleBoxFlat = null
-@export var hover:StyleBoxFlat = null:
+var style_hover: StyleBoxFlat = null
+@export var hover: StyleBoxFlat = null:
 	set(new_val):
 		style_hover = new_val
 		hover = new_val
 	get:
 		return style_hover
-var style_pressed:StyleBoxFlat = null
-@export var pressed:StyleBoxFlat = null:
+var style_pressed: StyleBoxFlat = null
+@export var pressed: StyleBoxFlat = null:
 	set(new_val):
 		style_pressed = new_val
 		pressed = new_val
 	get:
 		return style_pressed
-var style_special_keys:StyleBoxFlat = null
-@export var special_keys:StyleBoxFlat = null:
+var style_special_keys: StyleBoxFlat = null
+@export var special_keys: StyleBoxFlat = null:
 	set(new_val):
 		style_special_keys = new_val
 		special_keys = new_val
 	get:
 		return style_special_keys
 @export_group("Font")
-@export var font:FontFile
-@export var font_size:int = 20
-@export var font_color_normal:Color = Color(1,1,1)
-@export var font_color_hover:Color = Color(1,1,1)
-@export var font_color_pressed:Color = Color(1,1,1)
+@export var font: FontFile
+@export var font_size: int = 20
+@export var font_color_normal: Color = Color(1, 1, 1)
+@export var font_color_hover: Color = Color(1, 1, 1)
+@export var font_color_pressed: Color = Color(1, 1, 1)
 
 ###########################
 ## SIGNALS
@@ -162,7 +162,7 @@ func _update_auto_display_on_input(event):
 					_hide_keyboard()
 
 
-func _hide_keyboard(key_data=null):
+func _hide_keyboard(key_data = null):
 	if animate:
 		var new_y_pos = get_viewport().get_visible_rect().size.y + 10
 		animate_position(Vector2(position.x, new_y_pos), true)
@@ -170,19 +170,19 @@ func _hide_keyboard(key_data=null):
 		change_visibility(false)
 
 
-func _show_keyboard(key_data=null):
+func _show_keyboard(key_data = null):
 	change_visibility(true)
 	if animate:
 		var new_y_pos = get_viewport().get_visible_rect().size.y - size.y
 		animate_position(Vector2(position.x, new_y_pos))
 
 
-func animate_position(new_position, trigger_visibility:bool=false):
+func animate_position(new_position, trigger_visibility: bool = false):
 	var tween = get_tree().create_tween()
 	if trigger_visibility:
 		tween.finished.connect(change_visibility.bind(!visible))
 	tween.tween_property(
-		self,"position",
+		self, "position",
 		Vector2(new_position),
 		tween_speed
 	).set_trans(Tween.TRANS_SINE)
@@ -267,6 +267,7 @@ func _trigger_uppercase(key_data):
 
 
 func _key_released(key_data):
+	AudioManager.play_sfx(AudioManager.SFX.TYPEWRITER_1, 0.8, 1.2)
 	if key_data.has("output"):
 		var key_value = key_data.get("output")
 
@@ -283,7 +284,7 @@ func _key_released(key_data):
 
 		var key = KeyListHandler.get_key_from_string(key_value)
 		if !uppercase && KeyListHandler.has_lowercase(key_value):
-			key +=32
+			key += 32
 
 		input_event_key.keycode = key
 		input_event_key.unicode = key
@@ -300,7 +301,7 @@ func _key_released(key_data):
 ## CONSTRUCT KEYBOARD
 ###########################
 
-func _set_key_style(style_name:String, key: Control, style:StyleBoxFlat):
+func _set_key_style(style_name: String, key: Control, style: StyleBoxFlat):
 	if style != null:
 		key.add_theme_stylebox_override(style_name, style)
 
@@ -327,7 +328,6 @@ func _create_keyboard(layout_data):
 
 	var index = 0
 	for layout in data.get("layouts"):
-
 		var layout_container = PanelContainer.new()
 
 		if style_background != null:
@@ -353,7 +353,6 @@ func _create_keyboard(layout_data):
 		base_vbox.add_theme_constant_override("separation", separation.y)
 
 		for row in layout.get("rows"):
-
 			var key_row = HBoxContainer.new()
 			key_row.size_flags_horizontal = SIZE_EXPAND_FILL
 			key_row.size_flags_vertical = SIZE_EXPAND_FILL
@@ -362,9 +361,9 @@ func _create_keyboard(layout_data):
 			for key in row.get("keys"):
 				var new_key = KeyboardButton.new(key)
 
-				_set_key_style("normal",new_key, style_normal)
-				_set_key_style("hover",new_key, style_hover)
-				_set_key_style("pressed",new_key, style_pressed)
+				_set_key_style("normal", new_key, style_normal)
+				_set_key_style("hover", new_key, style_hover)
+				_set_key_style("pressed", new_key, style_pressed)
 
 				new_key.set('theme_override_font_sizes/font_size', font_size)
 				if font != null:
@@ -380,37 +379,37 @@ func _create_keyboard(layout_data):
 				if key.has("type"):
 					if key.get("type") == "switch-layout":
 						new_key.released.connect(_switch_layout)
-						_set_key_style("normal",new_key, style_special_keys)
+						_set_key_style("normal", new_key, style_special_keys)
 					elif key.get("type") == "special":
-						_set_key_style("normal",new_key, style_special_keys)
+						_set_key_style("normal", new_key, style_special_keys)
 					elif key.get("type") == "special-shift":
 						new_key.released.connect(_trigger_uppercase)
 						new_key.toggle_mode = true
 						capslock_keys.push_back(new_key)
-						_set_key_style("normal",new_key, style_special_keys)
+						_set_key_style("normal", new_key, style_special_keys)
 					elif key.get("type") == "special-hide-keyboard":
 						new_key.released.connect(_hide_keyboard)
-						_set_key_style("normal",new_key, style_special_keys)
+						_set_key_style("normal", new_key, style_special_keys)
 
 				# SET ICONS
 				if key.has("display-icon"):
 					var icon_data = str(key.get("display-icon")).split(":")
 					# PREDEFINED
-					if str(icon_data[0])=="PREDEFINED":
-						if str(icon_data[1])=="DELETE":
+					if str(icon_data[0]) == "PREDEFINED":
+						if str(icon_data[1]) == "DELETE":
 							new_key.set_icon(ICON_DELETE)
-						elif str(icon_data[1])=="SHIFT":
+						elif str(icon_data[1]) == "SHIFT":
 							new_key.set_icon(ICON_SHIFT)
-						elif str(icon_data[1])=="LEFT":
+						elif str(icon_data[1]) == "LEFT":
 							new_key.set_icon(ICON_LEFT)
-						elif str(icon_data[1])=="RIGHT":
+						elif str(icon_data[1]) == "RIGHT":
 							new_key.set_icon(ICON_RIGHT)
-						elif str(icon_data[1])=="HIDE":
+						elif str(icon_data[1]) == "HIDE":
 							new_key.set_icon(ICON_HIDE)
-						elif str(icon_data[1])=="ENTER":
+						elif str(icon_data[1]) == "ENTER":
 							new_key.set_icon(ICON_ENTER)
 					# CUSTOM
-					if str(icon_data[0])=="res":
+					if str(icon_data[0]) == "res":
 						var texture = load(key.get("display-icon"))
 						new_key.set_icon(texture)
 
@@ -423,7 +422,7 @@ func _create_keyboard(layout_data):
 			base_vbox.add_child(key_row)
 
 		layout_container.add_child(base_vbox)
-		index+=1
+		index += 1
 
 
 ###########################
@@ -443,7 +442,7 @@ func _load_json(file_path) -> Variant:
 			return {"msg": "unexpected data => expected DICTIONARY"}
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-		return {"msg":json.get_error_message()}
+		return {"msg": json.get_error_message()}
 
 
 func _load_file(file_path):

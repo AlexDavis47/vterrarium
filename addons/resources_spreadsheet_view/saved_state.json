@@ -2,24 +2,24 @@
   "column_properties": {
     "res://src/accessories/": {
       "metadata/_custom_type_script": {
-        "visibility": 0
+        "visibility": 0.0
       },
       "resource_local_to_scene": {
-        "visibility": 0
+        "visibility": 0.0
       },
       "resource_name": {
-        "visibility": 0
+        "visibility": 0.0
       }
     },
     "res://src/loot_generator/loot_tables/": {
       "metadata/_custom_type_script": {
-        "visibility": 0
+        "visibility": 0.0
       },
       "resource_local_to_scene": {
-        "visibility": 0
+        "visibility": 0.0
       },
       "resource_name": {
-        "visibility": 0
+        "visibility": 0.0
       }
     }
   },
@@ -28,6 +28,11 @@
     "res://src/loot_generator/loot_tables/"
   ],
   "table_functions": {
-
+    "filter": [
+      "return true"
+    ],
+    "process": [
+      "return value"
+    ]
   }
 }

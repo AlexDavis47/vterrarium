@@ -136,4 +136,5 @@ func take_item():
 ########################################################
 
 func _on_take_button_pressed():
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	take_item()

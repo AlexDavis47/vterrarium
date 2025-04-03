@@ -21,10 +21,10 @@ signal request_update()
 
 func _ready():
 	equip_button.pivot_offset = equip_button.size / 2
+	equip_button.pressed.connect(self._on_equip_button_pressed)
 
 
 func update_ui() -> void:
-	equip_button.pressed.connect(self._on_equip_button_pressed)
 	_update_rarity_type_label()
 	_update_accessory_name_label()
 	_update_accessory_image()
@@ -68,6 +68,8 @@ func _on_equip_button_pressed() -> void:
 		AccessoryFactory.unequip_accessory(accessory_data, creature_data)
 		accessory_unequipped.emit(accessory_data, creature_data)
 		request_update.emit()
+		
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_SINE)

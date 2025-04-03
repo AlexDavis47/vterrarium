@@ -27,4 +27,5 @@ func _on_accessory_unequipped(accessory_data: AccessoryData, creature_data: Crea
 	accessory_unequipped.emit(accessory_data, creature_data)
 
 func _on_close_button_pressed() -> void:
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	queue_free()

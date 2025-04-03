@@ -4,6 +4,26 @@ extends Node
 var all_menus_closed: bool = true
 
 
+var _money_per_hour: float = 0.0
+var _last_money: float = 0.0
+
+var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
+
+
+func _ready():
+	if not Engine.is_editor_hint():
+		_process_scheduler.tick_second.connect(_on_money_per_hour_tick)
+		add_child(_process_scheduler)
+
+
+func _on_money_per_hour_tick(delta: float):
+	if Engine.is_editor_hint():
+		return
+	var current_money: float = SaveManager.save_file.money
+	var money_delta: float = current_money - _last_money
+	_last_money = current_money
+	_money_per_hour = money_delta * 3600.0
+
 ## Generate a unique ID
 func generate_unique_id() -> String:
 	return str(randi()) + str(int(Time.get_unix_time_from_system()))
@@ -40,16 +60,6 @@ func convert_long_int_to_string(number: int) -> String:
 ## EG: 154345.75 returns "154.3k", 1543450000.5 returns "1.5B"
 func convert_long_float_to_string(number: float) -> String:
 	return convert_long_int_to_string(int(number))
-
-
-## Play a sound effect
-func play_sfx(sfx: AudioStream, min_pitch: float = 1.0, max_pitch: float = 1.0) -> void:
-	var sfx_player: AudioStreamPlayer = AudioStreamPlayer.new()
-	sfx_player.stream = sfx
-	sfx_player.pitch_scale = randf_range(min_pitch, max_pitch)
-	get_tree().root.add_child(sfx_player)
-	sfx_player.play()
-	sfx_player.finished.connect(sfx_player.queue_free)
 
 
 func get_total_creature_happiness_percentage() -> float:

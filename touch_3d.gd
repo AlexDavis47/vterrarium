@@ -34,7 +34,6 @@ func screen_to_world(screen_pos: Vector2) -> Vector3:
 	var space_state = get_world_3d().direct_space_state
 	var ray_result = space_state.intersect_ray(query)
 	if ray_result.has("position"):
-		print("Ray collided with: ", ray_result["collider"])
 		return ray_result["position"]
 	else:
 		return from

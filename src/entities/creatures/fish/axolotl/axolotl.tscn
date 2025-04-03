@@ -161,9 +161,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="BlueFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh", "_accessory_hat_attachment")]
+[node name="Axolotl" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh_root", "_accessory_hat_attachment")]
 script = ExtResource("1_42kge")
-creature_mesh = NodePath("Skeleton3D/Plane_004")
+creature_mesh_root = NodePath("Skeleton3D")
 _accessory_hat_attachment = NodePath("Skeleton3D/AccessoryHatSlot/Node3D")
 metadata/_custom_type_script = "uid://bse0c1u4ifhet"
 
@@ -189,7 +189,7 @@ visible = false
 mesh = SubResource("CylinderMesh_rd2k2")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
-transform = Transform3D(1, 0, -1.85101e-20, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, 0.42568)
+transform = Transform3D(1, 0, -1.85101e-20, 0, 1, 0, 0, 0, 1, 1.42109e-14, 0, 0.372663)
 bones/0/name = "Bone.001"
 bones/0/parent = -1
 bones/0/rest = Transform3D(-3.57628e-07, 0, -1, -1, 1.19209e-07, 3.57628e-07, 1.19209e-07, 1, 0, 1.90867e-08, 0.00669783, -0.142448)
@@ -267,7 +267,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="AccessoryHatSlot" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(-3.57628e-07, 0, -1, -1, 1.19209e-07, 3.57628e-07, 1.19209e-07, 1, 0, 1.90867e-08, 0.00669783, -0.142448)
+transform = Transform3D(0, 0, -1, -1, 0, 0, 0, 1, 0, 1.90867e-08, 0.00669783, -0.142448)
 bone_name = "Bone.001"
 bone_idx = 0
 

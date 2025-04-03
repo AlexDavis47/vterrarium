@@ -100,9 +100,11 @@ func _on_line_edit_text_change_rejected(_text: String):
 	_shake_label(remaining_characters_label)
 
 func _on_confirm_button_pressed():
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	emit_signal("text_confirmed", line_edit.text)
 	queue_free()
 
 func _on_cancel_button_pressed():
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	emit_signal("text_cancelled")
 	queue_free()

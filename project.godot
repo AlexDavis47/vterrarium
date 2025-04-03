@@ -44,6 +44,7 @@ CreatureFactory="*res://src/creature_factory/creature_factory.gd"
 FoodFactory="*res://src/entities/foods/food_factory.gd"
 AccessoryFactory="*res://src/accessories/accessory_factory.gd"
 LootGenerator="*res://src/loot_generator/loot_generator.gd"
+AudioManager="*res://src/audio/audio_manager.gd"
 
 [display]
 

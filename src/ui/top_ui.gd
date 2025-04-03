@@ -121,6 +121,7 @@ func _on_debug_menu_button_pressed():
 	get_tree().root.add_child(debug_menu)
 	debug_menu.closed.connect(_on_debug_menu_closed)
 	debug_menu_button.visible = false
+	AudioManager.play_sfx(AudioManager.SFX.POP_2, 0.8, 1.2)
 	
 
 func _on_debug_menu_closed():

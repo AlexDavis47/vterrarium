@@ -32,6 +32,7 @@ func _ready():
 ########################################################
 
 func _on_close_button_pressed():
+	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	close_button.disabled = true
 	close_button.visible = false
 	var tween = create_tween()

@@ -1,18 +1,11 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://bi10nf3pilsau"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://bi10nf3pilsau"]
 
 [ext_resource type="Texture2D" uid="uid://3q7k3dgrk4qr" path="res://src/entities/creatures/fish/blue_fish/blue_fish.png" id="1_ev6t0"]
-[ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_p64e1"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_ih6k1"]
 
 [sub_resource type="Curve" id="Curve_ok7cm"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Vector2(0.534682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
-
-[sub_resource type="Resource" id="Resource_ev6t0"]
-script = ExtResource("2_p64e1")
-pool = 0
-chance = 0.455
-metadata/_custom_type_script = "uid://c5xpqttwi67b6"
 
 [sub_resource type="Curve" id="Curve_jevmt"]
 _limits = [0.0, 1.0, 0.0, 110.0]
@@ -37,7 +30,6 @@ creature_satiation = 1.0
 creature_speed = 1.0
 creature_light_preference = SubResource("Curve_ok7cm")
 creature_temperature_preference = SubResource("Curve_jevmt")
-creature_pool_chances = Array[ExtResource("2_p64e1")]([SubResource("Resource_ev6t0")])
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false
