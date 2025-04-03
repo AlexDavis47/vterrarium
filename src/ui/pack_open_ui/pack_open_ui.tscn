@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxqwq0gowno71"]
 
 [ext_resource type="Shader" uid="uid://brya77h3m5a20" path="res://src/ui/pack_open_ui/pack_open_ui.gdshader" id="1_a3l4q"]
-[ext_resource type="Script" path="res://src/ui/pack_open_ui/pack_open_ui.gd" id="1_tqlw8"]
+[ext_resource type="Script" uid="uid://bopu1wlcybxfr" path="res://src/ui/pack_open_ui/pack_open_ui.gd" id="1_tqlw8"]
 [ext_resource type="FontFile" uid="uid://dau51bc2eerp5" path="res://assets/fonts/RedHatDisplay-Light.ttf" id="2_q4fca"]
 [ext_resource type="Script" uid="uid://du5i8jnoug7ir" path="res://src/ui/pack_open_ui/item_card_container.gd" id="3_tqlw8"]
 
@@ -37,8 +37,7 @@ _data = {
 }
 point_count = 3
 
-[node name="PackOpenUi" type="Control"]
-visible = false
+[node name="PackOpenUi" type="Control" node_paths=PackedStringArray("item_card_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,6 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tqlw8")
+item_card_container = NodePath("VBoxContainer/ItemCardContainer")
 
 [node name="PackOpenUIBG" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_a3l4q")

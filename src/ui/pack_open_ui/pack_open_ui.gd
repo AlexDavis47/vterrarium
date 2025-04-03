@@ -1,10 +1,10 @@
 extends Control
 class_name PackOpenUI
 
-
-func _add_creature_card(card: PackItemCardUI):
-    pass
+@export var item_card_container: ItemCardContainer
 
 
-func _add_item_card(card: PackItemCardUI):
-    pass
+func _ready():
+	for i in range(6):
+		var creature = CreatureFactory.generate_creature_from_pool(CreatureFactory.CreaturePool.COMMON)
+		item_card_container.add_item_card(creature)

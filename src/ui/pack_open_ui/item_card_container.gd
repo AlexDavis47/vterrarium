@@ -1,4 +1,5 @@
 extends Control
+class_name ItemCardContainer
 
 @export var card_path: Path2D
 @export var card_appearance_delay: float = 0.15
@@ -15,12 +16,6 @@ func _ready():
 	if not card_path:
 		push_error("Card Path2D not assigned to ItemCardContainer!")
 		return
-
-	# Add 6 cards to the container
-	for i in range(6):
-		var card_instance: PackItemCardUI = card.instantiate()
-		card_instance.data = CreatureFactory.create_creature(CreatureFactory.Creatures.AXOLOTL)
-		_add_item_card(card_instance)
 	
 	# Explicitly call the animation distribution after adding all cards
 	call_deferred("distribute_cards_with_animation")
@@ -65,6 +60,15 @@ func _add_item_card(item_card: PackItemCardUI):
 		tween.set_trans(Tween.TRANS_BACK)
 		tween.tween_property(item_card, "modulate:a", 1.0, 0.3)
 		tween.parallel().tween_property(item_card, "scale", Vector2.ONE, 0.3)
+
+func add_item_card(item: Resource) -> PackItemCardUI:
+	if !item:
+		return null
+	var item_card = card.instantiate()
+	item_card.item = item
+	_add_item_card(item_card)
+	return item_card
+
 
 func _remove_item_card(item_card: PackItemCardUI):
 	# Find the PathFollow2D parent of this card

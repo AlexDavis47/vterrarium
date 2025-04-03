@@ -140,13 +140,13 @@ func remove_creature_by_data(creature_data: CreatureData) -> void:
 	creature_removed.emit(creature_data)
 
 
-func _generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
+func generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
 	var viable_creatures: Array[Creatures] = []
 	var viable_chances: Dictionary = {}
 	
 	for creature_type in creature_data_templates.keys():
-		var template = creature_data_templates[creature_type]
-		for pool_chance in template.creature_pool_chances:
+		var template : CreatureData = creature_data_templates[creature_type]
+		for pool_chance : PoolChance in template.creature_pool_chances:
 			if pool_chance.pool == pool:
 				viable_creatures.append(creature_type)
 				viable_chances[creature_type] = pool_chance.chance

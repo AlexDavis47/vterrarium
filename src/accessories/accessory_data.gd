@@ -1,5 +1,5 @@
 @tool
-extends Resource
+extends ItemDataResource
 class_name AccessoryData
 
 

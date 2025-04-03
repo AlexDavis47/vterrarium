@@ -1,13 +1,8 @@
 ## This resource contains data to determine the properties of a food item.
 ## It will be used both in UI, as well as in the fish food entities spawned from the item.
 @tool
-extends Resource
+extends ItemDataResource
 class_name FishFoodData
-
-## Only one type of food is currently supported.
-enum FoodType {
-	FLAKES
-}
 
 signal food_name_changed(value: String)
 signal food_description_changed(value: String)
@@ -17,6 +12,13 @@ signal food_value_changed(value: float)
 signal food_lifetime_changed(value: float)
 signal food_color_changed(value: Color)
 signal food_rarity_changed(value: Enums.Rarity)
+
+## Only one type of food is currently supported.
+enum FoodType {
+	FLAKES
+}
+
+
 @export_group("Food Properties")
 ## The display name of this food type
 @export var food_name: String = "Fish Food":

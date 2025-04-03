@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=6 format=3 uid="uid://x7f8v6e3a7u2"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=7 format=3 uid="uid://x7f8v6e3a7u2"]
 
 [ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/entities/creatures/fish/red_fish/red_fish.png" id="1_bxbqi"]
 [ext_resource type="Script" uid="uid://c5xpqttwi67b6" path="res://src/creature_factory/pool_chance.gd" id="2_v5ji4"]
@@ -7,6 +7,12 @@
 [sub_resource type="Curve" id="Curve_o7ssr"]
 _data = [Vector2(0, 0.495918), 0.0, 0.0, 0, 0, Vector2(0.0606061, 1), 0.0, 0.0, 0, 0, Vector2(0.937229, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.495918), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="Resource" id="Resource_bxbqi"]
+script = ExtResource("2_v5ji4")
+pool = 0
+chance = 0.935
+metadata/_custom_type_script = "uid://c5xpqttwi67b6"
 
 [sub_resource type="Curve" id="Curve_ak5as"]
 _limits = [0.0, 1.0, 0.0, 110.0]
@@ -32,7 +38,7 @@ creature_satiation = 1.0
 creature_speed = 1.0
 creature_light_preference = SubResource("Curve_o7ssr")
 creature_temperature_preference = SubResource("Curve_ak5as")
-creature_pool_chances = Array[ExtResource("2_v5ji4")]([])
+creature_pool_chances = Array[ExtResource("2_v5ji4")]([SubResource("Resource_bxbqi")])
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false
