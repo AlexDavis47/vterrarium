@@ -31,7 +31,7 @@ var creature_data_templates: Dictionary[Creatures, CreatureData] = {
 	Creatures.AXOLOTL: preload("uid://b2whh0mnx8dh")
 }
 
-signal creature_spawned(creature_data: CreatureData)
+signal creature_added(creature_data: CreatureData)
 signal creature_removed(creature_data: CreatureData)
 
 
@@ -113,6 +113,7 @@ func _add_creature_to_tank(creature_data: CreatureData) -> void:
 	creature.creature_data = creature_data
 	creature_data.creature_is_in_tank = true
 	creature_data.creature_instance = creature
+
 	
 	# Add to scene tree after all data is properly set
 	call_deferred("_deferred_add_creature", creature)
@@ -120,28 +121,34 @@ func _add_creature_to_tank(creature_data: CreatureData) -> void:
 # New method to safely add creature to scene tree
 func _deferred_add_creature(creature: Node) -> void:
 	add_child(creature)
+	creature_added.emit(creature.creature_data)
 
 ## Removes a creature from the tank
 func _remove_creature_from_tank(creature_data: CreatureData) -> void:
 	creature_data.creature_is_in_tank = false
-	creature_data.creature_instance.queue_free()
+	if is_instance_valid(creature_data.creature_instance):
+		creature_data.creature_instance.queue_free()
 	creature_data.creature_instance = null
+	# Emit signal after creature is properly removed
+	creature_removed.emit(creature_data)
 
 ## Public method to spawn a creature in the tank
 func spawn_creature(creature_data: CreatureData) -> void:
+	if creature_data.creature_is_in_tank:
+		return
+	if get_number_of_creatures_in_tank() >= SaveManager.save_file.tank_capacity:
+		return
 	_add_creature_to_tank(creature_data)
-	creature_spawned.emit(creature_data)
 	AudioManager.play_sfx(AudioManager.SFX.SPLASH_1, 0.8, 1.2)
 
 ## Public method to remove a creature from the tank
 func remove_creature(creature: Creature) -> void:
-	if creature.creature_data:
+	if is_instance_valid(creature) and creature.creature_data:
 		_remove_creature_from_tank(creature.creature_data)
-		creature_removed.emit(creature.creature_data)
 		
 func remove_creature_by_data(creature_data: CreatureData) -> void:
-	_remove_creature_from_tank(creature_data)
-	creature_removed.emit(creature_data)
+	if creature_data and creature_data.creature_is_in_tank:
+		_remove_creature_from_tank(creature_data)
 
 
 func generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
@@ -159,6 +166,10 @@ func generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
 	for creature_type in viable_creatures:
 		total_chance += viable_chances[creature_type]
 
+	# Handle case where no creatures are available for this pool
+	if total_chance <= 0 or viable_creatures.is_empty():
+		return null
+
 	var random_value: float = randf_range(0.0, total_chance)
 	var cumulative_chance: float = 0.0
 	
@@ -167,23 +178,32 @@ func generate_creature_from_pool(pool: CreaturePool) -> CreatureData:
 		if random_value <= cumulative_chance:
 			return create_creature(creature_type)
 
+	# Fallback in case of floating point errors
+	if not viable_creatures.is_empty():
+		return create_creature(viable_creatures[viable_creatures.size() - 1])
 	return null
 
 
 func get_creature_by_id(id: String) -> CreatureData:
+	if id.is_empty():
+		return null
 	for creature in SaveManager.save_file.creature_inventory:
 		if creature.creature_id == id:
 			return creature
 	return null
 
 func get_creature_instance_by_id(id: String) -> Creature:
+	if id.is_empty():
+		return null
 	for creature in get_tree().get_nodes_in_group("creatures"):
-		if creature.creature_data.creature_id == id:
+		if is_instance_valid(creature) and creature.creature_data and creature.creature_data.creature_id == id:
 			return creature
 	return null
 
 
 func create_creature_preview(creature_data: CreatureData) -> Creature:
+	if not creature_data:
+		return null
 	var creature_scene = load(creature_data.creature_scene_uuid)
 	var creature = creature_scene.instantiate()
 	creature.creature_data = creature_data
@@ -192,14 +212,27 @@ func create_creature_preview(creature_data: CreatureData) -> Creature:
 	return creature
 
 func sell_creature(creature_data: CreatureData) -> void:
+	if not creature_data:
+		return
 	if creature_data.creature_is_in_tank:
-		remove_creature(creature_data.creature_instance)
+		if is_instance_valid(creature_data.creature_instance):
+			remove_creature(creature_data.creature_instance)
+		else:
+			creature_data.creature_is_in_tank = false
 	AccessoryFactory.unequip_all_accessories(creature_data)
 	SaveManager.save_file.creature_inventory.erase(creature_data)
 	SaveManager.save_file.money += creature_data.get_price()
+	# Ensure signal is emitted even if creature was not in tank
 	creature_removed.emit(creature_data)
 	AudioManager.play_sfx(AudioManager.SFX.COINS_1, 0.8, 1.2)
 	VTGlobal.trigger_inventory_refresh.emit()
+
+func get_number_of_creatures_in_tank() -> int:
+	var count: int = 0
+	for creature in get_tree().get_nodes_in_group("creatures"):
+		if is_instance_valid(creature) and creature.creature_data and creature.creature_data.creature_is_in_tank:
+			count += 1
+	return count
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):

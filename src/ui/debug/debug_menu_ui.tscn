@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dk08klp38nyv6"]
+[gd_scene load_steps=15 format=3 uid="uid://dk08klp38nyv6"]
 
 [ext_resource type="Script" uid="uid://bd3qy6ejxwul8" path="res://src/ui/debug/debug_menu_ui.gd" id="1_js7ux"]
 [ext_resource type="Texture2D" uid="uid://gx45fusvwys2" path="res://src/ui/debug/textures/Debug Menu (2).png" id="2_hcp6s"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bkgugserf7cyk" path="res://src/ui/debug/final_brightness.gd" id="9_lg7i2"]
 [ext_resource type="PackedScene" uid="uid://8l1yrrxl4xx8" path="res://src/ui/value_monitor_meter/value_monitor_meter_ui.tscn" id="10_k7lll"]
 [ext_resource type="Script" uid="uid://bkfte5laxqp30" path="res://src/ui/debug/current_tempurature.gd" id="11_k7lll"]
+[ext_resource type="Script" uid="uid://blqd87pdpl3l2" path="res://src/ui/debug/add_money.gd" id="12_1prrj"]
 [ext_resource type="Script" uid="uid://uaerhkahpvkv" path="res://src/ui/debug/current_air_humidity.gd" id="12_1vw62"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tdf5"]
@@ -246,6 +247,21 @@ unit = "%"
 title = ""
 content_padding = Vector2(0, 12.795)
 meter_thickness_ratio = 0.48
+
+[node name="AddMoney" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("12_1prrj")
+button = NodePath("MarginContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddMoney"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddMoney/MarginContainer"]
+layout_mode = 2
+text = "Add 1000 Coins"
 
 [node name="TextureRect2" type="TextureButton" parent="."]
 layout_mode = 0

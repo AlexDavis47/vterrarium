@@ -235,7 +235,8 @@ func _respawn_creatures() -> void:
 	print("Respawning creatures")
 	for creature in save_file.creature_inventory:
 		if creature.creature_is_in_tank:
-			CreatureFactory.spawn_creature(creature)
+			# Bypass public method for this special case
+			CreatureFactory._add_creature_to_tank(creature)
 
 ## Returns the full path for a save file with the given ID
 func get_save_file_path(save_id: String) -> String:

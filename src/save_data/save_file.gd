@@ -11,7 +11,7 @@ signal user_name_changed(new_user_name: String)
 signal created_at_changed(new_created_at: Dictionary)
 signal last_saved_at_changed(new_last_saved_at: Dictionary)
 signal save_id_changed(new_save_id: String)
-
+signal tank_capacity_changed(new_tank_capacity: float)
 
 ## The version of the save file
 @export var save_version: int = 1:
@@ -48,6 +48,13 @@ signal save_id_changed(new_save_id: String)
 	set(value):
 		money = value
 		money_changed.emit(value)
+
+## The max capacity of the tank
+@export var tank_capacity: int = 5:
+	set(value):
+		tank_capacity = value
+		tank_capacity_changed.emit(value)
+
 
 ## The inventory of creatures the player has
 @export var creature_inventory: Array[CreatureData] = []:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bda2an2nm10ol"]
+[gd_scene load_steps=11 format=3 uid="uid://bda2an2nm10ol"]
 
 [ext_resource type="Script" uid="uid://bux8cayr23de8" path="res://src/ui/inventory/inventory.gd" id="1_1deq4"]
 [ext_resource type="Script" uid="uid://b2maci0i0q0rj" path="res://src/ui/inventory/creature_grid.gd" id="1_7f777"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ik5uq4jsm3od" path="res://assets/textures/bubbles.png" id="3_1265r"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="4_2wghl"]
 [ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="5_2wghl"]
+[ext_resource type="Script" uid="uid://2mmgtfeijars" path="res://src/ui/inventory/creatures_tab.gd" id="6_8v6ji"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_y4p7g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1265r"]
@@ -63,8 +64,11 @@ size_flags_vertical = 3
 theme = ExtResource("5_2wghl")
 current_tab = 0
 
-[node name="Creatures" type="VBoxContainer" parent="TabContainer"]
+[node name="Creatures" type="VBoxContainer" parent="TabContainer" node_paths=PackedStringArray("creature_capacity_label")]
 layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("6_8v6ji")
+creature_capacity_label = NodePath("TextureRect/HBoxContainer/Panel/VBoxContainer/CreatureCapacityLabel")
 metadata/_tab_index = 0
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Creatures"]
