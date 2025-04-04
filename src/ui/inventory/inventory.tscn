@@ -62,9 +62,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("5_2wghl")
-current_tab = 0
+current_tab = 1
 
 [node name="Creatures" type="VBoxContainer" parent="TabContainer" node_paths=PackedStringArray("creature_capacity_label")]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("6_8v6ji")
@@ -127,58 +128,10 @@ columns = 3
 script = ExtResource("1_7f777")
 
 [node name="Decorations" type="VBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Decorations"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 80)
+[node name="Upgrades" type="VBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_2wghl")
-expand_mode = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Decorations/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="TabContainer/Decorations/TextureRect/HBoxContainer"]
-custom_minimum_size = Vector2(197, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Decorations/TextureRect/HBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Decorations/TextureRect/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("6_y4p7g")
-theme_override_font_sizes/font_size = 25
-text = "Tank Capacity"
-horizontal_alignment = 1
-text_overrun_behavior = 3
-
-[node name="CreatureCapacity" type="Label" parent="TabContainer/Decorations/TextureRect/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("6_y4p7g")
-theme_override_font_sizes/font_size = 25
-text = "12/30"
-horizontal_alignment = 1
-text_overrun_behavior = 3
-
-[node name="Panel2" type="Panel" parent="TabContainer/Decorations/TextureRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
+metadata/_tab_index = 2
