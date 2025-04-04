@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bda2an2nm10ol"]
+[gd_scene load_steps=10 format=3 uid="uid://bda2an2nm10ol"]
 
 [ext_resource type="Script" uid="uid://bux8cayr23de8" path="res://src/ui/inventory/inventory.gd" id="1_1deq4"]
 [ext_resource type="Script" uid="uid://b2maci0i0q0rj" path="res://src/ui/inventory/creature_grid.gd" id="1_7f777"]
 [ext_resource type="Shader" uid="uid://dac5246xqh8k2" path="res://src/ui/inventory/inventory_background.gdshader" id="2_e3qj4"]
 [ext_resource type="Texture2D" uid="uid://ik5uq4jsm3od" path="res://assets/textures/bubbles.png" id="3_1265r"]
+[ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="4_2wghl"]
+[ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="5_2wghl"]
+[ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_y4p7g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1265r"]
 shader = ExtResource("2_e3qj4")
@@ -14,6 +17,9 @@ shader_parameter/layer_count = 5
 shader_parameter/time_scale = 0.047
 shader_parameter/base_intensity = 0.5
 shader_parameter/size = 0.52001
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncvoo"]
+texture = ExtResource("4_2wghl")
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -36,19 +42,139 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_right = 885.0
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+offset_right = 834.0
 offset_bottom = 600.0
+size_flags_vertical = 3
+texture = ExtResource("4_2wghl")
+expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -190.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("5_2wghl")
+current_tab = 0
+
+[node name="Creatures" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Creatures"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_2wghl")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Creatures/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TabContainer/Creatures/TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(197, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Creatures/TextureRect/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Creatures/TextureRect/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("6_y4p7g")
+theme_override_font_sizes/font_size = 25
+text = "Tank Capacity: 12/30"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Creatures"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Creatures/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 
-[node name="CreatureGrid" type="GridContainer" parent="ScrollContainer/MarginContainer"]
+[node name="CreatureGrid" type="GridContainer" parent="TabContainer/Creatures/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 3
 script = ExtResource("1_7f777")
+
+[node name="Decorations" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Decorations"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_2wghl")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Decorations/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TabContainer/Decorations/TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(197, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Decorations/TextureRect/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Decorations/TextureRect/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("6_y4p7g")
+theme_override_font_sizes/font_size = 25
+text = "Tank Capacity"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="CreatureCapacity" type="Label" parent="TabContainer/Decorations/TextureRect/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("6_y4p7g")
+theme_override_font_sizes/font_size = 25
+text = "12/30"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Panel2" type="Panel" parent="TabContainer/Decorations/TextureRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
