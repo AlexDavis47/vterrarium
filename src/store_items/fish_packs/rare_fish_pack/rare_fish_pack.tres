@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StoreItemData" load_steps=4 format=3 uid="uid://b3wf3y8tw8qt6"]
+
+[ext_resource type="Texture2D" uid="uid://c266xsa0hll2i" path="res://src/store_items/fish_packs/rare_fish_pack/rare_fish_pack.png" id="1_g4ot7"]
+[ext_resource type="Resource" uid="uid://k0ts1om4vple" path="res://src/loot_generator/loot_tables/rare.tres" id="2_gkhag"]
+[ext_resource type="Script" uid="uid://dlunup4cvhlxk" path="res://src/resources/store_items/store_item_data.gd" id="3_bf3lg"]
+
+[resource]
+script = ExtResource("3_bf3lg")
+item_name = "Rare Fish Pack"
+item_description = "Includes mostly rare fish"
+item_price = 5000
+item_icon = ExtResource("1_g4ot7")
+item_color = Color(0.0196078, 0.639216, 0.988235, 1)
+loot_table = ExtResource("2_gkhag")
+number_of_items = 3
+metadata/_custom_type_script = "uid://dlunup4cvhlxk"

@@ -13,19 +13,31 @@
     },
     "res://src/loot_generator/loot_tables/": {
       "metadata/_custom_type_script": {
-        "visibility": 0.0
+        "visibility": 0
       },
       "resource_local_to_scene": {
-        "visibility": 0.0
+        "visibility": 0
       },
       "resource_name": {
-        "visibility": 0.0
+        "visibility": 0
+      }
+    },
+    "res://src/store_items/": {
+      "metadata/_custom_type_script": {
+        "visibility": 0
+      },
+      "resource_local_to_scene": {
+        "visibility": 0
+      },
+      "resource_name": {
+        "visibility": 0
       }
     }
   },
   "recent_paths": [
     "res://src/accessories/",
-    "res://src/loot_generator/loot_tables/"
+    "res://src/loot_generator/loot_tables/",
+    "res://src/store_items/"
   ],
   "table_functions": {
     "filter": [

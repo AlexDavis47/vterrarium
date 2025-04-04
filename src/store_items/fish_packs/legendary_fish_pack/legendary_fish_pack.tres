@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StoreItemData" load_steps=4 format=3 uid="uid://b2j8pxi0mlxi2"]
+
+[ext_resource type="Texture2D" uid="uid://c266xsa0hll2i" path="res://src/store_items/fish_packs/rare_fish_pack/rare_fish_pack.png" id="1_i3fba"]
+[ext_resource type="Resource" uid="uid://c24foghb8s0db" path="res://src/loot_generator/loot_tables/legendary.tres" id="2_i3fba"]
+[ext_resource type="Script" uid="uid://dlunup4cvhlxk" path="res://src/resources/store_items/store_item_data.gd" id="3_5uqof"]
+
+[resource]
+script = ExtResource("3_5uqof")
+item_name = "Legendary Fish Pack"
+item_description = "Includes mostly legendary fish"
+item_price = 25000
+item_icon = ExtResource("1_i3fba")
+item_color = Color(1, 0.721569, 0.00784314, 1)
+loot_table = ExtResource("2_i3fba")
+number_of_items = 3
+metadata/_custom_type_script = "uid://dlunup4cvhlxk"

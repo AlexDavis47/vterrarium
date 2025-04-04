@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StoreItemData" load_steps=4 format=3 uid="uid://bhlmd3cxr8ps1"]
+
+[ext_resource type="Texture2D" uid="uid://di86ss0e83ah1" path="res://src/store_items/fish_packs/uncommon_fish_pack/uncommon_fish_pack.png" id="1_fg424"]
+[ext_resource type="Resource" uid="uid://bac0h7644dloc" path="res://src/loot_generator/loot_tables/uncommon.tres" id="2_fg424"]
+[ext_resource type="Script" uid="uid://dlunup4cvhlxk" path="res://src/resources/store_items/store_item_data.gd" id="3_mjgyf"]
+
+[resource]
+script = ExtResource("3_mjgyf")
+item_name = "Uncommon Fish Pack"
+item_description = "Includes mostly uncommon fish"
+item_price = 1000
+item_icon = ExtResource("1_fg424")
+item_color = Color(0.243137, 0.662745, 0.282353, 1)
+loot_table = ExtResource("2_fg424")
+number_of_items = 3
+metadata/_custom_type_script = "uid://dlunup4cvhlxk"

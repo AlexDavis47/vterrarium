@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="LootTableData" load_steps=5 format=3 uid="uid://k0ts1om4vple"]
+
+[ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_v3kh0"]
+[ext_resource type="Resource" uid="uid://b2qrw6vn3omma" path="res://src/accessories/hats/crown_hat/crown_hat.tres" id="2_pgtlk"]
+[ext_resource type="Script" uid="uid://bst7q731ckock" path="res://src/loot_generator/loot_table.gd" id="3_g6d6v"]
+
+[sub_resource type="Resource" id="Resource_mwevj"]
+script = ExtResource("1_v3kh0")
+item = ExtResource("2_pgtlk")
+weight = 0.03
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[resource]
+script = ExtResource("3_g6d6v")
+entries = Array[ExtResource("1_v3kh0")]([SubResource("Resource_mwevj")])
+metadata/_custom_type_script = "uid://bst7q731ckock"
