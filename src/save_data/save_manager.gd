@@ -149,6 +149,9 @@ func create_save_file() -> void:
 	save_file.created_at = Time.get_datetime_dict_from_system()
 	save_file.last_saved_at = save_file.created_at
 	
+	# Initialize connections and other post-creation setup
+	save_file.on_load()
+	
 	emit_signal("save_created")
 
 ## Threaded function that handles the actual saving
@@ -158,7 +161,9 @@ func _thread_save_game() -> void:
 	
 	# Update save timestamp
 	if save_file:
-		save_file.last_saved_at = Time.get_datetime_dict_from_system()
+		# Call on_save to prepare the save file
+		save_file.on_save()
+		
 		var save_file_path: String = get_save_file_path(save_file.save_id)
 		
 		# Create backup of existing save file if it exists
@@ -218,6 +223,8 @@ func load_game(save_id: String = "") -> bool:
 			loaded_save = ResourceLoader.load(backup_path)
 			if loaded_save:
 				save_file = loaded_save
+				# Call on_load to set up necessary connections
+				save_file.on_load()
 				_respawn_creatures()
 				emit_signal("backup_loaded")
 				# Restore the backup as the main save
@@ -227,6 +234,8 @@ func load_game(save_id: String = "") -> bool:
 		return false
 		
 	save_file = loaded_save
+	# Call on_load to set up necessary connections
+	save_file.on_load()
 	_respawn_creatures()
 	emit_signal("save_loaded")
 	return true

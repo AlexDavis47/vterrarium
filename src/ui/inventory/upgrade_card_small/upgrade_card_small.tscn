@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmy626gv0ksb0"]
+
+[ext_resource type="Texture2D" uid="uid://dh03heeoxmibw" path="res://src/ui/inventory/creature_card_small/textures/creature_card_small_bg.png" id="1_daodj"]
+[ext_resource type="Script" uid="uid://ekvplrno67pm" path="res://src/ui/inventory/upgrade_card_small/upgrade_card_small.gd" id="2_ft7xo"]
+[ext_resource type="Texture2D" uid="uid://dprm6jy8083xt" path="res://src/ui/store/store_item/textures/purchase_button.png" id="4_6u3l2"]
+[ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_77dkq"]
+[ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="5_hkyfv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qk38"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dgtc"]
+bg_color = Color(0.650128, 0.650128, 0.650128, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="UpgradeCardSmall" type="TextureRect" node_paths=PackedStringArray("name_label", "cost_label", "level_label", "purchase_button")]
+clip_contents = true
+anchors_preset = -1
+anchor_right = 0.208008
+anchor_bottom = 0.493333
+texture = ExtResource("1_daodj")
+expand_mode = 1
+script = ExtResource("2_ft7xo")
+name_label = NodePath("VBoxContainer/MarginContainer/UpgradeName")
+cost_label = NodePath("VBoxContainer/MarginContainer3/HBoxContainer/Cost")
+level_label = NodePath("VBoxContainer/MarginContainer3/HBoxContainer/Level")
+purchase_button = NodePath("VBoxContainer/MarginContainer4/Upgrade")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="UpgradeName" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("4_77dkq")
+theme_override_font_sizes/font_size = 25
+text = "Upgrade"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1qk38")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer2/Panel/MarginContainer"]
+clip_children = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1dgtc")
+
+[node name="ScenePreviewSubviewportContainer" parent="VBoxContainer/MarginContainer2/Panel/MarginContainer/Panel2" instance=ExtResource("5_hkyfv")]
+layout_mode = 1
+camera_angle = Vector3(-2.245, -41.345, 43.53)
+camera_zoom = 0.425
+camera_fov = 35.0
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Cost" type="Label" parent="VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("4_77dkq")
+theme_override_font_sizes/font_size = 17
+text = "Cost: 100"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Level" type="Label" parent="VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("4_77dkq")
+theme_override_font_sizes/font_size = 17
+text = "Level: 10"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="Upgrade" type="TextureButton" parent="VBoxContainer/MarginContainer4"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+texture_normal = ExtResource("4_6u3l2")

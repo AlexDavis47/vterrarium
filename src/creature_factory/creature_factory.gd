@@ -136,7 +136,7 @@ func _remove_creature_from_tank(creature_data: CreatureData) -> void:
 func spawn_creature(creature_data: CreatureData) -> void:
 	if creature_data.creature_is_in_tank:
 		return
-	if get_number_of_creatures_in_tank() >= SaveManager.save_file.tank_capacity:
+	if get_number_of_creatures_in_tank() >= SaveManager.save_file.tank_capacity.modified_value:
 		return
 	_add_creature_to_tank(creature_data)
 	AudioManager.play_sfx(AudioManager.SFX.SPLASH_1, 0.8, 1.2)
@@ -233,11 +233,3 @@ func get_number_of_creatures_in_tank() -> int:
 		if is_instance_valid(creature) and creature.creature_data and creature.creature_data.creature_is_in_tank:
 			count += 1
 	return count
-
-func _process(delta):
-	if Input.is_action_just_pressed("ui_up"):
-		_create_test_creatures()
-	if Input.is_action_just_pressed("ui_right"):
-		_remove_all_creatures_from_tank()
-	if Input.is_action_just_pressed("ui_left"):
-		_add_all_creatures_to_tank()

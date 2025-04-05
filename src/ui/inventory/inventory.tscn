@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bda2an2nm10ol"]
+[gd_scene load_steps=14 format=3 uid="uid://bda2an2nm10ol"]
 
 [ext_resource type="Script" uid="uid://bux8cayr23de8" path="res://src/ui/inventory/inventory.gd" id="1_1deq4"]
 [ext_resource type="Script" uid="uid://b2maci0i0q0rj" path="res://src/ui/inventory/creature_grid.gd" id="1_7f777"]
@@ -8,6 +8,9 @@
 [ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="5_2wghl"]
 [ext_resource type="Script" uid="uid://2mmgtfeijars" path="res://src/ui/inventory/creatures_tab.gd" id="6_8v6ji"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_y4p7g"]
+[ext_resource type="Script" uid="uid://blda8pvdw7xwb" path="res://src/ui/inventory/upgrades_tab.gd" id="9_lfcex"]
+[ext_resource type="PackedScene" uid="uid://cmy626gv0ksb0" path="res://src/ui/inventory/upgrade_card_small/upgrade_card_small.tscn" id="9_ncvoo"]
+[ext_resource type="Resource" uid="uid://b8h3yt33p4xtq" path="res://src/upgrade_system/upgrades/upgrade_tank_capacity.tres" id="10_lfcex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1265r"]
 shader = ExtResource("2_e3qj4")
@@ -62,7 +65,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("5_2wghl")
-current_tab = 1
+current_tab = 2
 
 [node name="Creatures" type="VBoxContainer" parent="TabContainer" node_paths=PackedStringArray("creature_capacity_label")]
 visible = false
@@ -128,10 +131,32 @@ columns = 3
 script = ExtResource("1_7f777")
 
 [node name="Decorations" type="VBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Upgrades" type="VBoxContainer" parent="TabContainer"]
-visible = false
+[node name="Upgrades" type="VBoxContainer" parent="TabContainer" node_paths=PackedStringArray("upgrade_grid")]
 layout_mode = 2
+script = ExtResource("9_lfcex")
+upgrade_grid = NodePath("ScrollContainer/MarginContainer/UpgradeGrid")
 metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Upgrades"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Upgrades/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="UpgradeGrid" type="GridContainer" parent="TabContainer/Upgrades/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="UpgradeCardSmall" parent="TabContainer/Upgrades/ScrollContainer/MarginContainer/UpgradeGrid" instance=ExtResource("9_ncvoo")]
+custom_minimum_size = Vector2(180, 240)
+layout_mode = 2
+upgrade_data = ExtResource("10_lfcex")

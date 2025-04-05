@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeTankCapacity" load_steps=2 format=3 uid="uid://b8h3yt33p4xtq"]
+
+[ext_resource type="Script" uid="uid://cuqdhf7kaorwm" path="res://src/upgrade_system/upgrades/upgrade_tank_capacity.gd" id="1_gks3n"]
+
+[resource]
+script = ExtResource("1_gks3n")
+upgrade_name = "Tank Capacity"
+upgrade_description = "No description"
+upgrade_base_cost = 500
+upgrade_cost_scaler = 1.35
+upgrade_level = 0
+metadata/_custom_type_script = "uid://cuqdhf7kaorwm"

@@ -59,7 +59,7 @@ project/assembly_name="VTerrarium"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/onscreenkeyboard/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/vterrariumframework/plugin.cfg")
+enabled=PackedStringArray("res://addons/onscreenkeyboard/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/value_with_modifiers/plugin.cfg", "res://addons/vterrariumframework/plugin.cfg")
 
 [filesystem]
 
