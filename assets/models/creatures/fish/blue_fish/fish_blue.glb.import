@@ -3,13 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cn6jx81ew5u7e"
-path="res://.godot/imported/weird_fish.glb-c2fa504ef02115f3f765ce8ab3d3efc2.scn"
+uid="uid://co5h2eikbd20e"
+valid=false
 
 [deps]
 
-source_file="res://assets/models/weird_fish/weird_fish.glb"
-dest_files=["res://.godot/imported/weird_fish.glb-c2fa504ef02115f3f765ce8ab3d3efc2.scn"]
+source_file="res://assets/models/creatures/fish/blue_fish/fish_blue.glb"
 
 [params]
 
@@ -34,13 +33,21 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"weird_fish_fish_mesh": {
+"fish_blue_Sphere": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://assets/models/weird_fish/weird_fish_fish_mesh.res"
+"save_to_file/path": "res://assets/models/blue_fish/fish_blue_Sphere.res"
+},
+"fish_blue_fish_mesh": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/blue_fish/fish_blue_fish_mesh.res"
 }
 }
 }

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_24u4h"]
 [ext_resource type="Script" uid="uid://d0o80wcr82rkp" path="res://src/entities/creatures/fish/state_wandering.gd" id="3_nw2sc"]
 [ext_resource type="Script" uid="uid://dupx27amlei27" path="res://src/entities/creatures/fish/state_feeding.gd" id="4_5pesy"]
-[ext_resource type="ArrayMesh" uid="uid://j1mjwdgwoy6x" path="res://assets/models/yellow_tang_fish/fish_yellow_tang_Plane.res" id="5_kvjm0"]
+[ext_resource type="ArrayMesh" uid="uid://j1mjwdgwoy6x" path="res://assets/models/creatures/fish/yellow_tang_fish/fish_yellow_tang_Plane.res" id="5_kvjm0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qms08"]
 radius = 0.327054

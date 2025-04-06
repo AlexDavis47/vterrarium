@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhoynlcpfdbal"
-path.s3tc="res://.godot/imported/axolotl_Screenshot 2025-03-27 171632.png-cc1f71d4ebd04ce99bfacab8f3e3ba93.s3tc.ctex"
+path.s3tc="res://.godot/imported/axolotl_Screenshot 2025-03-27 171632.png-145157f170b99ccd3ea65525d57350ff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/axolotl/axolotl_Screenshot 2025-03-27 171632.png"
-dest_files=["res://.godot/imported/axolotl_Screenshot 2025-03-27 171632.png-cc1f71d4ebd04ce99bfacab8f3e3ba93.s3tc.ctex"]
+source_file="res://assets/models/creatures/fish/axolotl/axolotl_Screenshot 2025-03-27 171632.png"
+dest_files=["res://.godot/imported/axolotl_Screenshot 2025-03-27 171632.png-145157f170b99ccd3ea65525d57350ff.s3tc.ctex"]
 
 [params]
 

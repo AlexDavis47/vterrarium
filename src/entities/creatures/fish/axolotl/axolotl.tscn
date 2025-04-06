@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_rfayx"]
 [ext_resource type="Script" uid="uid://d0o80wcr82rkp" path="res://src/entities/creatures/fish/state_wandering.gd" id="3_opuex"]
 [ext_resource type="Script" uid="uid://dupx27amlei27" path="res://src/entities/creatures/fish/state_feeding.gd" id="4_ayrpk"]
-[ext_resource type="Texture2D" uid="uid://dhoynlcpfdbal" path="res://assets/models/axolotl/axolotl_Screenshot 2025-03-27 171632.png" id="5_s8xdp"]
-[ext_resource type="Texture2D" uid="uid://b0xbr4t64eq4q" path="res://assets/models/axolotl/axolotl_axolotl_scales.png" id="6_ikrtj"]
+[ext_resource type="Texture2D" uid="uid://dhoynlcpfdbal" path="res://assets/models/creatures/fish/axolotl/axolotl_Screenshot 2025-03-27 171632.png" id="5_s8xdp"]
+[ext_resource type="Texture2D" uid="uid://b0xbr4t64eq4q" path="res://assets/models/creatures/fish/axolotl/axolotl_axolotl_scales.png" id="6_ikrtj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e3yrm"]
 radius = 0.327054

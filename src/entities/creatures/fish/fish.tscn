@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bse0c1u4ifhet" path="res://src/entities/creatures/fish/fish.gd" id="1_ognnj"]
 [ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_vrxr4"]
 [ext_resource type="Script" uid="uid://d0o80wcr82rkp" path="res://src/entities/creatures/fish/state_wandering.gd" id="4_dmaf4"]
-[ext_resource type="ArrayMesh" uid="uid://c3c05cw5382r" path="res://assets/models/blue_fish/fish_blue_fish_mesh.res" id="5_vrxr4"]
+[ext_resource type="ArrayMesh" uid="uid://c3c05cw5382r" path="res://assets/models/creatures/fish/blue_fish/fish_blue_fish_mesh.res" id="5_vrxr4"]
 [ext_resource type="Script" uid="uid://dupx27amlei27" path="res://src/entities/creatures/fish/state_feeding.gd" id="5_ybj60"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vrxr4"]

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://2hx6ykud3gud"
-path="res://.godot/imported/axolotl.glb-73661d776b7397a4777da9f147bc0df0.scn"
+path="res://.godot/imported/axolotl.glb-f6498320084e160e4faf2daf28ee33fe.scn"
 
 [deps]
 
-source_file="res://assets/models/axolotl/axolotl.glb"
-dest_files=["res://.godot/imported/axolotl.glb-73661d776b7397a4777da9f147bc0df0.scn"]
+source_file="res://assets/models/creatures/fish/axolotl/axolotl.glb"
+dest_files=["res://.godot/imported/axolotl.glb-f6498320084e160e4faf2daf28ee33fe.scn"]
 
 [params]
 

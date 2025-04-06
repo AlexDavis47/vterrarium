@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfdbjtr0ax4au"
-path.s3tc="res://.godot/imported/fish_red_fish.png-36acc1704dece9d41686ce2d64928394.s3tc.ctex"
+uid="uid://b0xbr4t64eq4q"
+path.s3tc="res://.godot/imported/axolotl_axolotl_scales.png-a2cb01f2e612a57f797750cea544ff2f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c63c224908e1b2ed6f29b1b387e61ec1"
+"md5": "4fd84f9877d252f69e74adcb930f8222"
 }
 
 [deps]
 
-source_file="res://assets/models/red_fish/fish_red_fish.png"
-dest_files=["res://.godot/imported/fish_red_fish.png-36acc1704dece9d41686ce2d64928394.s3tc.ctex"]
+source_file="res://assets/models/creatures/fish/axolotl/axolotl_axolotl_scales.png"
+dest_files=["res://.godot/imported/axolotl_axolotl_scales.png-a2cb01f2e612a57f797750cea544ff2f.s3tc.ctex"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0xbr4t64eq4q"
-path.s3tc="res://.godot/imported/axolotl_axolotl_scales.png-8a3202032a422bfef4549a65f6a6f140.s3tc.ctex"
+uid="uid://dqw33daqnf5hq"
+path.s3tc="res://.godot/imported/weird_fish_fish_texture_red.png-d85b3281a75a90bcc6520e92bc6a6763.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4fd84f9877d252f69e74adcb930f8222"
+"md5": "c63c224908e1b2ed6f29b1b387e61ec1"
 }
 
 [deps]
 
-source_file="res://assets/models/axolotl/axolotl_axolotl_scales.png"
-dest_files=["res://.godot/imported/axolotl_axolotl_scales.png-8a3202032a422bfef4549a65f6a6f140.s3tc.ctex"]
+source_file="res://assets/models/creatures/fish/weird_fish/weird_fish_fish_texture_red.png"
+dest_files=["res://.godot/imported/weird_fish_fish_texture_red.png-d85b3281a75a90bcc6520e92bc6a6763.s3tc.ctex"]
 
 [params]
 

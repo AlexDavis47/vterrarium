@@ -3,13 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b2rc185qmpxlf"
-path="res://.godot/imported/fish_red.glb-e940d051db09b50826e59f40c81e2e1b.scn"
+uid="uid://b7dg78y6qj540"
+valid=false
 
 [deps]
 
-source_file="res://assets/models/red_fish/fish_red.glb"
-dest_files=["res://.godot/imported/fish_red.glb-e940d051db09b50826e59f40c81e2e1b.scn"]
+source_file="res://assets/models/creatures/fish/yellow_tang_fish/fish_yellow_tang.glb"
 
 [params]
 
@@ -34,13 +33,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "meshes": {
-"fish_red_fish_mesh": {
+"fish_yellow_tang_Plane": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://assets/models/red_fish/fish_red_fish_mesh.res"
+"save_to_file/path": "res://assets/models/yellow_tang_fish/fish_yellow_tang_Plane.res"
 }
 }
 }

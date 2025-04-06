@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqw33daqnf5hq"
-path.s3tc="res://.godot/imported/weird_fish_fish_texture_red.png-4b74e4ef5f5571985201235acaf5cd8a.s3tc.ctex"
+uid="uid://dfdbjtr0ax4au"
+path.s3tc="res://.godot/imported/fish_red_fish.png-414495d403d237bdaf24cc0c76c08062.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/weird_fish/weird_fish_fish_texture_red.png"
-dest_files=["res://.godot/imported/weird_fish_fish_texture_red.png-4b74e4ef5f5571985201235acaf5cd8a.s3tc.ctex"]
+source_file="res://assets/models/creatures/fish/red_fish/fish_red_fish.png"
+dest_files=["res://.godot/imported/fish_red_fish.png-414495d403d237bdaf24cc0c76c08062.s3tc.ctex"]
 
 [params]
 
