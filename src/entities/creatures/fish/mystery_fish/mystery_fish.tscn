@@ -116,9 +116,9 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="AccessoryHatSlot" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(1, -8.95807e-08, 1.13392e-09, 1.13394e-09, 0.0253124, 0.99968, -8.95807e-08, -0.99968, 0.0253124, 0, 0.058662, 0.664573)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.058662, 0.664573)
 bone_name = "Bone_001"
 bone_idx = 0
 
 [node name="Node3D" type="Node3D" parent="Skeleton3D/AccessoryHatSlot"]
-transform = Transform3D(1, 0, 0, 0, -0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0.0221424, 0.463376)
+transform = Transform3D(-1.455, -1.74654e-07, -8.84286e-08, -5.33272e-08, -0.278773, 1.42804, -1.88361e-07, 1.42804, 0.278773, 5.33674e-10, 0.0186074, 0.477821)
