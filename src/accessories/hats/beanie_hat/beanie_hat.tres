@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="AccessoryData" load_steps=2 format=3 uid="uid://db07khs866mm0"]
+
+[ext_resource type="Script" uid="uid://d2227ehstqdgp" path="res://src/accessories/accessory_data.gd" id="1_shusa"]
+
+[resource]
+script = ExtResource("1_shusa")
+accessory_name = "Beanie"
+accessory_category = 0
+accessory_description = "Keeps you warmer"
+accessory_rarity = 0
+accessory_price = 0
+accessory_scene_uuid = "uid://m4p4il1tpnuy"
+accessory_money_bonus = 0.0
+accessory_happiness_bonus = 0.0
+accessory_temperature_bonus = 8.0
+accessory_brightness_bonus = 0.0
+accessory_id = ""
+accessory_luck = 1.0
+accessory_is_equipped = false
+creature_equipped_id = ""
+metadata/_custom_type_script = "uid://d2227ehstqdgp"

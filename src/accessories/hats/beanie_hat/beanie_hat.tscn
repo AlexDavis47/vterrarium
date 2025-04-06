@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://m4p4il1tpnuy"]
+
+[ext_resource type="PackedScene" uid="uid://dke0gcdl23aki" path="res://assets/models/accessories/hats/beanie/beanie.glb" id="1_cvvjq"]
+
+[node name="BeanieHat" type="Node3D"]
+
+[node name="beanie" parent="." instance=ExtResource("1_cvvjq")]
+transform = Transform3D(0.59, 0, 0, 0, 0.59, 0, 0, 0, 0.59, 0, 0, 0)

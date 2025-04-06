@@ -16,7 +16,8 @@ enum Accessories {
 	BUNNY_HAT,
 	PIRATE_HAT,
 	VIKING_HAT,
-	PROPELLER_HAT
+	PROPELLER_HAT,
+	BEANIE_HAT
 }
 
 
@@ -27,7 +28,8 @@ var accessory_data_templates: Dictionary[Accessories, AccessoryData] = {
 	Accessories.BUNNY_HAT: preload("uid://wcdci50dpenf"),
 	Accessories.PIRATE_HAT: preload("uid://dmjykq56j6klc"),
 	Accessories.VIKING_HAT: preload("uid://wha8onoswvht"),
-	Accessories.PROPELLER_HAT: preload("uid://cgh1yy8jolwdv")
+	Accessories.PROPELLER_HAT: preload("uid://cgh1yy8jolwdv"),
+	Accessories.BEANIE_HAT: preload("uid://db07khs866mm0")
 }
 
 func _ready() -> void:
