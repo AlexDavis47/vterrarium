@@ -121,4 +121,4 @@ bone_name = "Bone.001"
 bone_idx = 0
 
 [node name="Node3D" type="Node3D" parent="Skeleton3D/AccessoryHatSlot"]
-transform = Transform3D(-0.289466, -0.957188, 0, 0.957188, -0.289466, 0, 0, 0, 1, -0.123903, -0.117467, 0)
+transform = Transform3D(-4.16924e-08, -0.953811, -0.300406, -1.31312e-08, -0.300406, 0.953812, -1, 4.37114e-08, 3.88297e-15, -0.109843, -0.117467, 0)

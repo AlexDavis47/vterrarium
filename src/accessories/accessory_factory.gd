@@ -15,7 +15,8 @@ enum Accessories {
 	CROWN_HAT,
 	BUNNY_HAT,
 	PIRATE_HAT,
-	VIKING_HAT
+	VIKING_HAT,
+	PROPELLER_HAT
 }
 
 
@@ -25,13 +26,17 @@ var accessory_data_templates: Dictionary[Accessories, AccessoryData] = {
 	Accessories.CROWN_HAT: preload("uid://b2qrw6vn3omma"),
 	Accessories.BUNNY_HAT: preload("uid://wcdci50dpenf"),
 	Accessories.PIRATE_HAT: preload("uid://dmjykq56j6klc"),
-	Accessories.VIKING_HAT: preload("uid://wha8onoswvht")
+	Accessories.VIKING_HAT: preload("uid://wha8onoswvht"),
+	Accessories.PROPELLER_HAT: preload("uid://cgh1yy8jolwdv")
 }
+
+func _ready() -> void:
+	create_test_accessories()
 
 ## Creates 5 of each accessory type and adds them to the inventory
 func create_test_accessories() -> void:
 	for accessory in accessory_data_templates:
-		for i in range(5):
+		for i in range(1):
 			var new_accessory = create_accessory(accessory)
 			SaveManager.save_file.accessory_inventory.append(new_accessory)
 
