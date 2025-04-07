@@ -32,10 +32,7 @@ var accessory_data_templates: Dictionary[Accessories, AccessoryData] = {
 	Accessories.BEANIE_HAT: preload("uid://db07khs866mm0")
 }
 
-func _ready() -> void:
-	create_test_accessories()
-
-## Creates 5 of each accessory type and adds them to the inventory
+## Creates 1 of each accessory type and adds them to the inventory
 func create_test_accessories() -> void:
 	for accessory in accessory_data_templates:
 		for i in range(1):
