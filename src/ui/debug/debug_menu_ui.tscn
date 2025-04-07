@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk08klp38nyv6"]
+[gd_scene load_steps=17 format=3 uid="uid://dk08klp38nyv6"]
 
 [ext_resource type="Script" uid="uid://bd3qy6ejxwul8" path="res://src/ui/debug/debug_menu_ui.gd" id="1_js7ux"]
 [ext_resource type="Texture2D" uid="uid://gx45fusvwys2" path="res://src/ui/debug/textures/Debug Menu (2).png" id="2_hcp6s"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://bkfte5laxqp30" path="res://src/ui/debug/current_tempurature.gd" id="11_k7lll"]
 [ext_resource type="Script" path="res://src/ui/debug/add_money.gd" id="12_1prrj"]
 [ext_resource type="Script" uid="uid://uaerhkahpvkv" path="res://src/ui/debug/current_air_humidity.gd" id="12_1vw62"]
+[ext_resource type="Script" uid="uid://djfcgihfox2kx" path="res://src/ui/debug/add_all_creatures.gd" id="13_1prrj"]
+[ext_resource type="Script" uid="uid://b78x52u4eb6ol" path="res://src/ui/debug/add_all_accessories.gd" id="14_mfnhn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tdf5"]
 texture = ExtResource("6_njgff")
@@ -271,6 +273,36 @@ layout_mode = 2
 [node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddMoney/MarginContainer"]
 layout_mode = 2
 text = "Add 1000 Coins"
+
+[node name="AddAllCreatures" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("13_1prrj")
+button = NodePath("MarginContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllCreatures"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllCreatures/MarginContainer"]
+layout_mode = 2
+text = "Add 1 of each creature"
+
+[node name="AddAllAccessories" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("14_mfnhn")
+button = NodePath("MarginContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllAccessories"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllAccessories/MarginContainer"]
+layout_mode = 2
+text = "Add 1 of each accessory"
 
 [node name="TextureRect2" type="TextureButton" parent="."]
 layout_mode = 0
