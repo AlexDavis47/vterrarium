@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="3_afveu"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_tqbuu"]
 [ext_resource type="FontFile" uid="uid://cywugphcmumyo" path="res://assets/fonts/RedHatDisplay-Medium.ttf" id="5_bhvwm"]
-[ext_resource type="Script" path="res://src/ui/creature_detail_view/creature_live_camera.gd" id="6_q5ua7"]
+[ext_resource type="Script" uid="uid://bexncqsnblklf" path="res://src/ui/creature_detail_view/creature_live_camera.gd" id="6_q5ua7"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_tqbuu"]
 [ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="7_6c18d"]
 [ext_resource type="Texture2D" uid="uid://bnq3ckykvimm7" path="res://src/ui/creature_detail_view/textures/pen-to-square-solid2.png" id="7_awlyl"]
@@ -561,10 +561,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_q5ua7")
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
-top_left_color = Color(0.415686, 0.788235, 0.996078, 1)
-top_right_color = Color(0.0470588, 0.231373, 0.333333, 1)
-bottom_left_color = Color(0.415686, 0.788235, 0.996078, 1)
-bottom_right_color = Color(0.0470588, 0.231373, 0.333333, 1)
+top_left_color = Color(0.0470588, 0.231373, 0.333333, 1)
+top_right_color = Color(0.415686, 0.788235, 0.996078, 1)
+bottom_left_color = Color(0.0470588, 0.231373, 0.333333, 1)
+bottom_right_color = Color(0.415686, 0.788235, 0.996078, 1)
 graph_margins = Vector2(2, 2)
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel"]
