@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=30 format=3 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dpmhaxpyatodg" path="res://src/ui/front_ui.tscn" id="6_edi6u"]
 [ext_resource type="Script" uid="uid://fi3ukfe3r0ki" path="res://addons/vterrariumframework/src/classes/vt_front_window.gd" id="6_qfpye"]
 [ext_resource type="Script" uid="uid://cs4c0ftdjdsoe" path="res://src/world_environment.gd" id="7_27mdg"]
+[ext_resource type="Texture2D" uid="uid://rnkyf8t632ht" path="res://src/ui/debug/textures/Debug Button.png" id="7_b0toy"]
 [ext_resource type="Material" uid="uid://oubd1j1qwo6i" path="res://assets/materials/tank_floor.tres" id="7_kr6if"]
+[ext_resource type="Script" uid="uid://bdjsnurbc2y71" path="res://src/debug_menu_button.gd" id="8_ygn67"]
 [ext_resource type="PackedScene" uid="uid://b3tclcqf2u7l3" path="res://assets/models/decor/cyan_coral/cyan_coral.glb" id="14_b0toy"]
 [ext_resource type="AudioStream" uid="uid://cmj7ag4qru8q5" path="res://assets/audio/water.wav" id="14_d2bpd"]
 [ext_resource type="Script" uid="uid://djg2fo0j88l61" path="res://addons/onscreenkeyboard/onscreen_keyboard.gd" id="15_qfpye"]
@@ -101,6 +103,19 @@ script = ExtResource("3_8txad")
 camera_orientation = 1
 
 [node name="Control" parent="Front" instance=ExtResource("6_edi6u")]
+
+[node name="MarginContainer" type="MarginContainer" parent="Front"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="DebugMenuButton" type="TextureButton" parent="Front/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_b0toy")
+script = ExtResource("8_ygn67")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." node_paths=PackedStringArray("directional_light1", "directional_light2")]
 environment = SubResource("Environment_ti7fu")

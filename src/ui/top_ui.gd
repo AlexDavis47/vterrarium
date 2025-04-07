@@ -13,10 +13,7 @@ var inventory_scene: PackedScene = preload("uid://bda2an2nm10ol")
 var feeding_scene: PackedScene = preload("uid://d1eksnwdwou65")
 var store_scene: PackedScene = preload("uid://gbnpxr40g1kv")
 
-var debug_menu_scene: PackedScene = preload("uid://dk08klp38nyv6")
-
 @export var menu_buttons: MenuButtons
-@export var debug_menu_button: TextureButton
 
 var current_menu: Control = null
 var current_menu_name: String = ""
@@ -31,7 +28,7 @@ func _init() -> void:
 func _ready() -> void:
 	_original_position = menu_buttons.position
 	VTInput.top_window_input.connect(_on_top_window_input)
-	debug_menu_button.pressed.connect(_on_debug_menu_button_pressed)
+
 func _process(delta: float) -> void:
 	if Utils.all_menus_closed:
 		_sleep_counter += delta
@@ -115,14 +112,3 @@ func _open_menu(menu: PackedScene, menu_name: String):
 		FoodFactory._feeding_menu_open = true
 	else:
 		FoodFactory._feeding_menu_open = false
-
-func _on_debug_menu_button_pressed():
-	var debug_menu = debug_menu_scene.instantiate()
-	get_tree().root.add_child(debug_menu)
-	debug_menu.closed.connect(_on_debug_menu_closed)
-	debug_menu_button.visible = false
-	AudioManager.play_sfx(AudioManager.SFX.POP_2, 0.8, 1.2)
-	
-
-func _on_debug_menu_closed():
-	debug_menu_button.visible = true

@@ -60,10 +60,64 @@ class_name CurveVisualizerUI
 		curve_color = value
 		_request_redraw()
 
+## Color for the lower y-values of the curve
+@export var low_color: Color = Color(0.0, 0.5, 1.0, 1.0):
+	set(value):
+		low_color = value
+		_request_redraw()
+
+## Color for the higher y-values of the curve  
+@export var high_color: Color = Color(1.0, 0.2, 0.0, 1.0):
+	set(value):
+		high_color = value
+		_request_redraw()
+
+## Use gradient coloring for the curve based on y-values
+@export var use_gradient_color: bool = false:
+	set(value):
+		use_gradient_color = value
+		_request_redraw()
+
 ## Background color for the graph area (transparent by default)
 @export var background_color: Color = Color(0.1, 0.1, 0.1, 0.2):
 	set(value):
 		background_color = value
+		_request_redraw()
+
+## Use gradient background instead of solid color
+@export var use_gradient_background: bool = false:
+	set(value):
+		use_gradient_background = value
+		_request_redraw()
+
+## Top-left corner color for background gradient
+@export var top_left_color: Color = Color(0.1, 0.1, 0.2, 0.2):
+	set(value):
+		top_left_color = value
+		_request_redraw()
+
+## Top-right corner color for background gradient
+@export var top_right_color: Color = Color(0.1, 0.2, 0.3, 0.2):
+	set(value):
+		top_right_color = value
+		_request_redraw()
+
+## Bottom-left corner color for background gradient
+@export var bottom_left_color: Color = Color(0.2, 0.1, 0.1, 0.2):
+	set(value):
+		bottom_left_color = value
+		_request_redraw()
+
+## Bottom-right corner color for background gradient
+@export var bottom_right_color: Color = Color(0.3, 0.2, 0.1, 0.2):
+	set(value):
+		bottom_right_color = value
+		_request_redraw()
+
+## Margin around the graph for labels and markers (in pixels)
+@export var graph_margins: Vector2 = Vector2(40, 30):
+	set(value):
+		graph_margins = value
 		_request_redraw()
 
 ## Padding around the graph (in pixels)
@@ -173,6 +227,12 @@ class_name CurveVisualizerUI
 		show_marker_labels = value
 		_request_redraw()
 
+## Only show marker guides on the right and bottom (instead of crosshair)
+@export var right_bottom_guides_only: bool = false:
+	set(value):
+		right_bottom_guides_only = value
+		_request_redraw()
+
 @export_group("Labels")
 ## Show axis labels
 @export var show_labels: bool = true:
@@ -267,31 +327,48 @@ func _draw_graph(canvas: Control) -> void:
 	# Get the drawing area size
 	var draw_rect = Rect2(padding, canvas.get_size() - padding * 2)
 	
+	# Add additional margins for labels and markers if needed
+	var graph_rect = Rect2(
+		draw_rect.position + graph_margins,
+		draw_rect.size - (graph_margins * 2)
+	)
+	
 	# Draw background if specified
-	if background_color.a > 0:
-		canvas.draw_rect(draw_rect, background_color)
+	if background_color.a > 0 or use_gradient_background:
+		if use_gradient_background:
+			# Create color array for the gradient
+			var colors = PackedColorArray([top_left_color, top_right_color, bottom_right_color, bottom_left_color])
+			var points = PackedVector2Array([
+				draw_rect.position,
+				Vector2(draw_rect.position.x + draw_rect.size.x, draw_rect.position.y),
+				Vector2(draw_rect.position.x + draw_rect.size.x, draw_rect.position.y + draw_rect.size.y),
+				Vector2(draw_rect.position.x, draw_rect.position.y + draw_rect.size.y)
+			])
+			canvas.draw_polygon(points, colors)
+		else:
+			canvas.draw_rect(draw_rect, background_color)
 	
 	# Draw grid
 	if show_grid:
-		_draw_grid(canvas, draw_rect)
+		_draw_grid(canvas, graph_rect)
 	
 	# Draw axes
-	_draw_axes(canvas, draw_rect)
+	_draw_axes(canvas, graph_rect)
 	
 	# Draw curve
 	if _points.size() > 1:
-		_draw_curve(canvas, draw_rect)
+		_draw_curve(canvas, graph_rect)
 	
 	# Draw marker
 	if show_marker and curve:
-		_draw_marker(canvas, draw_rect)
+		_draw_marker(canvas, graph_rect)
 	
 	# Draw labels
 	if show_labels:
-		_draw_labels(canvas, draw_rect)
+		_draw_labels(canvas, graph_rect)
 	
 	# Draw axis labels
-	_draw_axis_labels(canvas, draw_rect)
+	_draw_axis_labels(canvas, graph_rect)
 
 ## Draws the background grid
 func _draw_grid(canvas: Control, draw_rect: Rect2) -> void:
@@ -366,9 +443,21 @@ func _draw_axis_labels(canvas: Control, draw_rect: Rect2) -> void:
 func _draw_curve(canvas: Control, draw_rect: Rect2) -> void:
 	var scaled_points = _scale_points_to_rect(draw_rect)
 	
-	# Draw curve using line segments
+	# Draw curve using line segments with gradient coloring if enabled
 	for i in range(scaled_points.size() - 1):
-		canvas.draw_line(scaled_points[i], scaled_points[i + 1], curve_color, line_width)
+		if use_gradient_color:
+			# Calculate normalized y position for color interpolation
+			var y1 = ((_points[i].y - min_y) / (max_y - min_y))
+			var y2 = ((_points[i + 1].y - min_y) / (max_y - min_y))
+			
+			# Interpolate between low and high colors based on y position
+			var color1 = low_color.lerp(high_color, y1)
+			var color2 = low_color.lerp(high_color, y2)
+			
+			# Draw a gradient line using antialiased lines
+			canvas.draw_line(scaled_points[i], scaled_points[i + 1], color1, line_width)
+		else:
+			canvas.draw_line(scaled_points[i], scaled_points[i + 1], curve_color, line_width)
 
 ## Draws a marker dot at the current value
 func _draw_marker(canvas: Control, draw_rect: Rect2) -> void:
@@ -386,21 +475,36 @@ func _draw_marker(canvas: Control, draw_rect: Rect2) -> void:
 	var x = draw_rect.position.x + normalized_x * draw_rect.size.x
 	var y = draw_rect.position.y + draw_rect.size.y - (normalized_y * draw_rect.size.y)
 	
-	# Draw guide lines (crosshair) first if enabled (so they appear behind the dot)
+	# Draw guide lines first if enabled (so they appear behind the dot)
 	if show_marker_guides:
-		# Draw vertical guide line
-		canvas.draw_line(
-			Vector2(x, draw_rect.position.y),
-			Vector2(x, draw_rect.position.y + draw_rect.size.y),
-			marker_guide_color, marker_guide_width, true
-		)
-		
-		# Draw horizontal guide line
-		canvas.draw_line(
-			Vector2(draw_rect.position.x, y),
-			Vector2(draw_rect.position.x + draw_rect.size.x, y),
-			marker_guide_color, marker_guide_width, true
-		)
+		if right_bottom_guides_only:
+			# Draw only right guide line (from marker to right edge)
+			canvas.draw_line(
+				Vector2(x, y),
+				Vector2(draw_rect.position.x + draw_rect.size.x, y),
+				marker_guide_color, marker_guide_width, false
+			)
+			
+			# Draw only bottom guide line (from marker to bottom edge)
+			canvas.draw_line(
+				Vector2(x, y),
+				Vector2(x, draw_rect.position.y + draw_rect.size.y),
+				marker_guide_color, marker_guide_width, false
+			)
+		else:
+			# Draw full vertical guide line
+			canvas.draw_line(
+				Vector2(x, draw_rect.position.y),
+				Vector2(x, draw_rect.position.y + draw_rect.size.y),
+				marker_guide_color, marker_guide_width, false
+			)
+			
+			# Draw full horizontal guide line
+			canvas.draw_line(
+				Vector2(draw_rect.position.x, y),
+				Vector2(draw_rect.position.x + draw_rect.size.x, y),
+				marker_guide_color, marker_guide_width, false
+			)
 	
 	# Draw the marker dot (after guide lines so it appears on top)
 	canvas.draw_circle(Vector2(x, y), marker_size, marker_color)

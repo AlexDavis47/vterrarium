@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://bkgugserf7cyk" path="res://src/ui/debug/final_brightness.gd" id="9_lg7i2"]
 [ext_resource type="PackedScene" uid="uid://8l1yrrxl4xx8" path="res://src/ui/value_monitor_meter/value_monitor_meter_ui.tscn" id="10_k7lll"]
 [ext_resource type="Script" uid="uid://bkfte5laxqp30" path="res://src/ui/debug/current_tempurature.gd" id="11_k7lll"]
-[ext_resource type="Script" uid="uid://blqd87pdpl3l2" path="res://src/ui/debug/add_money.gd" id="12_1prrj"]
+[ext_resource type="Script" path="res://src/ui/debug/add_money.gd" id="12_1prrj"]
 [ext_resource type="Script" uid="uid://uaerhkahpvkv" path="res://src/ui/debug/current_air_humidity.gd" id="12_1vw62"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tdf5"]
@@ -125,6 +125,15 @@ autowrap_mode = 3
 [node name="CurveVisualizerUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer" instance=ExtResource("5_y5x0x")]
 custom_minimum_size = Vector2(480, 231)
 layout_mode = 2
+top_left_color = Color(0, 0.0954861, 0.170187, 1)
+top_right_color = Color(0.647059, 0.839216, 1, 1)
+bottom_left_color = Color(0, 0.0941176, 0.168627, 1)
+bottom_right_color = Color(0.647059, 0.839216, 1, 1)
+graph_margins = Vector2(40, 32.16)
+show_grid = true
+grid_color = Color(0, 0, 0, 0.121569)
+show_marker_labels = true
+show_labels = true
 axis_label_font_size = 8
 
 [node name="FinalBrightness" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]

@@ -1,30 +1,27 @@
-[gd_scene load_steps=44 format=3 uid="uid://c7ripghigdapa"]
+[gd_scene load_steps=42 format=3 uid="uid://c7ripghigdapa"]
 
 [ext_resource type="Script" uid="uid://c7njo7tqrdbxs" path="res://src/ui/creature_detail_view/creature_detail_view_ui.gd" id="1_ilim5"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_bi2st"]
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="3_afveu"]
-[ext_resource type="Texture2D" uid="uid://bqigah3c2c0si" path="res://src/ui/creature_detail_view/textures/Detail View.png" id="4_64cj3"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_tqbuu"]
 [ext_resource type="FontFile" uid="uid://cywugphcmumyo" path="res://assets/fonts/RedHatDisplay-Medium.ttf" id="5_bhvwm"]
 [ext_resource type="Script" uid="uid://bexncqsnblklf" path="res://src/ui/creature_detail_view/creature_live_camera.gd" id="6_q5ua7"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_tqbuu"]
 [ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="7_6c18d"]
 [ext_resource type="Texture2D" uid="uid://bnq3ckykvimm7" path="res://src/ui/creature_detail_view/textures/pen-to-square-solid2.png" id="7_awlyl"]
-[ext_resource type="Texture2D" uid="uid://xj5qbwybtu27" path="res://src/ui/inventory/creature_card_small/textures/add_to_tank.png" id="8_wb7er"]
-[ext_resource type="Texture2D" uid="uid://bmu8a8jpkq2a3" path="res://src/ui/creature_detail_view/textures/minimize.png" id="9_mcnp6"]
+[ext_resource type="Texture2D" uid="uid://ews4jtogbrap" path="res://src/ui/creature_detail_view/textures/accessories_button.png" id="9_awlyl"]
 [ext_resource type="FontFile" uid="uid://byvf0xnc7iud3" path="res://assets/fonts/RedHatDisplay-LightItalic.ttf" id="10_n2nre"]
+[ext_resource type="Texture2D" uid="uid://dhmtypxwl6woc" path="res://src/ui/creature_detail_view/textures/add_to_tank_button.png" id="10_wb7er"]
+[ext_resource type="Texture2D" uid="uid://d1a862tjlxnsk" path="res://src/ui/creature_detail_view/textures/remove_from_tank_button.png" id="11_mcnp6"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="11_ux5o3"]
 [ext_resource type="PackedScene" uid="uid://dofxw2he0twfr" path="res://src/ui/creature_detail_view/stat_container.tscn" id="12_bi2st"]
-[ext_resource type="Texture2D" uid="uid://dl2brcsfstru0" path="res://src/ui/creature_detail_view/textures/WizardHat.svg" id="12_klxi3"]
+[ext_resource type="Texture2D" uid="uid://u1vfmqxiknnw" path="res://src/ui/creature_detail_view/textures/close_button.png" id="12_n2nre"]
 [ext_resource type="PackedScene" uid="uid://dbs3nvaelgmko" path="res://src/ui/creature_detail_view/need_container.tscn" id="13_afveu"]
 [ext_resource type="Texture2D" uid="uid://b2efb171e25j3" path="res://src/ui/creature_detail_view/textures/creature_card_money_icon.png" id="16_tqbuu"]
-[ext_resource type="Texture2D" uid="uid://b2moq1iuheule" path="res://src/ui/creature_detail_view/textures/Dark.png" id="17_6j02r"]
-[ext_resource type="Texture2D" uid="uid://7oe5nb6lkmb2" path="res://src/ui/creature_detail_view/textures/Bright.png" id="18_klxi3"]
-[ext_resource type="Script" uid="uid://ba5h1dli1mtfw" path="res://src/ui/curve_visualizer/curve_visualizer_ui.gd" id="19_485np"]
+[ext_resource type="Texture2D" uid="uid://bu8uf1ndrsqpo" path="res://src/ui/creature_detail_view/textures/preference_graph_bg.png" id="16_ux5o3"]
+[ext_resource type="PackedScene" uid="uid://v18arrb0fcx2" path="res://src/ui/curve_visualizer/curve_visualizer_UI.tscn" id="17_1h6la"]
 [ext_resource type="Texture2D" uid="uid://bmt1cliweybg" path="res://src/ui/creature_detail_view/textures/HappyFace.png" id="19_q5ua7"]
 [ext_resource type="Texture2D" uid="uid://bemcnpvc5k4jd" path="res://src/ui/creature_detail_view/textures/SadFace.png" id="20_6c18d"]
-[ext_resource type="Texture2D" uid="uid://babob7jsb6gjt" path="res://src/ui/creature_detail_view/textures/Cold.png" id="21_485np"]
-[ext_resource type="Texture2D" uid="uid://bylp7l3b7o37u" path="res://src/ui/creature_detail_view/textures/Hot.png" id="22_iw5k5"]
 [ext_resource type="Texture2D" uid="uid://bvayslct02ivn" path="res://src/ui/creature_detail_view/textures/Sell.png" id="26_6c18d"]
 
 [sub_resource type="Curve" id="Curve_awlyl"]
@@ -62,24 +59,6 @@ creature_temperature_contentment = 1.0
 creature_happiness = 1.0
 metadata/_custom_type_script = "uid://63umrodfd2l3"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h6la"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j02r"]
-bg_color = Color(0.650128, 0.650128, 0.650128, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6c18d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_couks"]
@@ -102,9 +81,39 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vqfvv"]
 
-[sub_resource type="Curve" id="Curve_iw5k5"]
-_data = [Vector2(0, 0.0233161), 0.0, 0.0, 0, 0, Vector2(0.490079, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1h6la"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j02r"]
+bg_color = Color(0.650128, 0.650128, 0.650128, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klxi3"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5ua7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
 
 [node name="CreatureDetailViewUI" type="Control" node_paths=PackedStringArray("_accessory_equip_menu_button", "_rarity_and_type_label", "_name_button", "_name_rename_button", "_description_label", "_species_label", "_image", "_sell_button", "_sell_price_label", "_age_label", "_money_per_hour_container", "_hunger_rate_container", "_speed_container", "_size_container", "_happiness_container", "_satiation_container", "_close_button", "_brightness_graph", "_temperature_graph", "_creature_live_camera", "_creature_live_camera_subviewport_container", "_creature_live_subviewport_container")]
 layout_mode = 3
@@ -115,126 +124,65 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ilim5")
 creature_data = SubResource("Resource_mcnp6")
-_accessory_equip_menu_button = NodePath("TextureButton")
-_rarity_and_type_label = NodePath("RarityAndType")
-_name_button = NodePath("HBoxContainer/MarginContainer/NameButton")
-_name_rename_button = NodePath("HBoxContainer/RenameButton")
-_description_label = NodePath("Description")
-_species_label = NodePath("CreatureSpecies")
-_image = NodePath("Panel/Panel2/CreatureImage")
-_sell_button = NodePath("MarginContainer/TextureButton")
-_sell_price_label = NodePath("HBoxContainer3/SellValue")
-_age_label = NodePath("AgeLabel")
-_money_per_hour_container = NodePath("HBoxContainer2/Stats/MoneyPerHour")
-_hunger_rate_container = NodePath("HBoxContainer2/Stats/HungerLossPerHour")
-_speed_container = NodePath("HBoxContainer2/Stats/Speed")
-_size_container = NodePath("HBoxContainer2/Stats/Size")
-_happiness_container = NodePath("HBoxContainer2/Needs/Happiness")
-_satiation_container = NodePath("HBoxContainer2/Needs/Satiation")
-_close_button = NodePath("CloseButton")
-_brightness_graph = NodePath("HBoxContainer2/Preferences/Brightness/CurveVisualizerUI")
-_temperature_graph = NodePath("HBoxContainer2/Preferences/Temperature/CurveVisualizerUI")
-_creature_live_camera = NodePath("Panel/Panel2/LivePreview/SubViewport/Camera3D")
-_creature_live_camera_subviewport_container = NodePath("Panel/Panel2/LivePreview")
-_creature_live_subviewport_container = NodePath("Panel/Panel2/ScenePreviewSubviewportContainer")
+_accessory_equip_menu_button = NodePath("BG/Header/Buttons/AccessoriesButton")
+_rarity_and_type_label = NodePath("BG/Header/BasicInfoMargins/BasicInfoVBox/RarityAndType")
+_name_button = NodePath("BG/Header/BasicInfoMargins/BasicInfoVBox/NameContainer/MarginContainer/NameButton")
+_name_rename_button = NodePath("BG/Header/BasicInfoMargins/BasicInfoVBox/NameContainer/RenameButton")
+_description_label = NodePath("BG/Description")
+_species_label = NodePath("BG/CreatureSpecies")
+_image = NodePath("BG/Preview/Panel2/CreatureImage")
+_sell_button = NodePath("BG/MarginContainer/TextureButton")
+_sell_price_label = NodePath("BG/HBoxContainer3/SellValue")
+_age_label = NodePath("BG/Header/BasicInfoMargins/BasicInfoVBox/AgeLabel")
+_money_per_hour_container = NodePath("BG/HBoxContainer2/Stats/StatContainer")
+_hunger_rate_container = NodePath("BG/HBoxContainer2/Stats/StatContainer2")
+_speed_container = NodePath("BG/HBoxContainer2/Stats/StatContainer3")
+_size_container = NodePath("BG/HBoxContainer2/Stats/StatContainer4")
+_happiness_container = NodePath("BG/HBoxContainer2/Needs/NeedContainer")
+_satiation_container = NodePath("BG/HBoxContainer2/Needs/NeedContainer2")
+_close_button = NodePath("BG/Header/Buttons/CloseButton")
+_brightness_graph = NodePath("BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel/CurveVisualizerUI")
+_temperature_graph = NodePath("BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel/CurveVisualizerUI")
+_creature_live_camera = NodePath("BG/Preview/Panel2/LivePreview/SubViewport/Camera3D")
+_creature_live_camera_subviewport_container = NodePath("BG/Preview/Panel2/LivePreview")
+_creature_live_subviewport_container = NodePath("BG/Preview/Panel2/ScenePreviewSubviewportContainer")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1024.0
+offset_bottom = 600.0
 texture = ExtResource("2_bi2st")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_top = 118.0
-offset_right = -104.0
-offset_bottom = 314.0
-grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1h6la")
-
-[node name="Panel2" type="Panel" parent="Panel"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6j02r")
-
-[node name="CreatureImage" type="TextureRect" parent="Panel/Panel2"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 5
-stretch_mode = 6
-
-[node name="LivePreview" type="SubViewportContainer" parent="Panel/Panel2"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Panel/Panel2/LivePreview"]
-handle_input_locally = false
-size = Vector2i(346, 196)
-render_target_update_mode = 0
-
-[node name="Camera3D" type="Camera3D" parent="Panel/Panel2/LivePreview/SubViewport"]
-cull_mask = 1048569
-fov = 60.0
-script = ExtResource("6_q5ua7")
-
-[node name="ScenePreviewSubviewportContainer" parent="Panel/Panel2" instance=ExtResource("7_6c18d")]
-layout_mode = 1
-camera_angle = Vector3(0.21, -33.039, 40.57)
-camera_zoom = 0.515
-camera_fov = 35.0
-drag_enabled = true
-continuous_update = true
-
-[node name="Reference" type="TextureRect" parent="."]
-visible = false
-self_modulate = Color(1, 1, 1, 0.235294)
+[node name="Header" type="MarginContainer" parent="BG"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("4_64cj3")
+offset_right = 1024.0
+offset_bottom = 121.0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 0
 
-[node name="RarityAndType" type="Label" parent="."]
+[node name="BasicInfoMargins" type="MarginContainer" parent="BG/Header"]
 layout_mode = 2
-offset_left = 60.0
-offset_top = 39.0
-offset_right = 129.0
-offset_bottom = 60.0
+size_flags_horizontal = 0
+
+[node name="BasicInfoVBox" type="VBoxContainer" parent="BG/Header/BasicInfoMargins"]
+layout_mode = 2
+
+[node name="RarityAndType" type="Label" parent="BG/Header/BasicInfoMargins/BasicInfoVBox"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("5_bhvwm")
 theme_override_font_sizes/font_size = 15
 text = "Common Fish"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 59.0
-offset_top = 73.0
-offset_right = 183.0
-offset_bottom = 113.0
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="NameContainer" type="HBoxContainer" parent="BG/Header/BasicInfoMargins/BasicInfoVBox"]
 layout_mode = 2
 
-[node name="NameButton" type="Button" parent="HBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BG/Header/BasicInfoMargins/BasicInfoVBox/NameContainer"]
+layout_mode = 2
+
+[node name="NameButton" type="Button" parent="BG/Header/BasicInfoMargins/BasicInfoVBox/NameContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(0, 0.635294, 0.992157, 1)
 theme_override_colors/font_hover_color = Color(0, 0.635294, 0.992157, 1)
@@ -256,36 +204,109 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yb2yq")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vqfvv")
 text = "Name"
 
-[node name="RenameButton" type="TextureButton" parent="HBoxContainer"]
+[node name="RenameButton" type="TextureButton" parent="BG/Header/BasicInfoMargins/BasicInfoVBox/NameContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_awlyl")
 
-[node name="AddRemoveFromTank" type="TextureButton" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 819.0
-offset_top = 46.0
-offset_right = 874.0
-offset_bottom = 100.0
-texture_normal = ExtResource("8_wb7er")
+[node name="AgeLabel" type="Label" parent="BG/Header/BasicInfoMargins/BasicInfoVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("11_ux5o3")
+theme_override_font_sizes/font_size = 15
+text = "Age:"
 
-[node name="CloseButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 916.0
-offset_top = 44.0
-offset_right = 971.0
+[node name="Buttons" type="HBoxContainer" parent="BG/Header"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 25
+
+[node name="AccessoriesButton" type="TextureButton" parent="BG/Header/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("9_awlyl")
+
+[node name="AddRemoveFromTankButton" type="TextureButton" parent="BG/Header/Buttons"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("10_wb7er")
+texture_pressed = ExtResource("11_mcnp6")
+
+[node name="CloseButton" type="TextureButton" parent="BG/Header/Buttons"]
+layout_mode = 2
+texture_normal = ExtResource("12_n2nre")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -254.0
 offset_bottom = 98.0
-texture_normal = ExtResource("9_mcnp6")
+grow_horizontal = 0
 
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 916.0
-offset_top = 493.0
-offset_right = 976.0
-offset_bottom = 553.0
-texture_normal = ExtResource("12_klxi3")
+[node name="Preview" type="Panel" parent="BG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_top = 118.0
+offset_right = -104.0
+offset_bottom = 314.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1h6la")
 
-[node name="CreatureSpecies" type="Label" parent="."]
+[node name="Panel2" type="Panel" parent="BG/Preview"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6j02r")
+
+[node name="CreatureImage" type="TextureRect" parent="BG/Preview/Panel2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 5
+stretch_mode = 6
+
+[node name="LivePreview" type="SubViewportContainer" parent="BG/Preview/Panel2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="BG/Preview/Panel2/LivePreview"]
+handle_input_locally = false
+size = Vector2i(346, 196)
+render_target_update_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="BG/Preview/Panel2/LivePreview/SubViewport"]
+cull_mask = 1048569
+fov = 60.0
+script = ExtResource("6_q5ua7")
+
+[node name="ScenePreviewSubviewportContainer" parent="BG/Preview/Panel2" instance=ExtResource("7_6c18d")]
+layout_mode = 1
+offset_top = 3.0
+offset_bottom = 3.0
+camera_angle = Vector3(0.21, -33.039, 40.57)
+camera_zoom = 0.515
+camera_fov = 35.0
+drag_enabled = true
+continuous_update = true
+
+[node name="CreatureSpecies" type="Label" parent="BG"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -300,22 +321,7 @@ theme_override_fonts/font = ExtResource("10_n2nre")
 theme_override_font_sizes/font_size = 15
 text = "Carassius auratus"
 
-[node name="AgeLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -62.0
-offset_top = 39.0
-offset_right = 92.0
-offset_bottom = 73.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("11_ux5o3")
-theme_override_font_sizes/font_size = 15
-text = "Age:"
-
-[node name="Description" type="Label" parent="."]
+[node name="Description" type="Label" parent="BG"]
 layout_mode = 0
 offset_left = 450.0
 offset_top = 145.0
@@ -329,304 +335,312 @@ text = "The common goldfish is an agreeable looking fish that brings joy and lau
 autowrap_mode = 3
 text_overrun_behavior = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BG"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 64.0
-offset_top = -275.0
+offset_top = -264.0
 offset_right = -64.0
-offset_bottom = -125.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Stats" type="VBoxContainer" parent="HBoxContainer2"]
+[node name="Stats" type="VBoxContainer" parent="BG/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
 
-[node name="Stats" type="Label" parent="HBoxContainer2/Stats"]
+[node name="Stats" type="Label" parent="BG/HBoxContainer2/Stats"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("11_ux5o3")
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 15
 text = "Stats"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="MoneyPerHour" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
+[node name="StatContainer" parent="BG/HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
 layout_mode = 2
 
-[node name="HungerLossPerHour" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
+[node name="StatContainer2" parent="BG/HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
 layout_mode = 2
 
-[node name="Speed" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
+[node name="StatContainer3" parent="BG/HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
 layout_mode = 2
 
-[node name="Size" parent="HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
+[node name="StatContainer4" parent="BG/HBoxContainer2/Stats" instance=ExtResource("12_bi2st")]
 layout_mode = 2
 
-[node name="Needs" type="VBoxContainer" parent="HBoxContainer2"]
+[node name="Needs" type="VBoxContainer" parent="BG/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
 
-[node name="Stats" type="Label" parent="HBoxContainer2/Needs"]
+[node name="Needs" type="Label" parent="BG/HBoxContainer2/Needs"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("11_ux5o3")
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 15
 text = "Needs"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="Happiness" parent="HBoxContainer2/Needs" instance=ExtResource("13_afveu")]
+[node name="NeedContainer" parent="BG/HBoxContainer2/Needs" instance=ExtResource("13_afveu")]
 layout_mode = 2
 
-[node name="Satiation" parent="HBoxContainer2/Needs" instance=ExtResource("13_afveu")]
+[node name="NeedContainer2" parent="BG/HBoxContainer2/Needs" instance=ExtResource("13_afveu")]
 layout_mode = 2
 
-[node name="Preferences" type="VBoxContainer" parent="HBoxContainer2"]
+[node name="Preferences" type="VBoxContainer" parent="BG/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Stats" type="Label" parent="HBoxContainer2/Preferences"]
+[node name="Preferences" type="Label" parent="BG/HBoxContainer2/Preferences"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("11_ux5o3")
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 15
 text = "Preferences"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="Brightness" type="TextureRect" parent="HBoxContainer2/Preferences"]
-clip_contents = true
+[node name="Temperature" type="TextureRect" parent="BG/HBoxContainer2/Preferences"]
 layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("2_bi2st")
-expand_mode = 1
+texture = ExtResource("16_ux5o3")
 
-[node name="CurveVisualizerUI" type="Control" parent="HBoxContainer2/Preferences/Brightness" node_paths=PackedStringArray("curve_canvas")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("19_485np")
-curve_canvas = NodePath("Canvas")
-curve = SubResource("Curve_iw5k5")
-curve_color = Color(1, 1, 1, 1)
-background_color = Color(0.101961, 0.101961, 0.101961, 0)
-padding = Vector2(0, 0)
-show_grid = false
-grid_lines = 2
-grid_color = Color(0.501961, 0.501961, 0.501961, 0.0901961)
-current_value = 0.25
-marker_guide_width = 0.5
-marker_guide_color = Color(0, 0.635294, 0.992157, 0.141176)
-marker_color = Color(0, 0.635294, 0.992157, 1)
-marker_size = 3.0
-metadata/_custom_type_script = "uid://ba5h1dli1mtfw"
-
-[node name="Canvas" type="Control" parent="HBoxContainer2/Preferences/Brightness/CurveVisualizerUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label3" type="Label" parent="HBoxContainer2/Preferences/Brightness"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -148.0
-offset_right = 148.0
-offset_bottom = 22.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("11_ux5o3")
-text = "Brightness"
-horizontal_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Preferences/Brightness"]
-layout_mode = 0
-offset_top = 22.0
-offset_right = 20.0
-offset_bottom = 42.0
-texture = ExtResource("17_6j02r")
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/Preferences/Brightness"]
-layout_mode = 0
-offset_left = 276.0
-offset_top = 22.0
-offset_right = 296.0
-offset_bottom = 42.0
-texture = ExtResource("18_klxi3")
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2/Preferences/Brightness"]
-layout_mode = 0
-offset_right = 20.0
-offset_bottom = 20.0
-texture = ExtResource("19_q5ua7")
-
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer2/Preferences/Brightness"]
-layout_mode = 0
-offset_top = 42.0
-offset_right = 20.0
-offset_bottom = 62.0
-texture = ExtResource("20_6c18d")
-
-[node name="TextureRect5" type="TextureRect" parent="HBoxContainer2/Preferences/Brightness"]
-layout_mode = 0
-offset_left = 276.0
-offset_right = 296.0
-offset_bottom = 20.0
-texture = ExtResource("19_q5ua7")
-
-[node name="TextureRect6" type="TextureRect" parent="HBoxContainer2/Preferences/Brightness"]
-layout_mode = 0
-offset_left = 276.0
-offset_top = 42.0
-offset_right = 296.0
-offset_bottom = 62.0
-texture = ExtResource("20_6c18d")
-
-[node name="Temperature" type="TextureRect" parent="HBoxContainer2/Preferences"]
-clip_contents = true
+[node name="Label" type="Label" parent="BG/HBoxContainer2/Preferences/Temperature"]
 layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("2_bi2st")
-expand_mode = 1
-
-[node name="CurveVisualizerUI" type="Control" parent="HBoxContainer2/Preferences/Temperature" node_paths=PackedStringArray("curve_canvas")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("19_485np")
-curve_canvas = NodePath("Canvas")
-curve = SubResource("Curve_iw5k5")
-curve_color = Color(1, 1, 1, 1)
-background_color = Color(0.101961, 0.101961, 0.101961, 0)
-padding = Vector2(0, 0)
-show_grid = false
-grid_lines = 2
-grid_color = Color(0.501961, 0.501961, 0.501961, 0.0901961)
-current_value = 0.25
-marker_guide_width = 0.5
-marker_guide_color = Color(0, 0.635294, 0.992157, 0.141176)
-marker_color = Color(0, 0.635294, 0.992157, 1)
-marker_size = 3.0
-metadata/_custom_type_script = "uid://ba5h1dli1mtfw"
-
-[node name="Canvas" type="Control" parent="HBoxContainer2/Preferences/Temperature/CurveVisualizerUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label3" type="Label" parent="HBoxContainer2/Preferences/Temperature"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -148.0
-offset_right = 148.0
-offset_bottom = 22.0
-grow_horizontal = 2
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 123.0
+offset_bottom = 24.0
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-theme_override_fonts/font = ExtResource("11_ux5o3")
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 15
 text = "Temperature"
 horizontal_alignment = 1
+text_overrun_behavior = 3
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Preferences/Temperature"]
-layout_mode = 0
-offset_top = 22.0
-offset_right = 20.0
-offset_bottom = 42.0
-texture = ExtResource("21_485np")
+[node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Temperature"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 29
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 13
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2/Preferences/Temperature"]
-layout_mode = 0
-offset_left = 276.0
-offset_top = 22.0
-offset_right = 296.0
-offset_bottom = 42.0
-texture = ExtResource("22_iw5k5")
+[node name="Panel" type="Panel" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_klxi3")
 
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2/Preferences/Temperature"]
-layout_mode = 0
-offset_right = 20.0
-offset_bottom = 20.0
+[node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Panel" type="Panel" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5ua7")
+
+[node name="CurveVisualizerUI" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel" instance=ExtResource("17_1h6la")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+top_left_color = Color(0.952941, 0.819608, 0.137255, 1)
+top_right_color = Color(0, 0.635294, 0.992157, 1)
+bottom_left_color = Color(0.952941, 0.819608, 0.137255, 1)
+bottom_right_color = Color(0, 0.635294, 0.992157, 1)
+graph_margins = Vector2(2, 2)
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Control" type="Control" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel/MarginContainer/Control"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 12.0
 texture = ExtResource("19_q5ua7")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer2/Preferences/Temperature"]
-layout_mode = 0
-offset_top = 42.0
-offset_right = 20.0
-offset_bottom = 62.0
+[node name="TextureRect2" type="TextureRect" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_right = 12.0
+grow_vertical = 0
 texture = ExtResource("20_6c18d")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TextureRect5" type="TextureRect" parent="HBoxContainer2/Preferences/Temperature"]
-layout_mode = 0
-offset_left = 276.0
-offset_right = 296.0
-offset_bottom = 20.0
+[node name="Brightness" type="TextureRect" parent="BG/HBoxContainer2/Preferences"]
+layout_mode = 2
+texture = ExtResource("16_ux5o3")
+
+[node name="Label" type="Label" parent="BG/HBoxContainer2/Preferences/Brightness"]
+layout_mode = 2
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 123.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_tqbuu")
+theme_override_font_sizes/font_size = 15
+text = "Brightness"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Brightness"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 29
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 13
+
+[node name="Panel" type="Panel" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_klxi3")
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Panel" type="Panel" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q5ua7")
+
+[node name="CurveVisualizerUI" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel" instance=ExtResource("17_1h6la")]
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+top_left_color = Color(0.415686, 0.788235, 0.996078, 1)
+top_right_color = Color(0.0470588, 0.231373, 0.333333, 1)
+bottom_left_color = Color(0.415686, 0.788235, 0.996078, 1)
+bottom_right_color = Color(0.0470588, 0.231373, 0.333333, 1)
+graph_margins = Vector2(2, 2)
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Control" type="Control" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel/MarginContainer/Control"]
+layout_mode = 2
+offset_right = 12.0
+offset_bottom = 12.0
 texture = ExtResource("19_q5ua7")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TextureRect6" type="TextureRect" parent="HBoxContainer2/Preferences/Temperature"]
-layout_mode = 0
-offset_left = 276.0
-offset_top = 42.0
-offset_right = 296.0
-offset_bottom = 62.0
+[node name="TextureRect2" type="TextureRect" parent="BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_right = 12.0
+grow_vertical = 0
 texture = ExtResource("20_6c18d")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+[node name="HBoxContainer3" type="HBoxContainer" parent="BG"]
 layout_mode = 0
-offset_top = 487.0
-offset_right = 1024.0
-offset_bottom = 527.0
+offset_left = -565.0
+offset_top = 540.0
+offset_right = 459.0
+offset_bottom = 580.0
 theme_override_constants/separation = 15
-alignment = 1
+alignment = 2
 
-[node name="Value" type="Label" parent="HBoxContainer3"]
+[node name="Value" type="Label" parent="BG/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("6_tqbuu")
 theme_override_font_sizes/font_size = 20
 text = "Value"
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer3"]
+[node name="TextureRect2" type="TextureRect" parent="BG/HBoxContainer3"]
 layout_mode = 2
 texture = ExtResource("16_tqbuu")
 
-[node name="SellValue" type="Label" parent="HBoxContainer3"]
+[node name="SellValue" type="Label" parent="BG/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("6_tqbuu")
 theme_override_font_sizes/font_size = 20
 text = "9999"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="BG"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -33.0
+offset_top = -60.0
+offset_right = 33.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 20
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+[node name="TextureButton" type="TextureButton" parent="BG/MarginContainer"]
 layout_mode = 2
 texture_normal = ExtResource("26_6c18d")
