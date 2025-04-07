@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c3b2lav6ve3u0"]
+
+[resource]
+resource_name = "Material_OpaFaceline"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.827451, 0.678431, 1)

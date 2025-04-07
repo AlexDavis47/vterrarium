@@ -1,5 +1,16 @@
 {
   "column_properties": {
+    "res://assets/models/creatures/fish/credits_fish/credits_fish_alex/": {
+      "metadata/_custom_type_script": {
+        "visibility": 0
+      },
+      "resource_local_to_scene": {
+        "visibility": 0
+      },
+      "resource_name": {
+        "visibility": 0
+      }
+    },
     "res://src/accessories/": {
       "metadata/_custom_type_script": {
         "visibility": 0.0
@@ -37,7 +48,8 @@
   "recent_paths": [
     "res://src/accessories/",
     "res://src/loot_generator/loot_tables/",
-    "res://src/store_items/"
+    "res://src/store_items/",
+    "res://assets/models/creatures/fish/credits_fish/credits_fish_alex/"
   ],
   "table_functions": {
     "filter": [

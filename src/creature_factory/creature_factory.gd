@@ -19,7 +19,8 @@ enum Creatures {
 	RED_FISH,
 	YELLOW_TANG_FISH,
 	AXOLOTL,
-	MYSTERY_FISH
+	MYSTERY_FISH,
+	CREDITS_ALEX
 }
 
 
@@ -30,7 +31,8 @@ var creature_data_templates: Dictionary[Creatures, CreatureData] = {
 	Creatures.RED_FISH: preload("uid://x7f8v6e3a7u2"),
 	Creatures.YELLOW_TANG_FISH: preload("uid://cl4iqwjh3g3cm"),
 	Creatures.AXOLOTL: preload("uid://b2whh0mnx8dh"),
-	Creatures.MYSTERY_FISH: preload("uid://byfmr0pletltf")
+	Creatures.MYSTERY_FISH: preload("uid://byfmr0pletltf"),
+	Creatures.CREDITS_ALEX: preload("uid://duf8h8xtuyku3")
 }
 
 signal creature_added(creature_data: CreatureData)
@@ -235,11 +237,3 @@ func get_number_of_creatures_in_tank() -> int:
 		if is_instance_valid(creature) and creature.creature_data and creature.creature_data.creature_is_in_tank:
 			count += 1
 	return count
-
-func _process(delta):
-	if Input.is_action_just_pressed("ui_up"):
-		_create_test_creatures()
-	if Input.is_action_just_pressed("ui_right"):
-		_remove_all_creatures_from_tank()
-	if Input.is_action_just_pressed("ui_left"):
-		_add_all_creatures_to_tank()

@@ -93,3 +93,4 @@ common/physics_interpolation=true
 textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+mesh_lod/lod_change/threshold_pixels=0.0

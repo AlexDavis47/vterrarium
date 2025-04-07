@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bekpyyw5mtxom"]
+
+[ext_resource type="Texture2D" uid="uid://p8oooq4fcewd" path="res://assets/models/creatures/fish/credits_fish/credits_fish_alex/credits_fish_alex_MaskTexture_0.png" id="1_img0p"]
+
+[resource]
+resource_name = "Material_XluMask_0"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_img0p")
+texture_repeat = false
