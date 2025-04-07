@@ -3,14 +3,16 @@
 [ext_resource type="Script" uid="uid://didm3u5ygxm1u" path="res://src/ui/horizontal_meter_ui/horizontal_meter_ui.gd" id="1_qsn2c"]
 
 [node name="HorizontalMeterUi" type="Control"]
-custom_minimum_size = Vector2(200, 50)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -824.0
+offset_bottom = -520.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qsn2c")
-value = 1086.8
+value = 100.0
 max_value = 2407.7
-fill_ratio = 0.451385
+show_value_text = false
+value_color = Color(0, 0.635294, 0.992157, 1)
