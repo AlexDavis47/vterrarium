@@ -203,7 +203,6 @@ func _update_age() -> void:
 ########################################################
 
 func _on_close_button_pressed() -> void:
-	VTGlobal.onscreen_keyboard.hide()
 	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	queue_free()
 

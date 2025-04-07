@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bequvq4qou4sg" path="res://assets/textures/brown_photostudio_02_1k.png" id="3_afveu"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="4_tqbuu"]
 [ext_resource type="FontFile" uid="uid://cywugphcmumyo" path="res://assets/fonts/RedHatDisplay-Medium.ttf" id="5_bhvwm"]
-[ext_resource type="Script" uid="uid://bexncqsnblklf" path="res://src/ui/creature_detail_view/creature_live_camera.gd" id="6_q5ua7"]
+[ext_resource type="Script" path="res://src/ui/creature_detail_view/creature_live_camera.gd" id="6_q5ua7"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_tqbuu"]
 [ext_resource type="PackedScene" uid="uid://dpv4hgst1vgd2" path="res://src/ui/scene_preview_subviewport_container.tscn" id="7_6c18d"]
 [ext_resource type="Texture2D" uid="uid://bnq3ckykvimm7" path="res://src/ui/creature_detail_view/textures/pen-to-square-solid2.png" id="7_awlyl"]
@@ -141,8 +141,8 @@ _size_container = NodePath("BG/HBoxContainer2/Stats/StatContainer4")
 _happiness_container = NodePath("BG/HBoxContainer2/Needs/NeedContainer")
 _satiation_container = NodePath("BG/HBoxContainer2/Needs/NeedContainer2")
 _close_button = NodePath("BG/Header/Buttons/CloseButton")
-_brightness_graph = NodePath("BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel/CurveVisualizerUI")
-_temperature_graph = NodePath("BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel/CurveVisualizerUI")
+_brightness_graph = NodePath("BG/HBoxContainer2/Preferences/Brightness/MarginContainer/Panel/MarginContainer/Panel/CurveVisualizerUI")
+_temperature_graph = NodePath("BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel/CurveVisualizerUI")
 _creature_live_camera = NodePath("BG/Preview/Panel2/LivePreview/SubViewport/Camera3D")
 _creature_live_camera_subviewport_container = NodePath("BG/Preview/Panel2/LivePreview")
 _creature_live_subviewport_container = NodePath("BG/Preview/Panel2/ScenePreviewSubviewportContainer")
@@ -218,6 +218,7 @@ text = "Age:"
 [node name="Buttons" type="HBoxContainer" parent="BG/Header"]
 layout_mode = 2
 size_flags_horizontal = 8
+mouse_filter = 2
 theme_override_constants/separation = 25
 
 [node name="AccessoriesButton" type="TextureButton" parent="BG/Header/Buttons"]
@@ -242,6 +243,7 @@ anchor_right = 1.0
 offset_left = -254.0
 offset_bottom = 98.0
 grow_horizontal = 0
+mouse_filter = 2
 
 [node name="Preview" type="Panel" parent="BG"]
 layout_mode = 1
