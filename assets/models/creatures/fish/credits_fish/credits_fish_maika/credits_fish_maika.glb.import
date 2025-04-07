@@ -1833,6 +1833,48 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"Material.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material.001.tres"
+},
+"Material.002": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material.002.tres"
+},
+"Material.003": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material.003.tres"
+},
+"Material_OpaFaceline.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material_OpaFaceline.001.tres"
+},
+"Material_OpaForehead.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material_OpaForehead.001.tres"
+},
+"Material_OpaHair.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material_OpaHair.001.tres"
+},
+"Material_OpaNose.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material_OpaNose.001.tres"
+},
+"Material_XluGlass": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material_XluGlass.tres"
+},
+"Material_XluMask_0.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material_XluMask_0.001.tres"
+},
+"Material_XluNoseLine.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_maika/Material_XluNoseLine.001.tres"
+}
 }
 }
 gltf/naming_version=1

@@ -6,6 +6,14 @@ class_name LootTableData
 
 @export var entries: Array[LootTableDataEntry] = []
 
+## If true, the loot table will not be randomized, and will always return all items in the order defined in the entries array.
+@export var static_pack: bool = false:
+	get:
+		return static_pack
+	set(value):
+		static_pack = value
+		emit_changed()
+
 func get_total_weight() -> float:
 	var total_weight: float = 0.0
 	for entry in entries:
@@ -25,3 +33,10 @@ func get_random_item(luck: float = 1.0) -> ItemDataResource:
 			return item
 
 	return null
+
+func get_static_pack() -> Array[ItemDataResource]:
+	var items: Array[ItemDataResource] = []
+	for entry in entries:
+		items.append(entry.item.duplicate(true))
+		entry.item.on_generated(1.0)
+	return items

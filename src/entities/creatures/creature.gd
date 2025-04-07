@@ -76,9 +76,9 @@ func _initialize_creature() -> void:
 
 func _setup_mesh() -> void:
 	# Recursively find and process all MeshInstance3D nodes
-	_process_mesh_nodes(creature_mesh_root)
-	
-	_apply_tint()
+	if creature_mesh_root:
+		_process_mesh_nodes(creature_mesh_root)
+		_apply_tint()
 	_apply_accesories()
 
 func _process_mesh_nodes(node: Node) -> void:

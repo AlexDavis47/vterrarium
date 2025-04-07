@@ -428,9 +428,8 @@ _data = {
 &"Swim": SubResource("Animation_cfaly")
 }
 
-[node name="MysteryFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh_root", "_accessory_hat_attachment")]
+[node name="CreditsFishAlex" type="CharacterBody3D" node_paths=PackedStringArray("_accessory_hat_attachment")]
 script = ExtResource("1_lbalu")
-creature_mesh_root = NodePath("credits_fish_alex")
 _accessory_hat_attachment = NodePath("credits_fish_alex/full_body_m/Skeleton3D/AccessoryHatSlot/Node3D")
 metadata/_custom_type_script = "uid://bse0c1u4ifhet"
 
@@ -625,7 +624,7 @@ bones/22/rotation = Quaternion(-7.45058e-09, 0, 0, 1)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="OpaFaceline" type="BoneAttachment3D" parent="credits_fish_alex/full_body_m/Skeleton3D"]
-transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39059e-09, 3.72529e-09, -0.0883485, -3.5706e-09, -0.0883485, -1.49012e-08, -4.12791e-14, 1.63436, -10.7665)
+transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39058e-09, 1.35973e-07, -0.0883485, -3.5706e-09, -0.0883485, -1.41561e-07, -4.12791e-14, 1.63436, -10.7665)
 bone_name = "OpaFaceline"
 bone_idx = 10
 
@@ -634,7 +633,7 @@ mesh = SubResource("ArrayMesh_xonea")
 skeleton = NodePath("")
 
 [node name="OpaForehead" type="BoneAttachment3D" parent="credits_fish_alex/full_body_m/Skeleton3D"]
-transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39059e-09, 3.72529e-09, -0.0883485, -3.5706e-09, -0.0883485, -1.49012e-08, -4.12791e-14, 1.63436, -10.7665)
+transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39058e-09, 1.35973e-07, -0.0883485, -3.5706e-09, -0.0883485, -1.41561e-07, -4.12791e-14, 1.63436, -10.7665)
 bone_name = "OpaForehead"
 bone_idx = 11
 
@@ -643,7 +642,7 @@ mesh = SubResource("ArrayMesh_nfifh")
 skeleton = NodePath("")
 
 [node name="OpaHair" type="BoneAttachment3D" parent="credits_fish_alex/full_body_m/Skeleton3D"]
-transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39059e-09, 3.72529e-09, -0.0883485, -3.5706e-09, -0.0883485, -1.49012e-08, -4.12791e-14, 1.63436, -10.7665)
+transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39058e-09, 1.35973e-07, -0.0883485, -3.5706e-09, -0.0883485, -1.41561e-07, -4.12791e-14, 1.63436, -10.7665)
 bone_name = "OpaHair"
 bone_idx = 12
 
@@ -652,7 +651,7 @@ mesh = SubResource("ArrayMesh_g48sg")
 skeleton = NodePath("")
 
 [node name="OpaNose" type="BoneAttachment3D" parent="credits_fish_alex/full_body_m/Skeleton3D"]
-transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39059e-09, 3.72529e-09, -0.0883485, -3.5706e-09, -0.0883485, -1.49012e-08, -4.12791e-14, 1.63436, -10.7665)
+transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39058e-09, 1.35973e-07, -0.0883485, -3.5706e-09, -0.0883485, -1.41561e-07, -4.12791e-14, 1.63436, -10.7665)
 bone_name = "OpaNose"
 bone_idx = 13
 
@@ -661,7 +660,7 @@ mesh = SubResource("ArrayMesh_gisc8")
 skeleton = NodePath("")
 
 [node name="XluMask" type="BoneAttachment3D" parent="credits_fish_alex/full_body_m/Skeleton3D"]
-transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39059e-09, 3.72529e-09, -0.0883485, -3.5706e-09, -0.0883485, -1.49012e-08, -4.12791e-14, 1.63436, -10.7665)
+transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39058e-09, 1.35973e-07, -0.0883485, -3.5706e-09, -0.0883485, -1.41561e-07, -4.12791e-14, 1.63436, -10.7665)
 bone_name = "XluMask"
 bone_idx = 14
 
@@ -670,7 +669,7 @@ mesh = SubResource("ArrayMesh_tj576")
 skeleton = NodePath("")
 
 [node name="XluNoseLine" type="BoneAttachment3D" parent="credits_fish_alex/full_body_m/Skeleton3D"]
-transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39059e-09, 3.72529e-09, -0.0883485, -3.5706e-09, -0.0883485, -1.49012e-08, -4.12791e-14, 1.63436, -10.7665)
+transform = Transform3D(-0.0883485, 3.5706e-09, 2.39059e-09, -2.39058e-09, 1.35973e-07, -0.0883485, -3.5706e-09, -0.0883485, -1.41561e-07, -4.12791e-14, 1.63436, -10.7665)
 bone_name = "XluNoseLine"
 bone_idx = 15
 
@@ -691,7 +690,7 @@ mesh = SubResource("ArrayMesh_lng76")
 skin = SubResource("Skin_kemoe")
 
 [node name="AccessoryHatSlot" type="BoneAttachment3D" parent="credits_fish_alex/full_body_m/Skeleton3D"]
-transform = Transform3D(1, 5.32907e-15, -5.32907e-15, -6.95741e-15, 0.924587, -0.380971, 2.89697e-15, 0.380971, 0.924587, -4.12791e-14, 1.63436, -10.7665)
+transform = Transform3D(1, 5.32907e-15, -5.32907e-15, -6.9574e-15, 0.924587, -0.380971, 2.89697e-15, 0.380971, 0.924587, -4.12791e-14, 1.63436, -10.7665)
 bone_name = "head_m"
 bone_idx = 9
 

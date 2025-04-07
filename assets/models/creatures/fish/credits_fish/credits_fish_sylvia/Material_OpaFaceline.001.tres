@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c57c2wqb5uac8"]
+
+[ext_resource type="Texture2D" uid="uid://dwgicj78nblhu" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/credits_fish_sylvia_Texture_0.png" id="1_eop8y"]
+
+[resource]
+resource_name = "Material_OpaFaceline.001"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_eop8y")
+texture_repeat = false

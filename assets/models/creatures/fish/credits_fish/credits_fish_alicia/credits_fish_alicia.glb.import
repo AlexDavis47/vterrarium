@@ -1833,6 +1833,48 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"Material.002": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material.002.tres"
+},
+"Material.004": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material.004.tres"
+},
+"Material.005": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material.005.tres"
+},
+"Material.006": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material.006.tres"
+},
+"Material_OpaFaceline": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material_OpaFaceline.tres"
+},
+"Material_OpaForehead": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material_OpaForehead.tres"
+},
+"Material_OpaHair": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material_OpaHair.tres"
+},
+"Material_OpaNose": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material_OpaNose.tres"
+},
+"Material_XluMask_0": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material_XluMask_0.tres"
+},
+"Material_XluNoseLine": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_alicia/Material_XluNoseLine.tres"
+}
 }
 }
 gltf/naming_version=1

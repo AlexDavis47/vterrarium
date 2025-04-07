@@ -1833,6 +1833,52 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"Material.003": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.003.tres"
+},
+"Material.004": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.004.tres"
+},
+"Material.005": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.005.tres"
+},
+"Material.006": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.006.tres"
+},
+"Material_OpaFaceline.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_OpaFaceline.001.tres"
+},
+"Material_OpaForehead.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_OpaForehead.001.tres"
+},
+"Material_OpaHair.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_OpaHair.001.tres"
+},
+"Material_OpaNose.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_OpaNose.001.tres"
+},
+"Material_XluGlass": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_XluGlass.tres"
+},
+"Material_XluMask_0.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_XluMask_0.001.tres"
+},
+"Material_XluNoseLine.001": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_XluNoseLine.001.tres"
+}
 }
 }
 gltf/naming_version=1

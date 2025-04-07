@@ -50,6 +50,7 @@ class_name StoreItemData
 	set(value):
 		number_of_items = value
 		emit_changed()
+		
 
 ## Implementation stub
 func _get_pack_item_cards() -> Array[PackItemCardUI]:

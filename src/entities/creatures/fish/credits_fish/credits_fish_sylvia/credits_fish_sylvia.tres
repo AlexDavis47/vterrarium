@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://dsa7mg82m6842"]
+
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_vjkk7"]
+
+[sub_resource type="Curve" id="Curve_ok7cm"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Vector2(0.534682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_jevmt"]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(51.5079, 0), 0.0, 0.0, 0, 0, Vector2(70.2778, 1), 0.0, 0.0, 0, 0, Vector2(83.1548, 1), 0.0, 0.0, 0, 0, Vector2(101.27, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("1_vjkk7")
+creature_name = "Sylvia Thornton"
+creature_species = "Dude"
+creature_type = 0
+creature_description = "Duuude"
+creature_rarity = 3
+creature_scene_uuid = "uid://don36i8q3fbta"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_size = 1.0
+creature_money_per_hour = 4000.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_speed = 1.0
+creature_light_preference = SubResource("Curve_ok7cm")
+creature_temperature_preference = SubResource("Curve_jevmt")
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+creature_age = 0.0
+creature_age_bracket = 1
+creature_happiness_bracket = 2
+creature_hunger_bracket = 2
+creature_light_contentment = 1.0
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+metadata/_custom_type_script = "uid://63umrodfd2l3"

@@ -20,7 +20,10 @@ enum Creatures {
 	YELLOW_TANG_FISH,
 	AXOLOTL,
 	MYSTERY_FISH,
-	CREDITS_ALEX
+	CREDITS_ALEX,
+	CREDITS_ALICIA,
+	CREDITS_MAIKA,
+	CREDITS_SYLVIA
 }
 
 
@@ -32,7 +35,10 @@ var creature_data_templates: Dictionary[Creatures, CreatureData] = {
 	Creatures.YELLOW_TANG_FISH: preload("uid://cl4iqwjh3g3cm"),
 	Creatures.AXOLOTL: preload("uid://b2whh0mnx8dh"),
 	Creatures.MYSTERY_FISH: preload("uid://byfmr0pletltf"),
-	Creatures.CREDITS_ALEX: preload("uid://duf8h8xtuyku3")
+	Creatures.CREDITS_ALEX: preload("uid://duf8h8xtuyku3"),
+	Creatures.CREDITS_ALICIA: preload("uid://jgors16k8mmq"),
+	Creatures.CREDITS_MAIKA: preload("uid://brp3bkjmcrbb"),
+	Creatures.CREDITS_SYLVIA: preload("uid://dsa7mg82m6842")
 }
 
 signal creature_added(creature_data: CreatureData)

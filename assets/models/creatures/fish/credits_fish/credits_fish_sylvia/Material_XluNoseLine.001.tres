@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cy28s2bp73kv5"]
+
+[ext_resource type="Texture2D" uid="uid://bud8q1o7ok6p8" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/credits_fish_sylvia_Texture_1.png" id="1_pq8mr"]
+
+[resource]
+resource_name = "Material_XluNoseLine.001"
+transparency = 4
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_pq8mr")
+texture_repeat = false

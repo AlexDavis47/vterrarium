@@ -14,6 +14,8 @@ var _loot_tables: Dictionary[LootTable, LootTableData] = {
 }
 
 func generate_loot(loot_table: LootTableData, amount: int = 1, luck: float = 1.0) -> Array[ItemDataResource]:
+    if loot_table.static_pack:
+        return loot_table.get_static_pack()
     var loot: Array[ItemDataResource] = []
     for i in range(amount):
         loot.append(loot_table.get_random_item(luck))
