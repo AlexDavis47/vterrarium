@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends MarginContainer
 class_name NeedContainer
 
 @export var _need_label: Label

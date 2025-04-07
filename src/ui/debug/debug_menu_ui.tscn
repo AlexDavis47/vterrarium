@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dk08klp38nyv6"]
+[gd_scene load_steps=18 format=3 uid="uid://dk08klp38nyv6"]
 
 [ext_resource type="Script" uid="uid://bd3qy6ejxwul8" path="res://src/ui/debug/debug_menu_ui.gd" id="1_js7ux"]
 [ext_resource type="Texture2D" uid="uid://gx45fusvwys2" path="res://src/ui/debug/textures/Debug Menu (2).png" id="2_hcp6s"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://uaerhkahpvkv" path="res://src/ui/debug/current_air_humidity.gd" id="12_1vw62"]
 [ext_resource type="Script" uid="uid://djfcgihfox2kx" path="res://src/ui/debug/add_all_creatures.gd" id="13_1prrj"]
 [ext_resource type="Script" uid="uid://b78x52u4eb6ol" path="res://src/ui/debug/add_all_accessories.gd" id="14_mfnhn"]
+[ext_resource type="Script" uid="uid://fwmkruvf2pkh" path="res://src/ui/debug/starve_all_creatures.gd" id="15_khqw2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tdf5"]
 texture = ExtResource("6_njgff")
@@ -303,6 +304,21 @@ layout_mode = 2
 [node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllAccessories/MarginContainer"]
 layout_mode = 2
 text = "Add 1 of each accessory"
+
+[node name="StarveAllCreatures" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+clip_children = 2
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
+script = ExtResource("15_khqw2")
+button = NodePath("MarginContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/StarveAllCreatures"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/StarveAllCreatures/MarginContainer"]
+layout_mode = 2
+text = "Starve All Creatures"
 
 [node name="TextureRect2" type="TextureButton" parent="."]
 layout_mode = 0

@@ -300,8 +300,6 @@ script = ExtResource("6_q5ua7")
 
 [node name="ScenePreviewSubviewportContainer" parent="BG/Preview/Panel2" instance=ExtResource("7_6c18d")]
 layout_mode = 1
-offset_top = 3.0
-offset_bottom = 3.0
 camera_angle = Vector3(0.21, -33.039, 40.57)
 camera_zoom = 0.515
 camera_fov = 35.0

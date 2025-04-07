@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbj3l26w308nb"]
+
+[ext_resource type="Script" uid="uid://didm3u5ygxm1u" path="res://src/ui/horizontal_meter_ui/horizontal_meter_ui.gd" id="1_qsn2c"]
+
+[node name="HorizontalMeterUi" type="Control"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qsn2c")
+value = 1086.8
+max_value = 2407.7
+fill_ratio = 0.451385
