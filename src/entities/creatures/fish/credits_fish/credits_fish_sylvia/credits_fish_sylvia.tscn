@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://don36i8q3fbta"]
+[gd_scene load_steps=42 format=4 uid="uid://don36i8q3fbta"]
 
 [ext_resource type="Script" uid="uid://cw2eapacseejy" path="res://src/entities/creatures/fish/credits_fish/credits_fish.gd" id="1_2slif"]
 [ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_7xpvg"]
@@ -15,7 +15,6 @@
 [ext_resource type="Material" uid="uid://cy28s2bp73kv5" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_XluNoseLine.001.tres" id="13_dyv5d"]
 [ext_resource type="Material" uid="uid://corw8dcl8au1m" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.004.tres" id="14_6kc51"]
 [ext_resource type="Material" uid="uid://c4y40bbfikln" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.006.tres" id="15_wk2hm"]
-[ext_resource type="PackedScene" uid="uid://d0vgmuwsr5stw" path="res://src/accessories/hats/pirate_hat/pirate_hat.tscn" id="16_4dcbd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e3yrm"]
 radius = 0.327054
@@ -873,8 +872,6 @@ bone_idx = 10
 
 [node name="Node3D" type="Node3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D/AccessoryHatSlot"]
 transform = Transform3D(-19.845, 0, -1.7349e-06, 5.85512e-07, 18.6807, -6.69747, 1.63312e-06, -6.69747, -18.6807, 0, 6.29043, -1.17169)
-
-[node name="PirateHat" parent="credits_fish_sylvia/full_body_f/Skeleton3D/AccessoryHatSlot/Node3D" instance=ExtResource("16_4dcbd")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="credits_fish_sylvia"]
 libraries = {
