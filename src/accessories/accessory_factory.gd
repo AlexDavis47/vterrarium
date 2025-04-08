@@ -63,6 +63,11 @@ func create_accessory(accessory_type: Accessories) -> AccessoryData:
 	new_accessory.on_generated(randf_range(0.5, 1.5))
 	return new_accessory
 
+func create_accessory_from_data(accessory_data: AccessoryData) -> AccessoryData:
+	var new_accessory: AccessoryData = accessory_data.duplicate(true)
+	new_accessory.on_generated(randf_range(0.5, 1.5))
+	return new_accessory
+
 func instantiate_accessory(accessory_data: AccessoryData) -> Node3D:
 	var accessory_scene = load(accessory_data.accessory_scene_uuid)
 	var accessory = accessory_scene.instantiate()

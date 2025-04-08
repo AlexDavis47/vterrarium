@@ -29,7 +29,13 @@ func get_random_item(luck: float = 1.0) -> ItemDataResource:
 		cumulative_weight += entry.weight
 		if random_value <= cumulative_weight:
 			var item: ItemDataResource = entry.item.duplicate(true)
-			item.on_generated(luck)
+			if item is CreatureData:
+				item = CreatureFactory.create_creature_from_data(item)
+			elif item is AccessoryData:
+				item = AccessoryFactory.create_accessory_from_data(item)
+			elif item is ItemDataResource:
+				item.on_generated(luck)
+
 			return item
 
 	return null
@@ -37,6 +43,11 @@ func get_random_item(luck: float = 1.0) -> ItemDataResource:
 func get_static_pack() -> Array[ItemDataResource]:
 	var items: Array[ItemDataResource] = []
 	for entry in entries:
+		if entry.item is CreatureData:
+			entry.item = CreatureFactory.create_creature_from_data(entry.item)
+		elif entry.item is AccessoryData:
+			entry.item = AccessoryFactory.create_accessory_from_data(entry.item)
+		else:
+			entry.item.on_generated(1.0)
 		items.append(entry.item.duplicate(true))
-		entry.item.on_generated(1.0)
 	return items

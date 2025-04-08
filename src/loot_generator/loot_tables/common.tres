@@ -62,4 +62,5 @@ metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 [resource]
 script = ExtResource("2_i8gck")
 entries = Array[ExtResource("1_1elya")]([SubResource("Resource_4yknd"), SubResource("Resource_71sv3"), SubResource("Resource_ragye"), SubResource("Resource_3gya4"), SubResource("Resource_2o1g8"), SubResource("Resource_1fu0x"), SubResource("Resource_hn5va"), SubResource("Resource_mwevj")])
+static_pack = false
 metadata/_custom_type_script = "uid://bst7q731ckock"

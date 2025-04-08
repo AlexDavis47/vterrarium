@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://don36i8q3fbta"]
+[gd_scene load_steps=43 format=4 uid="uid://don36i8q3fbta"]
 
 [ext_resource type="Script" uid="uid://cw2eapacseejy" path="res://src/entities/creatures/fish/credits_fish/credits_fish.gd" id="1_2slif"]
 [ext_resource type="Script" uid="uid://civw0c4uuw0y2" path="res://src/entities/creatures/creature_state_machine.gd" id="2_7xpvg"]
@@ -15,6 +15,7 @@
 [ext_resource type="Material" uid="uid://cy28s2bp73kv5" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material_XluNoseLine.001.tres" id="13_dyv5d"]
 [ext_resource type="Material" uid="uid://corw8dcl8au1m" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.004.tres" id="14_6kc51"]
 [ext_resource type="Material" uid="uid://c4y40bbfikln" path="res://assets/models/creatures/fish/credits_fish/credits_fish_sylvia/Material.006.tres" id="15_wk2hm"]
+[ext_resource type="PackedScene" uid="uid://d0vgmuwsr5stw" path="res://src/accessories/hats/pirate_hat/pirate_hat.tscn" id="16_4dcbd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_e3yrm"]
 radius = 0.327054
@@ -772,7 +773,7 @@ bones/25/rotation = Quaternion(-7.45058e-09, 0, 0, 1)
 bones/25/scale = Vector3(1, 1, 1)
 
 [node name="fork" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(0.858769, -0.284052, -0.426417, 0.502961, 0.308648, 0.80732, -0.0977079, -0.907772, 0.407925, 5.41468, 3.43078, -9.89496)
+transform = Transform3D(0.858769, -0.284052, -0.426416, 0.50296, 0.308648, 0.807321, -0.0977081, -0.907772, 0.407924, 5.41468, 3.43078, -9.89496)
 bone_name = "fork"
 bone_idx = 5
 
@@ -781,7 +782,7 @@ mesh = SubResource("ArrayMesh_wlunv")
 skeleton = NodePath("")
 
 [node name="knife" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-0.714396, -0.698304, 0.0448413, -0.241387, 0.185786, -0.952479, 0.656788, -0.691271, -0.301286, -5.19718, 3.65721, -9.32858)
+transform = Transform3D(-0.714396, -0.698304, 0.0448417, -0.241388, 0.185787, -0.952478, 0.656788, -0.69127, -0.301288, -5.19718, 3.6572, -9.32857)
 bone_name = "knife"
 bone_idx = 9
 
@@ -790,7 +791,7 @@ mesh = SubResource("ArrayMesh_x2qvs")
 skeleton = NodePath("")
 
 [node name="OpaFaceline" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-1, -8.84048e-08, -7.27995e-08, 5.40034e-08, 0.19655, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.76038, -1.74456)
+transform = Transform3D(-1, -8.84047e-08, -7.27995e-08, 5.40034e-08, 0.196551, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.7604, -1.74451)
 bone_name = "OpaFaceline"
 bone_idx = 12
 
@@ -799,7 +800,7 @@ mesh = SubResource("ArrayMesh_0esdu")
 skeleton = NodePath("")
 
 [node name="OpaForehead" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-1, -8.84048e-08, -7.27995e-08, 5.40034e-08, 0.19655, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.76038, -1.74456)
+transform = Transform3D(-1, -8.84047e-08, -7.27995e-08, 5.40034e-08, 0.196551, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.7604, -1.74451)
 bone_name = "OpaForehead"
 bone_idx = 13
 
@@ -808,7 +809,7 @@ mesh = SubResource("ArrayMesh_fh43j")
 skeleton = NodePath("")
 
 [node name="OpaHair" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-1, -8.84048e-08, -7.27995e-08, 5.40034e-08, 0.19655, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.76038, -1.74456)
+transform = Transform3D(-1, -8.84047e-08, -7.27995e-08, 5.40034e-08, 0.196551, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.7604, -1.74451)
 bone_name = "OpaHair"
 bone_idx = 14
 
@@ -817,7 +818,7 @@ mesh = SubResource("ArrayMesh_wtucu")
 skeleton = NodePath("")
 
 [node name="OpaNose" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-1, -8.84048e-08, -7.27995e-08, 5.40034e-08, 0.19655, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.76038, -1.74456)
+transform = Transform3D(-1, -8.84047e-08, -7.27995e-08, 5.40034e-08, 0.196551, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.7604, -1.74451)
 bone_name = "OpaNose"
 bone_idx = 15
 
@@ -826,7 +827,7 @@ mesh = SubResource("ArrayMesh_f36x1")
 skeleton = NodePath("")
 
 [node name="XluGlass" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-1, -8.84048e-08, -7.27995e-08, 5.40034e-08, 0.19655, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.76038, -1.74456)
+transform = Transform3D(-1, -8.84047e-08, -7.27995e-08, 5.40034e-08, 0.196551, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.7604, -1.74451)
 bone_name = "XluGlass"
 bone_idx = 16
 
@@ -835,7 +836,7 @@ mesh = SubResource("ArrayMesh_0frl6")
 skeleton = NodePath("")
 
 [node name="XluMask" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-1, -8.84048e-08, -7.27995e-08, 5.40034e-08, 0.19655, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.76038, -1.74456)
+transform = Transform3D(-1, -8.84047e-08, -7.27995e-08, 5.40034e-08, 0.196551, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.7604, -1.74451)
 bone_name = "XluMask"
 bone_idx = 17
 
@@ -844,7 +845,7 @@ mesh = SubResource("ArrayMesh_jrydi")
 skeleton = NodePath("")
 
 [node name="XluNoseLine" type="BoneAttachment3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D"]
-transform = Transform3D(-1, -8.84048e-08, -7.27995e-08, 5.40034e-08, 0.19655, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.76038, -1.74456)
+transform = Transform3D(-1, -8.84047e-08, -7.27995e-08, 5.40034e-08, 0.196551, -0.980494, 1.00989e-07, -0.980494, -0.196551, 0, -1.7604, -1.74451)
 bone_name = "XluNoseLine"
 bone_idx = 18
 
@@ -871,7 +872,9 @@ bone_name = "head_f"
 bone_idx = 10
 
 [node name="Node3D" type="Node3D" parent="credits_fish_sylvia/full_body_f/Skeleton3D/AccessoryHatSlot"]
-transform = Transform3D(-19.845, 1.42802e-06, 7.93476e-07, -1.35265e-06, -8.95822, -17.708, -9.16063e-07, -17.708, 8.95822, 0, -2.61255, -5.24046)
+transform = Transform3D(-19.845, 0, -1.7349e-06, 5.85512e-07, 18.6807, -6.69747, 1.63312e-06, -6.69747, -18.6807, 0, 6.29043, -1.17169)
+
+[node name="PirateHat" parent="credits_fish_sylvia/full_body_f/Skeleton3D/AccessoryHatSlot/Node3D" instance=ExtResource("16_4dcbd")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="credits_fish_sylvia"]
 libraries = {

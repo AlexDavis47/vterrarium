@@ -85,6 +85,11 @@ func create_creature(creature_type: Creatures) -> CreatureData:
 	new_creature.on_generated(randf_range(0.5, 1.5))
 	return new_creature
 
+func create_creature_from_data(creature_data: CreatureData) -> CreatureData:
+	var new_creature: CreatureData = creature_data.duplicate(true)
+	new_creature.on_generated(randf_range(0.5, 1.5))
+	return new_creature
+
 ## Generates a new creature from a template with random luck
 ## @deprecated Use create_creature instead
 func _generate_creature_from_template(template: CreatureData) -> CreatureData:

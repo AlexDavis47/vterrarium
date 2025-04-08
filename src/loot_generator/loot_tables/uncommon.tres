@@ -13,4 +13,5 @@ metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 [resource]
 script = ExtResource("10_pho0n")
 entries = Array[ExtResource("1_1rtgq")]([SubResource("Resource_6lcoj")])
+static_pack = false
 metadata/_custom_type_script = "uid://bst7q731ckock"
