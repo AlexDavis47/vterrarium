@@ -65,11 +65,11 @@ size_flags_vertical = 3
 theme = ExtResource("5_2wghl")
 current_tab = 0
 
-[node name="Control" type="Control" parent="TabContainer"]
+[node name="Creatures" type="Control" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Creatures" type="VBoxContainer" parent="TabContainer/Control" node_paths=PackedStringArray("creature_capacity_label", "creature_sorting_type", "creature_sorting_direction")]
+[node name="Creatures" type="VBoxContainer" parent="TabContainer/Creatures" node_paths=PackedStringArray("creature_capacity_label", "creature_sorting_type", "creature_sorting_direction")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +82,7 @@ creature_capacity_label = NodePath("TextureRect/HBoxContainer/Panel/CreatureCapa
 creature_sorting_type = NodePath("TextureRect/HBoxContainer/Panel2/HBoxContainer/OptionButton")
 creature_sorting_direction = NodePath("TextureRect/HBoxContainer/Panel3/CheckButton")
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Control/Creatures"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Creatures/Creatures"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
@@ -90,7 +90,7 @@ size_flags_horizontal = 3
 texture = ExtResource("4_2wghl")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Control/Creatures/TextureRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Creatures/Creatures/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,13 +98,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer"]
+[node name="Panel" type="Panel" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer"]
 custom_minimum_size = Vector2(197, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
 
-[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel"]
+[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,13 +118,13 @@ text = "Tank Capacity: 12/30"
 horizontal_alignment = 1
 text_overrun_behavior = 3
 
-[node name="Panel2" type="Panel" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer"]
+[node name="Panel2" type="Panel" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer"]
 custom_minimum_size = Vector2(197, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer/Panel2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,7 +132,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2/HBoxContainer"]
+[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer/Panel2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
@@ -141,7 +141,7 @@ theme_override_font_sizes/font_size = 22
 text = "Sort By:"
 text_overrun_behavior = 3
 
-[node name="OptionButton" type="OptionButton" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2/HBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer/Panel2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_2wghl")
@@ -152,13 +152,13 @@ popup/item_0/id = 0
 popup/item_1/text = "Name"
 popup/item_1/id = 1
 
-[node name="Panel3" type="Panel" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer"]
+[node name="Panel3" type="Panel" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer"]
 custom_minimum_size = Vector2(197, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
 
-[node name="CheckButton" type="CheckButton" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel3"]
+[node name="CheckButton" type="CheckButton" parent="TabContainer/Creatures/Creatures/TextureRect/HBoxContainer/Panel3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,28 +169,28 @@ theme = ExtResource("5_2wghl")
 button_pressed = true
 text = "Ascending Order: "
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Control/Creatures"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Creatures/Creatures"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Control/Creatures/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Creatures/Creatures/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 
-[node name="CreatureGrid" type="GridContainer" parent="TabContainer/Control/Creatures/ScrollContainer/MarginContainer"]
+[node name="CreatureGrid" type="GridContainer" parent="TabContainer/Creatures/Creatures/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 3
 script = ExtResource("1_7f777")
 
-[node name="Control2" type="Control" parent="TabContainer"]
+[node name="Decorations" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Decorations" type="VBoxContainer" parent="TabContainer/Control2"]
+[node name="Decorations" type="VBoxContainer" parent="TabContainer/Decorations"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -198,12 +198,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control3" type="Control" parent="TabContainer"]
+[node name="Upgrades" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="Upgrades" type="VBoxContainer" parent="TabContainer/Control3"]
+[node name="Upgrades" type="VBoxContainer" parent="TabContainer/Upgrades"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
