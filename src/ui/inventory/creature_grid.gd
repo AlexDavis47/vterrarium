@@ -13,38 +13,39 @@ func _on_trigger_inventory_refresh() -> void:
 	reload_grid()
 
 func reload_grid() -> void:
-	var current_creature_ids = {}
-	var inventory_creature_ids = {}
-	
-	# Map existing creature cards by creature ID
+	# Clear all existing cards
 	for item in creature_items:
-		if is_instance_valid(item) and item.creature_data:
-			current_creature_ids[item.creature_data.creature_id] = item
-	
-	# Map inventory creatures by ID
-	for creature in SaveManager.save_file.creature_inventory:
-		inventory_creature_ids[creature.creature_id] = creature
-	
-	# Remove cards for creatures no longer in inventory
-	for creature_id in current_creature_ids:
-		if not inventory_creature_ids.has(creature_id):
-			var item = current_creature_ids[creature_id]
-			creature_items.erase(item)
+		if is_instance_valid(item):
 			remove_child(item)
 			item.queue_free()
+	creature_items.clear()
 	
-	# Add cards for new creatures with delay
-	var new_creatures = []
-	for creature_id in inventory_creature_ids:
-		if not current_creature_ids.has(creature_id):
-			new_creatures.append(inventory_creature_ids[creature_id])
-		else:
-			# Update existing cards
-			current_creature_ids[creature_id].update_info()
+	# Get sort options from the creatures tab
+	var sort_type = Utils.CreatureSortType.NAME
+	var sort_direction = Utils.SortDirection.ASCENDING
 	
-	# Create new cards with delay
-	if new_creatures.size() > 0:
-		_create_cards_with_delay(new_creatures)
+	# Find the creatures tab to get current sort settings
+	var creatures_tab = _find_creatures_tab()
+	if creatures_tab:
+		sort_type = creatures_tab.get_current_sort_type()
+		sort_direction = creatures_tab.get_current_sort_direction()
+	
+	# Get sorted creatures
+	var creatures_to_add = Utils.get_all_creatures_sorted(sort_type, sort_direction)
+	
+	# Create cards with delay
+	_create_cards_with_delay(creatures_to_add)
+
+# Find the creatures tab node to access sort settings
+func _find_creatures_tab():
+	var parent = get_parent()
+	while parent and not parent is VBoxContainer:
+		parent = parent.get_parent()
+	
+	if parent and parent.has_method("get_current_sort_type"):
+		return parent
+	
+	return null
 	
 func _create_cards_with_delay(creatures_to_create: Array) -> void:
 	var index = 0
@@ -76,13 +77,18 @@ func _create_creature_card(creature: CreatureData) -> void:
 	
 func _populate_grid() -> void:
 	creature_items.clear()
-	var creatures_to_add = []
 	
-	for creature in SaveManager.save_file.creature_inventory:
-		# Skip creatures that are already in the tank
-		# if creature.is_in_tank:
-		# 	continue
-		creatures_to_add.append(creature)
+	# Get sort options from the creatures tab
+	var sort_type = Utils.CreatureSortType.NAME
+	var sort_direction = Utils.SortDirection.ASCENDING
+	
+	# Find the creatures tab to get current sort settings
+	var creatures_tab = _find_creatures_tab()
+	if creatures_tab:
+		sort_type = creatures_tab.get_current_sort_type()
+		sort_direction = creatures_tab.get_current_sort_direction()
+	
+	var creatures_to_add = Utils.get_all_creatures_sorted(sort_type, sort_direction)
 	
 	# Create cards with delay
 	_create_cards_with_delay(creatures_to_add)
