@@ -62,17 +62,24 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("5_2wghl")
-current_tab = 1
+current_tab = 0
 
-[node name="Creatures" type="VBoxContainer" parent="TabContainer" node_paths=PackedStringArray("creature_capacity_label")]
-visible = false
+[node name="Control" type="Control" parent="TabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Creatures" type="VBoxContainer" parent="TabContainer/Control" node_paths=PackedStringArray("creature_capacity_label")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("6_8v6ji")
 creature_capacity_label = NodePath("TextureRect/HBoxContainer/Panel/VBoxContainer/CreatureCapacityLabel")
-metadata/_tab_index = 0
 
-[node name="TextureRect" type="TextureRect" parent="TabContainer/Creatures"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Control/Creatures"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 34)
 layout_mode = 2
@@ -80,7 +87,7 @@ size_flags_horizontal = 3
 texture = ExtResource("4_2wghl")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Creatures/TextureRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Control/Creatures/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,13 +95,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="TabContainer/Creatures/TextureRect/HBoxContainer"]
+[node name="Panel" type="Panel" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer"]
 custom_minimum_size = Vector2(197, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Creatures/TextureRect/HBoxContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,7 +109,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Creatures/TextureRect/HBoxContainer/Panel/VBoxContainer"]
+[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("6_y4p7g")
@@ -111,27 +118,62 @@ text = "Tank Capacity: 12/30"
 horizontal_alignment = 1
 text_overrun_behavior = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Creatures"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Control/Creatures"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Creatures/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Control/Creatures/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 
-[node name="CreatureGrid" type="GridContainer" parent="TabContainer/Creatures/ScrollContainer/MarginContainer"]
+[node name="CreatureGrid" type="GridContainer" parent="TabContainer/Control/Creatures/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 3
 script = ExtResource("1_7f777")
 
-[node name="Decorations" type="VBoxContainer" parent="TabContainer"]
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Control"]
+layout_mode = 1
+offset_right = 240.0
+offset_bottom = 34.0
+item_count = 2
+popup/item_0/text = "Value"
+popup/item_0/id = 0
+popup/item_1/text = "Name"
+popup/item_1/id = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/Control"]
+layout_mode = 2
+offset_left = 633.0
+offset_right = 834.0
+offset_bottom = 31.0
+text = "Ascending Order"
+
+[node name="Control2" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Upgrades" type="VBoxContainer" parent="TabContainer"]
+[node name="Decorations" type="VBoxContainer" parent="TabContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control3" type="Control" parent="TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="Upgrades" type="VBoxContainer" parent="TabContainer/Control3"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -10,6 +10,22 @@ var _last_money: float = 0.0
 var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
 
 
+enum CreatureSortType {
+	NAME,
+	AGE,
+	HAPPINESS,
+	VALUE,
+	SPECIES,
+	RARITY,
+	HUNGER
+}
+
+enum SortDirection {
+	ASCENDING,
+	DESCENDING
+}
+
+
 func _ready():
 	if not Engine.is_editor_hint():
 		_process_scheduler.tick_second.connect(_on_money_per_hour_tick)
@@ -102,3 +118,33 @@ func celsius_to_fahrenheit(celsius: float) -> float:
 
 func fahrenheit_to_celsius(fahrenheit: float) -> float:
 	return (fahrenheit - 32) / 1.8
+
+func get_all_creatures_sorted(sort_type: CreatureSortType, sort_direction: SortDirection = SortDirection.ASCENDING) -> Array[CreatureData]:
+	var creatures: Array[CreatureData] = get_all_creatures_in_inventory()
+	creatures.sort_custom(func(a: CreatureData, b: CreatureData) -> bool:
+		var result: bool = false
+		
+		match sort_type:
+			CreatureSortType.NAME:
+				result = a.creature_name < b.creature_name
+			CreatureSortType.AGE:
+				result = a.creature_age < b.creature_age
+			CreatureSortType.HAPPINESS:
+				result = a.creature_happiness < b.creature_happiness
+			CreatureSortType.VALUE:
+				result = a.creature_money_per_hour < b.creature_money_per_hour
+			CreatureSortType.SPECIES:
+				result = a.creature_species < b.creature_species
+			CreatureSortType.RARITY:
+				result = a.creature_rarity < b.creature_rarity
+			CreatureSortType.HUNGER:
+				result = a.creature_hunger < b.creature_hunger
+			_:
+				result = false
+		
+		# Invert result if descending order is requested
+		if sort_direction == SortDirection.DESCENDING:
+			result = !result
+		return result
+	)
+	return creatures

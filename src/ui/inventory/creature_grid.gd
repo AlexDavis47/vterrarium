@@ -21,8 +21,9 @@ func reload_grid() -> void:
 		if is_instance_valid(item) and item.creature_data:
 			current_creature_ids[item.creature_data.creature_id] = item
 	
-	# Map inventory creatures by ID
-	for creature in SaveManager.save_file.creature_inventory:
+	# Get sorted creatures and map by ID
+	var sorted_creatures = Utils.get_all_creatures_sorted(Utils.CreatureSortType.NAME)
+	for creature in sorted_creatures:
 		inventory_creature_ids[creature.creature_id] = creature
 	
 	# Remove cards for creatures no longer in inventory
@@ -76,13 +77,7 @@ func _create_creature_card(creature: CreatureData) -> void:
 	
 func _populate_grid() -> void:
 	creature_items.clear()
-	var creatures_to_add = []
-	
-	for creature in SaveManager.save_file.creature_inventory:
-		# Skip creatures that are already in the tank
-		# if creature.is_in_tank:
-		# 	continue
-		creatures_to_add.append(creature)
+	var creatures_to_add = Utils.get_all_creatures_sorted(Utils.CreatureSortType.VALUE, Utils.SortDirection.ASCENDING)
 	
 	# Create cards with delay
 	_create_cards_with_delay(creatures_to_add)
