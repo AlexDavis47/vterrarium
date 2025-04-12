@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bda2an2nm10ol"]
+[gd_scene load_steps=12 format=3 uid="uid://bda2an2nm10ol"]
 
 [ext_resource type="Script" uid="uid://bux8cayr23de8" path="res://src/ui/inventory/inventory.gd" id="1_1deq4"]
 [ext_resource type="Script" uid="uid://b2maci0i0q0rj" path="res://src/ui/inventory/creature_grid.gd" id="1_7f777"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="5_2wghl"]
 [ext_resource type="Script" uid="uid://2mmgtfeijars" path="res://src/ui/inventory/creatures_tab.gd" id="6_8v6ji"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_y4p7g"]
+[ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="8_8v6ji"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1265r"]
 shader = ExtResource("2_e3qj4")
@@ -78,7 +79,7 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("6_8v6ji")
 creature_capacity_label = NodePath("TextureRect/HBoxContainer/Panel/CreatureCapacityLabel")
-creature_sorting_type = NodePath("TextureRect/HBoxContainer/Panel2/OptionButton")
+creature_sorting_type = NodePath("TextureRect/HBoxContainer/Panel2/HBoxContainer/OptionButton")
 creature_sorting_direction = NodePath("TextureRect/HBoxContainer/Panel3/CheckButton")
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Control/Creatures"]
@@ -123,13 +124,28 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
 
-[node name="OptionButton" type="OptionButton" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("8_8v6ji")
+theme_override_font_sizes/font_size = 22
+text = "Sort By:"
+text_overrun_behavior = 3
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_2wghl")
+selected = 0
 item_count = 2
 popup/item_0/text = "Value"
 popup/item_0/id = 0
@@ -149,7 +165,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Ascending Order"
+theme = ExtResource("5_2wghl")
+button_pressed = true
+text = "Ascending Order: "
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Control/Creatures"]
 layout_mode = 2
