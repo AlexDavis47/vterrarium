@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=54 format=3 uid="uid://cc127n7587hwl"]
+[gd_resource type="Theme" load_steps=56 format=3 uid="uid://cc127n7587hwl"]
 
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="1_1prds"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_0uo8b"]
@@ -134,6 +134,10 @@ image = SubResource("Image_gvdyb")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_al6n3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kj4y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1prds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uo8b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlpd8"]
 
@@ -302,6 +306,8 @@ OptionButton/styles/disabled_mirrored = SubResource("StyleBoxEmpty_rcfeq")
 OptionButton/styles/focus = SubResource("StyleBoxEmpty_ckib5")
 OptionButton/styles/hover = SubResource("StyleBoxEmpty_al6n3")
 OptionButton/styles/hover_mirrored = SubResource("StyleBoxEmpty_3kj4y")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxEmpty_1prds")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0uo8b")
 OptionButton/styles/normal = SubResource("StyleBoxEmpty_jlpd8")
 OptionButton/styles/normal_mirrored = SubResource("StyleBoxEmpty_d7fub")
 OptionButton/styles/pressed = SubResource("StyleBoxEmpty_nttct")

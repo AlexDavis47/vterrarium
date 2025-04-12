@@ -137,6 +137,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1dgtc")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_dw02c")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_2opys")
@@ -179,10 +180,12 @@ alignment = 1
 
 [node name="AddRemoveFromTank" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("7_1qk38")
 
 [node name="DetailView" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("8_1dgtc")
 
 [node name="InTankMarker" type="TextureRect" parent="."]
