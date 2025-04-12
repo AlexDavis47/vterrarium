@@ -138,7 +138,7 @@ func get_all_creatures_sorted(sort_type: CreatureSortType, sort_direction: SortD
 			CreatureSortType.RARITY:
 				result = a.creature_rarity < b.creature_rarity
 			CreatureSortType.HUNGER:
-				result = a.creature_hunger < b.creature_hunger
+				result = a.creature_satiation < b.creature_satiation
 			_:
 				result = false
 		

@@ -68,7 +68,7 @@ current_tab = 0
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Creatures" type="VBoxContainer" parent="TabContainer/Control" node_paths=PackedStringArray("creature_capacity_label")]
+[node name="Creatures" type="VBoxContainer" parent="TabContainer/Control" node_paths=PackedStringArray("creature_capacity_label", "creature_sorting_type", "creature_sorting_direction")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,7 +77,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("6_8v6ji")
-creature_capacity_label = NodePath("TextureRect/HBoxContainer/Panel/VBoxContainer/CreatureCapacityLabel")
+creature_capacity_label = NodePath("TextureRect/HBoxContainer/Panel/CreatureCapacityLabel")
+creature_sorting_type = NodePath("TextureRect/HBoxContainer/Panel2/OptionButton")
+creature_sorting_direction = NodePath("TextureRect/HBoxContainer/Panel3/CheckButton")
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Control/Creatures"]
 self_modulate = Color(1, 1, 1, 0)
@@ -101,22 +103,53 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel"]
+[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="CreatureCapacityLabel" type="Label" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel/VBoxContainer"]
-layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
 theme_override_fonts/font = ExtResource("6_y4p7g")
 theme_override_font_sizes/font_size = 25
 text = "Tank Capacity: 12/30"
 horizontal_alignment = 1
 text_overrun_behavior = 3
+
+[node name="Panel2" type="Panel" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(197, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+item_count = 2
+popup/item_0/text = "Value"
+popup/item_0/id = 0
+popup/item_1/text = "Name"
+popup/item_1/id = 1
+
+[node name="Panel3" type="Panel" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer"]
+custom_minimum_size = Vector2(197, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_ncvoo")
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/Control/Creatures/TextureRect/HBoxContainer/Panel3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ascending Order"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Control/Creatures"]
 layout_mode = 2
@@ -133,23 +166,6 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 3
 script = ExtResource("1_7f777")
-
-[node name="OptionButton" type="OptionButton" parent="TabContainer/Control"]
-layout_mode = 1
-offset_right = 240.0
-offset_bottom = 34.0
-item_count = 2
-popup/item_0/text = "Value"
-popup/item_0/id = 0
-popup/item_1/text = "Name"
-popup/item_1/id = 1
-
-[node name="CheckButton" type="CheckButton" parent="TabContainer/Control"]
-layout_mode = 2
-offset_left = 633.0
-offset_right = 834.0
-offset_bottom = 31.0
-text = "Ascending Order"
 
 [node name="Control2" type="Control" parent="TabContainer"]
 visible = false
