@@ -87,6 +87,14 @@ enum FoodType {
 	get:
 		return food_rarity
 
+## The number of individual food instances spawned when used
+@export var spawn_quantity: int = 1:
+	set(value):
+		spawn_quantity = max(1, value) # Ensure at least 1 is spawned
+		# No signal needed currently, as it's used at spawn time
+	get:
+		return spawn_quantity
+
 
 @export_group("Physical Properties")
 ## How quickly the food sinks in water (higher values sink faster)

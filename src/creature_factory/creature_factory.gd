@@ -229,6 +229,8 @@ func create_creature_preview(creature_data: CreatureData) -> Creature:
 func sell_creature(creature_data: CreatureData) -> void:
 	if not creature_data:
 		return
+	if SaveManager.save_file.creature_inventory.size() <= 1: # Don't allow selling the last creature
+		return
 	if creature_data.creature_is_in_tank:
 		if is_instance_valid(creature_data.creature_instance):
 			remove_creature(creature_data.creature_instance)

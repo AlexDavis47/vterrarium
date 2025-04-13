@@ -19,6 +19,7 @@ class_name CreatureDetailViewUI
 @export var _sell_button: TextureButton
 @export var _sell_price_label: Label
 @export var _age_label: Label
+@export var _add_to_tank_button: TextureButton
 
 @export_group("Stat Containers")
 @export var _money_per_hour_container: StatContainer
@@ -49,7 +50,7 @@ class_name CreatureDetailViewUI
 var _accessory_equip_menu_scene: PackedScene = preload("uid://d2ve1bal36q1d")
 var _text_entry_ui_scene: PackedScene = preload("uid://dmowdukxcisg8")
 
-var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
+#var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
 
 ########################################################
 # Initialization
@@ -64,10 +65,14 @@ func _ready() -> void:
 		var preview_creature: Creature = CreatureFactory.create_creature_preview(creature_data)
 		_creature_live_subviewport_container.root_node.add_child(preview_creature)
 	
-	_process_scheduler.tick_second.connect(_on_process_scheduler_tick_second)
-	add_child(_process_scheduler)
+	#_process_scheduler.tick_second.connect(_on_process_scheduler_tick_second)
+	#add_child(_process_scheduler)
 
 	_update_camera_visibility()
+
+func _process(_delta: float) -> void:
+	update_info()
+
 
 func _initialize_connections() -> void:
 	_close_button.pressed.connect(_on_close_button_pressed)
@@ -77,7 +82,8 @@ func _initialize_connections() -> void:
 	_creature_live_camera.creature_data = creature_data
 	creature_data.trigger_preview_update.connect(_on_creature_data_trigger_preview_update)
 	_sell_button.pressed.connect(_on_sell_button_pressed)
-
+	_add_to_tank_button.pressed.connect(_on_add_to_tank_button_pressed)
+	
 ########################################################
 # UI Update Methods
 ########################################################
@@ -99,6 +105,7 @@ func update_info() -> void:
 	_update_temperature_graph()
 	_update_sell_price()
 	_update_age()
+	_update_add_to_tank_button()
 
 func _update_camera_visibility() -> void:
 	if creature_data.creature_is_in_tank:
@@ -107,8 +114,6 @@ func _update_camera_visibility() -> void:
 	else:
 		_creature_live_camera_subviewport_container.visible = false
 		_creature_live_subviewport_container.visible = true
-		# Force an update of the preview
-		_creature_live_subviewport_container.force_update()
 
 func _update_rarity_and_type() -> void:
 	var rarity_string: String = Enums.Rarity.keys()[creature_data.creature_rarity]
@@ -198,6 +203,12 @@ func _update_sell_price() -> void:
 func _update_age() -> void:
 	_age_label.text = "Age: %.0f" % creature_data.creature_age + " Hour Old " + CreatureData.AgeBracket.keys()[creature_data.get_age_bracket()]
 
+func _update_add_to_tank_button() -> void:
+	if creature_data.creature_is_in_tank:
+		_add_to_tank_button.set_pressed_no_signal(true)
+	else:
+		_add_to_tank_button.set_pressed_no_signal(false)
+
 ########################################################
 # Signal Handlers
 ########################################################
@@ -248,3 +259,9 @@ func _on_sell_button_pressed() -> void:
 	CreatureFactory.sell_creature(creature_data)
 	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)
 	queue_free()
+
+func _on_add_to_tank_button_pressed() -> void:
+	if creature_data.creature_is_in_tank:
+		CreatureFactory.remove_creature_by_data(creature_data)
+	else:
+		CreatureFactory.spawn_creature(creature_data)

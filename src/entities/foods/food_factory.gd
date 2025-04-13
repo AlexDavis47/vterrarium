@@ -1,34 +1,36 @@
 ## This class is used to spawn food items in the tank
 extends Node
 
+## Enum defining the different types of food available.
+## Add new food types here.
+enum FoodType {
+	BASIC_FLAKES,
+	PREMIUM_PELLETS
+	# Add more food enum values here
+}
+
 ## The default food scene to use if not specified in the food data
 @export var default_food_scene: PackedScene
 
-## A list of food data templates that can be used to spawn food
-var food_data_templates: Array[FishFoodData] = [
-	load("uid://cxcomehb8uap3") # Basic Flakes
-]
-
-# For testing, only spawn food if the feeding menu is open
-var _feeding_menu_open: bool = false
+## Dictionary mapping FoodType enum to preloaded FishFoodData resources.
+var food_data_templates: Dictionary[FoodType, FishFoodData] = {
+	FoodType.BASIC_FLAKES: preload("uid://cxcomehb8uap3"),
+	FoodType.PREMIUM_PELLETS: preload("uid://cxcomehb8uap3"),
+	# Add more food types and their UIDs here, matching the FoodType enum
+}
 
 signal food_spawned(food: FishFood)
 
-func _ready():
-	VTInput.top_window_input.connect(_on_top_window_input)
 
-func _on_top_window_input(event: InputEvent) -> void:
-	# THIS IS FOR TESTING ONLY
-	if event is InputEventScreenTouch and event.pressed and _feeding_menu_open:
-		var touch_position = event.position
-		var camera = VTGlobal.top_camera
-		var world_position = camera.project_position(touch_position, camera.global_position.y - VTConfig.terrarium_dimensions.y / 2)
-		print("World position: ", world_position)
-		spawn_food(food_data_templates[0], world_position)
-
+func _ready() -> void:
+	await get_tree().create_timer(1.0).timeout
+	for food_type in FoodType.values():
+		# Spawn a test food item
+		var food_data = food_data_templates[food_type]
+		spawn_food(food_data, Vector3(0, 0, 0))
 
 ## Spawns food in the tank at the specified position with the given food data
-func spawn_food(food_data: FishFoodData, position: Vector3, quantity: int = 1) -> Array[FishFood]:
+func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 	var spawned_foods: Array[FishFood] = []
 	
 	# Get the food scene to use
@@ -42,7 +44,8 @@ func spawn_food(food_data: FishFoodData, position: Vector3, quantity: int = 1) -
 		push_error("No food scene available for spawning")
 		return spawned_foods
 	
-	# Spawn multiple pieces of food based on quantity
+	# Spawn multiple pieces of food based on quantity from data
+	var quantity = food_data.spawn_quantity
 	for i in range(quantity):
 		var spawn_pos = _get_spawn_position(position, food_data, i, quantity)
 		var food = _create_food_instance(food_data, food_scene, spawn_pos)
@@ -52,13 +55,13 @@ func spawn_food(food_data: FishFoodData, position: Vector3, quantity: int = 1) -
 	
 	return spawned_foods
 
-## Spawns food by type name
-func spawn_food_by_type(food_type_name: String, position: Vector3, quantity: int = 1) -> Array[FishFood]:
-	for template in food_data_templates:
-		if template.food_name == food_type_name:
-			return spawn_food(template, position, quantity)
-	
-	push_error("No food template found with name: " + food_type_name)
+## Spawns food by type enum
+func spawn_food_by_type(food_type: FoodType, position: Vector3) -> Array[FishFood]:
+	if food_data_templates.has(food_type):
+		var template: FishFoodData = food_data_templates[food_type]
+		return spawn_food(template, position)
+
+	push_error("No food template found for type: %s" % FoodType.keys()[food_type])
 	return []
 
 ## Creates randomized spawn positions around the target position
