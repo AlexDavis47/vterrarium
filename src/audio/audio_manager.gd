@@ -6,7 +6,8 @@ enum SFX {
 	UI_CLICK_1,
 	SPLASH_1,
 	COINS_1,
-	TYPEWRITER_1
+	TYPEWRITER_1,
+	SHAKER_1
 }
 
 
@@ -16,7 +17,8 @@ var _sfx_dictionary: Dictionary[SFX, AudioStream] = {
 	SFX.UI_CLICK_1: preload("uid://bms5rd1xu82xc"),
 	SFX.SPLASH_1: preload("uid://cqlml5h7eycko"),
 	SFX.COINS_1: preload("uid://bjnanq3yimdky"),
-	SFX.TYPEWRITER_1: preload("uid://cxdistx757a28")
+	SFX.TYPEWRITER_1: preload("uid://cxdistx757a28"),
+	SFX.SHAKER_1: preload("uid://c4qf6u5qfmrrk")
 }
 
 

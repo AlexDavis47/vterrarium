@@ -52,28 +52,12 @@ func add_food_to_inventory(food_data: FishFoodData) -> void:
 
 
 ## Spawns food in the tank at the specified position with the given food data
-## Returns spawned food instances and handles inventory updates
+## Returns spawned food instances
 func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 	var spawned_foods: Array[FishFood] = []
 	
-	# First, check if we have this food in inventory
-	var found_index = -1
-	for i in range(SaveManager.save_file.food_inventory.size()):
-		if SaveManager.save_file.food_inventory[i].food_id == food_data.food_id:
-			found_index = i
-			break
-	
-	# If not found or quantity is 0, don't spawn
-	if found_index == -1 or (not food_data.is_infinite_use and SaveManager.save_file.food_inventory[found_index].number_owned <= 0):
-		push_warning("Tried to spawn food that isn't in inventory or has zero quantity")
-		return spawned_foods
-	
 	# Get the food scene to use
-	var food_scene: PackedScene
-	if food_data.get_food_scene():
-		food_scene = food_data.get_food_scene()
-	else:
-		food_scene = default_food_scene
+	var food_scene: PackedScene = food_data.get_food_scene() if food_data.get_food_scene() else default_food_scene
 	
 	if not food_scene:
 		push_error("No food scene available for spawning")
@@ -91,11 +75,13 @@ func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 	
 	# Update inventory count if not infinite use
 	if not food_data.is_infinite_use:
-		SaveManager.save_file.food_inventory[found_index].number_owned -= 1
-		
-		# Remove from inventory if count reaches 0
-		if SaveManager.save_file.food_inventory[found_index].number_owned <= 0:
-			SaveManager.save_file.food_inventory.remove_at(found_index)
+		var found_index = SaveManager.save_file.food_inventory.find(food_data)
+		if found_index != -1:
+			SaveManager.save_file.food_inventory[found_index].number_owned -= 1
+			if SaveManager.save_file.food_inventory[found_index].number_owned <= 0:
+				SaveManager.save_file.food_inventory.remove_at(found_index)
+
+	AudioManager.play_sfx(AudioManager.SFX.SHAKER_1)
 
 	return spawned_foods
 

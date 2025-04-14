@@ -20,7 +20,10 @@ signal selected(food_data: FishFoodData)
 @export var selected_color: Color = Color(0.5, 0.5, 0.5, 0.5)
 @export var unselected_color: Color = Color(0.5, 0.5, 0.5, 0.5)
 
-var is_selected: bool = false
+var is_selected: bool = false:
+	set(value):
+		is_selected = value
+		update_selected()
 
 
 ########################################################
@@ -87,8 +90,3 @@ func _on_select_button_pressed() -> void:
 	is_selected = true
 	update_selected()
 	selected.emit(self, food_data)
-
-## Public method to set the selection state from outside
-func set_selected(selected: bool) -> void:
-	is_selected = selected
-	update_selected()
