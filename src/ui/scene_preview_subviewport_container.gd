@@ -21,6 +21,8 @@ class_name ScenePreviewSubviewportContainer
 @export var drag_sensitivity: float = 5.0
 ## If enabled, the preview will update continuously, otherwise it will only update when dragged, or when force_update is called
 @export var continuous_update: bool = false
+## If enabled, the viewport background will be transparent
+@export var transparent_background: bool = false
 
 # Constants
 const MIN_VERTICAL_ANGLE: float = -89.0
@@ -40,6 +42,8 @@ func _ready() -> void:
 	position_camera()
 	await get_tree().process_frame
 	force_update()
+	if transparent_background:
+		subviewport.transparent_bg = true
 
 func _process(_delta: float) -> void:
 	if continuous_update or _dragging:

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FishFoodData" load_steps=2 format=3 uid="uid://85whevys82sq"]
+
+[ext_resource type="Script" uid="uid://b2m78sbosglwi" path="res://src/entities/foods/fish_food_data.gd" id="1_b8l7s"]
+
+[resource]
+script = ExtResource("1_b8l7s")
+food_name = "Tasty Food"
+food_description = "A food item that can be eaten by creatures."
+food_type = 0
+food_color = Color(0.999999, 0.36975, 0.282144, 1)
+times_eatable = 3
+food_value = 0.35
+food_lifetime = 3600.0
+food_rarity = 0
+spawn_quantity = 5
+sink_speed = 1.0
+spread_factor = 1.0
+food_mass = 0.1
+food_scene_path = "uid://cdy4jxxhabc61"
+food_id = ""
+metadata/_custom_type_script = "uid://b2m78sbosglwi"

@@ -4,8 +4,9 @@ extends Node
 ## Enum defining the different types of food available.
 ## Add new food types here.
 enum FoodType {
-	BASIC_FLAKES,
-	PREMIUM_PELLETS
+	BASIC_FOOD,
+	TASTY_FOOD,
+	LUXURY_FOOD,
 	# Add more food enum values here
 }
 
@@ -14,8 +15,9 @@ enum FoodType {
 
 ## Dictionary mapping FoodType enum to preloaded FishFoodData resources.
 var food_data_templates: Dictionary[FoodType, FishFoodData] = {
-	FoodType.BASIC_FLAKES: preload("uid://cxcomehb8uap3"),
-	FoodType.PREMIUM_PELLETS: preload("uid://cxcomehb8uap3"),
+	FoodType.BASIC_FOOD: preload("uid://cxcomehb8uap3"),
+	FoodType.TASTY_FOOD: preload("uid://85whevys82sq"),
+	FoodType.LUXURY_FOOD: preload("uid://b03hqshvxtaf5"),
 	# Add more food types and their UIDs here, matching the FoodType enum
 }
 
@@ -25,9 +27,11 @@ signal food_spawned(food: FishFood)
 func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	for food_type in FoodType.values():
+		print("Spawning food type: %s" % FoodType.keys()[food_type])
+		await get_tree().create_timer(1.0).timeout
 		# Spawn a test food item
 		var food_data = food_data_templates[food_type]
-		spawn_food(food_data, Vector3(0, 0, 0))
+		spawn_food(food_data, Vector3(randf_range(-1.0, 1.0), 0, randf_range(-1.0, 1.0)))
 
 ## Spawns food in the tank at the specified position with the given food data
 func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_lwacj")
-food_name = "Basic Fish Food"
+food_name = "Basic Food"
 food_description = "A food item that can be eaten by creatures."
 food_type = 0
 food_color = Color(1, 1, 0.321569, 1)

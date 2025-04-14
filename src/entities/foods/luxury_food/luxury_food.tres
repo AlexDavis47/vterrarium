@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FishFoodData" load_steps=2 format=3 uid="uid://b03hqshvxtaf5"]
+
+[ext_resource type="Script" uid="uid://b2m78sbosglwi" path="res://src/entities/foods/fish_food_data.gd" id="1_yvplw"]
+
+[resource]
+script = ExtResource("1_yvplw")
+food_name = "Luxury Food"
+food_description = "A food item that can be eaten by creatures."
+food_type = 0
+food_color = Color(0.610209, 0.355561, 0.999999, 1)
+times_eatable = 5
+food_value = 0.5
+food_lifetime = 43200.0
+food_rarity = 2
+spawn_quantity = 5
+sink_speed = 1.0
+spread_factor = 1.0
+food_mass = 0.1
+food_scene_path = "uid://ideaf1qhq4ic"
+food_id = ""
+metadata/_custom_type_script = "uid://b2m78sbosglwi"

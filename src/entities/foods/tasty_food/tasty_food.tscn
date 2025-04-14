@@ -1,28 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://df5rypo11dohl"]
+[gd_scene load_steps=8 format=3 uid="uid://cdy4jxxhabc61"]
 
-[ext_resource type="Script" uid="uid://ded081d2u05re" path="res://src/entities/foods/fish_food.gd" id="1_cs635"]
+[ext_resource type="Script" uid="uid://ded081d2u05re" path="res://src/entities/foods/fish_food.gd" id="1_e7yuc"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_cs635"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_dxjkr"]
 radius = 0.0561018
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e32mi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52lnl"]
 diffuse_mode = 3
 specular_mode = 1
 
-[sub_resource type="SphereMesh" id="SphereMesh_qx4mu"]
-material = SubResource("StandardMaterial3D_e32mi")
+[sub_resource type="SphereMesh" id="SphereMesh_s7r65"]
+material = SubResource("StandardMaterial3D_52lnl")
 radius = 0.05
 height = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kowgx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fk72t"]
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4vut8"]
-material = SubResource("StandardMaterial3D_kowgx")
+[sub_resource type="PlaneMesh" id="PlaneMesh_ybpaf"]
+material = SubResource("StandardMaterial3D_fk72t")
 size = Vector2(0.1, 0.1)
 orientation = 2
 
@@ -33,22 +33,22 @@ point_count = 2
 [node name="FishFood" type="RigidBody3D" node_paths=PackedStringArray("eaten_particles", "food_mesh")]
 collision_layer = 0
 mass = 0.01
-script = ExtResource("1_cs635")
+script = ExtResource("1_e7yuc")
 eaten_particles = NodePath("CPUParticles3D")
 food_mesh = NodePath("MeshInstance3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_cs635")
+shape = SubResource("SphereShape3D_dxjkr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_qx4mu")
+mesh = SubResource("SphereMesh_s7r65")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 emitting = false
 lifetime = 4.0
 one_shot = true
 explosiveness = 1.0
-mesh = SubResource("PlaneMesh_4vut8")
+mesh = SubResource("PlaneMesh_ybpaf")
 emission_shape = 1
 emission_sphere_radius = 0.1
 spread = 180.0

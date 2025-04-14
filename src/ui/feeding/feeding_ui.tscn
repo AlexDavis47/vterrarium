@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1eksnwdwou65"]
+[gd_scene load_steps=5 format=3 uid="uid://d1eksnwdwou65"]
 
+[ext_resource type="Script" uid="uid://cwap30l4wyrbk" path="res://src/ui/feeding/feeding_ui.gd" id="1_6jdc2"]
 [ext_resource type="Texture2D" uid="uid://bufwxgm8cdfep" path="res://src/ui/feeding/textures/placeholder.png" id="1_nr0k2"]
+[ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="2_2rsl1"]
+[ext_resource type="PackedScene" uid="uid://g3dpy7hhiby0" path="res://src/ui/feeding/food_card/food_card.tscn" id="4_nyhmt"]
 
 [node name="FeedingUI" type="Control"]
 layout_mode = 3
@@ -10,26 +13,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_6jdc2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_nr0k2")
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 214.0
+offset_bottom = 600.0
+theme = ExtResource("2_2rsl1")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 342.0
-offset_top = 199.0
-offset_right = 431.0
-offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/outline_size = 25
-theme_override_font_sizes/font_size = 46
-text = "NOT
-YET
-IMPLEMENTED"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+
+[node name="FoodCard" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_nyhmt")]
+layout_mode = 2

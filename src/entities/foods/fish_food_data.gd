@@ -25,6 +25,7 @@ enum FoodType {
 	set(value):
 		food_name = value
 		food_name_changed.emit(value)
+		emit_changed()
 	get:
 		return food_name
 
@@ -33,17 +34,24 @@ enum FoodType {
 	set(value):
 		food_description = value
 		food_description_changed.emit(value)
+		emit_changed()
 	get:
 		return food_description
 
 ## The type of food, affects physical properties and fish preferences
-@export var food_type: FoodType = FoodType.FLAKES
+@export var food_type: FoodType = FoodType.FLAKES:
+	set(value):
+		food_type = value
+		emit_changed()
+	get:
+		return food_type
 
 ## The texture used for UI representation
 @export var food_texture: Texture2D:
 	set(value):
 		food_texture = value
 		food_texture_changed.emit(value)
+		emit_changed()
 	get:
 		return food_texture
 
@@ -52,6 +60,7 @@ enum FoodType {
 	set(value):
 		food_color = value
 		food_color_changed.emit(value)
+		emit_changed()
 	get:
 		return food_color
 
@@ -60,6 +69,7 @@ enum FoodType {
 	set(value):
 		times_eatable = value
 		times_eatable_changed.emit(value)
+		emit_changed()
 	get:
 		return times_eatable
 
@@ -68,6 +78,7 @@ enum FoodType {
 	set(value):
 		food_value = value
 		food_value_changed.emit(value)
+		emit_changed()
 	get:
 		return food_value
 
@@ -76,6 +87,7 @@ enum FoodType {
 	set(value):
 		food_lifetime = value
 		food_lifetime_changed.emit(value)
+		emit_changed()
 	get:
 		return food_lifetime
 
@@ -84,6 +96,7 @@ enum FoodType {
 	set(value):
 		food_rarity = value
 		food_rarity_changed.emit(value)
+		emit_changed()
 	get:
 		return food_rarity
 
@@ -92,23 +105,52 @@ enum FoodType {
 	set(value):
 		spawn_quantity = max(1, value) # Ensure at least 1 is spawned
 		# No signal needed currently, as it's used at spawn time
+		emit_changed()
 	get:
 		return spawn_quantity
 
 
 @export_group("Physical Properties")
 ## How quickly the food sinks in water (higher values sink faster)
-@export var sink_speed: float = 1.0
+@export var sink_speed: float = 1.0:
+	set(value):
+		sink_speed = value
+		emit_changed()
+	get:
+		return sink_speed
+
 ## How much the food spreads out when dropped (higher values spread more)
-@export var spread_factor: float = 1.0
+@export var spread_factor: float = 1.0:
+	set(value):
+		spread_factor = value
+		emit_changed()
+	get:
+		return spread_factor
+
 ## The mass of each food particle
-@export var food_mass: float = 0.1
+@export var food_mass: float = 0.1:
+	set(value):
+		food_mass = value
+		emit_changed()
+	get:
+		return food_mass
 
 @export_group("System Properties")
 ## The scene to instantiate for this food type
-@export var food_scene_path: String = "uid://df5rypo11dohl"
+@export var food_scene_path: String = "uid://df5rypo11dohl":
+	set(value):
+		food_scene_path = value
+		emit_changed()
+	get:
+		return food_scene_path
+
 ## Unique ID for this food
-@export var food_id: String = ""
+@export var food_id: String = "":
+	set(value):
+		food_id = value
+		emit_changed()
+	get:
+		return food_id
 
 ## Called when this food is first created
 func on_generated(luck: float = 1) -> void:
