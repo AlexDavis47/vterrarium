@@ -21,6 +21,7 @@ enum CardItemType {
 }
 
 var card_item_type: CardItemType = CardItemType.Other
+var _preview_instance: Node = null
 
 signal item_taken(item_card: PackItemCardUI)
 
@@ -37,6 +38,8 @@ func _ready():
 		card_item_type = CardItemType.Food
 	else:
 		card_item_type = CardItemType.Other
+
+	_instantiate_preview() # Instantiate before updating UI that adds it
 	update_ui()
 	take_button.pressed.connect(_on_take_button_pressed)
 
@@ -88,25 +91,37 @@ func update_name_label():
 	name_label.text = name
 
 func update_scene_preview():
-	var scene_uuid: String = ""
-	var creature_preview: Creature = null
+	if _preview_instance != null:
+		scene_preview.add_child_to_root_node(_preview_instance)
+	else:
+		printerr("Preview instance was null when trying to add it to the scene.")
+
+func _instantiate_preview():
+	var scene_to_load: String = ""
+
 	if data is CreatureData:
 		var creature_data: CreatureData = data as CreatureData
-		scene_uuid = creature_data.creature_scene_uuid
-		creature_preview = CreatureFactory.create_creature_preview(creature_data)
+		_preview_instance = CreatureFactory.create_creature_preview(creature_data)
 	elif data is AccessoryData:
 		var accessory_data: AccessoryData = data as AccessoryData
-		scene_uuid = accessory_data.accessory_scene_uuid
+		scene_to_load = accessory_data.accessory_scene_uuid
 	elif data is FishFoodData:
 		var fish_food_data: FishFoodData = data as FishFoodData
-		scene_uuid = fish_food_data.food_scene_path
+		scene_to_load = fish_food_data.food_scene_path
+	else:
+		printerr("Unknown data type for preview instantiation")
+		return # Cannot instantiate anything
 
-	if card_item_type == CardItemType.Creature:
-		scene_preview.add_child_to_root_node(creature_preview)
-	elif card_item_type == CardItemType.Accessory:
-		scene_preview.add_child_to_root_node(load(scene_uuid).instantiate())
-	elif card_item_type == CardItemType.Food:
-		scene_preview.add_child_to_root_node(load(scene_uuid).instantiate())
+	# Handle instantiation for non-creature types
+	if card_item_type == CardItemType.Accessory or card_item_type == CardItemType.Food:
+		if scene_to_load.is_empty():
+			printerr("Scene path/UUID is empty for Accessory/Food item.")
+			return
+		var loaded_scene: PackedScene = load(scene_to_load)
+		if loaded_scene != null:
+			_preview_instance = loaded_scene.instantiate()
+		else:
+			printerr("Failed to load scene: ", scene_to_load)
 
 
 func take_item():
@@ -131,6 +146,7 @@ func take_item():
 	tween.parallel().tween_property(self, "scale", Vector2(0.0, 0.0), 0.35)
 	tween.parallel().tween_property(self, "rotation_degrees", 180.0, 0.35)
 	tween.tween_callback(queue_free)
+	
 ########################################################
 # Signal Handlers
 ########################################################
