@@ -721,6 +721,7 @@ bone_name = "XluMask.001"
 bone_idx = 15
 
 [node name="XluMask_001" type="MeshInstance3D" parent="credits_fish_alicia/full_body_f/Skeleton3D/XluMask_001"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -7.10543e-15, 1, 0, 0, 0.452202)
 mesh = SubResource("ArrayMesh_l4xg4")
 skeleton = NodePath("")
 
