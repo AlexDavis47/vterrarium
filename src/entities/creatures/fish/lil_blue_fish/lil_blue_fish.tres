@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://r1xm2w02drrx"]
+
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="2_vn77q"]
+
+[sub_resource type="Curve" id="Curve_ixyes"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.286127, 1), 0.0, 0.0, 0, 0, Vector2(0.947977, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_d1wc2"]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(65.2579, 0), 0.0, 0.0, 0, 0, Vector2(76.3889, 1), 0.0, 0.0, 0, 0, Vector2(93.8492, 1), 0.0, 0.0, 0, 0, Vector2(104.762, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("2_vn77q")
+creature_name = "Lil Blue Fish"
+creature_species = "Caerulisculus Pisciculus"
+creature_type = 0
+creature_description = "The lil blue fish (Caerulisculus pisciculus) is nature's answer to \"what if a blueberry could swim?\" Found exclusively in residential pools died blue using food coloring (on Sunday only), this tiny azure wonder survives primarily on a diet of microscopic food and compliments about its color. In the wild they swim in small gangs, with one fish appointed as the boss who mostly just tells the others they're doing it wrong."
+creature_rarity = 1
+creature_scene_uuid = "uid://it41omt5j1ou"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_size = 1.0
+creature_money_per_hour = 340.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_speed = 1.0
+creature_light_preference = SubResource("Curve_ixyes")
+creature_temperature_preference = SubResource("Curve_d1wc2")
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+creature_age = 0.0
+creature_age_bracket = 1
+creature_happiness_bracket = 2
+creature_hunger_bracket = 2
+creature_light_contentment = 1.0
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+metadata/_custom_type_script = "uid://63umrodfd2l3"

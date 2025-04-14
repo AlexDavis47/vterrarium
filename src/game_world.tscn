@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://bygguke1e1erc"]
+[gd_scene load_steps=95 format=4 uid="uid://bygguke1e1erc"]
 
 [ext_resource type="Script" uid="uid://bqc1rw26f8umc" path="res://src/game_world.gd" id="1_0brji"]
 [ext_resource type="Script" uid="uid://bxxhn8dhp5fl3" path="res://addons/vterrariumframework/src/classes/vt_camera.gd" id="3_8txad"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://2l7iexi67jpq" path="res://assets/models/decor/coconut/coconut.glb" id="22_oelyg"]
 [ext_resource type="PackedScene" uid="uid://4j2m7swyjpea" path="res://assets/models/decor/3d_purple_coral/3d_purple_coral.glb" id="23_mkd08"]
 [ext_resource type="PackedScene" uid="uid://bpxnyxnsoomp4" path="res://assets/models/decor/3d_coral_blue/3d_coral_blue.glb" id="24_gajik"]
+[ext_resource type="Texture2D" uid="uid://dhc37j8ydktbu" path="res://assets/textures/water-bubble-png-2.png" id="25_gajik"]
 
 [sub_resource type="Environment" id="Environment_ti7fu"]
 ambient_light_source = 2
@@ -884,6 +885,36 @@ _data = {
 &"metarigAction": SubResource("Animation_2kgvd")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jm47h"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 0.328
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 1, 0)
+damping_min = 0.709
+damping_max = 0.709
+turbulence_enabled = true
+turbulence_noise_strength = 0.44
+turbulence_noise_scale = 2.287
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.02
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0nth"]
+transparency = 1
+albedo_texture = ExtResource("25_gajik")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1jtbr"]
+material = SubResource("StandardMaterial3D_c0nth")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
 [node name="GameWorld" type="Node3D" node_paths=PackedStringArray("keyboard")]
 script = ExtResource("1_0brji")
 keyboard = NodePath("OnscreenKeyboard")
@@ -1133,6 +1164,13 @@ transform = Transform3D(2.9869, 0.280083, 0, -0.280083, 2.9869, 0, 0, 0, 3, -3.5
 
 [node name="3d_coral_blue" parent="Terrarium" instance=ExtResource("24_gajik")]
 transform = Transform3D(-1.79488, 0, 3.10332, 0, 3.585, 0, -3.10332, 0, -1.79488, 4.56466, -2.8141, -1.90033)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Terrarium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13397, -2.51374, -1.30533)
+amount = 24
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_jm47h")
+draw_pass_1 = SubResource("PlaneMesh_1jtbr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_d2bpd")
