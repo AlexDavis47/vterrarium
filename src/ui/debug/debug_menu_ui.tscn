@@ -38,7 +38,6 @@ offset_bottom = 40.0
 texture = ExtResource("2_hcp6s")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
-clip_children = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,22 +53,8 @@ grow_vertical = 2
 texture = ExtResource("3_rqlrp")
 stretch_mode = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="TextureRect/TextureRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/TextureRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="TextureRect/TextureRect/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(575, 575)
-render_target_update_mode = 4
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -80,7 +65,7 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -89,13 +74,13 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="HFlowContainer" type="HFlowContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer"]
+[node name="HFlowContainer" type="HFlowContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 25
 alignment = 1
 
-[node name="PhotoDiodeNormalizedValue" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("curve_visualizer")]
+[node name="PhotoDiodeNormalizedValue" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("curve_visualizer")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -103,19 +88,19 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("5_5tdf5")
 curve_visualizer = NodePath("MarginContainer/VBoxContainer/CurveVisualizerUI")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 
-[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_qjk6r")
@@ -125,7 +110,7 @@ text = "Photodiode Brightness Response Curve
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="CurveVisualizerUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer" instance=ExtResource("5_y5x0x")]
+[node name="CurveVisualizerUI" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/PhotoDiodeNormalizedValue/MarginContainer/VBoxContainer" instance=ExtResource("5_y5x0x")]
 custom_minimum_size = Vector2(480, 231)
 layout_mode = 2
 top_left_color = Color(0, 0.0954861, 0.170187, 1)
@@ -139,7 +124,7 @@ show_marker_labels = true
 show_labels = true
 axis_label_font_size = 8
 
-[node name="FinalBrightness" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
+[node name="FinalBrightness" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -147,19 +132,19 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("9_lg7i2")
 value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 
-[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_qjk6r")
@@ -168,7 +153,7 @@ text = "Final Brightness Value"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
+[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/FinalBrightness/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 value = 0.0
@@ -179,7 +164,7 @@ title = ""
 content_padding = Vector2(20, 20)
 decimal_places = 3
 
-[node name="CurrentTempurature" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
+[node name="CurrentTempurature" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -187,19 +172,19 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("11_k7lll")
 value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 
-[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_qjk6r")
@@ -208,7 +193,7 @@ text = "Temperature"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
+[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentTempurature/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
 custom_minimum_size = Vector2(124.94, 200)
 layout_mode = 2
 value = 0.0
@@ -220,7 +205,7 @@ title = ""
 content_padding = Vector2(0, 12.795)
 meter_thickness_ratio = 0.48
 
-[node name="CurrentAirHumidity" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
+[node name="CurrentAirHumidity" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("value_monitor_meter")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -228,19 +213,19 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("12_1vw62")
 value_monitor_meter = NodePath("MarginContainer/VBoxContainer/ValueMonitorMeterUI")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 
-[node name="Label" type="Label" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_qjk6r")
@@ -249,7 +234,7 @@ text = "Humidity"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
+[node name="ValueMonitorMeterUI" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/CurrentAirHumidity/MarginContainer/VBoxContainer" instance=ExtResource("10_k7lll")]
 custom_minimum_size = Vector2(124.94, 200)
 layout_mode = 2
 value = 0.0
@@ -260,7 +245,7 @@ title = ""
 content_padding = Vector2(0, 12.795)
 meter_thickness_ratio = 0.48
 
-[node name="AddMoney" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+[node name="AddMoney" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -268,14 +253,14 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("12_1prrj")
 button = NodePath("MarginContainer/Button")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddMoney"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/AddMoney"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddMoney/MarginContainer"]
+[node name="Button" type="Button" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/AddMoney/MarginContainer"]
 layout_mode = 2
 text = "Add 1000 Coins"
 
-[node name="AddAllCreatures" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+[node name="AddAllCreatures" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -283,14 +268,14 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("13_1prrj")
 button = NodePath("MarginContainer/Button")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllCreatures"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/AddAllCreatures"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllCreatures/MarginContainer"]
+[node name="Button" type="Button" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/AddAllCreatures/MarginContainer"]
 layout_mode = 2
 text = "Add 1 of each creature"
 
-[node name="AddAllAccessories" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+[node name="AddAllAccessories" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -298,14 +283,14 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("14_mfnhn")
 button = NodePath("MarginContainer/Button")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllAccessories"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/AddAllAccessories"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/AddAllAccessories/MarginContainer"]
+[node name="Button" type="Button" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/AddAllAccessories/MarginContainer"]
 layout_mode = 2
 text = "Add 1 of each accessory"
 
-[node name="StarveAllCreatures" type="PanelContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
+[node name="StarveAllCreatures" type="PanelContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer" node_paths=PackedStringArray("button")]
 clip_children = 2
 layout_mode = 2
 mouse_filter = 1
@@ -313,10 +298,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5tdf5")
 script = ExtResource("15_khqw2")
 button = NodePath("MarginContainer/Button")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/StarveAllCreatures"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/StarveAllCreatures"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TextureRect/TextureRect/SubViewportContainer/SubViewport/ScrollContainer/MarginContainer/HFlowContainer/StarveAllCreatures/MarginContainer"]
+[node name="Button" type="Button" parent="TextureRect/TextureRect/ScrollContainer/MarginContainer/HFlowContainer/StarveAllCreatures/MarginContainer"]
 layout_mode = 2
 text = "Starve All Creatures"
 
