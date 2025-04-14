@@ -30,6 +30,15 @@ signal item_taken(item_card: PackItemCardUI)
 ########################################################
 
 func _ready():
+	# Connect signals or do other setup needed only when in the tree
+	take_button.pressed.connect(_on_take_button_pressed)
+
+func prepare_card_visuals():
+	# This should be called *after* data is set, but *before* adding to tree
+	if data == null:
+		printerr("Cannot prepare card visuals: data is null.")
+		return
+		
 	if data is CreatureData:
 		card_item_type = CardItemType.Creature
 	elif data is AccessoryData:
@@ -41,7 +50,6 @@ func _ready():
 
 	_instantiate_preview() # Instantiate before updating UI that adds it
 	update_ui()
-	take_button.pressed.connect(_on_take_button_pressed)
 
 ########################################################
 # UI Updates

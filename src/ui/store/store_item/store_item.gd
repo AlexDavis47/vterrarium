@@ -133,6 +133,7 @@ func open_pack():
 	for item in loot:
 		opening_instance.add_item_card(item)
 	get_tree().root.add_child(opening_instance)
+	opening_instance.prepare_cards()
 
 ########################################################
 # Signal Handlers

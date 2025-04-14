@@ -22,8 +22,10 @@ func prepare_cards() -> void:
 func pre_instantiate_cards() -> void:
 	instantiated_cards.clear()
 	for item in cards_to_add:
-		var card = item_card_container.instantiate_card()
+		var card: PackItemCardUI = item_card_container.instantiate_card()
 		card.data = item
+		# Prepare visuals (including preview instantiation) before adding to tree
+		card.prepare_card_visuals()
 		instantiated_cards.append(card)
 
 func _on_all_cards_taken() -> void:
