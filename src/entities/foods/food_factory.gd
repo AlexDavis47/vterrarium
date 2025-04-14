@@ -55,6 +55,11 @@ func add_food_to_inventory(food_data: FishFoodData) -> void:
 ## Returns spawned food instances
 func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 	var spawned_foods: Array[FishFood] = []
+
+
+	if get_tree().get_nodes_in_group("fish_food").size() >= 100:
+		AudioManager.play_sfx(AudioManager.SFX.CANCEL_1)
+		return []
 	
 	# Get the food scene to use
 	var food_scene: PackedScene = food_data.get_food_scene() if food_data.get_food_scene() else default_food_scene
