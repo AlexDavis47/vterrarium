@@ -85,6 +85,7 @@ func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 		var spawn_pos = _get_spawn_position(position, food_data, i, quantity)
 		var food = _create_food_instance(food_data, food_scene, spawn_pos)
 		if food:
+			food.add_to_group("fish_food")
 			spawned_foods.append(food)
 			food_spawned.emit(food)
 	
@@ -95,7 +96,7 @@ func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 		# Remove from inventory if count reaches 0
 		if SaveManager.save_file.food_inventory[found_index].number_owned <= 0:
 			SaveManager.save_file.food_inventory.remove_at(found_index)
-	
+
 	return spawned_foods
 
 ## Spawns food by type enum

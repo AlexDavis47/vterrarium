@@ -22,6 +22,14 @@ func _ready():
 	# Explicitly call the animation distribution after adding all cards
 	call_deferred("distribute_cards_with_animation")
 
+# Instantiates a card without adding it to the scene
+func instantiate_card() -> PackItemCardUI:
+	var item_card = card.instantiate()
+	return item_card
+	
+# Adds a pre-instantiated card to the container
+func add_instantiated_card(item_card: PackItemCardUI) -> void:
+	_add_item_card(item_card)
 	
 func _add_item_card(item_card: PackItemCardUI):
 	# Create a new PathFollow2D to follow the path

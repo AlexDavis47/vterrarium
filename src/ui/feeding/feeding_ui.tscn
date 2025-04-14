@@ -18,18 +18,18 @@ food_card_container = NodePath("Panel/ScrollContainer/FoodContainer")
 food_card_template = ExtResource("4_nyhmt")
 touch_zone = NodePath("TouchArea")
 
+[node name="TouchArea" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 214.0
+offset_right = 866.0
+offset_bottom = 600.0
+
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_nr0k2")
-
-[node name="TouchArea" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 214.0
-offset_right = 866.0
-offset_bottom = 600.0
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

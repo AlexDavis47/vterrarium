@@ -58,7 +58,8 @@ func _on_food_card_selected(card: FoodCard, food_data: FishFoodData) -> void:
 func _on_touch_zone_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch and event.pressed:
 		if selected_food_data:
-			var touch_position = event.position
+			# Convert touch position to global coordinates
+			var touch_position = touch_zone.get_global_transform_with_canvas().origin + event.position
 			var camera = VTGlobal.top_camera
 			var world_position = camera.project_position(touch_position, camera.global_position.y - VTConfig.terrarium_dimensions.y / 2)
 			

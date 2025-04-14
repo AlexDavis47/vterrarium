@@ -36,7 +36,6 @@ const CAMERA_DISTANCE_MULTIPLIER: float = 2.0
 var _dragging: bool = false
 var _last_mouse_pos: Vector2 = Vector2.ZERO
 
-
 # Built-in functions
 func _ready() -> void:
 	position_camera()
@@ -69,13 +68,14 @@ func clear_root_node() -> void:
 
 func add_child_to_root_node(child: Node3D) -> void:
 	root_node.add_child(child)
+	child.process_mode = Node.PROCESS_MODE_DISABLED
 
 # Camera positioning
 func position_camera() -> void:
 	if not _are_components_valid():
 		return
 	
-	var aabb := _calculate_spatial_bounds(root_node, true)
+	var aabb := _calculate_spatial_bounds(root_node, false)
 	var camera_position := _calculate_camera_position(aabb)
 	
 	_update_camera_transform(camera_position, aabb)
@@ -135,7 +135,7 @@ func _calculate_spatial_bounds(parent: Node3D, exclude_top_level_transform: bool
 			else:
 				bounds = bounds.merge(child_bounds)
 	
-	if bounds.size == Vector3.ZERO and not parent:
+	if bounds.size == Vector3.ZERO:
 		bounds = AABB(
 			Vector3(DEFAULT_BBOX_OFFSET, DEFAULT_BBOX_OFFSET, DEFAULT_BBOX_OFFSET),
 			Vector3(DEFAULT_BBOX_SIZE, DEFAULT_BBOX_SIZE, DEFAULT_BBOX_SIZE)
@@ -144,4 +144,5 @@ func _calculate_spatial_bounds(parent: Node3D, exclude_top_level_transform: bool
 	if not exclude_top_level_transform:
 		bounds = parent.transform * bounds
 	
+
 	return bounds

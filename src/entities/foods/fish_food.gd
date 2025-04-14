@@ -21,7 +21,6 @@ var remaining_bites: int = 1
 var food_lifetime_timer: SceneTreeTimer = null
 
 func _ready():
-	add_to_group("fish_food")
 	configure_from_data()
 
 ## Configure the food instance based on the data resource

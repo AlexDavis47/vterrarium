@@ -104,6 +104,7 @@ layout_mode = 1
 camera_angle = Vector3(-2.245, -41.345, 43.53)
 camera_zoom = 0.425
 camera_fov = 35.0
+continuous_update = true
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
