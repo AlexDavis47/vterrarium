@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_b8l7s")
 food_name = "Tasty Food"
-food_description = "A food item that can be eaten by creatures."
+food_description = "Lightly Seasoned!"
 food_type = 0
 food_color = Color(0.999999, 0.36975, 0.282144, 1)
 times_eatable = 3
@@ -18,4 +18,5 @@ spread_factor = 1.0
 food_mass = 0.1
 food_scene_path = "uid://cdy4jxxhabc61"
 food_id = ""
+number_owned = null
 metadata/_custom_type_script = "uid://b2m78sbosglwi"

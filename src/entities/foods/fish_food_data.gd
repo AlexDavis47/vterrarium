@@ -12,6 +12,8 @@ signal food_value_changed(value: float)
 signal food_lifetime_changed(value: float)
 signal food_color_changed(value: Color)
 signal food_rarity_changed(value: Enums.Rarity)
+signal is_infinite_use_changed(value: bool)
+signal number_owned_changed(value: int)
 
 ## Only one type of food is currently supported.
 enum FoodType {
@@ -108,6 +110,22 @@ enum FoodType {
 		emit_changed()
 	get:
 		return spawn_quantity
+
+## Whether this food is consumed from inventory when used
+@export var is_infinite_use: bool = false:
+	set(value):
+		is_infinite_use = value
+		is_infinite_use_changed.emit(value)
+	get:
+		return is_infinite_use
+
+## How many of this food the player owns
+@export var number_owned: int = 0:
+	set(value):
+		number_owned = max(0, value)
+		number_owned_changed.emit(value)
+	get:
+		return number_owned
 
 
 @export_group("Physical Properties")

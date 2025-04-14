@@ -32,10 +32,41 @@ func _ready() -> void:
 		# Spawn a test food item
 		var food_data = food_data_templates[food_type]
 		spawn_food(food_data, Vector3(randf_range(-1.0, 1.0), 0, randf_range(-1.0, 1.0)))
+	create_test_food()
+
+
+## Add three of each food type to the inventory
+func create_test_food() -> void:
+	for i in range(3):
+		for food_type in FoodType.values():
+			var food_data = food_data_templates[food_type]
+			add_food_to_inventory(food_data)
+
+
+func add_food_to_inventory(food_data: FishFoodData) -> void:
+	var existing_data_index = SaveManager.save_file.food_inventory.find(food_data)
+	if existing_data_index != -1:
+		SaveManager.save_file.food_inventory[existing_data_index].number_owned += 1
+	else:
+		SaveManager.save_file.food_inventory.append(food_data)
+
 
 ## Spawns food in the tank at the specified position with the given food data
+## Returns spawned food instances and handles inventory updates
 func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 	var spawned_foods: Array[FishFood] = []
+	
+	# First, check if we have this food in inventory
+	var found_index = -1
+	for i in range(SaveManager.save_file.food_inventory.size()):
+		if SaveManager.save_file.food_inventory[i].food_id == food_data.food_id:
+			found_index = i
+			break
+	
+	# If not found or quantity is 0, don't spawn
+	if found_index == -1 or (not food_data.is_infinite_use and SaveManager.save_file.food_inventory[found_index].number_owned <= 0):
+		push_warning("Tried to spawn food that isn't in inventory or has zero quantity")
+		return spawned_foods
 	
 	# Get the food scene to use
 	var food_scene: PackedScene
@@ -56,6 +87,14 @@ func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 		if food:
 			spawned_foods.append(food)
 			food_spawned.emit(food)
+	
+	# Update inventory count if not infinite use
+	if not food_data.is_infinite_use:
+		SaveManager.save_file.food_inventory[found_index].number_owned -= 1
+		
+		# Remove from inventory if count reaches 0
+		if SaveManager.save_file.food_inventory[found_index].number_owned <= 0:
+			SaveManager.save_file.food_inventory.remove_at(found_index)
 	
 	return spawned_foods
 

@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="2_2rsl1"]
 [ext_resource type="PackedScene" uid="uid://g3dpy7hhiby0" path="res://src/ui/feeding/food_card/food_card.tscn" id="4_nyhmt"]
 
-[node name="FeedingUI" type="Control"]
+[node name="FeedingUI" type="Control" node_paths=PackedStringArray("food_card_container", "touch_zone")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_6jdc2")
+food_card_container = NodePath("Panel/ScrollContainer/FoodContainer")
+food_card_template = ExtResource("4_nyhmt")
+touch_zone = NodePath("TouchArea")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -21,6 +24,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_nr0k2")
+
+[node name="TouchArea" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 214.0
+offset_right = 866.0
+offset_bottom = 600.0
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -36,8 +45,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
-layout_mode = 2
-
-[node name="FoodCard" parent="Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_nyhmt")]
+[node name="FoodContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2

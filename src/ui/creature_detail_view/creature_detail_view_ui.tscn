@@ -306,7 +306,6 @@ camera_zoom = 0.515
 camera_fov = 35.0
 drag_enabled = true
 continuous_update = true
-transparent_background = null
 
 [node name="CreatureSpecies" type="Label" parent="BG"]
 layout_mode = 1
