@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://b64q7xyp70wah"]
+
+[ext_resource type="Script" uid="uid://bo5pqncmx8jl" path="res://src/ui/notifications/notification_scene.gd" id="1_s7err"]
+[ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="2_23xc1"]
+
+[node name="notification_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s7err")
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 320.0
+offset_top = 8.0
+offset_right = 704.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+text = "THIS IS A NOTI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 320.0
+offset_top = 8.0
+offset_right = 704.0
+offset_bottom = 64.0
+theme = ExtResource("2_23xc1")
