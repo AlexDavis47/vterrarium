@@ -148,6 +148,7 @@ func _on_purchase_pressed():
 			open_pack()
 			purchased.emit(item_data)
 		else:
+			VTGlobal.display_notification("NOT ENOUGH MONEY")
 			pass
 
 func _on_money_changed():

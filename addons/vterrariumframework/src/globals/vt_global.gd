@@ -25,7 +25,6 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	print("top window: " + str(top_window))
 	print("front window: " + str(front_window))
-	display_notification("bro")
 
 func _physics_process(_delta: float) -> void:
 	if not windows_setup_completed and top_camera and front_camera:
