@@ -154,6 +154,7 @@ func spawn_creature(creature_data: CreatureData) -> void:
 	if creature_data.creature_is_in_tank:
 		return
 	if get_number_of_creatures_in_tank() >= SaveManager.save_file.tank_capacity:
+		VTGlobal.display_notification("TANK MAX CAPACITY")
 		return
 	_add_creature_to_tank(creature_data)
 	AudioManager.play_sfx(AudioManager.SFX.SPLASH_1, 0.8, 1.2)

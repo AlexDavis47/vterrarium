@@ -15,6 +15,7 @@ var windows_setup_completed: bool = false
 
 var onscreen_keyboard: OnscreenKeyboard = null
 
+var notif = preload("res://src/ui/notifications/notification_scene.tscn")
 
 signal windows_initialized
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	print("top window: " + str(top_window))
 	print("front window: " + str(front_window))
+	display_notification("bro")
 
 func _physics_process(_delta: float) -> void:
 	if not windows_setup_completed and top_camera and front_camera:
@@ -32,3 +34,8 @@ func _physics_process(_delta: float) -> void:
 
 func setup_windows():
 	windows_initialized.emit()
+
+func display_notification(text):
+	var notif_temp = notif.instantiate()
+	top_window.add_child(notif_temp)
+	notif_temp.display(text) 

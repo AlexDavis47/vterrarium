@@ -1,5 +1,4 @@
 extends PanelContainer
-
 @export var button: Button
 
 func _ready() -> void:
@@ -7,3 +6,4 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	SaveManager.save_file.money += 1000
+	VTGlobal.display_notification("YOU ADDED 1000 gold")
