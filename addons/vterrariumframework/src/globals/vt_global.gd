@@ -15,7 +15,7 @@ var windows_setup_completed: bool = false
 
 var onscreen_keyboard: OnscreenKeyboard = null
 
-var notif = preload("res://src/ui/notifications/notification_scene.tscn")
+var notif = preload("uid://b64q7xyp70wah")
 
 signal windows_initialized
 
