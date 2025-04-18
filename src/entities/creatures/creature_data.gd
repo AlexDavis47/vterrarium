@@ -147,17 +147,7 @@ func get_age_bracket() -> CreatureData.AgeBracket:
 		return CreatureData.AgeBracket.Elder
 
 func get_price() -> int:
-	var age_multiplier: float = 0.0
-	var age_bracket = get_age_bracket()
-	
-	if age_bracket == CreatureData.AgeBracket.Baby:
-		age_multiplier = 0.25
-	elif age_bracket == CreatureData.AgeBracket.Adult:
-		age_multiplier = 0.75
-	else: # Old
-		age_multiplier = 1.0
-	
-	return int(creature_money_per_hour * age_multiplier * creature_luck)
+	return int(creature_money_per_hour * 0.25)
 
 func on_generated(luck: float) -> void:
 	creature_luck = luck

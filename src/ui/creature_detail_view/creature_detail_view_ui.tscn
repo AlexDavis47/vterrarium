@@ -464,10 +464,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_q5ua7")
 layout_mode = 1
 offset_right = 0.0
 offset_bottom = 0.0
-top_left_color = Color(0.952941, 0.819608, 0.137255, 1)
-top_right_color = Color(0, 0.635294, 0.992157, 1)
-bottom_left_color = Color(0.952941, 0.819608, 0.137255, 1)
-bottom_right_color = Color(0, 0.635294, 0.992157, 1)
+top_left_color = Color(0, 0.635294, 0.992157, 1)
+top_right_color = Color(0.952941, 0.819608, 0.137255, 1)
+bottom_left_color = Color(0, 0.635294, 0.992157, 1)
+bottom_right_color = Color(0.952941, 0.819608, 0.137255, 1)
 graph_margins = Vector2(2, 2)
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/HBoxContainer2/Preferences/Temperature/MarginContainer/Panel/MarginContainer/Panel"]

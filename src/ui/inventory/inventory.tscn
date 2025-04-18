@@ -63,9 +63,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("5_2wghl")
-current_tab = 0
+current_tab = 1
 
 [node name="Creatures" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -185,23 +186,9 @@ theme_override_constants/v_separation = 20
 columns = 3
 script = ExtResource("1_7f777")
 
-[node name="Decorations" type="Control" parent="TabContainer"]
-visible = false
+[node name="Upgrades" type="Control" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 1
-
-[node name="Decorations" type="VBoxContainer" parent="TabContainer/Decorations"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Upgrades" type="Control" parent="TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2
 
 [node name="Upgrades" type="VBoxContainer" parent="TabContainer/Upgrades"]
 visible = false

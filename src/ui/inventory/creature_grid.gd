@@ -45,6 +45,7 @@ func _find_creatures_tab():
 	if parent and parent.has_method("get_current_sort_type"):
 		return parent
 	
+	push_error("Could not find creatures tab with sorting functionality")
 	return null
 	
 func _create_cards_with_delay(creatures_to_create: Array) -> void:
