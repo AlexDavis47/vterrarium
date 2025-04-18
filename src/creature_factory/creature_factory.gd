@@ -154,7 +154,7 @@ func spawn_creature(creature_data: CreatureData) -> void:
 	if creature_data.creature_is_in_tank:
 		return
 	if get_number_of_creatures_in_tank() >= SaveManager.save_file.tank_capacity:
-		VTGlobal.display_notification("TANK MAX CAPACITY")
+		VTGlobal.display_notification("Cannot add more creatures, max capacity reached!")
 		return
 	_add_creature_to_tank(creature_data)
 	AudioManager.play_sfx(AudioManager.SFX.SPLASH_1, 0.8, 1.2)
@@ -234,6 +234,7 @@ func sell_creature(creature_data: CreatureData) -> void:
 		return
 	if SaveManager.save_file.creature_inventory.size() <= 1: # Don't allow selling the last creature
 		AudioManager.play_sfx(AudioManager.SFX.CANCEL_1)
+		VTGlobal.display_notification("Cannot sell last creature!")
 		return
 	if creature_data.creature_is_in_tank:
 		if is_instance_valid(creature_data.creature_instance):
@@ -243,6 +244,7 @@ func sell_creature(creature_data: CreatureData) -> void:
 	AccessoryFactory.unequip_all_accessories(creature_data)
 	SaveManager.save_file.creature_inventory.erase(creature_data)
 	SaveManager.save_file.money += creature_data.get_price()
+	VTGlobal.display_notification("Sold creature: %s for %s coins!" % [creature_data.creature_name, creature_data.get_price()])
 	# Ensure signal is emitted even if creature was not in tank
 	creature_removed.emit(creature_data)
 	AudioManager.play_sfx(AudioManager.SFX.COINS_1, 0.8, 1.2)

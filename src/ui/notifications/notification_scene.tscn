@@ -3,27 +3,31 @@
 [ext_resource type="Script" uid="uid://bo5pqncmx8jl" path="res://src/ui/notifications/notification_scene.gd" id="1_s7err"]
 [ext_resource type="Theme" uid="uid://cc127n7587hwl" path="res://src/ui/default_theme.tres" id="2_23xc1"]
 
-[node name="NotificationScene" type="Panel"]
+[node name="NotificationScene" type="PanelContainer" node_paths=PackedStringArray("label")]
 show_behind_parent = true
+z_index = 2000
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -192.0
-offset_right = 192.0
-offset_bottom = 56.0
+offset_left = -141.0
+offset_right = 141.0
+offset_bottom = 40.0
 grow_horizontal = 2
 mouse_filter = 2
 theme = ExtResource("2_23xc1")
 script = ExtResource("1_s7err")
+label = NodePath("MarginContainer/Label")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
-text = "THIS IS A NOTI"
+text = "THIS IS A NOTIFICATION"
 horizontal_alignment = 1
 vertical_alignment = 1

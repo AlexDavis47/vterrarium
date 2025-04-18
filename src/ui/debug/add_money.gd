@@ -6,4 +6,4 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	SaveManager.save_file.money += 1000
-	VTGlobal.display_notification("YOU ADDED 1000 gold")
+	VTGlobal.display_notification("Added 1000 gold to your wallet!")

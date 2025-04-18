@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=57 format=3 uid="uid://cc127n7587hwl"]
+[gd_resource type="Theme" load_steps=58 format=3 uid="uid://cc127n7587hwl"]
 
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="1_1prds"]
 [ext_resource type="Texture2D" uid="uid://5gkbw1il0h43" path="res://src/ui/creature_detail_view/textures/detail_view_bg.png" id="2_0uo8b"]
@@ -159,6 +159,21 @@ corner_radius_bottom_right = 22
 corner_radius_bottom_left = 22
 corner_detail = 5
 shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uo8b"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.898039, 0.894118, 0.894118, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.121569)
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="Image" id="Image_hn3c6"]
 data = {
@@ -326,6 +341,7 @@ OptionButton/styles/normal_mirrored = SubResource("StyleBoxEmpty_d7fub")
 OptionButton/styles/pressed = SubResource("StyleBoxEmpty_nttct")
 OptionButton/styles/pressed_mirrored = SubResource("StyleBoxEmpty_jj2lb")
 Panel/styles/panel = SubResource("StyleBoxFlat_1prds")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_0uo8b")
 TabContainer/colors/drop_mark_color = Color(1, 1, 1, 1)
 TabContainer/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 TabContainer/colors/font_hovered_color = Color(0.95, 0.95, 0.95, 1)

@@ -115,9 +115,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="LilBlueFish" type="CharacterBody3D" node_paths=PackedStringArray("creature_mesh_root", "_accessory_hat_attachment")]
+[node name="LilBlueFish" type="CharacterBody3D" node_paths=PackedStringArray("_accessory_hat_attachment")]
 script = ExtResource("1_wkfqa")
-creature_mesh_root = NodePath("")
 _accessory_hat_attachment = NodePath("Skeleton3D/AccessoryHatSlot/Node3D")
 metadata/_custom_type_script = "uid://bse0c1u4ifhet"
 

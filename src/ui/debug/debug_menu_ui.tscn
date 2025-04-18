@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://bkgugserf7cyk" path="res://src/ui/debug/final_brightness.gd" id="9_lg7i2"]
 [ext_resource type="PackedScene" uid="uid://8l1yrrxl4xx8" path="res://src/ui/value_monitor_meter/value_monitor_meter_ui.tscn" id="10_k7lll"]
 [ext_resource type="Script" uid="uid://bkfte5laxqp30" path="res://src/ui/debug/current_tempurature.gd" id="11_k7lll"]
-[ext_resource type="Script" path="res://src/ui/debug/add_money.gd" id="12_1prrj"]
+[ext_resource type="Script" uid="uid://blqd87pdpl3l2" path="res://src/ui/debug/add_money.gd" id="12_1prrj"]
 [ext_resource type="Script" uid="uid://uaerhkahpvkv" path="res://src/ui/debug/current_air_humidity.gd" id="12_1vw62"]
 [ext_resource type="Script" uid="uid://djfcgihfox2kx" path="res://src/ui/debug/add_all_creatures.gd" id="13_1prrj"]
 [ext_resource type="Script" uid="uid://b78x52u4eb6ol" path="res://src/ui/debug/add_all_accessories.gd" id="14_mfnhn"]

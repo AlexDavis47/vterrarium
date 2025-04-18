@@ -19,7 +19,7 @@ signal text_cancelled()
 @export var prompt: String = "Enter text"
 @export var text: String = ""
 @export var placeholder: String = ""
-@export var max_length: int = 45
+@export var max_length: int = 20
 
 @export_group("Components")
 @export var prompt_label: Label
@@ -98,6 +98,11 @@ func _on_line_edit_text_changed(_text: String):
 
 func _on_line_edit_text_change_rejected(_text: String):
 	_shake_label(remaining_characters_label)
+	AudioManager.play_sfx(AudioManager.SFX.CANCEL_1)
+	if line_edit.text.length() == 0:
+		VTGlobal.display_notification("Please enter a name!")
+	if line_edit.text.length() > max_length:
+		VTGlobal.display_notification("Name is too long!")
 
 func _on_confirm_button_pressed():
 	AudioManager.play_sfx(AudioManager.SFX.POP_1, 0.8, 1.2)

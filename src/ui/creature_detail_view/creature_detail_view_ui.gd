@@ -183,7 +183,6 @@ func _update_satiation() -> void:
 	_satiation_container.value = creature_data.creature_satiation
 
 func _update_brightness_graph() -> void:
-	print("Updating brightness graph")
 	_brightness_graph.curve = creature_data.creature_light_preference
 	_brightness_graph.current_value = VTHardware.brightness
 
