@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gbnpxr40g1kv"]
+[gd_scene load_steps=9 format=3 uid="uid://gbnpxr40g1kv"]
 
 [ext_resource type="PackedScene" uid="uid://dacl7pwgkabec" path="res://src/ui/store/store_item/store_item.tscn" id="1_dgslu"]
 [ext_resource type="Resource" uid="uid://d07kp6nca3bp6" path="res://src/store_items/fish_packs/common_fish_pack/common_fish_pack.tres" id="2_s82go"]
@@ -6,6 +6,8 @@
 [ext_resource type="Resource" uid="uid://b3wf3y8tw8qt6" path="res://src/store_items/fish_packs/rare_fish_pack/rare_fish_pack.tres" id="4_xm3oi"]
 [ext_resource type="Resource" uid="uid://b2j8pxi0mlxi2" path="res://src/store_items/fish_packs/legendary_fish_pack/legendary_fish_pack.tres" id="5_phltr"]
 [ext_resource type="Resource" uid="uid://cs4nmvs8n88vj" path="res://src/store_items/fish_packs/credits_pack/credits_pack.tres" id="6_xm3oi"]
+[ext_resource type="Resource" uid="uid://c00vqqwsgjrcs" path="res://src/store_items/food_packs/uncommon_fish_food.tres" id="7_05ofe"]
+[ext_resource type="Resource" uid="uid://dntk2yn51lvf5" path="res://src/store_items/food_packs/rare_fish_food.tres" id="8_2r732"]
 
 [node name="StoreUI" type="Control"]
 layout_mode = 3
@@ -44,3 +46,11 @@ item_data = ExtResource("5_phltr")
 [node name="StoreItem5" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
 layout_mode = 2
 item_data = ExtResource("6_xm3oi")
+
+[node name="StoreItem6" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
+layout_mode = 2
+item_data = ExtResource("7_05ofe")
+
+[node name="StoreItem7" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
+layout_mode = 2
+item_data = ExtResource("8_2r732")

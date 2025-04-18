@@ -1,11 +1,14 @@
 extends Node
 
 ## Four tables is fine for the moment, but we can add more later
+## Technically we dont even use this right now but we might have to someday
 enum LootTable {
     COMMON,
     UNCOMMON,
     RARE,
-    LEGENDARY
+    LEGENDARY,
+    UNCOMMON_FOOD,
+    RARE_FOOD,
 }
 
 ## Just trying one for now

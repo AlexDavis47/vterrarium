@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="LootTableData" load_steps=8 format=3 uid="uid://bc4a45p1omulq"]
+
+[ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_0ck6g"]
+[ext_resource type="Script" uid="uid://b2m78sbosglwi" path="res://src/entities/foods/fish_food_data.gd" id="2_4edgj"]
+[ext_resource type="Script" uid="uid://bst7q731ckock" path="res://src/loot_generator/loot_table.gd" id="5_wjgo5"]
+
+[sub_resource type="Resource" id="Resource_ai37l"]
+script = ExtResource("2_4edgj")
+food_name = "Tasty Food"
+food_description = "Lightly Seasoned!"
+food_type = 0
+food_color = Color(0.999999, 0.36975, 0.282144, 1)
+times_eatable = 3
+food_value = 0.35
+food_lifetime = 3600.0
+food_rarity = 0
+spawn_quantity = 5
+is_infinite_use = false
+number_owned = 0
+sink_speed = 1.0
+spread_factor = 1.0
+food_mass = 0.1
+food_scene_path = "uid://cdy4jxxhabc61"
+food_id = ""
+metadata/_custom_type_script = "uid://b2m78sbosglwi"
+
+[sub_resource type="Resource" id="Resource_uicw4"]
+script = ExtResource("1_0ck6g")
+item = SubResource("Resource_ai37l")
+weight = 0.5
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_6rsln"]
+script = ExtResource("2_4edgj")
+food_name = "Luxury Food"
+food_description = "Expensive! Filling!"
+food_type = 0
+food_color = Color(0.610209, 0.355561, 0.999999, 1)
+times_eatable = 5
+food_value = 0.5
+food_lifetime = 43200.0
+food_rarity = 2
+spawn_quantity = 5
+is_infinite_use = false
+number_owned = 0
+sink_speed = 1.0
+spread_factor = 1.0
+food_mass = 0.1
+food_scene_path = "uid://ideaf1qhq4ic"
+food_id = ""
+metadata/_custom_type_script = "uid://b2m78sbosglwi"
+
+[sub_resource type="Resource" id="Resource_wjgo5"]
+script = ExtResource("1_0ck6g")
+item = SubResource("Resource_6rsln")
+weight = 1.0
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[resource]
+script = ExtResource("5_wjgo5")
+entries = Array[ExtResource("1_0ck6g")]([SubResource("Resource_uicw4"), SubResource("Resource_wjgo5")])
+static_pack = false
+metadata/_custom_type_script = "uid://bst7q731ckock"

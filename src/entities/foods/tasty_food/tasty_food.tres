@@ -6,7 +6,7 @@
 script = ExtResource("1_b8l7s")
 food_name = "Tasty Food"
 food_description = "Lightly Seasoned!"
-food_type = 0
+food_type = 1
 food_color = Color(0.999999, 0.36975, 0.282144, 1)
 times_eatable = 3
 food_value = 0.35

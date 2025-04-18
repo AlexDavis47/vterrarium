@@ -135,13 +135,13 @@ func _instantiate_preview():
 func take_item():
 	if data is CreatureData:
 		var creature_data: CreatureData = data as CreatureData
-		SaveManager.save_file.creature_inventory.append(creature_data)
+		CreatureFactory.add_creature_to_inventory(creature_data)
 	elif data is AccessoryData:
 		var accessory_data: AccessoryData = data as AccessoryData
-		SaveManager.save_file.accessory_inventory.append(accessory_data)
+		AccessoryFactory.add_accessory_to_inventory(accessory_data)
 	elif data is FishFoodData:
 		var fish_food_data: FishFoodData = data as FishFoodData
-		SaveManager.save_file.fish_food_inventory.append(fish_food_data)
+		FoodFactory.add_food_to_inventory(fish_food_data)
 	else:
 		printerr("Invalid item type")
 	item_taken.emit(self)

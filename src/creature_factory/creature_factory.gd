@@ -231,6 +231,11 @@ func create_creature_preview(creature_data: CreatureData) -> Creature:
 	creature.process_mode = PROCESS_MODE_DISABLED
 	return creature
 
+
+func add_creature_to_inventory(creature_data: CreatureData) -> void:
+	SaveManager.save_file.creature_inventory.append(creature_data)
+	creature_added.emit(creature_data)
+
 func sell_creature(creature_data: CreatureData) -> void:
 	if not creature_data:
 		return

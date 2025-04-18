@@ -6,7 +6,7 @@
 script = ExtResource("1_yvplw")
 food_name = "Luxury Food"
 food_description = "Expensive! Filling!"
-food_type = 0
+food_type = 2
 food_color = Color(0.610209, 0.355561, 0.999999, 1)
 times_eatable = 5
 food_value = 0.5

@@ -3,7 +3,7 @@ extends Node
 signal accessory_removed(accessory_data: AccessoryData)
 signal accessory_equipped(accessory_data: AccessoryData, creature_data: CreatureData)
 signal accessory_unequipped(accessory_data: AccessoryData, creature_data: CreatureData)
-
+signal accessory_added(accessory_data: AccessoryData)
 
 enum AccessoryType {
 	HAT
@@ -116,3 +116,8 @@ func sell_accessory(accessory_data: AccessoryData) -> void:
 func unequip_all_accessories(creature_data: CreatureData) -> void:
 	for accessory in get_all_accessories_by_creature_id(creature_data.creature_id):
 		unequip_accessory(accessory, creature_data)
+
+
+func add_accessory_to_inventory(accessory_data: AccessoryData) -> void:
+	SaveManager.save_file.accessory_inventory.append(accessory_data)
+	accessory_added.emit(accessory_data)

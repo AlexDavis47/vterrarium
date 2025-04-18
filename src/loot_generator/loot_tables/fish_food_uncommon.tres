@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="LootTableData" load_steps=7 format=3 uid="uid://be73dxocim1nn"]
+
+[ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_gmb3a"]
+[ext_resource type="Script" uid="uid://bst7q731ckock" path="res://src/loot_generator/loot_table.gd" id="2_a0vur"]
+[ext_resource type="Resource" uid="uid://85whevys82sq" path="res://src/entities/foods/tasty_food/tasty_food.tres" id="3_xx41e"]
+[ext_resource type="Resource" uid="uid://b03hqshvxtaf5" path="res://src/entities/foods/luxury_food/luxury_food.tres" id="4_uur86"]
+
+[sub_resource type="Resource" id="Resource_slx4o"]
+script = ExtResource("1_gmb3a")
+item = ExtResource("3_xx41e")
+weight = 1.0
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_ygks1"]
+script = ExtResource("1_gmb3a")
+item = ExtResource("4_uur86")
+weight = 0.1
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[resource]
+script = ExtResource("2_a0vur")
+entries = Array[ExtResource("1_gmb3a")]([SubResource("Resource_slx4o"), SubResource("Resource_ygks1")])
+static_pack = false
+metadata/_custom_type_script = "uid://bst7q731ckock"

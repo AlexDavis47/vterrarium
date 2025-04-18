@@ -42,13 +42,20 @@ func create_test_food() -> void:
 			var food_data = food_data_templates[food_type]
 			add_food_to_inventory(food_data)
 
-
 func add_food_to_inventory(food_data: FishFoodData) -> void:
-	var existing_data_index = SaveManager.save_file.food_inventory.find(food_data)
+	var existing_data_index = -1
+	for i in range(SaveManager.save_file.food_inventory.size()):
+		if SaveManager.save_file.food_inventory[i].food_type == food_data.food_type:
+			existing_data_index = i
+			break
+	
 	if existing_data_index != -1:
 		SaveManager.save_file.food_inventory[existing_data_index].number_owned += 1
 	else:
-		SaveManager.save_file.food_inventory.append(food_data)
+		# Create a duplicate to avoid modifying the template
+		var food_copy = food_data.duplicate()
+		food_copy.number_owned = 1
+		SaveManager.save_file.food_inventory.append(food_copy)
 
 
 ## Spawns food in the tank at the specified position with the given food data

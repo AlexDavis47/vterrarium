@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="LootTableData" load_steps=9 format=3 uid="uid://bjac02oxkguup"]
+
+[ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_o00qs"]
+[ext_resource type="Script" uid="uid://bst7q731ckock" path="res://src/loot_generator/loot_table.gd" id="2_aiqdi"]
+[ext_resource type="Resource" uid="uid://cxcomehb8uap3" path="res://src/entities/foods/basic_food/basic_food.tres" id="2_jdtts"]
+[ext_resource type="Resource" uid="uid://85whevys82sq" path="res://src/entities/foods/tasty_food/tasty_food.tres" id="3_cydl1"]
+[ext_resource type="Resource" uid="uid://b03hqshvxtaf5" path="res://src/entities/foods/luxury_food/luxury_food.tres" id="4_7vdmq"]
+
+[sub_resource type="Resource" id="Resource_vwv7p"]
+script = ExtResource("1_o00qs")
+item = ExtResource("2_jdtts")
+weight = 1.0
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_mss8i"]
+script = ExtResource("1_o00qs")
+item = ExtResource("3_cydl1")
+weight = 0.2
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_nbojl"]
+script = ExtResource("1_o00qs")
+item = ExtResource("4_7vdmq")
+weight = 0.05
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[resource]
+script = ExtResource("2_aiqdi")
+entries = Array[ExtResource("1_o00qs")]([SubResource("Resource_vwv7p"), SubResource("Resource_mss8i"), SubResource("Resource_nbojl")])
+static_pack = false
+metadata/_custom_type_script = "uid://bst7q731ckock"

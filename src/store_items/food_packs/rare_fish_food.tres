@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StoreItemData" load_steps=4 format=3 uid="uid://dntk2yn51lvf5"]
+
+[ext_resource type="Script" uid="uid://dlunup4cvhlxk" path="res://src/resources/store_items/store_item_data.gd" id="1_6jw86"]
+[ext_resource type="Texture2D" uid="uid://co7q1ic8f8uki" path="res://src/store_items/food_packs/fish_food_icon.svg" id="1_j316w"]
+[ext_resource type="Resource" uid="uid://bc4a45p1omulq" path="res://src/loot_generator/loot_tables/fish_food_rare.tres" id="1_mqnkh"]
+
+[resource]
+script = ExtResource("1_6jw86")
+item_name = "Rare Fish Food"
+item_description = "Item Description"
+item_price = 500
+item_icon = ExtResource("1_j316w")
+item_color = Color(0.999998, 0.499656, 0.378311, 1)
+loot_table = ExtResource("1_mqnkh")
+number_of_items = 5
+metadata/_custom_type_script = "uid://dlunup4cvhlxk"

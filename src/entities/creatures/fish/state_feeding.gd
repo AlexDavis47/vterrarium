@@ -4,10 +4,6 @@ var target_food: FishFood = null
 var feeding_speed: float = 1.5 # Faster than normal wandering
 var food_eat_distance: float = 1.0 # Distance at which the fish can eat the food
 
-# Food preferences
-var food_type_preferences = {
-	FishFoodData.FoodType.FLAKES: 1.0 # Default preferences
-}
 
 func enter():
 	super.enter()

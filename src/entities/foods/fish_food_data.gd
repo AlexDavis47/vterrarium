@@ -17,7 +17,9 @@ signal number_owned_changed(value: int)
 
 ## Only one type of food is currently supported.
 enum FoodType {
-	FLAKES
+	COMMON,
+	UNCOMMON,
+	RARE
 }
 
 
@@ -41,7 +43,7 @@ enum FoodType {
 		return food_description
 
 ## The type of food, affects physical properties and fish preferences
-@export var food_type: FoodType = FoodType.FLAKES:
+@export var food_type: FoodType = FoodType.COMMON:
 	set(value):
 		food_type = value
 		emit_changed()
