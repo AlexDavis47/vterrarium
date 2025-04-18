@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LootTableData" load_steps=11 format=3 uid="uid://cfveorc57te16"]
+[gd_resource type="Resource" script_class="LootTableData" load_steps=13 format=3 uid="uid://cfveorc57te16"]
 
 [ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_8tvgl"]
 [ext_resource type="Script" uid="uid://bst7q731ckock" path="res://src/loot_generator/loot_table.gd" id="2_hmayb"]
 [ext_resource type="Resource" uid="uid://duf8h8xtuyku3" path="res://src/entities/creatures/fish/credits_fish/credits_fish_alex/credits_fish_alex.tres" id="2_nj0i5"]
 [ext_resource type="Resource" uid="uid://jgors16k8mmq" path="res://src/entities/creatures/fish/credits_fish/credits_fish_alicia/credits_fish_alicia.tres" id="3_qwxkr"]
-[ext_resource type="Resource" uid="uid://brp3bkjmcrbb" path="res://src/entities/creatures/fish/credits_fish/credits_fish_maika/credits_fish_maika.tres" id="4_v72ab"]
+[ext_resource type="Resource" uid="uid://brp3bkjmcrbb" path="res://src/entities/creatures/fish/credits_fish/credits_fish_maika/credits_fish_lance.tres" id="4_nj0i5"]
+[ext_resource type="Resource" uid="uid://4oej1iqrknt6" path="res://src/entities/creatures/fish/credits_fish/credits_fish_lance/credits_fish_maika.tres" id="4_qwxkr"]
 [ext_resource type="Resource" uid="uid://dsa7mg82m6842" path="res://src/entities/creatures/fish/credits_fish/credits_fish_sylvia/credits_fish_sylvia.tres" id="5_4htn7"]
 
 [sub_resource type="Resource" id="Resource_dkd8t"]
@@ -21,7 +22,7 @@ metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
 [sub_resource type="Resource" id="Resource_gkefa"]
 script = ExtResource("1_8tvgl")
-item = ExtResource("4_v72ab")
+item = ExtResource("4_qwxkr")
 weight = 1.0
 metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
@@ -31,8 +32,14 @@ item = ExtResource("5_4htn7")
 weight = 1.0
 metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
+[sub_resource type="Resource" id="Resource_nj0i5"]
+script = ExtResource("1_8tvgl")
+item = ExtResource("4_nj0i5")
+weight = 1.0
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
 [resource]
 script = ExtResource("2_hmayb")
-entries = Array[ExtResource("1_8tvgl")]([SubResource("Resource_dkd8t"), SubResource("Resource_q0beb"), SubResource("Resource_gkefa"), SubResource("Resource_r0kbf")])
+entries = Array[ExtResource("1_8tvgl")]([SubResource("Resource_dkd8t"), SubResource("Resource_q0beb"), SubResource("Resource_gkefa"), SubResource("Resource_r0kbf"), SubResource("Resource_nj0i5")])
 static_pack = true
 metadata/_custom_type_script = "uid://bst7q731ckock"

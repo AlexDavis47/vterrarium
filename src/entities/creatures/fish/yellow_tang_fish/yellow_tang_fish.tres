@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://cl4iqwjh3g3cm"]
 
-[ext_resource type="Texture2D" uid="uid://dqgt6xinrrjsm" path="res://src/entities/creatures/fish/yellow_tang_fish/yellow_tang_fish.png" id="1_acni8"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_l34tw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xqtmk"]
+load_path = "res://.godot/imported/yellow_tang_fish.png-4af5e87a7c4197475afefefb33848bde.ctex"
 
 [sub_resource type="Curve" id="Curve_0ilyf"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 0.3), 0.0, 0.0, 0, 0, Vector2(0.4, 0.8), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -19,7 +21,7 @@ creature_species = "Zebrasoma flavescens"
 creature_type = 0
 creature_description = "The yellow tang (Zebrasoma flavescens), also known as the lemon sailfin, yellow sailfin tang or somber surgeonfish, is a species of marine ray-finned fish belonging to the family Acanthuridae which includes the surgeonfishes, unicornfishes and tangs. Bright yellow in color, it is one of the most popular marine aquarium fish, though in its natural state, it lives in reefs. The yellow tang spawns around a full moon, eats algae, and has a white barb, located just before the tail fin, to protect itself."
 creature_rarity = 0
-creature_image = ExtResource("1_acni8")
+creature_image = SubResource("CompressedTexture2D_xqtmk")
 creature_scene_uuid = "uid://djvw7w318riyn"
 creature_tint = Color(1, 1, 1, 1)
 creature_tint_amount = 1.0

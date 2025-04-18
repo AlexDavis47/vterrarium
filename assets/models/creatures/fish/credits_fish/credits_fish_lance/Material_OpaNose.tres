@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://4sv7u0gkh6t1"]
+
+[resource]
+resource_name = "Material_OpaNose"
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.827451, 0.678431, 1)

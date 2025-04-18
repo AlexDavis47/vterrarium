@@ -23,6 +23,7 @@ enum Creatures {
 	CREDITS_ALEX,
 	CREDITS_ALICIA,
 	CREDITS_MAIKA,
+	CREDITS_LANCE,
 	CREDITS_SYLVIA,
 	LIL_BLUE_FISH
 }
@@ -40,6 +41,7 @@ var creature_data_templates: Dictionary[Creatures, CreatureData] = {
 	Creatures.CREDITS_ALICIA: preload("uid://jgors16k8mmq"),
 	Creatures.CREDITS_MAIKA: preload("uid://brp3bkjmcrbb"),
 	Creatures.CREDITS_SYLVIA: preload("uid://dsa7mg82m6842"),
+	Creatures.CREDITS_LANCE: preload("uid://4oej1iqrknt6"),
 	Creatures.LIL_BLUE_FISH: preload("uid://r1xm2w02drrx")
 }
 

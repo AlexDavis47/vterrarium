@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://brp3bkjmcrbb"]
 
-[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_rrsab"]
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_wc4h1"]
 
 [sub_resource type="Curve" id="Curve_v50ly"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Vector2(0.534682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -12,8 +12,8 @@ _data = [Vector2(51.5079, 0), 0.0, 0.0, 0, 0, Vector2(70.2778, 1), 0.0, 0.0, 0, 
 point_count = 4
 
 [resource]
-script = ExtResource("1_rrsab")
-creature_name = "Maika West"
+script = ExtResource("1_wc4h1")
+creature_name = "Lance Elliott"
 creature_species = "Dude"
 creature_type = 0
 creature_description = "Duuude"

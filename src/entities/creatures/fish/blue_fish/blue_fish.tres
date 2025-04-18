@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="CreatureData" load_steps=5 format=3 uid="uid://bi10nf3pilsau"]
 
-[ext_resource type="Texture2D" uid="uid://3q7k3dgrk4qr" path="res://src/entities/creatures/fish/blue_fish/blue_fish.png" id="1_ev6t0"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_ih6k1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_86as3"]
+load_path = "res://.godot/imported/blue_fish.png-73cbf94f403c361dd3aac566be33739e.ctex"
 
 [sub_resource type="Curve" id="Curve_v7utq"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -19,7 +21,7 @@ creature_species = "Blus Maximus"
 creature_type = 0
 creature_description = "The blue fish (Blus Maximus) is renowned for its striking sapphire coloration that can shift from electric azure to deep navy depending on its mood. Native to the clear waters of coral reefs, these social creatures travel in small schools that perform synchronized swimming patterns to confuse predators. Their diet consists primarily of small crustaceans and algae, which they hunt with remarkable efficiency. Blue fish are particularly sensitive to water quality but reward careful aquarists with their vibrant colors and active swimming behaviors."
 creature_rarity = 1
-creature_image = ExtResource("1_ev6t0")
+creature_image = SubResource("CompressedTexture2D_86as3")
 creature_scene_uuid = "uid://cv8rhvn5dausl"
 creature_tint = Color(1, 1, 1, 1)
 creature_tint_amount = 1.0

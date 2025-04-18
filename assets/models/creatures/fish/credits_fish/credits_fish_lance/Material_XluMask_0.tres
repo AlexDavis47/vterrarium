@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://uyg5k7srvxwj"]
+
+[ext_resource type="Texture2D" uid="uid://cvfqhqdp1a51t" path="res://assets/models/creatures/fish/credits_fish/credits_fish_lance/credits_fish_lance_MaskTexture_0.png" id="1_onuul"]
+
+[resource]
+resource_name = "Material_XluMask_0"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_onuul")
+metallic = 1.0
+texture_repeat = false
