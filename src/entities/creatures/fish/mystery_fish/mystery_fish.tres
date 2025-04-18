@@ -3,33 +3,33 @@
 [ext_resource type="Texture2D" uid="uid://3q7k3dgrk4qr" path="res://src/entities/creatures/fish/blue_fish/blue_fish.png" id="1_7sr5f"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="2_m0t2p"]
 
-[sub_resource type="Curve" id="Curve_ok7cm"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Vector2(0.534682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+[sub_resource type="Curve" id="Curve_7sr5f"]
+_data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 5
 
-[sub_resource type="Curve" id="Curve_jevmt"]
+[sub_resource type="Curve" id="Curve_m0t2p"]
 _limits = [0.0, 1.0, 0.0, 110.0]
-_data = [Vector2(51.5079, 0), 0.0, 0.0, 0, 0, Vector2(70.2778, 1), 0.0, 0.0, 0, 0, Vector2(83.1548, 1), 0.0, 0.0, 0, 0, Vector2(101.27, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(32, 0.2), 0.0, 0.0, 0, 0, Vector2(50, 0.8), 0.0, 0.0, 0, 0, Vector2(65, 0.3), 0.0, 0.0, 0, 0, Vector2(80, 0.8), 0.0, 0.0, 0, 0, Vector2(95, 0.2), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [resource]
 script = ExtResource("2_m0t2p")
 creature_name = "Mystery Fish"
 creature_species = "???"
 creature_type = 0
-creature_description = "???"
+creature_description = "The elusive mystery fish defies conventional classification, appearing only under the most peculiar circumstances. Marine biologists have spent decades attempting to document this cryptic species, but specimens seem to vanish during observation or transform into entirely different fish. Its shifting colors, unpredictable behaviors, and apparent ability to ignore the laws of physics have led some to theorize it may not be a true fish at all, but rather a manifestation of the ocean's collective unconscious. Those lucky enough to glimpse one report feelings of profound wonder and mild existential confusion."
 creature_rarity = 3
 creature_image = ExtResource("1_7sr5f")
 creature_scene_uuid = "uid://27ncsnw3yfss"
 creature_tint = Color(1, 1, 1, 1)
 creature_tint_amount = 1.0
 creature_size = 1.0
-creature_money_per_hour = 4000.0
+creature_money_per_hour = 5000.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0
 creature_speed = 1.0
-creature_light_preference = SubResource("Curve_ok7cm")
-creature_temperature_preference = SubResource("Curve_jevmt")
+creature_light_preference = SubResource("Curve_7sr5f")
+creature_temperature_preference = SubResource("Curve_m0t2p")
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false

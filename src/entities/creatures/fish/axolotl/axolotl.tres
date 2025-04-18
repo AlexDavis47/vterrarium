@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_nism6"]
 
-[sub_resource type="Curve" id="Curve_ok7cm"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.551587, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Curve" id="Curve_ty0xk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0.9), 0.0, 0.0, 0, 0, Vector2(0.5, 0.7), 0.0, 0.0, 0, 0, Vector2(0.7, 0.4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
-[sub_resource type="Curve" id="Curve_jevmt"]
+[sub_resource type="Curve" id="Curve_fqp3p"]
 _limits = [0.0, 1.0, 0.0, 110.0]
-_data = [Vector2(48.2341, 0), 0.0, 0.0, 0, 0, Vector2(60.0198, 1), 0.0, 0.0, 0, 0, Vector2(68.75, 1), 0.0, 0.0, 0, 0, Vector2(89.2659, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(55, 0), 0.0, 0.0, 0, 0, Vector2(60, 0.7), 0.0, 0.0, 0, 0, Vector2(65, 1), 0.0, 0.0, 0, 0, Vector2(70, 0.7), 0.0, 0.0, 0, 0, Vector2(75, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [resource]
 script = ExtResource("3_nism6")
@@ -22,12 +22,12 @@ creature_scene_uuid = "uid://db8laxqgwowao"
 creature_tint = Color(1, 1, 1, 1)
 creature_tint_amount = 1.0
 creature_size = 1.0
-creature_money_per_hour = 400.0
+creature_money_per_hour = 500.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0
 creature_speed = 1.0
-creature_light_preference = SubResource("Curve_ok7cm")
-creature_temperature_preference = SubResource("Curve_jevmt")
+creature_light_preference = SubResource("Curve_ty0xk")
+creature_temperature_preference = SubResource("Curve_fqp3p")
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false

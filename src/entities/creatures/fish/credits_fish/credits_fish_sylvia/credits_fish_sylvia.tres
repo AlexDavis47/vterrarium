@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_vjkk7"]
 
-[sub_resource type="Curve" id="Curve_ok7cm"]
+[sub_resource type="Curve" id="Curve_cu2sb"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Vector2(0.534682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="Curve" id="Curve_jevmt"]
+[sub_resource type="Curve" id="Curve_wnbjq"]
 _limits = [0.0, 1.0, 0.0, 110.0]
 _data = [Vector2(51.5079, 0), 0.0, 0.0, 0, 0, Vector2(70.2778, 1), 0.0, 0.0, 0, 0, Vector2(83.1548, 1), 0.0, 0.0, 0, 0, Vector2(101.27, 0), 0.0, 0.0, 0, 0]
 point_count = 4
@@ -26,8 +26,8 @@ creature_money_per_hour = 4000.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0
 creature_speed = 1.0
-creature_light_preference = SubResource("Curve_ok7cm")
-creature_temperature_preference = SubResource("Curve_jevmt")
+creature_light_preference = SubResource("Curve_cu2sb")
+creature_temperature_preference = SubResource("Curve_wnbjq")
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://didm3u5ygxm1u" path="res://src/ui/horizontal_meter_ui/horizontal_meter_ui.gd" id="1_qsn2c"]
 
 [node name="HorizontalMeterUi" type="Control"]
-custom_minimum_size = Vector2(200, 30)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

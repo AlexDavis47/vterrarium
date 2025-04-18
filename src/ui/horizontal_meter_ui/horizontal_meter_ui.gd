@@ -109,9 +109,7 @@ var _gradient_texture: GradientTexture2D
 func _ready() -> void:
 	# Initialize font for labels
 	_font = ThemeDB.fallback_font
-	
-	# Ensure custom minimum size
-	custom_minimum_size = Vector2(200, 30)
+
 	
 	# Create initial gradient texture
 	_update_gradient_texture()

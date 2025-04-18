@@ -126,8 +126,16 @@ func _calculate_target_happiness() -> float:
 	
 	happiness -= (2.0 - creature_data.creature_light_contentment - creature_data.creature_temperature_contentment)
 	
+	# Apply accessory bonuses to the remaining gap between current happiness and max (1.0)
+	var accessory_bonus_total: float = 0.0
 	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
-		happiness += accessory.accessory_happiness_bonus
+		accessory_bonus_total += accessory.accessory_happiness_bonus
+	
+	# Scale the bonus so it affects the gap between current happiness and max
+	if accessory_bonus_total > 0 and happiness < 1.0:
+		var happiness_gap = 1.0 - happiness
+		# Apply a portion of the gap based on the bonus (max 80% of gap)
+		happiness += happiness_gap * min(accessory_bonus_total, 0.8)
 	
 	return clamp(happiness, 0.0, 1.0)
 
@@ -135,8 +143,20 @@ func _process_light(delta: float) -> void:
 	var light_level: float = VTHardware.brightness
 	var target_contentment: float = creature_data.creature_light_preference.sample(light_level)
 	
+	# Apply accessory brightness bonuses in a scaled way
+	var brightness_bonus_total: float = 0.0
 	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
-		target_contentment += accessory.accessory_brightness_bonus
+		brightness_bonus_total += accessory.accessory_brightness_bonus
+	
+	# Only apply the bonus to the gap between current contentment and the max
+	if brightness_bonus_total > 0 and target_contentment < 1.0:
+		var contentment_gap = 1.0 - target_contentment
+		target_contentment += contentment_gap * min(brightness_bonus_total, 0.7)
+	# For negative bonuses, reduce contentment proportionally but don't go below zero
+	elif brightness_bonus_total < 0 and target_contentment > 0.0:
+		target_contentment = max(0.0, target_contentment + brightness_bonus_total * target_contentment)
+		
+	target_contentment = clamp(target_contentment, 0.0, 1.0)
 	
 	creature_data.creature_light_contentment = lerp(
 		creature_data.creature_light_contentment,
@@ -148,8 +168,20 @@ func _process_temperature(delta: float) -> void:
 	var temperature_level: float = Utils.celsius_to_fahrenheit(VTHardware.temperature)
 	var target_contentment: float = creature_data.creature_temperature_preference.sample(temperature_level)
 
+	# Apply accessory temperature bonuses in a scaled way
+	var temperature_bonus_total: float = 0.0
 	for accessory in AccessoryFactory.get_all_accessories_by_creature_id(creature_data.creature_id):
-		target_contentment += accessory.accessory_temperature_bonus
+		temperature_bonus_total += accessory.accessory_temperature_bonus
+	
+	# Only apply the bonus to the gap between current contentment and the max
+	if temperature_bonus_total > 0 and target_contentment < 1.0:
+		var contentment_gap = 1.0 - target_contentment
+		target_contentment += contentment_gap * min(temperature_bonus_total / 10.0, 0.7)
+	# For negative bonuses, reduce contentment proportionally but don't go below zero
+	elif temperature_bonus_total < 0 and target_contentment > 0.0:
+		target_contentment = max(0.0, target_contentment + (temperature_bonus_total / 10.0) * target_contentment)
+		
+	target_contentment = clamp(target_contentment, 0.0, 1.0)
 
 	creature_data.creature_temperature_contentment = lerp(
 		creature_data.creature_temperature_contentment,

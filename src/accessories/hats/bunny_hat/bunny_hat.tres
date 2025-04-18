@@ -6,13 +6,13 @@
 script = ExtResource("1_ekek6")
 accessory_name = "Bunny Ears"
 accessory_category = 0
-accessory_description = "Put some spring in your swimng."
+accessory_description = "Put some spring in your swimming. These adorable ears help the wearer feel more energetic and playful."
 accessory_rarity = 0
 accessory_price = 0
 accessory_scene_uuid = "uid://dubom0tyrlbjy"
-accessory_money_bonus = 0.0
-accessory_happiness_bonus = 0.0
-accessory_temperature_bonus = 0.0
+accessory_money_bonus = 40.0
+accessory_happiness_bonus = 0.3
+accessory_temperature_bonus = 2.0
 accessory_brightness_bonus = 0.0
 accessory_id = ""
 accessory_luck = 1.0

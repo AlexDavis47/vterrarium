@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://ckhgfucxu2w6h" path="res://src/entities/creatures/fish/red_fish/red_fish.png" id="1_bxbqi"]
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_sthxp"]
 
-[sub_resource type="Curve" id="Curve_o7ssr"]
-_data = [Vector2(0, 0.495918), 0.0, 0.0, 0, 0, Vector2(0.0606061, 1), 0.0, 0.0, 0, 0, Vector2(0.937229, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.495918), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_milqm"]
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="Curve" id="Curve_ak5as"]
+[sub_resource type="Curve" id="Curve_bxbqi"]
 _limits = [0.0, 1.0, 0.0, 110.0]
-_data = [Vector2(62.4206, 0), 0.0, 0.0, 0, 0, Vector2(77.0437, 0.995314), 0.0, 0.0, 0, 0, Vector2(90.7937, 1), 0.0, 0.0, 0, 0, Vector2(110, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(70, 0), 0.0, 0.0, 0, 0, Vector2(78, 1), 0.0, 0.0, 0, 0, Vector2(88, 1), 0.0, 0.0, 0, 0, Vector2(95, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [resource]
@@ -18,19 +18,19 @@ script = ExtResource("3_sthxp")
 creature_name = "Red Fish"
 creature_species = "Carrassius Procrastius"
 creature_type = 0
-creature_description = "Just your average everyday red fish. Not particularly motivated in life."
+creature_description = "The red fish (Carrassius Procrastius) is known for its vibrant crimson coloration and laid-back demeanor. Native to warm tropical waters, this species spends most of its day drifting with currents rather than swimming with purpose. Marine biologists note that the red fish has evolved to conserve energy by doing the bare minimum required for survival, making it an excellent pet for beginners. Despite its apparent laziness, it's surprisingly resilient and can adapt to a wide range of aquarium conditions."
 creature_rarity = 0
 creature_image = ExtResource("1_bxbqi")
 creature_scene_uuid = "uid://bve0sw755um0r"
 creature_tint = Color(1, 1, 1, 1)
 creature_tint_amount = 1.0
 creature_size = 1.0
-creature_money_per_hour = 60.0
+creature_money_per_hour = 75.0
 creature_hunger_rate = 1.0
 creature_satiation = 1.0
 creature_speed = 1.0
-creature_light_preference = SubResource("Curve_o7ssr")
-creature_temperature_preference = SubResource("Curve_ak5as")
+creature_light_preference = SubResource("Curve_milqm")
+creature_temperature_preference = SubResource("Curve_bxbqi")
 creature_id = ""
 creature_luck = 1.0
 creature_is_in_tank = false
