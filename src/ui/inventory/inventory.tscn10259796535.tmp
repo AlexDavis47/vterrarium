@@ -202,7 +202,7 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Upgrades/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -211,7 +211,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Upgrades" type="GridContainer" parent="TabContainer/Upgrades/ScrollContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 script = ExtResource("10_ncvoo")

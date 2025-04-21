@@ -1,0 +1,2 @@
+extends UpgradeData
+class_name UpgradeTankCapacity

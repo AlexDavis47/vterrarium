@@ -46,6 +46,7 @@ AccessoryFactory="*res://src/accessories/accessory_factory.gd"
 LootGenerator="*res://src/loot_generator/loot_generator.gd"
 AudioManager="*res://src/audio/audio_manager.gd"
 NotificationScene="*res://src/ui/notifications/notification_scene.tscn"
+UpgradeManager="*res://src/upgrades/upgrade_manager.gd"
 
 [display]
 

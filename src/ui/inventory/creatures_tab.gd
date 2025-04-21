@@ -48,6 +48,7 @@ func _populate_sorting_options() -> void:
 func _setup_signals() -> void:
 	creature_sorting_type.item_selected.connect(_on_sorting_changed)
 	creature_sorting_direction.toggled.connect(_on_direction_changed)
+	VTGlobal.trigger_inventory_refresh.connect(_on_inventory_refresh)
 	
 func _on_sorting_changed(_index: int) -> void:
 	VTGlobal.trigger_inventory_refresh.emit()
@@ -60,3 +61,6 @@ func get_current_sort_type() -> int:
 	
 func get_current_sort_direction() -> int:
 	return Utils.SortDirection.DESCENDING if creature_sorting_direction.button_pressed else Utils.SortDirection.ASCENDING
+
+func _on_inventory_refresh() -> void:
+	update_ui()
