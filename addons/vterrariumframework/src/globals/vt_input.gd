@@ -102,8 +102,10 @@ func handle_front_window_input(event: InputEvent) -> void:
 		var hit = cast_ray_from_camera(VTGlobal.front_camera, screen_position)
 
 		if hit.has("position"):
-			# Update creature position
-			_dragged_creature.global_position = hit.position + _drag_offset
+			var target = hit.position + _drag_offset
+			var current = _dragged_creature.global_position
+			# Only change X and Y, preserve Z
+			_dragged_creature.global_position = Vector3(target.x, target.y, current.z)
 			
 func handle_top_window_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -128,8 +130,10 @@ func handle_top_window_input(event: InputEvent) -> void:
 		var hit = cast_ray_from_camera(VTGlobal.top_camera, screen_position)
 
 		if hit.has("position"):
-			# Update creature position
-			_dragged_creature.global_position = hit.position + _drag_offset
+			var target = hit.position + _drag_offset
+			var current = _dragged_creature.global_position
+			# Only change X and Z, preserve Y
+			_dragged_creature.global_position = Vector3(target.x, current.y, target.z)
 
 ## Public API methods
 
