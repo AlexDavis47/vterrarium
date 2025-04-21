@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_l34tw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xqtmk"]
-load_path = "res://.godot/imported/yellow_tang_fish.png-4af5e87a7c4197475afefefb33848bde.ctex"
 
 [sub_resource type="Curve" id="Curve_0ilyf"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 0.3), 0.0, 0.0, 0, 0, Vector2(0.4, 0.8), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

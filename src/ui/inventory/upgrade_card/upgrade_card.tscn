@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgqf0y0t6ime4"]
+
+[ext_resource type="Texture2D" uid="uid://0wsj2a78vtoh" path="res://src/ui/inventory/upgrade_card/textures/bg.png" id="1_0uxgf"]
+[ext_resource type="Script" uid="uid://fgrbpd12e3ax" path="res://src/ui/inventory/upgrade_card/upgrade_card.gd" id="2_iqih2"]
+[ext_resource type="Texture2D" uid="uid://b4dxi0q50k3is" path="res://src/ui/inventory/upgrade_card/textures/fish_card_pack_icon.png" id="3_iqih2"]
+[ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="4_nsi55"]
+[ext_resource type="Texture2D" uid="uid://b5m8jjcmjeufh" path="res://src/ui/inventory/upgrade_card/textures/buy_button.png" id="5_pxsg7"]
+[ext_resource type="FontFile" uid="uid://byvf0xnc7iud3" path="res://assets/fonts/RedHatDisplay-LightItalic.ttf" id="6_iplps"]
+[ext_resource type="Texture2D" uid="uid://b2efb171e25j3" path="res://src/ui/creature_detail_view/textures/creature_card_money_icon.png" id="7_pxsg7"]
+
+[node name="UpgradeCard" type="TextureRect"]
+clip_contents = true
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_0uxgf")
+script = ExtResource("2_iqih2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 33
+
+[node name="CreatureName" type="Label" parent="VBoxContainer/Name"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("4_nsi55")
+theme_override_font_sizes/font_size = 21
+text = "Tank Capacity Up!"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Icon" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Icon"]
+layout_mode = 2
+texture = ExtResource("3_iqih2")
+stretch_mode = 3
+
+[node name="Description" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 7
+
+[node name="CreatureSpecies" type="Label" parent="VBoxContainer/Description"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("6_iplps")
+theme_override_font_sizes/font_size = 17
+text = "Increase Tank Capacity by x"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/BuyButton"]
+layout_mode = 2
+texture_normal = ExtResource("5_pxsg7")
+stretch_mode = 3
+
+[node name="Price" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/Price"]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/Price/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("7_pxsg7")
+
+[node name="SellValue" type="Label" parent="VBoxContainer/Price/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.364706, 0.45098, 1)
+theme_override_fonts/font = ExtResource("4_nsi55")
+theme_override_font_sizes/font_size = 20
+text = "9999"

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="3_sthxp"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_43xpk"]
-load_path = "res://.godot/imported/red_fish.png-a2fb9a147fd61b6ed6134db84e33a4f0.ctex"
 
 [sub_resource type="Curve" id="Curve_milqm"]
 _data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bda2an2nm10ol"]
+[gd_scene load_steps=13 format=3 uid="uid://bda2an2nm10ol"]
 
 [ext_resource type="Script" uid="uid://bux8cayr23de8" path="res://src/ui/inventory/inventory.gd" id="1_1deq4"]
 [ext_resource type="Script" uid="uid://b2maci0i0q0rj" path="res://src/ui/inventory/creature_grid.gd" id="1_7f777"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://2mmgtfeijars" path="res://src/ui/inventory/creatures_tab.gd" id="6_8v6ji"]
 [ext_resource type="FontFile" uid="uid://fo3a5urwshvs" path="res://assets/fonts/RedHatDisplay-Bold.ttf" id="6_y4p7g"]
 [ext_resource type="FontFile" uid="uid://dfedpbfhlg2px" path="res://assets/fonts/RedHatDisplay-Regular.ttf" id="8_8v6ji"]
+[ext_resource type="Script" uid="uid://ychv2xaghd3o" path="res://src/ui/inventory/upgrades_tab.gd" id="10_ncvoo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1265r"]
 shader = ExtResource("2_e3qj4")
@@ -191,10 +192,10 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="Upgrades" type="VBoxContainer" parent="TabContainer/Upgrades"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("10_ncvoo")
