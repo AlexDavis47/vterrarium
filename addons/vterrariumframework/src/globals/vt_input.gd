@@ -8,6 +8,9 @@ signal creature_selected(creature: Node3D, hit_position: Vector3)
 
 var show_debug_markers: bool = false
 
+var _dragged_creature: Node3D = null
+var _drag_offset: Vector3 = Vector3.ZERO
+
 func _ready():
 	VTGlobal.windows_initialized.connect(_on_windows_initialized)
 
@@ -76,56 +79,57 @@ func create_hit_marker(position: Vector3, is_creature: bool = false) -> void:
 	timer.start()
 
 func handle_front_window_input(event: InputEvent) -> void:
-	# Only process mouse events
-	if not (event is InputEventMouseButton) or not event.pressed:
-		return
-		
-	var mouse_position = event.position
-	
-	# First, try to hit creatures
-	var creature_hit = cast_ray_at_creatures(VTGlobal.front_camera, mouse_position)
-	
-	if not creature_hit.is_empty():
-		var creature = creature_hit.collider
-		var hit_position = creature_hit.position
-		
-		print("Hit creature: " + str(creature))
-		create_hit_marker(hit_position, true)
-		creature_selected.emit(creature, hit_position)
-		return
-	
-	# If no creature was hit, try hitting everything
-	var hit = cast_ray_from_camera(VTGlobal.front_camera, mouse_position)
-	
-	if not hit.is_empty():
-		print("Front ray hit: " + str(hit.collider) + " at position " + str(hit.position))
-		create_hit_marker(hit.position)
+	if event is InputEventMouseButton:
+		if event.pressed:
+			var mouse_position = event.position
+			var creature_hit = cast_ray_at_creatures(VTGlobal.front_camera, mouse_position)
 
+			if not creature_hit.is_empty():
+				_dragged_creature = creature_hit.collider
+				var hit_position = creature_hit.position
+				_drag_offset = _dragged_creature.global_position - hit_position
+				create_hit_marker(hit_position, true)
+				creature_selected.emit(_dragged_creature, hit_position)
+			else:
+				_dragged_creature = null
+
+		else:
+			# On mouse release, stop dragging
+			_dragged_creature = null
+
+	elif event is InputEventMouseMotion and _dragged_creature:
+		var screen_position = event.position
+		var hit = cast_ray_from_camera(VTGlobal.front_camera, screen_position)
+
+		if hit.has("position"):
+			# Update creature position
+			_dragged_creature.global_position = hit.position + _drag_offset
+			
 func handle_top_window_input(event: InputEvent) -> void:
-	# Only process mouse events
-	if not (event is InputEventMouseButton) or not event.pressed:
-		return
-		
-	var mouse_position = event.position
-	
-	# First, try to hit creatures
-	var creature_hit = cast_ray_at_creatures(VTGlobal.top_camera, mouse_position)
-	
-	if not creature_hit.is_empty():
-		var creature = creature_hit.collider
-		var hit_position = creature_hit.position
-		
-		print("Hit creature: " + str(creature))
-		create_hit_marker(hit_position, true)
-		creature_selected.emit(creature, hit_position)
-		return
-	
-	# If no creature was hit, try hitting everything
-	var hit = cast_ray_from_camera(VTGlobal.top_camera, mouse_position)
-	
-	if not hit.is_empty():
-		print("Top ray hit: " + str(hit.collider) + " at position " + str(hit.position))
-		create_hit_marker(hit.position)
+	if event is InputEventMouseButton:
+		if event.pressed:
+			var mouse_position = event.position
+			var creature_hit = cast_ray_at_creatures(VTGlobal.top_camera, mouse_position)
+
+			if not creature_hit.is_empty():
+				_dragged_creature = creature_hit.collider
+				var hit_position = creature_hit.position
+				_drag_offset = _dragged_creature.global_position - hit_position
+				create_hit_marker(hit_position, true)
+				creature_selected.emit(_dragged_creature, hit_position)
+			else:
+				_dragged_creature = null
+		else:
+			# On mouse release, stop dragging
+			_dragged_creature = null
+
+	elif event is InputEventMouseMotion and _dragged_creature:
+		var screen_position = event.position
+		var hit = cast_ray_from_camera(VTGlobal.top_camera, screen_position)
+
+		if hit.has("position"):
+			# Update creature position
+			_dragged_creature.global_position = hit.position + _drag_offset
 
 ## Public API methods
 
