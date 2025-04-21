@@ -65,10 +65,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("5_2wghl")
-current_tab = 1
+current_tab = 0
 
 [node name="Creatures" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -189,6 +188,7 @@ columns = 3
 script = ExtResource("1_7f777")
 
 [node name="Upgrades" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

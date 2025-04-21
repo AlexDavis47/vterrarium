@@ -48,6 +48,7 @@ func get_static_pack() -> Array[ItemDataResource]:
 		elif entry.item is AccessoryData:
 			entry.item = AccessoryFactory.create_accessory_from_data(entry.item)
 		else:
-			entry.item.on_generated(1.0)
+			if entry.item.has_method("on_generated"):
+				entry.item.on_generated(1.0)
 		items.append(entry.item.duplicate(true))
 	return items
