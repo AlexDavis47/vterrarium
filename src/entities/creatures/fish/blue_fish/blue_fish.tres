@@ -5,12 +5,12 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_86as3"]
 
 [sub_resource type="Curve" id="Curve_v7utq"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(0.2, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [sub_resource type="Curve" id="Curve_ev6t0"]
 _limits = [0.0, 1.0, 0.0, 110.0]
-_data = [Vector2(60, 0), 0.0, 0.0, 0, 0, Vector2(68, 0.8), 0.0, 0.0, 0, 0, Vector2(75, 1), 0.0, 0.0, 0, 0, Vector2(85, 0.8), 0.0, 0.0, 0, 0, Vector2(92, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(55, 0.2), 0.0, 0.0, 0, 0, Vector2(68, 0.8), 0.0, 0.0, 0, 0, Vector2(75, 1), 0.0, 0.0, 0, 0, Vector2(85, 0.8), 0.0, 0.0, 0, 0, Vector2(95, 0.2), 0.0, 0.0, 0, 0]
 point_count = 5
 
 [resource]
