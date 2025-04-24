@@ -121,10 +121,15 @@ func _process_happiness(delta: float) -> void:
 func _calculate_target_happiness() -> float:
 	var happiness: float = 1.0
 	
-	if creature_data.creature_hunger_bracket != CreatureData.HungerBracket.Full:
-		happiness -= (1.0 - creature_data.creature_satiation)
+	# Factor in hunger - ranges from 0.0 to 1.0
+	var hunger_factor: float = creature_data.creature_satiation
 	
-	happiness -= (2.0 - creature_data.creature_light_contentment - creature_data.creature_temperature_contentment)
+	# Factor in environmental conditions (light and temperature)
+	# Average the contentment values instead of subtracting from happiness
+	var environment_factor: float = (creature_data.creature_light_contentment + creature_data.creature_temperature_contentment) / 2.0
+	
+	# Base happiness is the average of hunger and environment factors
+	happiness = (hunger_factor + environment_factor) / 2.0
 	
 	# Apply accessory bonuses to the remaining gap between current happiness and max (1.0)
 	var accessory_bonus_total: float = 0.0
