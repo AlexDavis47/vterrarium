@@ -12,6 +12,7 @@ var _process_scheduler: ProcessScheduler = ProcessScheduler.new()
 
 enum CreatureSortType {
 	NAME,
+	IN_TANK,
 	AGE,
 	HAPPINESS,
 	VALUE,
@@ -127,6 +128,8 @@ func get_all_creatures_sorted(sort_type: CreatureSortType, sort_direction: SortD
 		match sort_type:
 			CreatureSortType.NAME:
 				result = a.creature_name > b.creature_name
+			CreatureSortType.IN_TANK:
+				result = a.creature_is_in_tank > b.creature_is_in_tank
 			CreatureSortType.AGE:
 				result = a.creature_age < b.creature_age
 			CreatureSortType.HAPPINESS:

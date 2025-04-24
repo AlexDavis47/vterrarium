@@ -24,24 +24,6 @@ var food_data_templates: Dictionary[FoodType, FishFoodData] = {
 signal food_spawned(food: FishFood)
 
 
-func _ready() -> void:
-	await get_tree().create_timer(1.0).timeout
-	for food_type in FoodType.values():
-		print("Spawning food type: %s" % FoodType.keys()[food_type])
-		await get_tree().create_timer(1.0).timeout
-		# Spawn a test food item
-		var food_data = food_data_templates[food_type]
-		spawn_food(food_data, Vector3(randf_range(-1.0, 1.0), 0, randf_range(-1.0, 1.0)))
-	create_test_food()
-
-
-## Add three of each food type to the inventory
-func create_test_food() -> void:
-	for i in range(3):
-		for food_type in FoodType.values():
-			var food_data = food_data_templates[food_type]
-			add_food_to_inventory(food_data)
-
 func add_food_to_inventory(food_data: FishFoodData) -> void:
 	var existing_data_index = -1
 	for i in range(SaveManager.save_file.food_inventory.size()):

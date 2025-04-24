@@ -33,6 +33,7 @@ func _populate_sorting_options() -> void:
 	
 	creature_sorting_type.add_item("Name", Utils.CreatureSortType.NAME)
 	creature_sorting_type.add_item("Age", Utils.CreatureSortType.AGE)
+	creature_sorting_type.add_item("In Tank", Utils.CreatureSortType.IN_TANK)
 	creature_sorting_type.add_item("Happiness", Utils.CreatureSortType.HAPPINESS)
 	creature_sorting_type.add_item("Value", Utils.CreatureSortType.VALUE)
 	creature_sorting_type.add_item("Species", Utils.CreatureSortType.SPECIES)
