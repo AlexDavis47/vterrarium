@@ -5,13 +5,13 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_43xpk"]
 
 [sub_resource type="Curve" id="Curve_milqm"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 2.5, 0, 0, Vector2(0.15, 0.3), 0.0, 0.0, 0, 0, Vector2(0.3, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), 0.0, 0.0, 0, 0, Vector2(0.85, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, -2.5, 0, 0]
+point_count = 7
 
 [sub_resource type="Curve" id="Curve_bxbqi"]
 _limits = [0.0, 1.0, 0.0, 110.0]
-_data = [Vector2(65, 0.3), 0.0, 0.0, 0, 0, Vector2(78, 1), 0.0, 0.0, 0, 0, Vector2(88, 1), 0.0, 0.0, 0, 0, Vector2(98, 0.3), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(55, 0), 0.0, 0.05, 0, 0, Vector2(65, 0.3), 0.0, 0.0, 0, 0, Vector2(78, 1), 0.0, 0.0, 0, 0, Vector2(88, 1), 0.0, 0.0, 0, 0, Vector2(98, 0.3), 0.0, 0.0, 0, 0, Vector2(108, 0), 0.0, -0.05, 0, 0]
+point_count = 6
 
 [resource]
 resource_local_to_scene = true
