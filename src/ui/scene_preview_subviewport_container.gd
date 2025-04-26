@@ -68,7 +68,7 @@ func clear_root_node() -> void:
 
 func add_child_to_root_node(child: Node3D) -> void:
 	root_node.add_child(child)
-	child.process_mode = Node.PROCESS_MODE_DISABLED
+	#child.process_mode = Node.PROCESS_MODE_DISABLED
 
 # Camera positioning
 func position_camera() -> void:

@@ -89,10 +89,6 @@ func _ready() -> void:
 		#CreatureFactory.run_test_cycle()
 		#AccessoryFactory.create_test_accessories()
 
-		var creature = CreatureFactory.create_creature(CreatureFactory.Creatures.RED_FISH)
-		SaveManager.save_file.creature_inventory.append(creature)
-		CreatureFactory.spawn_creature(creature)
-
 
 		save_game() # Use save_game instead of _thread_save_game
 	else:
@@ -148,6 +144,14 @@ func create_save_file() -> void:
 	save_file.creature_inventory = []
 	save_file.created_at = Time.get_datetime_dict_from_system()
 	save_file.last_saved_at = save_file.created_at
+
+	var creature = CreatureFactory.create_creature(CreatureFactory.Creatures.RED_FISH)
+	SaveManager.save_file.creature_inventory.append(creature)
+	CreatureFactory.spawn_creature(creature)
+
+	var food = FoodFactory.create_food_from_type(FoodFactory.FoodType.BASIC_FOOD)
+	FoodFactory.add_food_to_inventory(food)
+
 	
 	emit_signal("save_created")
 

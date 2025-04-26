@@ -88,6 +88,16 @@ func spawn_food_by_type(food_type: FoodType, position: Vector3) -> Array[FishFoo
 	push_error("No food template found for type: %s" % FoodType.keys()[food_type])
 	return []
 
+func create_food_from_type(food_type: FoodType) -> FishFoodData:
+	if food_data_templates.has(food_type):
+		return food_data_templates[food_type].duplicate(true)
+	return null
+
+func create_food_from_data(food_data: FishFoodData) -> FishFoodData:
+	var new_food = food_data.duplicate(true)
+	new_food.on_generated(1.0)
+	return new_food
+
 ## Creates randomized spawn positions around the target position
 func _get_spawn_position(base_position: Vector3, food_data: FishFoodData, index: int, total: int) -> Vector3:
 	var spread = food_data.spread_factor

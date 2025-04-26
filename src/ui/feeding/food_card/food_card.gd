@@ -71,7 +71,11 @@ func update_number_owned() -> void:
 func update_scene_preview() -> void:
 	if scene_preview and food_data and food_data.food_scene_path:
 		scene_preview.clear_root_node()
-		scene_preview.add_child_to_root_node(load(food_data.food_scene_path).instantiate())
+		var food_scene: PackedScene = load(food_data.food_scene_path)
+		if food_scene:
+			var food_instance: FishFood = food_scene.instantiate()
+			food_instance.fish_food_data = food_data
+			scene_preview.add_child_to_root_node(food_instance)
 
 func update_selected() -> void:
 	if selected_label:
