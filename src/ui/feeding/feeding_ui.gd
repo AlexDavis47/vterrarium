@@ -47,9 +47,8 @@ func _on_food_card_selected(card: FoodCard, food_data: FishFoodData) -> void:
 
 ## Handle touch input on the touch zone
 func _on_touch_zone_input(event: InputEvent) -> void:
-	# Only respond to touch press events (not release)
-	if event is InputEventScreenTouch and event.pressed:
-		print(event)
+	# Only respond to touch press events (not release) and only for the first finger (index 0)
+	if event is InputEventScreenTouch and event.pressed and event.index == 0:
 		if selected_food_data:
 			# Convert touch position to global coordinates
 			var touch_position = touch_zone.get_global_transform_with_canvas().origin + event.position
