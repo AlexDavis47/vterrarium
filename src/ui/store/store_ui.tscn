@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gbnpxr40g1kv"]
+[gd_scene load_steps=10 format=3 uid="uid://gbnpxr40g1kv"]
 
 [ext_resource type="PackedScene" uid="uid://dacl7pwgkabec" path="res://src/ui/store/store_item/store_item.tscn" id="1_dgslu"]
 [ext_resource type="Resource" uid="uid://d07kp6nca3bp6" path="res://src/store_items/fish_packs/common_fish_pack/common_fish_pack.tres" id="2_s82go"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cs4nmvs8n88vj" path="res://src/store_items/fish_packs/credits_pack/credits_pack.tres" id="6_xm3oi"]
 [ext_resource type="Resource" uid="uid://c00vqqwsgjrcs" path="res://src/store_items/food_packs/uncommon_fish_food.tres" id="7_05ofe"]
 [ext_resource type="Resource" uid="uid://dntk2yn51lvf5" path="res://src/store_items/food_packs/rare_fish_food.tres" id="8_2r732"]
+[ext_resource type="Resource" uid="uid://bxmfemie7sr0f" path="res://src/store_items/accessory_packs/hats/hats.tres" id="9_2r732"]
 
 [node name="StoreUI" type="Control"]
 layout_mode = 3
@@ -54,3 +55,7 @@ item_data = ExtResource("7_05ofe")
 [node name="StoreItem7" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
 layout_mode = 2
 item_data = ExtResource("8_2r732")
+
+[node name="StoreItem8" parent="ScrollContainer/GridContainer" instance=ExtResource("1_dgslu")]
+layout_mode = 2
+item_data = ExtResource("9_2r732")

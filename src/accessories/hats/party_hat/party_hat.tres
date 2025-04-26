@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AccessoryData" load_steps=3 format=3 uid="uid://ydqcq0aibnrb"]
 
-[ext_resource type="Script" uid="uid://d2227ehstqdgp" path="res://src/accessories/accessory_data.gd" id="1_knnrm"]
+[ext_resource type="Script" path="res://src/accessories/accessory_data.gd" id="1_knnrm"]
 [ext_resource type="Texture2D" uid="uid://b4svgxm8a7xy6" path="res://src/accessories/hats/party_hat/party_hat.png" id="1_wa5sa"]
 
 [resource]

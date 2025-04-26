@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="LootTableData" load_steps=19 format=3 uid="uid://b4esmasj3ha3r"]
+
+[ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_sbv3y"]
+[ext_resource type="Script" uid="uid://bst7q731ckock" path="res://src/loot_generator/loot_table.gd" id="2_c45x8"]
+[ext_resource type="Resource" uid="uid://db07khs866mm0" path="res://src/accessories/hats/beanie_hat/beanie_hat.tres" id="2_ygx5o"]
+[ext_resource type="Resource" uid="uid://wcdci50dpenf" path="res://src/accessories/hats/bunny_hat/bunny_hat.tres" id="3_rogyd"]
+[ext_resource type="Resource" uid="uid://b2qrw6vn3omma" path="res://src/accessories/hats/crown_hat/crown_hat.tres" id="4_lq3v2"]
+[ext_resource type="Resource" uid="uid://ydqcq0aibnrb" path="res://src/accessories/hats/party_hat/party_hat.tres" id="5_n63uj"]
+[ext_resource type="Resource" uid="uid://dmjykq56j6klc" path="res://src/accessories/hats/pirate_hat/pirate_hat.tres" id="6_15b17"]
+[ext_resource type="Resource" uid="uid://cgh1yy8jolwdv" path="res://src/accessories/hats/propeller_hat/propeller_hat.tres" id="7_xpcjt"]
+[ext_resource type="Resource" uid="uid://d0q0xj7jcr5rh" path="res://src/accessories/hats/top_hat/top_hat.tres" id="8_5pkv0"]
+[ext_resource type="Resource" uid="uid://wha8onoswvht" path="res://src/accessories/hats/viking_hat/viking_hat.tres" id="9_2wi4n"]
+
+[sub_resource type="Resource" id="Resource_wt43s"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("2_ygx5o")
+weight = 0.35
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_862ky"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("3_rogyd")
+weight = 1.0
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_pcboh"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("4_lq3v2")
+weight = 0.1
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_d1qrw"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("5_n63uj")
+weight = 1.0
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_uufda"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("6_15b17")
+weight = 0.1
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_kqsup"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("7_xpcjt")
+weight = 0.35
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_dghvg"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("8_5pkv0")
+weight = 0.05
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_jhr51"]
+script = ExtResource("1_sbv3y")
+item = ExtResource("9_2wi4n")
+weight = 0.35
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[resource]
+script = ExtResource("2_c45x8")
+entries = Array[ExtResource("1_sbv3y")]([SubResource("Resource_wt43s"), SubResource("Resource_862ky"), SubResource("Resource_pcboh"), SubResource("Resource_d1qrw"), SubResource("Resource_uufda"), SubResource("Resource_kqsup"), SubResource("Resource_dghvg"), SubResource("Resource_jhr51")])
+static_pack = false
+metadata/_custom_type_script = "uid://bst7q731ckock"

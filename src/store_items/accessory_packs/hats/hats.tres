@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StoreItemData" load_steps=4 format=3 uid="uid://bxmfemie7sr0f"]
+
+[ext_resource type="Script" uid="uid://dlunup4cvhlxk" path="res://src/resources/store_items/store_item_data.gd" id="1_ggrkv"]
+[ext_resource type="Texture2D" uid="uid://dl2brcsfstru0" path="res://src/ui/creature_detail_view/textures/WizardHat.svg" id="1_yu8nr"]
+[ext_resource type="Resource" uid="uid://b4esmasj3ha3r" path="res://src/loot_generator/loot_tables/hats.tres" id="2_4hgbc"]
+
+[resource]
+script = ExtResource("1_ggrkv")
+item_name = "Hats"
+item_description = "Stylish (and useful) hats!"
+item_price = 1000
+item_icon = ExtResource("1_yu8nr")
+item_color = Color(0, 0.464109, 0.737132, 1)
+loot_table = ExtResource("2_4hgbc")
+number_of_items = 3
+metadata/_custom_type_script = "uid://dlunup4cvhlxk"
