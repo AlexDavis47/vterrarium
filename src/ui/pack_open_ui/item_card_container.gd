@@ -146,6 +146,7 @@ func distribute_cards_with_animation():
 		return
 		
 	is_distributing = true
+
 	
 	# Set all cards to center initially
 	for follower in card_followers:
@@ -153,6 +154,7 @@ func distribute_cards_with_animation():
 			# Hide cards initially
 			for child in follower.get_children():
 				if child is PackItemCardUI:
+					child.can_take_item = false
 					child.modulate.a = 0
 					child.scale = Vector2(0.1, 0.1)
 			
@@ -163,12 +165,17 @@ func distribute_cards_with_animation():
 	await get_tree().create_timer(0.2).timeout
 	
 	# Update the layout with delays for each card
-	var num_cards = card_followers.size()
-	
-	for i in range(num_cards):
+	var i = 0
+	while i < card_followers.size():
 		var follower = card_followers[i]
 		if not is_instance_valid(follower):
+			i += 1
 			continue
+			
+		# Get updated count each iteration in case cards were removed
+		var num_cards = card_followers.size()
+		if num_cards == 0:
+			break
 			
 		# Calculate final progress value with bounds
 		var progress = _calculate_progress(i, num_cards)
@@ -183,7 +190,9 @@ func distribute_cards_with_animation():
 				appear_tween.set_trans(Tween.TRANS_BACK)
 				appear_tween.tween_property(child, "modulate:a", 1.0, 0.3)
 				appear_tween.parallel().tween_property(child, "scale", Vector2.ONE, 0.3)
-		
+				child.can_take_item = true
+
+
 		# Animate to final position
 		var tween = create_tween()
 		tween.set_ease(Tween.EASE_OUT)
@@ -194,6 +203,9 @@ func distribute_cards_with_animation():
 		
 		# Mark as initialized
 		follower.set_meta("initialized", true)
+		
+		# Increment index
+		i += 1
 		
 		# Wait before next card
 		await get_tree().create_timer(card_appearance_delay).timeout

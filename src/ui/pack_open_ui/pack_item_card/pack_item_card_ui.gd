@@ -23,6 +23,8 @@ enum CardItemType {
 var card_item_type: CardItemType = CardItemType.Other
 var _preview_instance: Node = null
 
+var can_take_item: bool = false
+
 signal item_taken(item_card: PackItemCardUI)
 
 ########################################################
@@ -128,6 +130,8 @@ func _instantiate_preview():
 		var loaded_scene: PackedScene = load(scene_to_load)
 		if loaded_scene != null:
 			_preview_instance = loaded_scene.instantiate()
+			if _preview_instance is FishFood:
+				_preview_instance.fish_food_data = data as FishFoodData
 		else:
 			printerr("Failed to load scene: ", scene_to_load)
 

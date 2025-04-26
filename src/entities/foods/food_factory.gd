@@ -48,6 +48,7 @@ func spawn_food(food_data: FishFoodData, position: Vector3) -> Array[FishFood]:
 
 	if get_tree().get_nodes_in_group("fish_food").size() >= 100:
 		AudioManager.play_sfx(AudioManager.SFX.CANCEL_1)
+		VTGlobal.display_notification("Too much food in the tank!")
 		return []
 	
 	# Get the food scene to use
