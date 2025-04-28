@@ -34,6 +34,8 @@
 [ext_resource type="PackedScene" uid="uid://bh6ldlfaprtv4" path="res://assets/models/accessories/hats/pirate_hat/pirate_hat.glb" id="32_uinll"]
 
 [sub_resource type="Environment" id="Environment_ti7fu"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.517432, 0.639528, 1, 1)
 ambient_light_energy = 0.5

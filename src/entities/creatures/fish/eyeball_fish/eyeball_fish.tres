@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://dpn67e8joj1g7"]
+
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_slo31"]
+
+[sub_resource type="Curve" id="Curve_rqag8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.147399, 1), 0.0, 0.0, 0, 0, Vector2(0.534682, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_lpvo6"]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(51.5079, 0), 0.0, 0.0, 0, 0, Vector2(70.2778, 1), 0.0, 0.0, 0, 0, Vector2(83.1548, 1), 0.0, 0.0, 0, 0, Vector2(101.27, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[resource]
+script = ExtResource("1_slo31")
+creature_name = "Eyeball"
+creature_species = "Oculus Piscis"
+creature_type = 0
+creature_description = "The Eyeball (Oculus Piscis) is a complete mystery of nature. Is it an eyeball that learned to swim? A fish that evolved to look like an eye? No one really knows, and perhaps it's better that way. This floating orb of ocular tissue drifts through the tank, watching everything with an unsettling intensity. Its existence raises more questions than answers, and its presence in the tank often leaves other fish feeling like they're being watched... because they are."
+creature_rarity = 3
+creature_scene_uuid = "uid://bjrt0e74g1w4a"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_size = 1.0
+creature_money_per_hour = 5000.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_speed = 1.0
+creature_light_preference = SubResource("Curve_rqag8")
+creature_temperature_preference = SubResource("Curve_lpvo6")
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+creature_age = 0.0
+creature_age_bracket = 1
+creature_happiness_bracket = 2
+creature_hunger_bracket = 2
+creature_light_contentment = 1.0
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+metadata/_custom_type_script = "uid://63umrodfd2l3"

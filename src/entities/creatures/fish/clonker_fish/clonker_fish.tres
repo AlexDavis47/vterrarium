@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://d4me1f7wijas3"]
+
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_baa08"]
+
+[sub_resource type="Curve" id="Curve_0d23l"]
+_data = [Vector2(0, 0), 0.0, 1.5, 0, 0, Vector2(0.2, 0.3), 0.0, 0.0, 0, 0, Vector2(0.4, 0.8), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, -1.5, 0, 0]
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_7diin"]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(60, 0), 0.0, 0.05, 0, 0, Vector2(68, 0.3), 0.0, 0.0, 0, 0, Vector2(76, 0.8), 0.0, 0.0, 0, 0, Vector2(82, 1), 0.0, 0.0, 0, 0, Vector2(88, 0.8), 0.0, 0.0, 0, 0, Vector2(96, 0.3), 0.0, 0.0, 0, 0, Vector2(104, 0), 0.0, -0.05, 0, 0]
+point_count = 7
+
+[resource]
+script = ExtResource("1_baa08")
+creature_name = "Clonker"
+creature_species = "Mecha Shark"
+creature_type = 0
+creature_description = "The Clonker (Mecha Shark) is a mechanical marvel with a somewhat unnerving appearance. Its metallic body and mechanical movements might seem intimidating at first, but this gentle giant is surprisingly friendly and sociable. Despite its advanced engineering, it has a tendency to experience 'technical difficulties' with its digestive system, often resulting in comical situations. Its creators are still working on fixing these 'bugs' in its design."
+creature_rarity = 3
+creature_scene_uuid = "uid://bojd6ygjv87ps"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_size = 2.0
+creature_money_per_hour = 5000.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_speed = 0.225
+creature_light_preference = SubResource("Curve_0d23l")
+creature_temperature_preference = SubResource("Curve_7diin")
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+creature_age = 0.0
+creature_age_bracket = 1
+creature_happiness_bracket = 2
+creature_hunger_bracket = 2
+creature_light_contentment = 1.0
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+metadata/_custom_type_script = "uid://63umrodfd2l3"

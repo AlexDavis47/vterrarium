@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://b80fuwb6duygv"]
+
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_tpui6"]
+
+[sub_resource type="Curve" id="Curve_j7k47"]
+_data = [Vector2(0, 0), 0.0, 1.8, 0, 0, Vector2(0.1, 0.2), 0.0, 0.0, 0, 0, Vector2(0.2, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.5), 0.0, 0.0, 0, 0, Vector2(0.9, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, -1.8, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_kru02"]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(45, 0), 0.0, 0.03, 0, 0, Vector2(55, 0.2), 0.0, 0.0, 0, 0, Vector2(68, 0.8), 0.0, 0.0, 0, 0, Vector2(75, 1), 0.0, 0.0, 0, 0, Vector2(85, 0.8), 0.0, 0.0, 0, 0, Vector2(95, 0.2), 0.0, 0.0, 0, 0, Vector2(105, 0), 0.0, -0.03, 0, 0]
+point_count = 7
+
+[resource]
+script = ExtResource("1_tpui6")
+creature_name = "Odd Fish"
+creature_species = "Peculiaris Piscis"
+creature_type = 0
+creature_description = "The Odd Fish (Peculiaris Piscis) is a striking creature with vibrant pink and orange colors that would make any other fish envious. However, its beautiful exterior hides a rather antisocial personality. Its lifeless, beady eyes and expressionless face give it an unsettling appearance, and it seems to have no interest in interacting with its tankmates. It prefers to swim alone in the corners of the tank, occasionally casting judgmental glances at the other fish's social activities."
+creature_rarity = 0
+creature_scene_uuid = "uid://c2mp7enogs5us"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_size = 1.0
+creature_money_per_hour = 75.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_speed = 1.0
+creature_light_preference = SubResource("Curve_j7k47")
+creature_temperature_preference = SubResource("Curve_kru02")
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+creature_age = 0.0
+creature_age_bracket = 1
+creature_happiness_bracket = 2
+creature_hunger_bracket = 2
+creature_light_contentment = 1.0
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+metadata/_custom_type_script = "uid://63umrodfd2l3"

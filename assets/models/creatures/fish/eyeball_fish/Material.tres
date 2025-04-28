@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dmna8ctp1gj4v"]
+
+[ext_resource type="Texture2D" uid="uid://tynbkm6hl73p" path="res://assets/models/creatures/fish/eyeball_fish/eyeball_Untitled.png" id="1_8e0oh"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_8e0oh")
+roughness = 0.5

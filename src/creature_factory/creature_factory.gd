@@ -25,7 +25,12 @@ enum Creatures {
 	CREDITS_MAIKA,
 	CREDITS_LANCE,
 	CREDITS_SYLVIA,
-	LIL_BLUE_FISH
+	LIL_BLUE_FISH,
+	CLONKER_FISH,
+	HAWKFISH_FISH,
+	MINISHARK_FISH,
+	ODD_FISH,
+	EYEBALL_FISH,
 }
 
 
@@ -42,7 +47,12 @@ var creature_data_templates: Dictionary[Creatures, CreatureData] = {
 	Creatures.CREDITS_MAIKA: preload("uid://brp3bkjmcrbb"),
 	Creatures.CREDITS_SYLVIA: preload("uid://dsa7mg82m6842"),
 	Creatures.CREDITS_LANCE: preload("uid://4oej1iqrknt6"),
-	Creatures.LIL_BLUE_FISH: preload("uid://r1xm2w02drrx")
+	Creatures.LIL_BLUE_FISH: preload("uid://r1xm2w02drrx"),
+	Creatures.CLONKER_FISH: preload("uid://d4me1f7wijas3"),
+	Creatures.HAWKFISH_FISH: preload("uid://d03hghogg6ixi"),
+	Creatures.MINISHARK_FISH: preload("uid://cjws31c8s0hpx"),
+	Creatures.ODD_FISH: preload("uid://b80fuwb6duygv"),
+	Creatures.EYEBALL_FISH: preload("uid://dpn67e8joj1g7")
 }
 
 signal creature_added(creature_data: CreatureData)

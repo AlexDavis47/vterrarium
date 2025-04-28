@@ -110,10 +110,9 @@ func move_towards_target(delta: float, speed_multiplier: float = 1.0, switch_dis
 	var distance_factor = clamp(distance / (switch_distance * 3.0), 0.5, 1.0)
 	
 	# Apply force only in the forward direction, scaled by alignment
-	var force = forward_direction * speed_multiplier * speed_factor * happiness_factor * distance_factor * angle_factor * 5
+	var force = forward_direction * speed_multiplier * speed_factor * happiness_factor * distance_factor * angle_factor * 3.5 # Halved from 5
 	linear_velocity += force * delta
 	
-
 	# Clamp velocity to maximum
 	if linear_velocity.length() > max_velocity:
 		linear_velocity = linear_velocity.normalized() * max_velocity

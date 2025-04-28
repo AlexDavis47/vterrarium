@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dtjkc5xggugji"]
+
+[ext_resource type="Texture2D" uid="uid://c3fvnpn70nr33" path="res://assets/models/creatures/fish/basic_pink_fish/basic_pink_basic_fishy_pink.png" id="1_82kj6"]
+
+[resource]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_82kj6")

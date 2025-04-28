@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://d03hghogg6ixi"]
+
+[ext_resource type="Script" uid="uid://63umrodfd2l3" path="res://src/entities/creatures/creature_data.gd" id="1_0d4i2"]
+
+[sub_resource type="Curve" id="Curve_mifer"]
+_data = [Vector2(0, 0), 0.0, 2.5, 0, 0, Vector2(0.15, 0.3), 0.0, 0.0, 0, 0, Vector2(0.3, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.5), 0.0, 0.0, 0, 0, Vector2(0.85, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, -2.5, 0, 0]
+point_count = 7
+
+[sub_resource type="Curve" id="Curve_s01nl"]
+_limits = [0.0, 1.0, 0.0, 110.0]
+_data = [Vector2(55, 0), 0.0, 0.05, 0, 0, Vector2(65, 0.3), 0.0, 0.0, 0, 0, Vector2(78, 1), 0.0, 0.0, 0, 0, Vector2(88, 1), 0.0, 0.0, 0, 0, Vector2(98, 0.3), 0.0, 0.0, 0, 0, Vector2(108, 0), 0.0, -0.05, 0, 0]
+point_count = 6
+
+[resource]
+script = ExtResource("1_0d4i2")
+creature_name = "Hawkfish"
+creature_species = "Cirrhitidae"
+creature_type = 0
+creature_description = "The Hawkfish (Cirrhitidae) is the coolest fish in the tank, sporting a flashy red color and a radical mohawk that would make any punk rocker jealous. This tubular dude spends his days playing aquatic baseball and trying to impress the lady fish with his smooth moves. Despite his rebellious appearance and party lifestyle, he's got a heart of gold and is always there to help his tankmates when they need it. Just don't mess with his baseball game!"
+creature_rarity = 1
+creature_scene_uuid = "uid://dis6e64kw3gsc"
+creature_tint = Color(1, 1, 1, 1)
+creature_tint_amount = 1.0
+creature_size = 1.0
+creature_money_per_hour = 150.0
+creature_hunger_rate = 1.0
+creature_satiation = 1.0
+creature_speed = 1.0
+creature_light_preference = SubResource("Curve_mifer")
+creature_temperature_preference = SubResource("Curve_s01nl")
+creature_id = ""
+creature_luck = 1.0
+creature_is_in_tank = false
+creature_position = Vector3(0, 0, 0)
+creature_age = 0.0
+creature_age_bracket = 1
+creature_happiness_bracket = 2
+creature_hunger_bracket = 2
+creature_light_contentment = 1.0
+creature_temperature_contentment = 1.0
+creature_happiness = 1.0
+metadata/_custom_type_script = "uid://63umrodfd2l3"

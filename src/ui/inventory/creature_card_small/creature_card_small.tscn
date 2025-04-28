@@ -127,7 +127,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1dgtc")
 [node name="ScenePreviewSubviewportContainer" parent="Panel/Panel2" instance=ExtResource("6_dw02c")]
 layout_mode = 1
 camera_angle = Vector3(-2.245, -41.345, 43.53)
-camera_zoom = 0.425
+camera_zoom = 0.585
 camera_fov = 35.0
 
 [node name="Button" type="Button" parent="Panel/Panel2"]
