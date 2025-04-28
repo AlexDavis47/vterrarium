@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LootTableData" load_steps=15 format=3 uid="uid://bac0h7644dloc"]
+[gd_resource type="Resource" script_class="LootTableData" load_steps=25 format=3 uid="uid://bac0h7644dloc"]
 
 [ext_resource type="Script" uid="uid://dh638xi5jsxlq" path="res://src/loot_generator/loot_table_data_entry.gd" id="1_1rtgq"]
 [ext_resource type="Resource" uid="uid://byfmr0pletltf" path="res://src/entities/creatures/fish/mystery_fish/mystery_fish.tres" id="2_c2shu"]
@@ -7,7 +7,12 @@
 [ext_resource type="Resource" uid="uid://x7f8v6e3a7u2" path="res://src/entities/creatures/fish/red_fish/red_fish.tres" id="4_1rtgq"]
 [ext_resource type="Resource" uid="uid://cl4iqwjh3g3cm" path="res://src/entities/creatures/fish/yellow_tang_fish/yellow_tang_fish.tres" id="5_skb0g"]
 [ext_resource type="Resource" uid="uid://b2whh0mnx8dh" path="res://src/entities/creatures/fish/axolotl/axolotl.tres" id="7_lk3wq"]
+[ext_resource type="Resource" uid="uid://b80fuwb6duygv" path="res://src/entities/creatures/fish/odd_fish/odd_fish.tres" id="8_kxk14"]
+[ext_resource type="Resource" uid="uid://d4me1f7wijas3" path="res://src/entities/creatures/fish/clonker_fish/clonker_fish.tres" id="9_grptp"]
+[ext_resource type="Resource" uid="uid://cjws31c8s0hpx" path="res://src/entities/creatures/fish/minishark_fish/minishark_fish.tres" id="10_kk6hd"]
 [ext_resource type="Script" uid="uid://bst7q731ckock" path="res://src/loot_generator/loot_table.gd" id="10_pho0n"]
+[ext_resource type="Resource" uid="uid://dpn67e8joj1g7" path="res://src/entities/creatures/fish/eyeball_fish/eyeball_fish.tres" id="11_f3cvc"]
+[ext_resource type="Resource" uid="uid://d03hghogg6ixi" path="res://src/entities/creatures/fish/hawkfish_fish/hawkfish_fish.tres" id="12_fko2j"]
 
 [sub_resource type="Resource" id="Resource_kxk14"]
 script = ExtResource("1_1rtgq")
@@ -24,29 +29,59 @@ metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 [sub_resource type="Resource" id="Resource_kk6hd"]
 script = ExtResource("1_1rtgq")
 item = ExtResource("4_1rtgq")
-weight = 0.3
+weight = 0.2
 metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
 [sub_resource type="Resource" id="Resource_f3cvc"]
 script = ExtResource("1_1rtgq")
 item = ExtResource("5_skb0g")
-weight = 0.3
+weight = 0.2
 metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
 [sub_resource type="Resource" id="Resource_fko2j"]
 script = ExtResource("1_1rtgq")
 item = ExtResource("2_c2shu")
-weight = 0.03
+weight = 0.1
 metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
 [sub_resource type="Resource" id="Resource_0cr3q"]
 script = ExtResource("1_1rtgq")
 item = ExtResource("7_lk3wq")
+weight = 0.3
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_pho0n"]
+script = ExtResource("1_1rtgq")
+item = ExtResource("8_kxk14")
+weight = 0.2
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_jhupm"]
+script = ExtResource("1_1rtgq")
+item = ExtResource("9_grptp")
 weight = 0.1
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_67sht"]
+script = ExtResource("1_1rtgq")
+item = ExtResource("10_kk6hd")
+weight = 0.3
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_nb55b"]
+script = ExtResource("1_1rtgq")
+item = ExtResource("11_f3cvc")
+weight = 0.1
+metadata/_custom_type_script = "uid://dh638xi5jsxlq"
+
+[sub_resource type="Resource" id="Resource_a713f"]
+script = ExtResource("1_1rtgq")
+item = ExtResource("12_fko2j")
+weight = 1.0
 metadata/_custom_type_script = "uid://dh638xi5jsxlq"
 
 [resource]
 script = ExtResource("10_pho0n")
-entries = Array[ExtResource("1_1rtgq")]([SubResource("Resource_kxk14"), SubResource("Resource_grptp"), SubResource("Resource_kk6hd"), SubResource("Resource_f3cvc"), SubResource("Resource_fko2j"), SubResource("Resource_0cr3q")])
+entries = Array[ExtResource("1_1rtgq")]([SubResource("Resource_kxk14"), SubResource("Resource_grptp"), SubResource("Resource_kk6hd"), SubResource("Resource_f3cvc"), SubResource("Resource_fko2j"), SubResource("Resource_0cr3q"), SubResource("Resource_pho0n"), SubResource("Resource_jhupm"), SubResource("Resource_67sht"), SubResource("Resource_nb55b"), SubResource("Resource_a713f")])
 static_pack = false
 metadata/_custom_type_script = "uid://bst7q731ckock"
