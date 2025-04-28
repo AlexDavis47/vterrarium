@@ -265,7 +265,6 @@ render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="BG/Preview/Panel2/LivePreview/SubViewport"]
 cull_mask = 1048569
-fov = 60.0
 script = ExtResource("6_q5ua7")
 
 [node name="ScenePreviewSubviewportContainer" parent="BG/Preview/Panel2" instance=ExtResource("7_6c18d")]

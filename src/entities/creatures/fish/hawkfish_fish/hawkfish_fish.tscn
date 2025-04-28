@@ -178,9 +178,6 @@ mesh = SubResource("CylinderMesh_rd2k2")
 [node name="hawkfish" type="Node3D" parent="."]
 transform = Transform3D(2.55, 0, 0, 0, 2.55, 0, 0, 0, 2.55, 0, 0, 0.125635)
 
-[node name="Empty" type="Node3D" parent="hawkfish"]
-transform = Transform3D(0, -1, 5.96046e-08, 0.323566, 0, -0.946206, 0.946206, -5.96046e-08, 0.323566, 0, 0, 0)
-
 [node name="Armature" type="Node3D" parent="hawkfish"]
 
 [node name="Skeleton3D" type="Skeleton3D" parent="hawkfish/Armature"]
@@ -238,7 +235,7 @@ mesh = SubResource("ArrayMesh_vbu1q")
 skin = SubResource("Skin_qngwc")
 
 [node name="SpringBoneSimulator3D" type="SpringBoneSimulator3D" parent="hawkfish/Armature/Skeleton3D"]
-transform = Transform3D(-0.54, 0, 8.15377e-08, 0, 0.54, 0, -8.15377e-08, 0, -0.54, 5.38042e-08, 0, 0.455827)
+transform = Transform3D(-0.54, 0, 8.15377e-08, 0, 0.54, 0, -8.15377e-08, 0, -0.54, 0, 0, 0)
 setting_count = 1
 settings/0/root_bone_name = "Bone_001"
 settings/0/root_bone = 0
@@ -261,7 +258,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="AccessoryHatSlot" type="BoneAttachment3D" parent="hawkfish/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 1.50996e-07, 1.49455e-07, 0.14248, -0.989798, -2.15139e-08, 0.989798, 0.14248, -1.77188e-18, -0.00797985, -0.0407125)
+transform = Transform3D(1, 0, 1.50996e-07, 1.50996e-07, 0, -1, 0, 1, 0, -1.77188e-18, -0.00797985, -0.0407125)
 bone_name = "Bone_001"
 bone_idx = 0
 
